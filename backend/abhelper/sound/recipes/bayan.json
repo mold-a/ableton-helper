@@ -1,6 +1,6 @@
 {
   "id": "bayan",
-  "version": 2,
+  "version": 3,
   "name": {
     "ru": "Баян",
     "en": "Bayan (button accordion)"
@@ -58,28 +58,28 @@
     "parameters": {
       "Algorithm": "Alg. 11",
       "Osc-A On": "On",
-      "Osc-A Wave": "Saw 16",
+      "Osc-A Wave": "Saw 64",
       "A Coarse": 1,
       "A Fine": 0,
       "Osc-A Level": {
         "display": "0 dB"
       },
       "Osc-B On": "On",
-      "Osc-B Wave": "Saw 16",
+      "Osc-B Wave": "Saw 64",
       "B Coarse": 1,
-      "B Fine": 4,
+      "B Fine": 2,
       "Osc-B Level": {
         "display": "-2 dB"
       },
       "Osc-C On": "On",
-      "Osc-C Wave": "Square 8",
+      "Osc-C Wave": "Square 16",
       "C Coarse": 2,
       "C Fine": 0,
       "Osc-C Level": {
         "display": "-15 dB"
       },
       "Osc-D On": "On",
-      "Osc-D Wave": "Saw 8",
+      "Osc-D Wave": "Saw 32",
       "D Coarse": 0,
       "D Fine": 0,
       "Osc-D Level": {
@@ -87,7 +87,7 @@
       },
       "Ae Init": 0.0,
       "Ae Attack": {
-        "display": "28 ms"
+        "display": "10 ms"
       },
       "Ae Peak": 1.0,
       "Ae Decay": {
@@ -95,11 +95,11 @@
       },
       "Ae Sustain": 1.0,
       "Ae Release": {
-        "display": "110 ms"
+        "display": "60 ms"
       },
       "Be Init": 0.0,
       "Be Attack": {
-        "display": "28 ms"
+        "display": "10 ms"
       },
       "Be Peak": 1.0,
       "Be Decay": {
@@ -107,11 +107,11 @@
       },
       "Be Sustain": 1.0,
       "Be Release": {
-        "display": "110 ms"
+        "display": "60 ms"
       },
       "Ce Init": 0.0,
       "Ce Attack": {
-        "display": "28 ms"
+        "display": "10 ms"
       },
       "Ce Peak": 1.0,
       "Ce Decay": {
@@ -119,11 +119,11 @@
       },
       "Ce Sustain": 1.0,
       "Ce Release": {
-        "display": "110 ms"
+        "display": "60 ms"
       },
       "De Init": 0.0,
       "De Attack": {
-        "display": "28 ms"
+        "display": "10 ms"
       },
       "De Peak": 1.0,
       "De Decay": {
@@ -131,12 +131,12 @@
       },
       "De Sustain": 1.0,
       "De Release": {
-        "display": "110 ms"
+        "display": "60 ms"
       },
       "Filter On": "On",
       "Filter Type": "Lowpass",
       "Filter Freq": {
-        "display": "5.5 kHz"
+        "display": "3 kHz"
       },
       "Filter Res": 0.1,
       "LFO On": "Off",
@@ -145,7 +145,30 @@
       "Transpose": 0,
       "Volume": {
         "display": "-6 dB"
-      }
+      },
+      "Osc-A Retrig": "Off",
+      "Osc-A Lev < Vel": 0,
+      "Osc-B Retrig": "Off",
+      "Osc-B Lev < Vel": 0,
+      "Osc-C Retrig": "Off",
+      "Osc-C Lev < Vel": 0,
+      "Osc-D Retrig": "Off",
+      "Osc-D Lev < Vel": 0,
+      "Filt < Key": 20,
+      "Filt < Vel": 0,
+      "Fe Init": 0.0,
+      "Fe Attack": {
+        "display": "45 ms"
+      },
+      "Fe Peak": 1.0,
+      "Fe Decay": {
+        "display": "300 ms"
+      },
+      "Fe Sustain": 1.0,
+      "Fe Release": {
+        "display": "60 ms"
+      },
+      "Fe Amount": 15
     },
     "fallback_parameters": {
       "Analog": {
@@ -205,19 +228,28 @@
         "4 Filter On A": "On",
         "4 Filter Type A": "Bell",
         "4 Frequency A": {
-          "display": "1.4 kHz"
+          "display": "1.3 kHz"
         },
-        "4 Gain A": 3.5,
+        "4 Gain A": 3.0,
         "4 Resonance A": {
           "display": "1.2"
         },
         "6 Filter On A": "On",
         "6 Filter Type A": "High Shelf",
         "6 Frequency A": {
-          "display": "7 kHz"
+          "display": "8 kHz"
         },
-        "6 Gain A": -3.0,
-        "8 Filter On A": "Off"
+        "6 Gain A": -2.5,
+        "8 Filter On A": "Off",
+        "5 Filter On A": "On",
+        "5 Filter Type A": "Bell",
+        "5 Frequency A": {
+          "display": "3 kHz"
+        },
+        "5 Gain A": 2.0,
+        "5 Resonance A": {
+          "display": "1.0"
+        }
       }
     },
     {
@@ -231,7 +263,7 @@
         },
         "HiFilter On": "On",
         "HiFilter Freq": {
-          "display": "6 kHz"
+          "display": "9 kHz"
         },
         "Chorus On": "Off",
         "Dry/Wet": {
@@ -247,5 +279,5 @@
     "scale": "harmonic_minor",
     "variant": "waltz"
   },
-  "sound_design_notes": "Баян — свободные металлические язычки: яркий тон со всеми гармониками, без вибрато, ровный сустейн, пока работают меха. Operator, алгоритм 11 (все четыре генератора параллельно = набор язычков). A и B — основной регистр 8′ (Saw 16: ограниченный спектр, как у язычка, без цифрового «песка»); B выше на Fine 4 (≈7 центов) — лёгкое «дыхание» двух язычков, но без мюзетного биения: классический баян строится «сухо». D — регистр 16′ (фагот, на октаву ниже, −9 дБ), C — 4′ (пикколо, квадрат на октаву выше, −15 дБ). Огибающие всех генераторов: атака мехов 28 мс, полный сустейн, отпускание 110 мс — язычок глохнет быстро. ФНЧ 5,5 кГц убирает синтетическую резкость. EQ: срез ниже 70 Гц, −2 дБ на 350 Гц (бубнение корпуса), +3,5 дБ на 1,4 кГц (носовая форманта язычкового голоса), полка −3 дБ от 7 кГц. Без хоруса: биение и «плавание» тона — признак дешёвого синтезатора, а не баяна. Реверб — небольшой зал 1,4 с, 16 %. Демо — вальс в ля-миноре (гармоническом): бас на «раз», аккорды на «два-три». Для мюзетного аккордеона попросите «больше расстройки» (B Fine 10–15) или добавьте третий голос."
+  "sound_design_notes": "Синтез — запасной вариант: реалистичный баян даёт сэмпл-пресет «AbletonHelper Accordion HN» (abhelper samples install accordion), он ищется первым. Синтез: Operator, алгоритм 11 (четыре генератора параллельно = набор язычков). Плотный спектр язычка: Saw 64 на 8′ (A, B), Saw 32 на 16′ (D, фагот, −9 дБ), Square 16 на 4′ (C, пикколо, −15 дБ); Saw 16 давал лишь 16 гармоник и тусклый низ. Строй «сухой»: B Fine 2 (≈3 цента). Фазы генераторов свободные (Retrig Off), громкость не зависит от velocity — выразительность у баяна от мехов. Атака 10 мс (язычок отвечает за несколько периодов), отпускание 60 мс; фильтр стартует с 3 кГц и за 45 мс раскрывается огибающей (обертоны вступают чуть позже основного тона), Filt < Key 20. EQ: срез 70 Гц, −2 дБ на 350 Гц, форманты +3 дБ на 1,3 кГц и +2 дБ на 3 кГц, полка −2,5 дБ от 8 кГц. Без хоруса и вибрато. Реверб: небольшой зал 1,4 с, 16 %, HiFilter 9 кГц. Демо — вальс в ля-миноре (гармоническом)."
 }
