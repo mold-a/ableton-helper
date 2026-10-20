@@ -61,7 +61,7 @@ class BridgeServer(object):
                 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             sock.bind((self.host, self.port))
             sock.listen(8)
-            sock.settimeout(0.5)
+            sock.settimeout(0.2)
         except Exception:
             sock.close()
             raise
@@ -77,6 +77,10 @@ class BridgeServer(object):
         self._stop.set()
         listener, self._listener = self._listener, None
         if listener is not None:
+            try:
+                listener.shutdown(socket.SHUT_RDWR)   # wakes a blocked accept() on Linux/macOS
+            except Exception:
+                pass
             try:
                 listener.close()
             except Exception:
@@ -103,7 +107,7 @@ class BridgeServer(object):
             pending.event.set()
         thread = self._accept_thread
         if thread is not None and thread is not threading.current_thread():
-            thread.join(2.0)
+            thread.join(1.0)
         self._accept_thread = None
 
     # ------------------------------------------------------------ main thread side

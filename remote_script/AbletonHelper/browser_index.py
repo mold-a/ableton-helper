@@ -81,25 +81,28 @@ def find_child(children, name):
 
 
 def resolve_path(browser, path):
-    """Walk the live browser along 'category/a/b'. Returns (node, category) or (None, None).
+    """Walk the live browser along 'category/a/b'. Returns (node, category, canonical_path).
 
     node is a BrowserItem or, for the category root of user_folders, a list.
+    Returns (None, None, None) when nothing matches. canonical_path uses the real item names.
     """
     segments = [s for s in str(path).strip("/").split("/") if s]
     if not segments:
-        return None, None
+        return None, None, None
     category = segments[0].lower()
     if category not in LIST_CATEGORIES:
-        return None, None
+        return None, None, None
     node = category_root(browser, category)
     if node is None:
-        return None, None
+        return None, None, None
+    canonical = category
     for segment in segments[1:]:
         child = find_child(get_children(node), segment)
         if child is None:
-            return None, None
+            return None, None, None
         node = child
-    return node, category
+        canonical += "/" + str(safe_get(child, "name", ""))
+    return node, category, canonical
 
 
 class BrowserIndex(object):

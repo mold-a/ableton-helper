@@ -2,7 +2,7 @@
 
 import os
 
-from ..dispatcher import (BAD_REQUEST, CONFLICT, INTERNAL, NOT_FOUND, UNSUPPORTED, CommandError,
+from ..dispatcher import (BAD_REQUEST, CONFLICT, NOT_FOUND, UNSUPPORTED, CommandError,
                           get_bool, get_int, get_list, get_number, get_str)
 from ..livecompat import has_midi_input, safe_get
 from .common import resolve_clip, resolve_slot, resolve_track

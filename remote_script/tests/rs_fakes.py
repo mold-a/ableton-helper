@@ -389,3 +389,36 @@ class FakeCInstance(object):
 
     def show_message(self, msg):
         self.shown.append(msg)
+
+
+def make_dispatcher(song, app, with_index=True, live_module=None, index_complete=True):
+    from AbletonHelper.browser_index import BrowserIndex
+    from AbletonHelper.context import Context
+    from AbletonHelper.dispatcher import Dispatcher
+    logs = []
+    index = BrowserIndex(app, log=logs.append) if with_index else None
+    if index is not None and index_complete:
+        index.start(0)
+        while index._gen is not None:
+            index.step(1.0, 100000)
+    ctx = Context(song, app, index, log=logs.append, live_module=live_module)
+    d = Dispatcher(ctx)
+    d.logs = logs
+    return d
+
+
+def call(d, command, **params):
+    """Run a command through the full envelope path; returns the envelope."""
+    return d.handle({"id": "1", "command": command, "params": params})
+
+
+def result(d, command, **params):
+    env = call(d, command, **params)
+    assert env["ok"], env
+    return env["result"]
+
+
+def error(d, command, **params):
+    env = call(d, command, **params)
+    assert not env["ok"], env
+    return env["error"]["code"]

@@ -96,7 +96,7 @@
 | `select_track` | `{"track_index"}` | `{"selected": true}` |
 | `set_track_mixer` | `{"track_index", "volume"?: 0..1, "pan"?: -1..1, "mute"?: bool, "solo"?: bool, "arm"?: bool}` | текущие значения тех же полей |
 
-`volume` — сырое значение `mixer_device.volume` (0.85 ≈ 0 dB).
+`volume` — сырое значение `mixer_device.volume` (0.85 ≈ 0 dB). Возвращаются все пять полей. `arm` на дорожке, которую нельзя армировать (группа), → `bad_request`.
 
 ### Устройства
 | command | params | result |
@@ -129,12 +129,14 @@
 | `browser_rescan` | `{"categories"?: [str]}` | `{"started": true}` |
 | `browser_search` | `{"query": str, "categories"?: [str], "loadable_only"?: bool = true, "limit"?: int = 25}` | `{"items": [BrowserItem...], "index_complete": bool}` |
 | `browser_list` | `{"path"?: str}` (пусто = список категорий) | `{"items": [BrowserItem...]}` — дети узла (без рекурсии) |
-| `load_browser_item` | `{"track_index", "uri"?: str, "path"?: str}` | `{"loaded": true, "name": str, "devices": [ {index,name,class_name,type}... ]}` — устройства дорожки после загрузки |
+| `load_browser_item` | `{"track_index", "uri"?: str, "path"?: str}` | `{"loaded": true, "name": str, "devices": [ {index,name,class_name,type}... ], "pending"?: true}` — устройства дорожки после загрузки; `pending=true`, если список устройств ещё не изменился (загрузка могла быть асинхронной — перечитайте `get_track_info`) |
 
 Поиск `browser_search`: запрос разбивается на слова; элемент подходит, если **все** слова
 встречаются (подстрокой, без учёта регистра) в `path`. Сортировка: сначала больше совпадений
 в `name`, затем короче `path`. Индекс строится инкрементально после старта скрипта; при
 `complete=false` возвращаются частичные результаты.
+
+`browser_list` с пустым путём включает `current_project`, но эта категория не индексируется для `browser_search`.
 
 Лимиты индекса: глубина ≤ 8, до 60 000 элементов (иначе `truncated=true`). Порядок обхода
 категорий: `instruments, sounds, drums, audio_effects, midi_effects, user_library, packs,
@@ -150,6 +152,11 @@ samples, clips, plugins, max_for_live, user_folders`.
 | `fire_clip` / `stop_clip` | `{"track_index", "slot_index"}` | `{"ok": true}` |
 | `delete_clip` | `{"track_index", "slot_index"}` | `{"deleted": true}` |
 | `create_audio_clip` | `{"track_index", "slot_index", "file_path": str}` | `{"slot_index"}` или `unsupported` (Live < 12) |
+
+`create_clip` без `slot_index`: если свободных слотов нет, создаётся новая сцена.
+`create_audio_clip`: `file_path` — абсолютный путь (`bad_request`), файл должен существовать (`not_found`), занятый слот → `conflict`.
+`device_index` всегда ≥ 0 (`-1` не поддерживается).
+`start_playback`/`stop_playback` возвращают заданное состояние, а не перечитанное.
 
 `add_notes`: `clip.add_new_notes` (Live 11+) с `Live.Clip.MidiNoteSpecification`, иначе
 `clip.set_notes`. `replace=true` — сначала удалить все ноты клипа.

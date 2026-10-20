@@ -65,14 +65,9 @@ def browser_list(ctx, params):
                           "category": category, "is_loadable": False, "is_device": False,
                           "is_folder": True})
         return {"items": items}
-    node, category = resolve_path(browser, path)
+    node, category, parent = resolve_path(browser, path)
     if node is None:
         raise CommandError(NOT_FOUND, "Browser path not found: %s" % path)
-    parent = "/".join([s for s in path.split("/") if s])
-    # normalise the category segment (case) but keep the remaining names as given
-    parts = parent.split("/")
-    parts[0] = category
-    parent = "/".join(parts)
     return {"items": [public_entry(make_entry(child, parent, category)) for child in get_children(node)]}
 
 
@@ -96,7 +91,7 @@ def load_browser_item(ctx, params):
         if entry is not None:
             item, name = entry["ref"], entry["name"]
     if item is None and path:
-        node, _cat = resolve_path(browser, path)
+        node, _cat, _canonical = resolve_path(browser, path)
         if node is not None and not isinstance(node, (list, tuple)):
             item, name = node, str(safe_get(node, "name", ""))
     if item is None:
