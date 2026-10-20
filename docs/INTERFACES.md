@@ -70,12 +70,14 @@ class RecipeLibrary:
     def all(self) -> list[dict]
     def search(self, query: str, limit: int = 5) -> list[RecipeMatch]   # RU/EN алиасы, теги, fuzzy
 
-def validate_recipe(recipe: dict) -> list[str]   # список ошибок, [] = валиден
+def validate_recipe(recipe: dict, custom: bool = False) -> list[str]   # список ошибок, [] = валиден;
+    # custom=True — для рецептов от LLM: id/aliases/category необязательны
 
 class SoundEngine:
     def __init__(self, bridge: Bridge, library: RecipeLibrary | None = None)
     def find_recipes(self, query: str, limit: int = 5) -> list[RecipeMatch]
     def search_presets(self, query: str, terms: list[str] | None = None, limit: int = 10) -> list[dict]
+        # фильтрация по категориям — на стороне вызывающего (поле "category")
         # BrowserItem + "score"; ранжирование, предпочтение sounds/instruments/drums
     def create_sound(self, request: SoundRequest) -> SoundResult
         # не бросает исключения моста — ошибки → ok=False, message, warnings
@@ -146,8 +148,8 @@ class AssistantAgent:
 | `text_delta` | `text` |
 | `tool_start` | `id`, `name`, `input` |
 | `tool_result` | `id`, `name`, `ok`, `summary` (короткая строка ru), `data` (dict, может быть урезан) |
-| `done` | `text` (итоговый ответ целиком), `usage` |
-| `error` | `message`, `code` (`llm_not_configured`, `bridge_offline`, `llm_error`, `internal`) |
+| `done` | `text` (весь текст ассистента за ход; ответы разных итераций склеены через `\n\n` — тот же разделитель приходит и как `text_delta`), `usage` |
+| `error` | `message`, `code` (`llm_not_configured`, `bridge_offline`, `llm_error`, `busy` — по этому conversation_id уже идёт ход, `internal`) |
 
 Инструменты LLM (имена фиксированы — UI показывает их человеческие подписи):
 `get_session_overview`, `get_track_details`, `search_sound_library`, `search_live_browser`,
@@ -164,8 +166,11 @@ class AssistantAgent:
 | POST | `/api/chat` | `{"conversation_id"?: str, "message": str}` → `text/event-stream` с `AgentEvent`; первое событие `{"type":"conversation","conversation_id": "..."}` |
 | POST | `/api/reset` | `{"conversation_id": str}` → `{"ok": true}` |
 | GET | `/api/config` | `{"model", "effort", "api_key_set": bool, "bridge_host", "bridge_port"}` |
-| POST | `/api/config` | `{"api_key"?, "model"?, "effort"?}` → как GET; сохраняет в `~/.ableton-helper/config.json` |
+| POST | `/api/config` | `{"api_key"?, "model"?, "effort"?}` → как GET + `env_overrides: [field]` (поля, зафиксированные переменными окружения — они остаются в силе); сохраняет в `~/.ableton-helper/config.json` |
 | GET | `/api/suggestions` | `{"items": [str]}` — примеры запросов для пустого чата |
+
+### Переменные окружения
+`ANTHROPIC_API_KEY`, `ABHELPER_MODEL`, `ABHELPER_EFFORT`, `ABHELPER_BRIDGE_HOST`, `ABHELPER_BRIDGE_PORT`, `ABHELPER_HOST`, `ABHELPER_PORT`, `ABHELPER_CONFIG`, `ABHELPER_UI_DIR`, `ABHELPER_FALLBACKS` (0 — выключить server-side fallback), `ABHELPER_STRICT_TOOLS` (0 — убрать `strict` у инструментов).
 
 ## 6. База знаний (`abhelper/knowledge/docs/*.md`)
 
