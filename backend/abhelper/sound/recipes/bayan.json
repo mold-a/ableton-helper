@@ -38,11 +38,12 @@
     "en": "Free-reed bayan: 8' + 16' (bassoon) + 4' (piccolo) reed ranks, near-dry tuning, bellows attack, nasal formant, small hall."
   },
   "preset_search": [
+    "AbletonHelper Accordion",
     "accordion",
-    "musette",
     "bayan",
-    "reed organ",
-    "harmonium"
+    "musette",
+    "harmonium",
+    "reed organ"
   ],
   "track": {
     "name": "Баян",
