@@ -226,5 +226,5 @@ def test_unmatched_parameters_flow():
 def test_system_prompt_mentions_key_rules():
     p = SYSTEM_PROMPT
     for needle in ("unmatched_parameters", "get_device_parameters", "search_ableton_help", "delete_track",
-                   "design_custom_sound", "user's language"):
+                   "design_custom_sound", "user's language", '{"display": "1.3 kHz"}'):
         assert needle in p

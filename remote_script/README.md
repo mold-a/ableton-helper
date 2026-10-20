@@ -36,14 +36,22 @@ python scripts/install_remote_script.py --uninstall
 
 ## Если скрипта нет в списке Control Surface
 
-1. Убедитесь, что файл `__init__.py` лежит **прямо** в `.../Remote Scripts/AbletonHelper/__init__.py`, а не на уровень глубже (`.../AbletonHelper/AbletonHelper/__init__.py`). Установщик это проверяет и печатает точный путь.
-2. User Library может быть перенесена (Settings → Library → Location). Тогда положите скрипт в `Remote Scripts` внутри вашей User Library.
-3. Запасной путь — папка внутри приложения Live (`--dest` указывает на папку `MIDI Remote Scripts`, внутри создастся `AbletonHelper`):
-   - macOS: `/Applications/Ableton Live 12 <Edition>.app/Contents/App-Resources/MIDI Remote Scripts/`
-   - Windows: `C:\ProgramData\Ableton\Live 12 <Edition>\Resources\MIDI Remote Scripts\`
-   
-   Например: `python scripts/install_remote_script.py --dest "/Applications/Ableton Live 12 Suite.app/Contents/App-Resources/MIDI Remote Scripts"` (может понадобиться sudo / права администратора; после обновления Live папку придётся скопировать заново).
+1. **Первым делом установите скрипт в папку самого Live** (проверено на Live 11.3.25, Windows): там Live 11 увидел скрипт, а из User Library — нет. `--dest` указывает на папку `MIDI Remote Scripts` внутри папки Live, внутри создастся `AbletonHelper`:
+   - Windows: `<папка Live>\Resources\MIDI Remote Scripts`, где `<папка Live>` — та, в которой лежит `Program\Ableton Live 11 <Edition>.exe` (у пользователя Live стоит в `D:\Ableton`, т. е. `D:\Ableton\Resources\MIDI Remote Scripts`). Live 12 обычно стоит в `C:\ProgramData\Ableton\Live 12 <Edition>`.
+   - macOS: `/Applications/Ableton Live 11 <Edition>.app/Contents/App-Resources/MIDI Remote Scripts/`
+
+   Например: `python scripts/install_remote_script.py --dest "D:\Ableton\Resources\MIDI Remote Scripts"` (может понадобиться sudo / права администратора; после обновления Live папку придётся скопировать заново). Затем полностью перезапустите Live.
+2. Убедитесь, что файл `__init__.py` лежит **прямо** в `.../Remote Scripts/AbletonHelper/__init__.py`, а не на уровень глубже (`.../AbletonHelper/AbletonHelper/__init__.py`). Установщик это проверяет и печатает точный путь.
+3. Если используете User Library: она может быть перенесена (Settings → Library → Location), тогда положите скрипт в `Remote Scripts` внутри вашей User Library.
 4. Полностью перезапустите Live (не только закройте проект).
+
+## Значения параметров по отображению (`display`)
+
+Большинство параметров нативных устройств Live отдаёт в API нормализованными 0..1 на нелинейной кривой (лог для частот, эксп для времён), поэтому «сырые» числа и `{"norm": x}` для Гц/мс/дБ попадают далеко от цели. Команды `set_device_parameter(s)` принимают `{"display": "1.3 kHz"}` — значение так, как его показывает Live (`"25 ms"`, `"-6 dB"`, `"30 %"`, `"-inf dB"`).
+
+- `display.py` ищет сырое значение бисекцией по `[min, max]`, форматируя пробные точки через `DeviceParameter.str_for_value(raw)` (~48 вызовов, параметр не меняется до конца). Грамматика и единицы (`Hz/kHz`, `ms/s`, `dB`, `%`, `st`, `ct`, `°`, `: 1`) — в [`docs/PROTOCOL.md`](../docs/PROTOCOL.md); это порт `backend/abhelper/bridge/displayval.py` на синтаксис Python 3.7.
+- Цель вне диапазона → `min`/`max`; несовпадение единицы (например `"25 ms"` для частоты) или нечисловое отображение → `bad_request` (в `set_device_parameters` — запись в `failed`, остальные параметры применяются); нет `str_for_value` → `unsupported`. Для квантованных параметров строка трактуется как элемент `value_items`.
+- `get_parameter_displays` — для калибровки: для каждого неквантованного параметра отдаёт `samples` пар `[raw, "text"]` по равномерной сетке (2..33 точек), ничего не меняя.
 
 ## Диагностика и логи
 

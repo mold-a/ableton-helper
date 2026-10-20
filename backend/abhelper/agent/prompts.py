@@ -28,8 +28,12 @@ envelope, amplitude envelope attack/decay/sustain/release, vibrato/LFO, noise/br
 such as chorus, EQ, reverb, saturation) and choose a native Live instrument that suits it (Operator for FM \
 and additive tones, Wavetable for evolving/organ/reed timbres, Analog for classic subtractive, Drift for easy \
 subtractive, Electric/Tension/Collision for physical models, Drum Rack/Simpler for drums and samples). \
-Use only native Live devices in recipes. Provide parameter names exactly as they appear in Live's UI; \
-values may be raw numbers, an item name for dropdowns, or {"norm": 0..1}.
+Use only native Live devices in recipes. Provide parameter names exactly as they appear in Live's UI. \
+For frequencies, times, levels and percentages ALWAYS use {"display": "1.3 kHz"} / "25 ms" / "-6 dB" / "30 %" \
+- the value as Live shows it (Live exposes most parameters on non-linear curves, so raw numbers and {"norm"} \
+land far off; get_device_parameters returns each parameter's current `display` so you can see the units). \
+Use raw numbers only for parameters whose raw range is meaningful (e.g. Transpose, Coarse, EQ gains in dB), \
+item names for dropdowns, and avoid {"norm"} for anything with units.
 4. ALWAYS check the result. If `unmatched_parameters` is non-empty (after create_sound or design_custom_sound), \
 call get_device_parameters for that device and resolve each unmatched name against the REAL parameter list, \
 then apply the fixes with set_device_parameters. Parameter names and ranges differ between Live versions and \

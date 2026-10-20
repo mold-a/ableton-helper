@@ -27,6 +27,45 @@ def test_dump_records_parameters_and_cleans_up():
     json.dumps(cat)
 
 
+def test_dump_records_display_samples_for_continuous_parameters_only():
+    bridge = FakeBridge(tracks=1)
+    cat = dump_device_catalog(bridge, ["Operator", "Reverb"])
+    params = cat["devices"]["Reverb"]["parameters"]
+    cont = [p for p in params if not p["is_quantized"]]
+    assert cont and all(len(p["display_samples"]) == 9 for p in cont)
+    first = cont[0]["display_samples"]
+    assert first[0][0] == cont[0]["min"] and first[-1][0] == cont[0]["max"]
+    assert all(isinstance(r, float) and isinstance(t, str) for r, t in first)
+    assert all("display_samples" not in p for p in params if p["is_quantized"])
+    asked = [p for c, p in bridge.calls if c == "get_parameter_displays"]
+    assert asked and all(p["samples"] == 9 for p in asked)
+    json.dumps(cat)
+
+
+def test_old_remote_script_without_get_parameter_displays_still_calibrates():
+    bridge = ScriptedBridge(fail={"get_parameter_displays": BridgeCommandError("unknown_command", "nope")})
+    msgs = []
+    cat = dump_device_catalog(bridge, ["Operator", "Reverb"], progress=msgs.append)
+    assert set(cat["devices"]) == {"Operator", "Reverb"} and not cat["_meta"].get("failed")
+    assert all("display_samples" not in p for d in cat["devices"].values() for p in d["parameters"])
+    assert "get_parameter_displays" in cat["_meta"]["note"]
+    assert [c for c, _ in bridge.calls].count("get_parameter_displays") == 1, "not retried for every device"
+    assert bridge.tracks == []
+
+
+def test_other_display_errors_are_reported_per_device():
+    bridge = ScriptedBridge(fail={"get_parameter_displays": BridgeCommandError("internal", "boom")})
+    cat = dump_device_catalog(bridge, ["Operator"])
+    assert "internal" in cat["_meta"]["failed"]["Operator"] and bridge.tracks == []
+
+
+def test_merge_keeps_display_samples():
+    new = {"_meta": {"verified": True}, "devices": {"Reverb": {"parameters": [
+        {"name": "Dry/Wet", "display_samples": [[0.0, "0 %"], [1.0, "100 %"]]}]}}}
+    merged = merge_catalog({"_meta": {}, "devices": {}}, new)
+    assert merged["devices"]["Reverb"]["parameters"][0]["display_samples"] == [[0.0, "0 %"], [1.0, "100 %"]]
+
+
 def test_dump_creates_and_deletes_a_temporary_track_in_order():
     bridge = FakeBridge()
     dump_device_catalog(bridge, ["Operator", "Reverb"])

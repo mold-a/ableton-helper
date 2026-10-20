@@ -55,8 +55,11 @@ Recipe object (JSON):
 main one is missing], "parameters": {<parameter name as in Live's UI>: value}}. Devices: "Operator", \
 "Wavetable", "Analog", "Drift", "Electric", "Tension", "Collision", "Simpler", "Sampler", "Drum Rack". \
 Native devices only, never VST/AU/Max for Live.
-- value formats: a number (raw value), a string (item of a dropdown parameter, e.g. "Saw D"), or \
-{"norm": 0..1} (position within the parameter's range; the safest way to set continuous parameters).
+- value formats: {"display": "<value as Live shows it>"} for anything with units; a number (raw value) \
+only where the raw range is meaningful (Transpose, Coarse, EQ gains in dB); a string (item of a dropdown \
+parameter, e.g. "Saw D"). For frequencies, times, levels and percentages ALWAYS use {"display": "1.3 kHz"} / \
+"25 ms" / "-6 dB" / "30 %" - the value as Live shows it (most parameters sit on non-linear curves, so raw \
+numbers and {"norm"} land far off). Avoid {"norm"} for anything with units.
 - effects (optional, ordered): [{"device": "Chorus-Ensemble" | "Reverb" | "EQ Eight" | "Saturator" | "Delay" | \
 "Echo" | "Auto Filter" | "Compressor" | ..., "parameters": {...}}].
 - name: {"ru": "...", "en": "..."}; category: one of keys, piano, organ, strings, brass, woodwind, reed, \
@@ -70,9 +73,9 @@ plucked, guitar, bass, lead, pad, bell, mallet, choir, fx, drums, percussion, et
 Example (reedy accordion-like tone):
 {"name": {"ru": "Гармонь", "en": "Reed accordion"}, "category": "reed", \
 "instrument": {"device": "Operator", "fallback_devices": ["Wavetable"], "parameters": {"Algorithm": 10, \
-"Osc-A Wave": "Saw D", "Filter Freq": {"norm": 0.55}, "Ae Attack": {"norm": 0.12}}}, \
-"effects": [{"device": "Chorus-Ensemble", "parameters": {"Dry/Wet": {"norm": 0.3}}}, \
-{"device": "Reverb", "parameters": {"Dry/Wet": {"norm": 0.18}}}], \
+"Osc-A Wave": "Saw D", "Filter Freq": {"display": "2.2 kHz"}, "Ae Attack": {"display": "35 ms"}}}, \
+"effects": [{"device": "Chorus-Ensemble", "parameters": {"Dry/Wet": {"display": "30 %"}}}, \
+{"device": "Reverb", "parameters": {"Dry/Wet": {"display": "18 %"}}}], \
 "track": {"name": "Гармонь"}, "demo": {"style": "chords", "root": 57, "length": 8}, \
 "sound_design_notes": "Two slightly detuned saw voices (musette) through a soft low-pass with a gentle attack."}
 
@@ -203,16 +206,21 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
         "name": "set_device_parameters",
         "description": (
             "Set one or more parameters of a device in one call. `values` maps a parameter name (or its "
-            "numeric index) to: a number (raw value, clamped to the parameter's range), a string (an item "
-            "of a dropdown parameter, e.g. 'Saw D'), or {\"norm\": 0..1} (position within the range, best for "
-            "'a bit brighter'-style edits). Names are matched case-insensitively. A parameter that doesn't "
+            "numeric index) to: {\"display\": \"1.3 kHz\"} (the value as Live shows it), a number (raw value, "
+            "clamped to the parameter's range), a string (an item of a dropdown parameter, e.g. 'Saw D'), or "
+            "{\"norm\": 0..1} (position within the raw range). For frequencies, times, levels and percentages "
+            "ALWAYS use {\"display\": \"1.3 kHz\"} / \"25 ms\" / \"-6 dB\" / \"30 %\" - the value as Live shows it; "
+            "get_device_parameters returns each parameter's current `display` so you can see the units. Use raw "
+            "numbers only for parameters whose raw range is meaningful (e.g. Transpose, Coarse, EQ gains in dB), "
+            "item names for dropdowns, and avoid {\"norm\"} for anything with units (most parameters sit on "
+            "non-linear curves). Names are matched case-insensitively. A parameter that doesn't "
             "exist is reported in `failed` without stopping the others: re-read the real names with "
             "get_device_parameters. Never guess parameter names from memory when editing an existing device."
         ),
         "input_schema": {"type": "object", "properties": {
             "track_index": _TRACK_INDEX, "device_index": _DEVICE_INDEX,
             "values": {"type": "object", "description": (
-                "e.g. {\"Filter Freq\": {\"norm\": 0.7}, \"Osc-A Wave\": \"Saw D\", \"Dry/Wet\": 0.25}"),
+                "e.g. {\"Filter Freq\": {\"display\": \"3 kHz\"}, \"Osc-A Wave\": \"Saw D\", \"Dry/Wet\": {\"display\": \"25 %\"}}"),
                 "additionalProperties": True},
         }, "required": ["track_index", "device_index", "values"], "additionalProperties": False},
     },
@@ -633,7 +641,7 @@ class ToolExecutor:
         bad = [k for k, v in values.items() if not self._valid_value(v)]
         if bad:
             return _fail("Недопустимые значения для: " + ", ".join(map(str, bad[:10]))
-                         + ". Допустимо: число, строка или {\"norm\": 0..1}.", "invalid_input")
+                         + ". Допустимо: число, строка, {\"display\": \"1.3 kHz\"} или {\"norm\": 0..1}.", "invalid_input")
         res = self._call("set_device_parameters",
                          {"track_index": track_index, "device_index": device_index, "values": values})
         applied = [{"name": p.get("name"), "value": _num(p.get("value")), "display": p.get("display")}
@@ -653,6 +661,8 @@ class ToolExecutor:
             return False
         if isinstance(v, (int, float, str)):
             return True
+        if isinstance(v, dict) and set(v) == {"display"}:
+            return isinstance(v["display"], str) and bool(v["display"].strip())
         return isinstance(v, dict) and set(v) == {"norm"} and isinstance(v["norm"], (int, float)) \
             and not isinstance(v["norm"], bool) and 0 <= v["norm"] <= 1
 

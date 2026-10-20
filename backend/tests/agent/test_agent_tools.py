@@ -93,6 +93,25 @@ def test_device_parameters_truncated_and_set():
                                                     "values": {"P1": None}}).ok
 
 
+def test_set_device_parameters_accepts_display_values():
+    ex, bridge = make()
+    bridge.call("create_midi_track")
+    bridge.call("load_device", {"track_index": 0, "device_name": "Reverb"})
+    r = ex.execute("set_device_parameters", {"track_index": 0, "device_index": 0,
+                                             "values": {"Dry/Wet": {"display": "30 %"}}})
+    assert r.ok and r.data["applied"][0]["name"] == "Dry/Wet"
+    for bad in ({"display": ""}, {"display": 5}, {"display": "1 kHz", "norm": 1}):
+        assert not ex.execute("set_device_parameters", {"track_index": 0, "device_index": 0,
+                                                        "values": {"Dry/Wet": bad}}).ok
+
+
+def test_tool_descriptions_teach_the_display_form():
+    from abhelper.agent.tools import TOOL_SCHEMAS
+    for name in ("set_device_parameters", "design_custom_sound"):
+        text = next(t["description"] for t in TOOL_SCHEMAS if t["name"] == name)
+        assert '{"display": "1.3 kHz"}' in text and "ALWAYS" in text and "norm" in text
+
+
 def test_create_midi_clip_and_conflict():
     ex, bridge = make()
     bridge.call("create_midi_track")

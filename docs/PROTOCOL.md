@@ -106,7 +106,7 @@
 | `get_device_parameters` | `{"track_index", "device_index"}` | `{"device": {"name", "class_name", "type"}, "parameters": [Parameter...]}` |
 | `set_device_parameter` | `{"track_index", "device_index", "parameter": int\|str, "value": number\|str}` | `Parameter` (после изменения) |
 | `set_device_parameters` | `{"track_index", "device_index", "values": {"<name or index>": number\|str, ...}}` | `{"applied": [Parameter...], "failed": [{"parameter", "code", "message"}]}` — не падает целиком из-за одного параметра |
-| `get_parameter_displays` | `{"track_index", "device_index", "samples"?: int = 9 (2..33)}` | `{"parameters": [{"index", "name", "samples": [[raw, "display"], ...]}]}` — для каждого **неквантованного** параметра: `samples` равномерных сырых точек от `min` до `max` и их `str_for_value`. Используется калибровкой, параметры не меняет |
+| `get_parameter_displays` | `{"track_index", "device_index", "samples"?: int = 9 (2..33)}` | `{"parameters": [{"index", "name", "samples": [[raw, "display"], ...]}]}` — для каждого **неквантованного** параметра: `samples` равномерных сырых точек от `min` до `max` и их `str_for_value`. Используется калибровкой, параметры не меняет. `samples` вне 2..33 зажимается, а не отвергается |
 | `set_device_enabled` | `{"track_index", "device_index", "enabled": bool}` | `{"enabled"}` |
 
 `load_device` грузит **нативное** устройство по имени, как оно называется в браузере
@@ -131,7 +131,9 @@
   `Hz`/`kHz` (частота), `ms`/`s` (время), `dB`, `%`, `st` (полутоны), `ct` (центы), `°`, `: 1` (ratio);
   без единицы — сравнение чисел как есть. Единицы приводятся к канону (kHz→Hz, s→ms). Если единица
   цели не совпадает с единицей отображения параметра или отображение не числовое — `bad_request`.
-  Цель за пределами диапазона → `min`/`max`. Для квантованных параметров строка `display`
+  Цель за пределами диапазона → `min`/`max`. Результат — ближайшее *отображаемое* значение, не точное:
+  Live округляет отображение, поэтому «-6 dB» может дать любое сырое значение на «плато» -6.0 dB, а 1 kHz
+  может прочитаться как «1000.0 Hz» или «1.00 kHz». Для квантованных параметров строка `display`
   трактуется как элемент `value_items`. Эталонная реализация: `backend/abhelper/bridge/displayval.py`.
 
 ### Браузер

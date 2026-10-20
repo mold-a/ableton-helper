@@ -19,6 +19,7 @@ from .library import RecipeLibrary
 
 CATALOG_PATH = Path(__file__).resolve().parent / "data" / "device_catalog.json"
 TEMP_TRACK_NAME = "_abhelper_calibration"
+DISPLAY_SAMPLES = 9
 
 
 def load_catalog(path: Path | str = CATALOG_PATH) -> dict:
@@ -56,6 +57,7 @@ def dump_device_catalog(bridge, device_names: list[str],
 
     devices: dict[str, dict] = {}
     failed: dict[str, str] = {}
+    no_displays = False   # old Remote Script without get_parameter_displays
     track_index: int | None = None
     try:
         track_index = bridge.call("create_midi_track", {"name": TEMP_TRACK_NAME})["track_index"]
@@ -67,18 +69,33 @@ def dump_device_catalog(bridge, device_names: list[str],
                 device_index = loaded["device_index"]
                 data = bridge.call("get_device_parameters", {"track_index": track_index, "device_index": device_index})
                 dev = data.get("device", {})
+                samples_by_index: dict[int, list] = {}
+                if not no_displays:
+                    try:
+                        shown = bridge.call("get_parameter_displays", {
+                            "track_index": track_index, "device_index": device_index, "samples": DISPLAY_SAMPLES})
+                        for entry in shown.get("parameters", []):
+                            samples_by_index[int(entry["index"])] = [[float(r), str(t)] for r, t in entry.get("samples", [])]
+                    except BridgeCommandError as exc:
+                        if exc.code != "unknown_command":
+                            raise
+                        no_displays = True
+                        say("Remote Script has no get_parameter_displays (old version): no display samples")
                 devices[name] = {
                     "class_name": dev.get("class_name", loaded.get("class_name", name)),
                     "type": dev.get("type", "unknown"),
-                    "parameters": [
-                        {
-                            "name": p["name"], "min": p.get("min"), "max": p.get("max"),
-                            "default": p.get("default"), "is_quantized": bool(p.get("is_quantized", False)),
-                            "value_items": list(p.get("value_items") or []),
-                        }
-                        for p in data.get("parameters", [])
-                    ],
+                    "parameters": [],
                 }
+                for i, p in enumerate(data.get("parameters", [])):
+                    entry = {
+                        "name": p["name"], "min": p.get("min"), "max": p.get("max"),
+                        "default": p.get("default"), "is_quantized": bool(p.get("is_quantized", False)),
+                        "value_items": list(p.get("value_items") or []),
+                    }
+                    idx = p.get("index", i)
+                    if not entry["is_quantized"] and idx in samples_by_index:
+                        entry["display_samples"] = samples_by_index[idx]
+                    devices[name]["parameters"].append(entry)
             except BridgeCommandError as exc:
                 failed[name] = f"{exc.code}: {exc.message}"
             finally:
@@ -98,8 +115,10 @@ def dump_device_catalog(bridge, device_names: list[str],
         "verified": True,
         "live_version": live_version,
         "generated_at": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds"),
-        "note": "Dumped from a running Live via get_device_parameters.",
+        "note": "Dumped from a running Live via get_device_parameters and get_parameter_displays.",
     }
+    if no_displays:
+        meta["note"] += " The Remote Script is too old for get_parameter_displays: no display_samples recorded."
     if failed:
         meta["failed"] = failed
     return {"_meta": meta, "devices": devices}
