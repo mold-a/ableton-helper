@@ -110,7 +110,7 @@
 
 `load_device` грузит **нативное** устройство по имени, как оно называется в браузере
 (`"Operator"`, `"Wavetable"`, `"Reverb"`, `"EQ Eight"`, `"Chorus-Ensemble"`…). Реализация:
-`track.insert_device(name, index)` если доступно (Live 12.1+), иначе поиск элемента с
+`track.insert_device(name, index)` если доступно (Live 12.3+, только нативные устройства), иначе поиск элемента с
 `is_device` и совпадающим именем в `browser.instruments / audio_effects / midi_effects`
 (рекурсивно, глубина ≤ 3) и `browser.load_item` на выбранную дорожку (новое устройство
 встаёт в конец цепочки; `position` в этом случае игнорируется).
