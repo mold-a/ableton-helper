@@ -187,7 +187,8 @@ def cmd_calibrate(args: argparse.Namespace) -> int:
     bridge = make_bridge(settings, args.fake)
     out = Path(args.out).expanduser() if args.out else data_dir() / "device_catalog.json"
     try:
-        names = args.devices or recipe_device_names()
+        # Sampler/Simpler host the sample-based presets (abhelper samples), so calibrate them too.
+        names = args.devices or sorted(set(recipe_device_names()) | {"Sampler", "Simpler"})
         if not names:
             print(f"{BAD} Нет устройств для калибровки: укажите --devices Operator Reverb ...")
             return 1

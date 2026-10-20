@@ -40,7 +40,6 @@ def recipe_device_names(library: RecipeLibrary | None = None) -> list[str]:
         names.update(inst.get("fallback_devices") or [])
         names.update(fx.get("device", "") for fx in r.get("effects") or [])
     names.discard("")
-    names.update(("Sampler", "Simpler"))   # sample-based presets (abhelper samples) use these
     return sorted(names)
 
 
