@@ -126,8 +126,16 @@ def load_registry(path: Path | str | None = None) -> list[Pack]:
 
 
 def find_pack(packs: list[Pack], ident: str) -> Pack | None:
-    key = ident.strip().lower()
+    """Find a pack by id, or unambiguously by kind, alias, recipe id or preset name ("accordion", "баян")."""
+    key = ident.strip().lower().replace("ё", "е")
     for p in packs:
         if p.id == key:
             return p
-    return None
+    hits = []
+    for p in packs:
+        names = {str(getattr(p, "kind", "") or ""), str(getattr(p, "preset_name", "") or "")}
+        names.update(str(a) for a in (getattr(p, "aliases", None) or []))
+        names.update(str(r) for r in (getattr(p, "recipe_ids", None) or []))
+        if key in {n.strip().lower().replace("ё", "е") for n in names if n}:
+            hits.append(p)
+    return hits[0] if len(hits) == 1 else None

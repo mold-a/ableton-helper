@@ -75,3 +75,12 @@ def test_duplicate_ids_and_preset_names_and_bad_shape():
 def test_unverified_packs_are_allowed_when_not_default():
     p = mutated(verified=False, default=False, sha256=None, size_bytes=None)
     assert validate_registry(p) == []
+
+
+def test_find_pack_by_alias_kind_and_recipe():
+    from abhelper.samples import find_pack, load_registry
+    packs = load_registry()
+    for ident in ("accordion-hn", "accordion", "баян", "bayan", "Accordion"):
+        p = find_pack(packs, ident)
+        assert p is not None and p.id == "accordion-hn", ident
+    assert find_pack(packs, "no-such-pack") is None

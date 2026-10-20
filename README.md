@@ -104,6 +104,19 @@ abhelper calibrate --devices Operator Wavetable --out мой_каталог.json
 
 Все опции: `abhelper --help`, `abhelper <команда> --help`. Live при `calibrate` должен быть запущен с включённым Remote Script.
 
+### Реалистичные инструменты: бесплатные сэмплы
+
+Синтез не сделает настоящий баян, поэтому для таких инструментов проект скачивает бесплатные (CC0) сэмпл-библиотеки и собирает из них пресеты Ableton Sampler. Затем ассистент находит их в браузере Live сам.
+
+```bash
+abhelper samples doctor            # где User Library, где Live, есть ли шаблон Sampler
+abhelper samples list              # доступные паки и что уже установлено
+abhelper samples install accordion-hn --live-dir D:\Ableton   # баян (Hohner button accordion, 6 МБ)
+abhelper samples install all       # все проверенные паки (около 38 МБ скачивания)
+```
+
+Подробности, лицензии и решение проблем: [docs/SAMPLES.md](docs/SAMPLES.md). Первую установку нужно проверить на вашем Live.
+
 Удаление Remote Script: `python scripts/install_remote_script.py --uninstall`. Проверка без изменений: `--dry-run`.
 
 ## Порты и настройки
@@ -128,6 +141,7 @@ ableton-helper/
 │   ├── knowledge/                 база знаний (RAG): BM25-поиск, synonyms.json
 │   │   └── docs/{help,sound,theory}/   Markdown: справка по Live, саунд-дизайн, теория
 │   ├── bridge/                    клиент моста и FakeBridge
+│   ├── samples/                   сэмпл-паки: скачивание, SFZ → пресеты Sampler (.adv)
 │   └── server/                    FastAPI (HTTP + SSE)
 ├── ui/                            веб-чат (HTML/CSS/JS без сборки)
 ├── m4l/                           Max for Live устройство с окном чата

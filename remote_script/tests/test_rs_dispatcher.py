@@ -18,6 +18,13 @@ def test_envelope_echoes_id_and_ok(d):
     assert env["result"]["live_version"] == "12.1.5"
 
 
+def test_ping_reports_the_script_folder(d):
+    import os
+    path = d.handle({"id": "1", "command": "ping"})["result"]["script_path"]
+    assert os.path.isabs(path) and os.path.basename(path) == "AbletonHelper"
+    assert os.path.isfile(os.path.join(path, "__init__.py"))      # the folder the sample installer derives Resources from
+
+
 def test_params_may_be_omitted_and_null(d):
     assert d.handle({"id": "1", "command": "ping", "params": None})["ok"]
 
