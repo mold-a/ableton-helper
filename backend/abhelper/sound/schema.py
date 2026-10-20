@@ -189,6 +189,10 @@ def validate_recipe(recipe: dict, custom: bool = False) -> list[str]:
                 for dev, params in fbp.items():
                     _check_params(params, f"instrument.fallback_parameters.{dev}", errors)
 
+    # preset_parameters: applied to the first instrument of a loaded browser preset (e.g. an installed sample instrument)
+    if "preset_parameters" in recipe:
+        _check_params(recipe["preset_parameters"], "preset_parameters", errors)
+
     # effects
     effects = recipe.get("effects")
     if effects is not None:

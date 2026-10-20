@@ -20,7 +20,8 @@ from . import Pack
 from .adv import (HOW_TO_MAKE_TEMPLATE, PartSpec, Template, TemplateError, build_preset_xml, describe_parts,
                   find_template, region_to_part, write_adv)
 from .audioinfo import AudioError, read_audio_info
-from .download import DownloadError, ExtractError, download_file, extract_archive
+from . import download as _download
+from .download import DownloadError, ExtractError, extract_archive
 from .sfz import SfzError, parse_sfz_file
 
 MANIFEST_NAME = "abhelper-pack.json"
@@ -48,7 +49,7 @@ class InstallResult:
 
 class Installer:
     def __init__(self, user_library, resources_dirs: Iterable[Path] = (), *, template=None,
-                 cache_dir=None, downloader: Callable = download_file, log: Callable[[str], None] = print):
+                 cache_dir=None, downloader: Callable | None = None, log: Callable[[str], None] = print):
         self.user_library = Path(user_library)
         self.resources_dirs = [Path(p) for p in resources_dirs]
         self.template_path = template
@@ -56,7 +57,7 @@ class Installer:
             from abhelper.config import data_dir
             cache_dir = data_dir() / "samples-cache"
         self.cache_dir = Path(cache_dir)
-        self.downloader = downloader
+        self.downloader = downloader        # None = download.download_file (looked up at call time)
         self.log = log
 
     # ------------------------------------------------------------------ locations
@@ -133,7 +134,8 @@ class Installer:
 
         self.log("Скачиваю %s (%s)" % (pack.name, "%.1f МБ" % (pack.size_bytes / 1e6) if pack.size_bytes else "размер неизвестен"))
         try:
-            return self.downloader(pack.url, dest, size_bytes=pack.size_bytes, sha256=pack.sha256, progress=progress)
+            fetch = self.downloader or _download.download_file
+            return fetch(pack.url, dest, size_bytes=pack.size_bytes, sha256=pack.sha256, progress=progress)
         except DownloadError as exc:
             raise InstallError("Не удалось скачать: %s" % exc)
 

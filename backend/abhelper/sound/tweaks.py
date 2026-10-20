@@ -180,7 +180,7 @@ _LESS = ["меньше", "поменьше", "менее", "убери", "убр
 _NOUNS = {
     "reverb": ["реверб", "реверба", "реверберация", "реверберации", "ревер", "reverb", "reverberation"],
     "space": ["пространства", "пространство", "space", "room", "простора"],
-    "delay": ["эхо", "дилей", "делей", "дилея", "делея", "delay", "echo"],
+    "delay": ["эхо", "эха", "эху", "дилей", "делей", "дилея", "делея", "delay", "echo"],
     "chorus": ["хорус", "хоруса", "chorus"],
     "drive": ["драйв", "драйва", "дисторшн", "искажения", "искажений", "перегруз", "перегруза", "овердрайв",
               "сатурации", "сатурация", "drive", "distortion", "overdrive", "saturation", "grit", "crunch"],
@@ -239,7 +239,7 @@ _DIRECT: dict[str, list[str]] = {
 # bare nouns ("reverb!", "и реверб"): matched on the words left over after the phrases above
 _WEAK: dict[str, list[str]] = {
     "more_reverb": ["реверб", "реверба", "реверберация", "ревер", "reverb"],
-    "more_delay": ["эхо", "дилей", "делей", "delay", "echo"],
+    "more_delay": ["эхо", "эха", "дилей", "делей", "delay", "echo"],
     "more_chorus": ["хорус", "chorus"],
     "more_drive": ["дисторшн", "перегруз", "овердрайв", "драйв", "distortion", "overdrive", "drive"],
     "more_resonance": ["резонанс", "resonance", "reso"],
@@ -696,15 +696,20 @@ class Tweaker:
 
     def _result(self, request: str, names: list[str], amount: str) -> dict:
         lines = []
-        for c in self.changes:
-            lines.append(f"{self._ru_label(c)}: {c['before']} → {c['after']}" if c["before"] else
-                         f"{self._ru_label(c)}: {c['after']}")
+        groups: dict[tuple, list[dict]] = {}
+        for c in self.changes:  # identical moves of sibling parameters (Operator's B/C/D attacks) read as one line
+            groups.setdefault((c["device_index"], c["role"], c["before"], c["after"]), []).append(c)
+        for cs in groups.values():
+            label = self._ru_label(cs[0], [c["parameter"] for c in cs])
+            lines.append(f"{label}: {cs[0]['before']} → {cs[0]['after']}" if cs[0]["before"] else
+                         f"{label}: {cs[0]['after']}")
         for a in self.added:
             lines.insert(0, f"Добавлен {a['device']} (устройство №{a['device_index']})")
         ok = bool(self.changes or self.added)
         ru_titles = ", ".join(REQUESTS[n]["ru"] for n in names)
         if ok:
-            msg = f"Подстроено ({ru_titles}; шаг: {amount}): " + "; ".join(lines)
+            step = {"small": "малый", "medium": "средний", "large": "большой"}[amount]
+            msg = f"Подстроено ({ru_titles}; шаг: {step}): " + "; ".join(lines)
         else:
             reasons = "; ".join(f"{s['device']} {s['parameter']}: {s['reason']}" for s in self.skipped[:6])
             msg = (f"Ничего не изменено ({ru_titles}). "
@@ -728,14 +733,14 @@ class Tweaker:
             data["code"] = "nothing_changed"
         return data
 
-    def _ru_label(self, c: dict) -> str:
+    def _ru_label(self, c: dict, params: list[str] | None = None) -> str:
         role = c["role"]
         if role == "device_on":
             return f"Включён {c['device']}"
         label = f"{self.book.label(role, 'ru')} {c['device']}"
         dev = next((d for d in self.devs if d.index == c["device_index"]), None)
         if dev is not None and len(dev.roles.params(role)) > 1:
-            label += f" ({c['parameter']})"
+            label += f" ({', '.join(params or [c['parameter']])})"
         return label
 
 

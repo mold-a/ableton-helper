@@ -270,3 +270,18 @@ def test_package_data_covers_collection_layout():
     root = Path(__file__).resolve().parents[3]
     text = (root / "pyproject.toml").read_text(encoding="utf-8")
     assert "knowledge/docs/*/*.md" in text and "knowledge/*.json" in text
+
+
+@pytest.mark.parametrize("query,collection,file", [
+    ("как сделать звук ярче", "sound", "adjectives.md"),
+    ("мягче атака", "sound", "adjectives.md"),
+    ("sound brighter cutoff", "sound", "adjectives.md"),
+    ("Operator filter", "sound", "device-operator.md"),
+    ("дорийский лад", "theory", "scales-modes.md"),
+])
+def test_real_sound_and_theory_docs_top1_when_present(query, collection, file):
+    kb = KnowledgeBase()
+    if collection not in kb.collections() or not (DEFAULT_DOCS_DIR / collection / file).exists():
+        pytest.skip(f"{collection}/{file} not written yet")
+    res = kb.search(query, collection=collection)
+    assert res and res[0]["file"] == file, [(r["file"], r["section"]) for r in res]

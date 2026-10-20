@@ -344,7 +344,27 @@ class SoundEngine:
         res.source = "preset"
         res.devices = [self._dev_view(d) for d in loaded.get("devices", [])]
         run.steps.append(f"загружен пресет «{clean_name(name)}»")
+        self._apply_preset_parameters(run, ti, loaded, recipe)
         return True
+
+    def _apply_preset_parameters(self, run: _Run, ti: int, loaded: dict, recipe: dict | None) -> None:
+        """Recipe field `preset_parameters`: tune the first instrument of the freshly loaded preset."""
+        params = (recipe or {}).get("preset_parameters") or {}
+        if not params:
+            return
+        res = run.result
+        devices = loaded.get("devices", [])
+        target = next((d for d in devices if d.get("type") == "instrument"), None)
+        if target is None:
+            res.warnings.append("В загруженном пресете нет инструмента — параметры preset_parameters не применены.")
+            return
+        try:
+            applied, unmatched = self._apply(ti, target["index"], params)
+        except BridgeCommandError as exc:
+            res.warnings.append(f"Параметры пресета не применены: {exc.message}.")
+            return
+        res.unmatched_parameters.extend(unmatched)
+        run.steps.append(f"{target.get('name', 'инструмент пресета')}: параметров пресета применено {applied}")
 
     @staticmethod
     def _dev_view(d: dict) -> dict:

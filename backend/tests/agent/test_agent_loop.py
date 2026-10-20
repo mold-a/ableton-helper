@@ -228,3 +228,39 @@ def test_system_prompt_mentions_key_rules():
     for needle in ("unmatched_parameters", "get_device_parameters", "search_knowledge", "adjust_sound", "delete_track",
                    "design_custom_sound", "user's language", '{"display": "1.3 kHz"}'):
         assert needle in p
+
+
+def test_adjust_sound_and_search_knowledge_flow_through_the_agent(tmp_path):
+    d = tmp_path / "sound"
+    d.mkdir()
+    (d / "operator.md").write_text("# Operator\nkeywords: operator, фильтр, cutoff\n\n## Фильтр\n"
+                                   "Filter Freq задаёт срез, чем выше, тем ярче.\n", encoding="utf-8")
+    bridge = FakeBridge()
+    bridge.call("create_midi_track", {"name": "Лид"})
+    bridge.call("load_device", {"track_index": 0, "device_name": "Operator"})
+    bridge.call("set_device_parameters", {"track_index": 0, "device_index": 0, "values": {"Filter On": "On"}})
+    turns = [
+        turn(tool_use_block("search_knowledge", {"query": "Operator фильтр ярче", "collection": "sound"}, id="k"),
+             tool_use_block("adjust_sound", {"track_index": 0, "request": "ярче"}, id="a")),
+        turn("Сделал ярче: открыл срез фильтра."),
+    ]
+    agent, llm, _, _ = make_agent(turns, bridge=bridge, kb=KnowledgeBase(tmp_path))
+    events, conv = run(agent, "сделай ярче")
+    r_k, r_a = [e for e in events if e["type"] == "tool_result"]
+    assert r_k["name"] == "search_knowledge" and r_k["ok"] and "базе по саунд-дизайну" in r_k["summary"]
+    assert r_a["name"] == "adjust_sound" and r_a["ok"] and r_a["summary"].startswith("Подстроено параметров")
+    payload = json.loads(conv.messages[2]["content"][1]["content"])
+    assert payload["interpreted"] == ["brighter"] and payload["changes"][0]["parameter"] == "Filter Freq"
+    assert json.loads(conv.messages[2]["content"][0]["content"])["results"][0]["collection"] == "sound"
+    assert events[-1]["type"] == "done"
+
+
+def test_system_prompt_routes_to_knowledge_collections_and_adjust_sound():
+    p = SYSTEM_PROMPT
+    assert 'search_knowledge(collection="sound")' in p and 'search_knowledge(collection="theory")' in p
+    assert 'search_knowledge(collection="help")' in p
+    assert "adjust_sound" in p and "query=" in p  # big devices: read parameters with a query
+    assert "ONE key" in p and "invent parameter names" in p
+    assert "search_ableton_help" not in p
+    names = {t["name"] for t in get_tools()}
+    assert {"search_knowledge", "adjust_sound", "search_ableton_help"} <= names
