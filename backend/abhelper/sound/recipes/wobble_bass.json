@@ -53,34 +53,103 @@
       "Operator"
     ],
     "parameters": {
-      "OSC1 On": 1,
+      "OSC1 On/Off": "On",
       "OSC1 Shape": "Saw",
+      "OSC1 Octave": 0,
+      "OSC1 Semi": 0,
+      "OSC1 Level": {
+        "display": "-4 dB"
+      },
+      "F1 On/Off": "On",
+      "F1 Type": "Low-pass 24dB/oct",
+      "F1 Freq": {
+        "display": "6 kHz"
+      },
+      "F1 Resonance": {
+        "norm": 0.0
+      },
+      "AMP1 On/Off": "On",
       "AEG1 Attack": {
-        "norm": 0.111
+        "display": "5 ms"
       },
       "AEG1 Decay": {
-        "norm": 0.576
+        "display": "300 ms"
       },
       "AEG1 Sustain": {
         "norm": 1.0
       },
-      "AEG1 Release": {
-        "norm": 0.454
+      "AEG1 Rel": {
+        "display": "100 ms"
       },
-      "F1 Type": "Lowpass",
-      "F1 Freq": {
-        "norm": 0.784
-      },
-      "F1 Res": {
-        "norm": 0.1
-      },
-      "OSC2 On": 1,
+      "OSC2 On/Off": "On",
       "OSC2 Shape": "Saw",
+      "OSC2 Octave": 0,
+      "OSC2 Semi": 0,
+      "OSC2 Level": {
+        "display": "-5 dB"
+      },
       "OSC2 Detune": {
         "norm": 0.54
       },
-      "OSC2 Level": {
-        "norm": 0.8
+      "F2 On/Off": "On",
+      "F2 Type": "Low-pass 24dB/oct",
+      "F2 Freq": {
+        "display": "6 kHz"
+      },
+      "F2 Resonance": {
+        "norm": 0.0
+      },
+      "AMP2 On/Off": "On",
+      "AEG2 Attack": {
+        "display": "5 ms"
+      },
+      "AEG2 Decay": {
+        "display": "300 ms"
+      },
+      "AEG2 Sustain": {
+        "norm": 1.0
+      },
+      "AEG2 Rel": {
+        "display": "100 ms"
+      },
+      "Noise On/Off": "Off",
+      "Unison On/Off": "Off",
+      "Vib On/Off": "Off",
+      "Glide On/Off": "Off",
+      "Volume": {
+        "display": "-7 dB"
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "5 ms"
+        },
+        "Amp Decay": {
+          "display": "300 ms"
+        },
+        "Amp Sustain": {
+          "norm": 1.0
+        },
+        "Amp Release": {
+          "display": "100 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "4 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        },
+        "Osc 2 On": "On",
+        "Osc 2 Transp": 0,
+        "Osc 2 Detune": {
+          "norm": 0.54
+        }
       }
     }
   },
@@ -89,52 +158,54 @@
       "device": "Auto Filter",
       "parameters": {
         "Filter Type": "Lowpass",
+        "Slope": "24 dB",
         "Frequency": {
-          "norm": 0.404
+          "display": "500 Hz"
         },
         "Resonance": {
-          "norm": 0.44
+          "display": "40 %"
         },
-        "LFO Amount": {
-          "norm": 0.7333
-        },
+        "LFO Amount": 18.0,
+        "LFO Waveform": "Sine",
+        "LFO Sync": "Free",
         "LFO Frequency": {
-          "norm": 0.0498
-        },
-        "LFO Sync": 1
+          "display": "3 Hz"
+        }
       }
     },
     {
       "device": "Saturator",
       "parameters": {
         "Type": "Sinoid Fold",
-        "Drive": {
-          "norm": 0.6667
-        },
+        "Drive": 8.0,
         "Dry/Wet": {
-          "norm": 0.8
-        }
+          "display": "60 %"
+        },
+        "Output": -4.0
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0009
+          "display": "30 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4088
+        "7 Filter On A": "On",
+        "7 Filter Type A": "Low Pass 12dB",
+        "7 Frequency A": {
+          "display": "8 kHz"
         }
       }
     },
     {
       "device": "Utility",
       "parameters": {
-        "Bass Mono": 1
+        "Bass Mono": "On",
+        "Bass Freq": {
+          "display": "150 Hz"
+        }
       }
     }
   ],
@@ -145,5 +216,5 @@
     "scale": "phrygian",
     "variant": "trap"
   },
-  "sound_design_notes": "Вобл = низкочастотная модуляция фильтра. Инструмент — две расстроенные пилы с широко открытым фильтром (4.5 кГц); движение делает Auto Filter (Lowpass, Q 55%, глубина LFO ~22 полутона) с включённой синхронизацией LFO. Скорость (1/4, 1/8, триоли) подберите на слух параметром LFO Rate/Beat Rate. Sinoid Fold на 12 дБ — «рычание», Bass Mono — чистый центр. Демо — длинные ноты (трэп-вариант), чтобы услышать вобл."
+  "sound_design_notes": "Вобл = низкочастотная модуляция фильтра. Инструмент — две расстроенные пилы с открытым фильтром (6 кГц); движение делает Auto Filter (Lowpass 24 дБ, 500 Гц, Res 40%, глубина LFO 18) с синусным LFO 3 Гц (подстройте под темп: 1/4 ≈ 2 Гц при 120 BPM, 1/8 ≈ 4 Гц). Sinoid Fold на 8 дБ — «рычание», Bass Mono — чистый центр. Демо — длинные ноты (трэп-вариант), чтобы услышать вобл."
 }

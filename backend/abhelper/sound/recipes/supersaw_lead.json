@@ -36,8 +36,8 @@
     "лид"
   ],
   "description": {
-    "ru": "Мощный лид: 7 расстроенных пил (унисон Classic), саб, ping-pong delay.",
-    "en": "Big trance lead: seven detuned saws (Classic unison), sub layer and a ping-pong style delay."
+    "ru": "Мощный лид: две пилы × Unison ×4 на Analog, мягкая сатурация, delay, широкое стерео.",
+    "en": "Big trance lead: two saws x 4-voice unison on Analog, soft saturation, delay and wide stereo."
   },
   "preset_search": [
     "supersaw",
@@ -51,75 +51,118 @@
     "color_index": 56
   },
   "instrument": {
-    "device": "Wavetable",
+    "device": "Analog",
     "fallback_devices": [
-      "Analog",
+      "Wavetable",
       "Operator"
     ],
     "parameters": {
-      "Amp Attack": {
-        "norm": 0.163
+      "OSC1 On/Off": "On",
+      "OSC1 Shape": "Saw",
+      "OSC1 Octave": 0,
+      "OSC1 Semi": 0,
+      "OSC1 Level": {
+        "display": "-5 dB"
       },
-      "Amp Decay": {
-        "norm": 0.576
+      "F1 On/Off": "On",
+      "F1 Type": "Low-pass 24dB/oct",
+      "F1 Freq": {
+        "display": "7 kHz"
       },
-      "Amp Sustain": {
-        "norm": 0.8
+      "F1 Resonance": {
+        "norm": 0.1
       },
-      "Amp Release": {
-        "norm": 0.558
+      "F1 Freq < Key": 0.4,
+      "AMP1 On/Off": "On",
+      "AEG1 Attack": {
+        "display": "8 ms"
       },
-      "Filter 1 On": 1,
-      "Filter 1 Type": "Lowpass",
-      "Filter 1 Freq": {
-        "norm": 0.867
+      "AEG1 Decay": {
+        "display": "500 ms"
       },
-      "Filter 1 Res": {
-        "norm": 0.12
+      "AEG1 Sustain": {
+        "norm": 0.85
       },
-      "Unison Mode": "Classic",
-      "Unison Voices": 7,
-      "Unison Amount": {
-        "norm": 0.45
+      "AEG1 Rel": {
+        "display": "350 ms"
       },
-      "Osc 1 Pos": {
-        "norm": 0.5
+      "OSC2 On/Off": "On",
+      "OSC2 Shape": "Saw",
+      "OSC2 Octave": 0,
+      "OSC2 Semi": 0,
+      "OSC2 Level": {
+        "display": "-5 dB"
       },
-      "Sub On": 1,
-      "Sub Gain": {
-        "norm": 0.22
+      "OSC2 Detune": {
+        "norm": 0.55
+      },
+      "F2 On/Off": "On",
+      "F2 Type": "Low-pass 24dB/oct",
+      "F2 Freq": {
+        "display": "7 kHz"
+      },
+      "F2 Resonance": {
+        "norm": 0.1
+      },
+      "F2 Freq < Key": 0.4,
+      "AMP2 On/Off": "On",
+      "AEG2 Attack": {
+        "display": "8 ms"
+      },
+      "AEG2 Decay": {
+        "display": "500 ms"
+      },
+      "AEG2 Sustain": {
+        "norm": 0.85
+      },
+      "AEG2 Rel": {
+        "display": "350 ms"
+      },
+      "Noise On/Off": "Off",
+      "Unison On/Off": "On",
+      "Unison Voices": "4",
+      "Unison Detune": {
+        "norm": 0.4
+      },
+      "Vib On/Off": "Off",
+      "Glide On/Off": "Off",
+      "Volume": {
+        "display": "-8 dB"
       }
     },
     "fallback_parameters": {
-      "Analog": {
-        "OSC1 On": 1,
-        "OSC1 Shape": "Saw",
-        "AEG1 Attack": {
-          "norm": 0.163
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "8 ms"
         },
-        "AEG1 Decay": {
-          "norm": 0.576
+        "Amp Decay": {
+          "display": "500 ms"
         },
-        "AEG1 Sustain": {
-          "norm": 0.8
+        "Amp Sustain": {
+          "norm": 0.85
         },
-        "AEG1 Release": {
-          "norm": 0.558
+        "Amp Release": {
+          "display": "350 ms"
         },
-        "F1 Type": "Lowpass",
-        "F1 Freq": {
-          "norm": 0.867
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "8 kHz"
         },
-        "F1 Res": {
-          "norm": 0.12
+        "Filter 1 Res": {
+          "norm": 0.1
         },
-        "OSC2 On": 1,
-        "OSC2 Shape": "Saw",
-        "OSC2 Detune": {
-          "norm": 0.58
+        "Volume": {
+          "display": "-6 dB"
         },
-        "OSC2 Level": {
-          "norm": 0.8
+        "Sub On": "On",
+        "Sub Gain": {
+          "display": "-14 dB"
+        },
+        "Osc 2 On": "On",
+        "Osc 2 Transp": 0,
+        "Osc 2 Detune": {
+          "norm": 0.55
         }
       }
     }
@@ -128,21 +171,19 @@
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0059
+          "display": "140 Hz"
         },
-        "3 Filter On A": 1,
-        "3 Filter Type A": 3,
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
         "3 Frequency A": {
-          "norm": 0.136
+          "display": "3 kHz"
         },
-        "3 Gain A": {
-          "norm": 0.5667
-        },
+        "3 Gain A": 1.5,
         "3 Resonance A": {
-          "norm": 0.0391
+          "display": "1.0"
         }
       }
     },
@@ -150,22 +191,25 @@
       "device": "Saturator",
       "parameters": {
         "Type": "Soft Sine",
-        "Drive": {
-          "norm": 0.5417
-        },
+        "Drive": 3.0,
         "Dry/Wet": {
-          "norm": 0.5
-        }
+          "display": "35 %"
+        },
+        "Output": -1.5
       }
     },
     {
       "device": "Delay",
       "parameters": {
-        "Dry/Wet": {
-          "norm": 0.22
-        },
+        "L Sync": "On",
+        "R Sync": "On",
+        "L 16th": "3",
+        "R 16th": "4",
         "Feedback": {
-          "norm": 0.4211
+          "display": "42 %"
+        },
+        "Dry/Wet": {
+          "display": "22 %"
         }
       }
     },
@@ -173,21 +217,25 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.2
+          "display": "20 %"
         },
         "Decay Time": {
-          "norm": 0.0368
+          "display": "2.2 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "18 ms"
         },
         "Room Size": {
-          "norm": 0.2797
+          "norm": 0.7257
         }
       }
     },
     {
       "device": "Utility",
       "parameters": {
-        "Width": {
-          "norm": 0.6
+        "Stereo Width": {
+          "display": "120 %"
         }
       }
     }
@@ -198,5 +246,5 @@
     "length": 8.0,
     "scale": "minor"
   },
-  "sound_design_notes": "Суперсо — это много слегка расстроенных пил: Unison Classic ×7 с амплитудой 45% даёт густую «стену». Выберите в Osc 1 таблицу Basic Shapes → Saw (рецепт задаёт лишь позицию и унисон). Саб-осциллятор на 22% держит низ, фильтр ~8 кГц оставляет яркость. EQ режет низ ниже 140 Гц (чтобы лид не мешал басу). Delay + Reverb + Utility Width 120% — огромное стерео."
+  "sound_design_notes": "Суперсо — много слегка расстроенных пил: две пилы (Detune) × Unison ×4 с большой расстройкой дают густую «стену». Фильтр 24 дБ на 7 кГц оставляет яркость. EQ режет низ ниже 140 Гц (чтобы лид не мешал басу) и добавляет +1,5 дБ на 3 кГц. Лёгкая Soft-Sine сатурация склеивает, Delay + Reverb + Utility Width 120% — огромное стерео. Рецепт перенесён на Analog: в Wavetable режим унисона недоступен из API Live."
 }

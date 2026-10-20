@@ -10,7 +10,10 @@
    "Cutoff",
    "Filter Cutoff",
    "Filter 1 Freq",
-   "F1 Freq"
+   "F1 Freq",
+   "LP Freq",
+   "Filter 1 Frequency",
+   "F1 Cutoff"
   ],
   [
    "Filter Res",
@@ -18,7 +21,11 @@
    "Resonance",
    "Res",
    "Filter 1 Res",
-   "F1 Res"
+   "F1 Res",
+   "F1 Resonance",
+   "LP Reso",
+   "Filter 1 Resonance",
+   "Filter Q"
   ],
   [
    "Filter Type",
@@ -56,7 +63,10 @@
    "Frequency",
    "LFO Rate",
    "LFO Frequency",
-   "Speed"
+   "Speed",
+   "Mod Freq",
+   "Chorus Rate",
+   "Vib Rate"
   ],
   [
    "Amount",
@@ -194,7 +204,8 @@
   [
    "Osc-A Feedback",
    "A Feedback",
-   "Feedback A"
+   "Feedback A",
+   "Osc-A Feedb"
   ],
   [
    "Fe Amount",
@@ -482,6 +493,190 @@
    "8 Filter Type A",
    "Band 8 Filter Type",
    "EQ 8 Filter Type"
+  ],
+  [
+   "OSC1 On/Off",
+   "OSC1 On",
+   "Osc 1 On",
+   "Osc1 On"
+  ],
+  [
+   "OSC2 On/Off",
+   "OSC2 On",
+   "Osc 2 On",
+   "Osc2 On"
+  ],
+  [
+   "F1 On/Off",
+   "F1 On",
+   "Filter 1 On"
+  ],
+  [
+   "F2 On/Off",
+   "F2 On",
+   "Filter 2 On"
+  ],
+  [
+   "AMP1 On/Off",
+   "AMP1 On",
+   "Amp 1 On"
+  ],
+  [
+   "AMP2 On/Off",
+   "AMP2 On",
+   "Amp 2 On"
+  ],
+  [
+   "Noise On/Off",
+   "Noise On"
+  ],
+  [
+   "Unison On/Off",
+   "Unison On",
+   "Unison"
+  ],
+  [
+   "Vib On/Off",
+   "Vib On",
+   "Vibrato On"
+  ],
+  [
+   "Glide On/Off",
+   "Glide On"
+  ],
+  [
+   "LFO1 On/Off",
+   "LFO1 On"
+  ],
+  [
+   "OSC1 Shape",
+   "OSC1 Wave",
+   "Osc 1 Wave",
+   "Osc 1 Shape"
+  ],
+  [
+   "OSC2 Shape",
+   "OSC2 Wave",
+   "Osc 2 Wave",
+   "Osc 2 Shape"
+  ],
+  [
+   "AEG1 Rel",
+   "AEG1 Release"
+  ],
+  [
+   "AEG2 Rel",
+   "AEG2 Release"
+  ],
+  [
+   "FEG1 Rel",
+   "FEG1 Release"
+  ],
+  [
+   "FEG2 Rel",
+   "FEG2 Release"
+  ],
+  [
+   "Vib Speed",
+   "Vibrato Speed",
+   "Vibrato Rate"
+  ],
+  [
+   "Vib Amount",
+   "Vibrato Amount",
+   "Vib Depth",
+   "Vibrato Depth"
+  ],
+  [
+   "Osc-B Feedb",
+   "Osc-B Feedback",
+   "B Feedback"
+  ],
+  [
+   "Osc-C Feedb",
+   "Osc-C Feedback",
+   "C Feedback"
+  ],
+  [
+   "Osc-D Feedb",
+   "Osc-D Feedback",
+   "D Feedback"
+  ],
+  [
+   "Filter Slope",
+   "Slope"
+  ],
+  [
+   "Output Gain",
+   "Output"
+  ],
+  [
+   "Boom Amt",
+   "Boom",
+   "Boom Amount"
+  ],
+  [
+   "L Time",
+   "Left Time",
+   "Delay Time"
+  ],
+  [
+   "R Time",
+   "Right Time"
+  ],
+  [
+   "LFO Amount",
+   "LFO Depth",
+   "LFO Amt"
+  ],
+  [
+   "Mod Freq",
+   "Phaser Rate",
+   "Flanger Rate"
+  ],
+  [
+   "Amp Attack",
+   "AEG1 Attack",
+   "Ae Attack",
+   "Env 1 Attack"
+  ],
+  [
+   "Amp Decay",
+   "AEG1 Decay",
+   "Ae Decay",
+   "Env 1 Decay"
+  ],
+  [
+   "Amp Sustain",
+   "AEG1 Sustain",
+   "Ae Sustain",
+   "Env 1 Sustain"
+  ],
+  [
+   "Amp Release",
+   "AEG1 Rel",
+   "Ae Release",
+   "Env 1 Release"
+  ],
+  [
+   "FEG1 Attack",
+   "Fe Attack",
+   "Filter Env Attack"
+  ],
+  [
+   "FEG1 Decay",
+   "Fe Decay",
+   "Filter Env Decay"
+  ],
+  [
+   "FEG1 Sustain",
+   "Fe Sustain",
+   "Filter Env Sustain"
+  ],
+  [
+   "FEG1 Rel",
+   "Fe Release",
+   "Filter Env Release"
   ]
  ],
  "devices": [
@@ -572,6 +767,39 @@
    "Position Spread",
    "Pos Spread",
    "Position"
+  ],
+  [
+   "Lowpass",
+   "Low-pass 12dB/oct"
+  ],
+  [
+   "Lowpass",
+   "Low-pass 24dB/oct"
+  ],
+  [
+   "Highpass",
+   "High-pass 12dB/oct"
+  ],
+  [
+   "Highpass",
+   "High-pass 24dB/oct"
+  ],
+  [
+   "Bandpass",
+   "Band-pass 12dB/oct"
+  ],
+  [
+   "Formant",
+   "Formant 12dB/oct"
+  ],
+  [
+   "Bell",
+   "Peak",
+   "Peaking"
+  ],
+  [
+   "Mono",
+   "Mono Voice"
   ]
  ]
 }

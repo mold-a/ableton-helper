@@ -48,63 +48,117 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.8
+        "display": "0 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.672
+        "display": "1.4 s"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.454
+        "display": "250 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
-      "B Coarse": 5,
+      "B Coarse": 6,
       "Osc-B Level": {
-        "norm": 0.22
+        "display": "-16 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.483
+        "display": "260 ms"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.372
+        "display": "100 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
       "C Coarse": 9,
       "Osc-C Level": {
-        "norm": 0.07
+        "display": "-24 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.372
+        "display": "70 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.343
+        "display": "40 ms"
       },
+      "Osc-D On": "On",
+      "Osc-D Wave": "Noise White",
+      "D Coarse": 1,
+      "Osc-D Level": {
+        "display": "-36 dB"
+      },
+      "De Init": 0.0,
+      "De Attack": {
+        "display": "1 ms"
+      },
+      "De Peak": 1.0,
+      "De Decay": {
+        "display": "6 ms"
+      },
+      "De Sustain": 0.0,
+      "De Release": {
+        "display": "6 ms"
+      },
+      "Filter On": "On",
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "display": "9 kHz"
+      },
+      "Filter Res": 0.0,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.78
+        "display": "-7 dB"
+      },
+      "Time < Key": 30
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "1 ms"
+        },
+        "Amp Decay": {
+          "display": "1.4 s"
+        },
+        "Amp Sustain": {
+          "norm": 0.0
+        },
+        "Amp Release": {
+          "display": "250 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "9 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
@@ -112,26 +166,25 @@
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0177
-        },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.5452
+          "display": "350 Hz"
         }
       }
     },
     {
       "device": "Delay",
       "parameters": {
-        "Dry/Wet": {
-          "norm": 0.12
-        },
+        "L Sync": "On",
+        "R Sync": "On",
+        "L 16th": "3",
+        "R 16th": "4",
         "Feedback": {
-          "norm": 0.3158
+          "display": "25 %"
+        },
+        "Dry/Wet": {
+          "display": "8 %"
         }
       }
     },
@@ -139,13 +192,14 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.24
+          "display": "12 %"
         },
         "Decay Time": {
-          "norm": 0.0334
+          "display": "1.0 s"
         },
+        "Chorus On": "Off",
         "Room Size": {
-          "norm": 0.2397
+          "norm": 0.5463
         }
       }
     }
@@ -157,5 +211,5 @@
     "scale": "major",
     "variant": "waltz"
   },
-  "sound_design_notes": "Гребёнка шкатулки даёт чистый тон с короткими, высокими «пингами» в атаке (B ×5 и C ×9 живут 120/40 мс). Нет сустейна — каждая нота «капает». EQ вырезает всё ниже 400 Гц (корпус крошечный), реверб — комнатный. Демо: мелодия в 3/4 в тональности до-мажор, регистр E5."
+  "sound_design_notes": "Гребёнка шкатулки даёт чистый тон с короткими высокими «пингами» в атаке (B ×6 и C ×9 живут 260 и 70 мс, шумовой щелчок 6 мс). Сустейн 0 — каждая нота «капает». EQ вырезает всё ниже 350 Гц (корпус крошечный), реверб комнатный 1 с. Демо: мелодия в 3/4 в до-мажоре, регистр E5."
 }

@@ -54,94 +54,114 @@
   "instrument": {
     "device": "Analog",
     "fallback_devices": [
-      "Wavetable",
-      "Operator"
+      "Operator",
+      "Wavetable"
     ],
     "parameters": {
-      "OSC1 On": 0,
-      "OSC1 Shape": "Saw",
+      "OSC1 On/Off": "Off",
+      "F1 On/Off": "On",
+      "F1 Type": "Band-pass 12dB/oct",
+      "F1 Freq": {
+        "display": "1.2 kHz"
+      },
+      "F1 Resonance": {
+        "norm": 0.4
+      },
+      "F1 Freq < Env": 0.45,
+      "AMP1 On/Off": "On",
       "AEG1 Attack": {
-        "norm": 0.79
+        "display": "2.5 s"
       },
       "AEG1 Decay": {
-        "norm": 0.808
+        "display": "3 s"
       },
       "AEG1 Sustain": {
         "norm": 0.8
       },
-      "AEG1 Release": {
-        "norm": 0.824
-      },
-      "F1 Type": "Bandpass",
-      "F1 Freq": {
-        "norm": 0.551
-      },
-      "F1 Res": {
-        "norm": 0.45
-      },
-      "F1 Freq < Env": {
-        "norm": 0.75
+      "AEG1 Rel": {
+        "display": "3.5 s"
       },
       "FEG1 Attack": {
-        "norm": 0.808
+        "display": "3 s"
       },
       "FEG1 Decay": {
-        "norm": 0.86
+        "display": "5 s"
       },
       "FEG1 Sustain": {
         "norm": 0.3
       },
-      "FEG1 Release": {
-        "norm": 0.808
+      "FEG1 Rel": {
+        "display": "3 s"
       },
-      "Noise On": 1,
+      "OSC2 On/Off": "Off",
+      "F2 On/Off": "Off",
+      "AMP2 On/Off": "Off",
+      "Noise On/Off": "On",
       "Noise Level": {
-        "norm": 0.8
+        "display": "-6 dB"
+      },
+      "Noise Color": {
+        "norm": 0.6
+      },
+      "Unison On/Off": "Off",
+      "Vib On/Off": "Off",
+      "Glide On/Off": "Off",
+      "Volume": {
+        "display": "-8 dB"
       }
     },
     "fallback_parameters": {
       "Operator": {
-        "Algorithm": 10,
-        "Osc-A On": 1,
+        "Algorithm": "Alg. 11",
+        "Osc-A On": "On",
         "Osc-A Wave": "Noise White",
         "A Coarse": 1,
         "Osc-A Level": {
-          "norm": 0.6
+          "display": "-3 dB"
         },
+        "Ae Init": 0.0,
         "Ae Attack": {
-          "norm": 0.79
+          "display": "2.5 s"
         },
+        "Ae Peak": 1.0,
         "Ae Decay": {
-          "norm": 0.808
+          "display": "3 s"
         },
         "Ae Sustain": {
           "norm": 0.8
         },
         "Ae Release": {
-          "norm": 0.824
+          "display": "3.5 s"
         },
-        "Filter On": 1,
+        "Osc-B On": "Off",
+        "Osc-C On": "Off",
+        "Osc-D On": "Off",
+        "Filter On": "On",
         "Filter Type": "Bandpass",
         "Filter Freq": {
-          "norm": 0.551
+          "display": "1.2 kHz"
         },
-        "Filter Res": {
-          "norm": 0.4
-        },
-        "Fe Amount": {
-          "norm": 0.75
-        },
+        "Filter Res": 0.35,
+        "Fe Amount": 45,
+        "Fe Init": 0.0,
         "Fe Attack": {
-          "norm": 0.808
+          "display": "3 s"
         },
+        "Fe Peak": 1.0,
         "Fe Decay": {
-          "norm": 0.86
+          "display": "5 s"
         },
         "Fe Sustain": {
           "norm": 0.3
         },
         "Fe Release": {
-          "norm": 0.808
+          "display": "3 s"
+        },
+        "Fe End": 0.0,
+        "LFO On": "Off",
+        "Glide On": "Off",
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
@@ -152,16 +172,15 @@
       "parameters": {
         "Filter Type": "Bandpass",
         "Frequency": {
-          "norm": 0.534
+          "display": "1.5 kHz"
         },
         "Resonance": {
-          "norm": 0.32
+          "display": "30 %"
         },
-        "LFO Amount": {
-          "norm": 0.4667
-        },
+        "LFO Amount": 10.0,
+        "LFO Sync": "Free",
         "LFO Frequency": {
-          "norm": 0.0043
+          "display": "0.18 Hz"
         }
       }
     },
@@ -170,10 +189,10 @@
       "parameters": {
         "Mode": "Ensemble",
         "Amount": {
-          "norm": 0.4
+          "display": "40 %"
         },
         "Dry/Wet": {
-          "norm": 0.4
+          "display": "35 %"
         }
       }
     },
@@ -181,24 +200,25 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.5
+          "display": "50 %"
         },
         "Decay Time": {
-          "norm": 0.097
+          "display": "6 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "30 ms"
         },
         "Room Size": {
-          "norm": 0.4998
-        },
-        "Predelay": {
-          "norm": 0.0982
+          "norm": 0.8153
         }
       }
     },
     {
       "device": "Utility",
       "parameters": {
-        "Width": {
-          "norm": 0.7
+        "Stereo Width": {
+          "display": "140 %"
         }
       }
     }
@@ -208,5 +228,5 @@
     "root": 60,
     "length": 16.0
   },
-  "sound_design_notes": "Шум через полосовой фильтр: огибающая фильтра (амплитуда +50%, спад 5 с) уводит спектр из высокого в средний регистр, а внешний Auto Filter с LFO 0.18 Гц гоняет полосу туда-сюда — порывы ветра. Атака 2.5 с и релиз 3.5 с — звук «наплывает». Хорус и Utility Width 140% — шум обволакивает слушателя; реверб 6 с — простор."
+  "sound_design_notes": "Шум через полосовой фильтр 12 дБ: огибающая фильтра (атака 3 с, спад 5 с, +4,5 октавы) уводит спектр из высокого в средний регистр, а внешний Auto Filter с LFO 0,18 Гц гоняет полосу туда-сюда — порывы ветра. Атака 2,5 с и релиз 3,5 с — звук «наплывает». Chorus-Ensemble (здесь — для расширения шума, а не тембра) и Utility Width 140% обволакивают слушателя; реверб 6 с — простор."
 }

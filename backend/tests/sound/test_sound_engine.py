@@ -30,22 +30,26 @@ def custom_recipe(**over):
 
 # ------------------------------------------------------------------ recipe path (the main scenario)
 def test_bayan_request_builds_a_track_from_the_recipe():
+    """Selection by a Russian description + plumbing; assertions derive from the recipe (it gets redesigned often)."""
+    recipe = LIB.get("bayan")
+    chain = [recipe["instrument"]["device"]] + [fx["device"] for fx in recipe.get("effects", [])]
     bridge = FakeBridge(browser_items=[])
     res = engine(bridge).create_sound(SoundRequest("хочу звук баяна"))
     assert isinstance(res, SoundResult) and res.ok
     assert res.source == "recipe" and res.recipe_id == "bayan" and res.preset is None
     assert res.track_name == "Баян" and res.track_index == 0
-    assert [d["name"] for d in res.devices] == ["Operator", "EQ Eight", "Chorus-Ensemble", "Reverb"]
+    assert [d["name"] for d in res.devices] == chain
     assert res.demo_clip_slot == 0 and res.unmatched_parameters == [] and res.warnings == []
-    assert res.message == ("Создана дорожка «Баян» (Operator + EQ Eight + Chorus-Ensemble + Reverb), "
-                           "демо-клип в слоте 1.")
+    assert res.message == f"Создана дорожка «Баян» ({' + '.join(chain)}), демо-клип в слоте 1."
     track = bridge.tracks[0]
-    assert track.type == "midi" and track.color_index == LIB.get("bayan")["track"]["color_index"]
-    op = next(d for d in track.devices if d.name == "Operator")
-    params = {p.name: p for p in op.parameters}
-    assert params["Algorithm"].value == 10
-    assert params["Osc-A Wave"].value_items[int(params["Osc-A Wave"].value)] == "Saw D"
-    assert params["Filter Freq"].value == pytest.approx(LIB.get("bayan")["instrument"]["parameters"]["Filter Freq"]["norm"], abs=1e-3)
+    assert track.type == "midi" and track.color_index == recipe["track"]["color_index"]
+    inst = next(d for d in track.devices if d.name == recipe["instrument"]["device"])
+    params = {p.name: p for p in inst.parameters}
+    for name, value in recipe["instrument"]["parameters"].items():
+        if isinstance(value, (int, float)) and not isinstance(value, bool) and name in params:
+            assert params[name].value == pytest.approx(value, abs=1e-6), name     # raw numbers go through verbatim
+        elif isinstance(value, str) and name in params and params[name].value_items:
+            assert params[name].value_items[int(params[name].value)] == value, name   # dropdown items by name
     assert track.slots[0].name == "Демо — Баян" and len(track.slots[0].notes) > 8
 
 
@@ -300,13 +304,22 @@ def test_effect_name_alternatives_are_tried():
 
 # ------------------------------------------------------------------ fallback devices
 def test_primary_instrument_missing_uses_the_fallback_with_its_parameters():
-    bridge = ScriptedBridge(browser_items=[], fail={"load_device": missing_devices("Operator")})
+    inst = LIB.get("bayan")["instrument"]
+    primary, fallback = inst["device"], inst["fallback_devices"][0]
+    assert fallback in inst["fallback_parameters"], "the first fallback of 'bayan' must carry its own parameters"
+    bridge = ScriptedBridge(browser_items=[], fail={"load_device": missing_devices(primary)})
     res = engine(bridge).create_sound(SoundRequest("баян"))
-    assert res.ok and res.devices[0]["name"] == "Wavetable"
-    assert any("Operator недоступен" in w and "Wavetable" in w for w in res.warnings)
+    assert res.ok and res.devices[0]["name"] == fallback
+    assert any(f"{primary} недоступен" in w and fallback in w for w in res.warnings)
     assert res.unmatched_parameters == []
-    wt = bridge.tracks[0].devices[0]
-    assert {p.name: p.value for p in wt.parameters}["Unison Voices"] == 3
+    dev = bridge.tracks[0].devices[0]
+    values = {p.name: p.value for p in dev.parameters}
+    checked = 0
+    for name, value in inst["fallback_parameters"][fallback].items():
+        if isinstance(value, (int, float)) and not isinstance(value, bool) and name in values:
+            assert values[name] == pytest.approx(value, abs=1e-6), name
+            checked += 1
+    assert checked, "fallback parameters should reach the fallback device"
 
 
 def test_fallback_without_parameters_warns():
@@ -318,9 +331,11 @@ def test_fallback_without_parameters_warns():
 
 
 def test_all_instruments_missing_keeps_the_track_and_reports():
-    bridge = ScriptedBridge(browser_items=[], fail={"load_device": missing_devices("Operator", "Wavetable", "Analog")})
+    inst = LIB.get("bayan")["instrument"]
+    chain = [inst["device"]] + inst["fallback_devices"]
+    bridge = ScriptedBridge(browser_items=[], fail={"load_device": missing_devices(*chain)})
     res = engine(bridge).create_sound(SoundRequest("баян"))
-    assert not res.ok and "Operator" in res.message and "оставлена в сете" in res.message
+    assert not res.ok and inst["device"] in res.message and "оставлена в сете" in res.message
     assert res.track_index == 0 and len(bridge.tracks) == 1 and res.demo_clip_slot is None
 
 
@@ -445,14 +460,14 @@ def test_apply_parameters_fuzzy_names_and_aliases():
     bridge = _op_track()
     unmatched = engine(bridge).apply_parameters(0, 0, {
         "Filter Freq": {"norm": 0.25},            # exact
-        "filter res": {"norm": 0.5},              # case-insensitive
+        "filter res": {"norm": 0.4},              # case-insensitive
         "OscALevel": {"norm": 0.4},               # normalised against "Osc-A Level"
         "A Wave": "Square D",                     # alias group + string item
         "Cutoff Nonsense": 1,                     # nothing
     })
     assert [u["parameter"] for u in unmatched] == ["Cutoff Nonsense"]
     assert _value(bridge, "Filter Freq").value == pytest.approx(0.25)
-    assert _value(bridge, "Filter Res").value == pytest.approx(0.5)
+    assert _value(bridge, "Filter Res").value == pytest.approx(0.5)     # Operator "Filter Res" is 0..1.25
     assert _value(bridge, "Osc-A Level").value == pytest.approx(0.4)
     wave = _value(bridge, "Osc-A Wave")
     assert wave.value_items[int(wave.value)] == "Square D"

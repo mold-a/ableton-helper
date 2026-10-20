@@ -59,80 +59,135 @@
       "Wavetable"
     ],
     "parameters": {
-      "OSC1 On": 1,
-      "OSC1 Shape": "Rectangle",
-      "AEG1 Attack": {
-        "norm": 0.0
-      },
-      "AEG1 Decay": {
-        "norm": 0.454
-      },
-      "AEG1 Sustain": {
-        "norm": 0.7
-      },
-      "AEG1 Release": {
-        "norm": 0.343
-      },
-      "F1 Type": "Lowpass",
-      "F1 Freq": {
-        "norm": 0.985
-      },
-      "F1 Res": {
-        "norm": 0.0
+      "OSC1 On/Off": "On",
+      "OSC1 Shape": "Rect",
+      "OSC1 Octave": 0,
+      "OSC1 Semi": 0,
+      "OSC1 Level": {
+        "display": "-4 dB"
       },
       "OSC1 PW": {
         "norm": 0.25
       },
-      "OSC2 On": 1,
-      "OSC2 Shape": "Rectangle",
-      "OSC2 Detune": {
-        "norm": 0.5
+      "F1 On/Off": "On",
+      "F1 Type": "Low-pass 12dB/oct",
+      "F1 Freq": {
+        "display": "18 kHz"
       },
+      "F1 Resonance": {
+        "norm": 0.0
+      },
+      "AMP1 On/Off": "On",
+      "AEG1 Attack": {
+        "display": "1 ms"
+      },
+      "AEG1 Decay": {
+        "display": "300 ms"
+      },
+      "AEG1 Sustain": {
+        "norm": 0.7
+      },
+      "AEG1 Rel": {
+        "display": "40 ms"
+      },
+      "OSC2 On/Off": "On",
+      "OSC2 Shape": "Rect",
+      "OSC2 Octave": 1,
+      "OSC2 Semi": 0,
       "OSC2 Level": {
-        "norm": 0.35
+        "display": "-14 dB"
       },
       "OSC2 PW": {
         "norm": 0.5
+      },
+      "F2 On/Off": "On",
+      "F2 Type": "Low-pass 12dB/oct",
+      "F2 Freq": {
+        "display": "18 kHz"
+      },
+      "F2 Resonance": {
+        "norm": 0.0
+      },
+      "AMP2 On/Off": "On",
+      "AEG2 Attack": {
+        "display": "1 ms"
+      },
+      "AEG2 Decay": {
+        "display": "300 ms"
+      },
+      "AEG2 Sustain": {
+        "norm": 0.7
+      },
+      "AEG2 Rel": {
+        "display": "40 ms"
+      },
+      "Noise On/Off": "Off",
+      "Unison On/Off": "Off",
+      "Vib On/Off": "On",
+      "Vib Speed": {
+        "display": "6 Hz"
+      },
+      "Vib Amount": {
+        "norm": 0.1
+      },
+      "Vib Delay": {
+        "display": "250 ms"
+      },
+      "Glide On/Off": "Off",
+      "Volume": {
+        "display": "-8 dB"
       }
     },
     "fallback_parameters": {
       "Operator": {
-        "Algorithm": 10,
-        "Osc-A On": 1,
+        "Algorithm": "Alg. 11",
+        "Osc-A On": "On",
         "Osc-A Wave": "Square 4",
         "A Coarse": 1,
         "Osc-A Level": {
-          "norm": 0.6
+          "display": "-4 dB"
         },
+        "Ae Init": 0.0,
         "Ae Attack": {
-          "norm": 0.0
+          "display": "1 ms"
         },
+        "Ae Peak": 1.0,
         "Ae Decay": {
-          "norm": 0.454
+          "display": "300 ms"
         },
         "Ae Sustain": {
           "norm": 0.7
         },
         "Ae Release": {
-          "norm": 0.343
+          "display": "40 ms"
         },
-        "Osc-B On": 1,
+        "Osc-B On": "On",
         "Osc-B Wave": "Square 8",
         "B Coarse": 2,
         "Osc-B Level": {
-          "norm": 0.2
+          "display": "-14 dB"
         },
+        "Be Init": 0.0,
         "Be Attack": {
-          "norm": 0.0
+          "display": "1 ms"
         },
+        "Be Peak": 1.0,
         "Be Decay": {
-          "norm": 0.454
+          "display": "300 ms"
         },
         "Be Sustain": {
           "norm": 0.6
         },
         "Be Release": {
-          "norm": 0.343
+          "display": "40 ms"
+        },
+        "Osc-C On": "Off",
+        "Osc-D On": "Off",
+        "Filter On": "Off",
+        "LFO On": "Off",
+        "Glide On": "Off",
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
@@ -141,37 +196,42 @@
     {
       "device": "Redux",
       "parameters": {
-        "Bit Depth": {
-          "norm": 0.4667
-        },
+        "Bit Depth": 8,
         "Sample Rate": {
-          "norm": 0.55
+          "display": "16 kHz"
+        },
+        "Dry/Wet": {
+          "display": "70 %"
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0064
+          "display": "120 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.5452
+        "7 Filter On A": "On",
+        "7 Filter Type A": "Low Pass 12dB",
+        "7 Frequency A": {
+          "display": "9 kHz"
         }
       }
     },
     {
       "device": "Delay",
       "parameters": {
-        "Dry/Wet": {
-          "norm": 0.15
-        },
+        "L Sync": "On",
+        "R Sync": "On",
+        "L 16th": "3",
+        "R 16th": "4",
         "Feedback": {
-          "norm": 0.3158
+          "display": "28 %"
+        },
+        "Dry/Wet": {
+          "display": "14 %"
         }
       }
     }
@@ -182,5 +242,5 @@
     "length": 8.0,
     "scale": "minor"
   },
-  "sound_design_notes": "Игровые чипы (NES/Game Boy) — это импульсные волны со скважностью 12.5/25/50%. Здесь OSC1 PW=25% + OSC2 квадрат на 35% для заполнения. Фильтр открыт полностью, атака 0, быстрый спад до сустейна 0.7 — «пик-пик». Redux (8 бит, пониженная частота дискретизации) — цифровая грязь. Демо — быстрое арпеджио, как в чип-мелодиях."
+  "sound_design_notes": "Игровые чипы (NES/Game Boy) — импульсные волны со скважностью 12,5/25/50%. Здесь OSC1 PW = 25% + квадрат октавой выше на −14 дБ для заполнения. Фильтр открыт, атака 1 мс, быстрый спад до сустейна 70% — «пик-пик»; быстрое вибрато (6 Гц) входит с задержкой 250 мс, как в чип-мелодиях. Redux (8 бит, 16 кГц, 70%) — цифровая грязь. Демо — быстрое арпеджио."
 }

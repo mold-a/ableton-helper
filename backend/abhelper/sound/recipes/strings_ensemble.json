@@ -47,89 +47,137 @@
     "device": "Analog",
     "fallback_devices": [
       "Wavetable",
-      "Simpler",
       "Operator"
     ],
     "parameters": {
-      "OSC1 On": 1,
+      "OSC1 On/Off": "On",
       "OSC1 Shape": "Saw",
+      "OSC1 Octave": 0,
+      "OSC1 Semi": 0,
+      "OSC1 Level": {
+        "display": "-4 dB"
+      },
+      "F1 On/Off": "On",
+      "F1 Type": "Low-pass 12dB/oct",
+      "F1 Freq": {
+        "display": "3 kHz"
+      },
+      "F1 Resonance": {
+        "norm": 0.06
+      },
+      "F1 Freq < Env": 0.08,
+      "F1 Freq < Key": 0.5,
+      "AMP1 On/Off": "On",
       "AEG1 Attack": {
-        "norm": 0.561
+        "display": "380 ms"
       },
       "AEG1 Decay": {
-        "norm": 0.605
+        "display": "600 ms"
       },
       "AEG1 Sustain": {
-        "norm": 0.85
+        "norm": 0.88
       },
-      "AEG1 Release": {
-        "norm": 0.623
-      },
-      "F1 Type": "Lowpass",
-      "F1 Freq": {
-        "norm": 0.739
-      },
-      "F1 Res": {
-        "norm": 0.1
-      },
-      "OSC2 On": 1,
-      "OSC2 Shape": "Saw",
-      "OSC2 Detune": {
-        "norm": 0.56
-      },
-      "OSC2 Level": {
-        "norm": 0.7
-      },
-      "F1 Freq < Env": {
-        "norm": 0.65
+      "AEG1 Rel": {
+        "display": "650 ms"
       },
       "FEG1 Attack": {
-        "norm": 0.561
+        "display": "450 ms"
       },
       "FEG1 Decay": {
-        "norm": 0.687
+        "display": "900 ms"
       },
       "FEG1 Sustain": {
         "norm": 0.6
       },
-      "FEG1 Release": {
-        "norm": 0.605
+      "FEG1 Rel": {
+        "display": "650 ms"
+      },
+      "OSC2 On/Off": "On",
+      "OSC2 Shape": "Saw",
+      "OSC2 Octave": 0,
+      "OSC2 Semi": 0,
+      "OSC2 Level": {
+        "display": "-5 dB"
+      },
+      "OSC2 Detune": {
+        "norm": 0.54
+      },
+      "F2 On/Off": "On",
+      "F2 Type": "Low-pass 12dB/oct",
+      "F2 Freq": {
+        "display": "3 kHz"
+      },
+      "F2 Resonance": {
+        "norm": 0.06
+      },
+      "F2 Freq < Env": 0.08,
+      "F2 Freq < Key": 0.5,
+      "AMP2 On/Off": "On",
+      "AEG2 Attack": {
+        "display": "380 ms"
+      },
+      "AEG2 Decay": {
+        "display": "600 ms"
+      },
+      "AEG2 Sustain": {
+        "norm": 0.88
+      },
+      "AEG2 Rel": {
+        "display": "650 ms"
+      },
+      "FEG2 Attack": {
+        "display": "450 ms"
+      },
+      "FEG2 Decay": {
+        "display": "900 ms"
+      },
+      "FEG2 Sustain": {
+        "norm": 0.6
+      },
+      "FEG2 Rel": {
+        "display": "650 ms"
+      },
+      "Noise On/Off": "Off",
+      "Unison On/Off": "On",
+      "Unison Voices": "4",
+      "Unison Detune": {
+        "norm": 0.22
+      },
+      "Vib On/Off": "Off",
+      "Glide On/Off": "Off",
+      "Volume": {
+        "display": "-7 dB"
       }
     },
     "fallback_parameters": {
       "Wavetable": {
         "Amp Attack": {
-          "norm": 0.561
+          "display": "380 ms"
         },
         "Amp Decay": {
-          "norm": 0.605
+          "display": "600 ms"
         },
         "Amp Sustain": {
-          "norm": 0.85
+          "norm": 0.88
         },
         "Amp Release": {
-          "norm": 0.623
+          "display": "650 ms"
         },
-        "Filter 1 On": 1,
+        "Filter 1 On": "On",
         "Filter 1 Type": "Lowpass",
         "Filter 1 Freq": {
-          "norm": 0.739
+          "display": "3 kHz"
         },
         "Filter 1 Res": {
           "norm": 0.05
         },
-        "Unison Mode": "Classic",
-        "Unison Voices": 6,
-        "Unison Amount": {
-          "norm": 0.3
-        }
-      },
-      "Simpler": {
-        "Ve Attack": {
-          "norm": 0.535
+        "Volume": {
+          "display": "-6 dB"
         },
-        "Ve Release": {
-          "norm": 0.617
+        "Osc 2 On": "On",
+        "Osc 2 Transp": 0,
+        "Osc 2 Detune": {
+          "norm": 0.54
         }
       }
     }
@@ -140,56 +188,61 @@
       "parameters": {
         "Mode": "Ensemble",
         "Amount": {
-          "norm": 0.6
+          "display": "50 %"
         },
         "Dry/Wet": {
-          "norm": 0.5
+          "display": "45 %"
         },
         "Warmth": {
-          "norm": 0.4
+          "display": "35 %"
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.005
+          "display": "130 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4543
-        },
-        "3 Filter On A": 1,
-        "3 Filter Type A": 3,
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
         "3 Frequency A": {
-          "norm": 0.136
+          "display": "2.6 kHz"
         },
-        "3 Gain A": {
-          "norm": 0.55
-        },
+        "3 Gain A": 2.0,
         "3 Resonance A": {
-          "norm": 0.0391
-        }
+          "display": "0.8"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "10 kHz"
+        },
+        "7 Gain A": -3.0
       }
     },
     {
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.26
+          "display": "24 %"
         },
         "Decay Time": {
-          "norm": 0.0435
+          "display": "2.5 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "26 ms"
         },
         "Room Size": {
-          "norm": 0.3197
+          "norm": 0.7629
         },
-        "Predelay": {
-          "norm": 0.0701
+        "HiFilter On": "On",
+        "HiFilter Type": "Lowpass",
+        "HiFilter Freq": {
+          "display": "9 kHz"
         }
       }
     }
@@ -200,5 +253,5 @@
     "length": 16.0,
     "scale": "minor"
   },
-  "sound_design_notes": "Два пилообразных осциллятора, второй на ~+12 центов, — основа «струнных машин». Фильтр НЧ ~3.3 кГц с медленной огибающей (открывается ~260 мс): имитирует нарастание смычка. Усилитель: атака 260 мс, релиз 480 мс — лёгато. Chorus-Ensemble — главный секрет: он «размножает» два голоса в секцию. EQ: срез низов (чтобы не мутить бас) и лёгкий подъём 3 кГц; реверб 2.8 с — зал."
+  "sound_design_notes": "Струнная секция: две расстроенные пилы + Unison ×4 (одна пила — это «одна струна», секция — много) через ФНЧ 12 дБ 3 кГц, который открывается вместе со смычком (атака фильтра 450 мс, +0,8 октавы). Атака усилителя 380 мс и релиз 650 мс — легато-смычки. Chorus-Ensemble здесь по делу: он размножает голоса в секцию. EQ: срез ниже 130 Гц (чтобы не мутить бас), +2 дБ на 2,6 кГц (канифоль), полка −3 дБ от 10 кГц; зал 2,5 с, 24%, предзадержка 26 мс."
 }

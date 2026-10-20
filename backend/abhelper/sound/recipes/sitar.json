@@ -27,8 +27,8 @@
     "ситар"
   ],
   "description": {
-    "ru": "Ситар: щипок с «жужжащим» мостиком (джавари), резонанс симпатических струн.",
-    "en": "Sitar: plucked tone with buzzing jawari bridge and sympathetic string resonance."
+    "ru": "Ситар: щипок с «жужжащим» мостиком (джавари) и резонансным фильтром, длинный зал вместо симпатических струн.",
+    "en": "Sitar: plucked tone with buzzing jawari bridge (operator feedback), resonant filter and a long hall."
   },
   "preset_search": [
     "sitar",
@@ -46,134 +46,189 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 1",
+      "Osc-A On": "On",
       "Osc-A Wave": "Saw D",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.7
+        "display": "0 dB"
       },
-      "Osc-A Feedback": {
-        "norm": 0.35
-      },
+      "Osc-A Feedb": 35,
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.767
+        "display": "1.6 s"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.558
+        "display": "300 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Saw 16",
       "B Coarse": 2,
       "Osc-B Level": {
-        "norm": 0.4
+        "display": "-9 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.628
+        "display": "500 ms"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.483
+        "display": "150 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
       "C Coarse": 5,
       "Osc-C Level": {
-        "norm": 0.1
+        "display": "-22 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.454
+        "display": "120 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.395
+        "display": "80 ms"
       },
-      "Filter On": 1,
+      "Osc-D On": "Off",
+      "Filter On": "On",
       "Filter Type": "Lowpass",
       "Filter Freq": {
-        "norm": 0.739
+        "display": "3.5 kHz"
       },
-      "Filter Res": {
-        "norm": 0.32
-      },
-      "Fe Amount": {
-        "norm": 0.75
-      },
+      "Filter Res": 0.3,
+      "Filt < Key": 40,
+      "Fe Amount": 30,
+      "Fe Init": 0.0,
       "Fe Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Fe Peak": 1.0,
       "Fe Decay": {
-        "norm": 0.628
+        "display": "400 ms"
       },
-      "Fe Sustain": {
-        "norm": 0.0
-      },
+      "Fe Sustain": 0.0,
       "Fe Release": {
-        "norm": 0.506
+        "display": "150 ms"
       },
+      "Fe End": 0.0,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.78
+        "display": "-6 dB"
+      },
+      "Time < Key": 20
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On/Off": "On",
+        "OSC1 Shape": "Saw",
+        "OSC1 Octave": 0,
+        "OSC1 Semi": 0,
+        "OSC1 Level": {
+          "display": "-4 dB"
+        },
+        "F1 On/Off": "On",
+        "F1 Type": "Low-pass 24dB/oct",
+        "F1 Freq": {
+          "display": "1.5 kHz"
+        },
+        "F1 Resonance": {
+          "norm": 0.35
+        },
+        "F1 Freq < Env": 0.35,
+        "F1 Freq < Key": 0.6,
+        "AMP1 On/Off": "On",
+        "AEG1 Attack": {
+          "display": "1 ms"
+        },
+        "AEG1 Decay": {
+          "display": "1.6 s"
+        },
+        "AEG1 Sustain": {
+          "norm": 0.0
+        },
+        "AEG1 Rel": {
+          "display": "300 ms"
+        },
+        "FEG1 Attack": {
+          "display": "1 ms"
+        },
+        "FEG1 Decay": {
+          "display": "400 ms"
+        },
+        "FEG1 Sustain": {
+          "norm": 0.0
+        },
+        "FEG1 Rel": {
+          "display": "150 ms"
+        },
+        "OSC2 On/Off": "Off",
+        "F2 On/Off": "Off",
+        "AMP2 On/Off": "Off",
+        "Noise On/Off": "Off",
+        "Unison On/Off": "Off",
+        "Vib On/Off": "Off",
+        "Glide On/Off": "Off",
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
   "effects": [
     {
-      "device": "Corpus",
-      "parameters": {
-        "Resonance Type": "String",
-        "Dry/Wet": {
-          "norm": 0.4
-        },
-        "Decay": {
-          "norm": 0.7
-        },
-        "Brightness": {
-          "norm": 0.7
-        }
-      }
-    },
-    {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0059
+          "display": "100 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4543
-        }
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
+        "3 Frequency A": {
+          "display": "1.8 kHz"
+        },
+        "3 Gain A": 2.0,
+        "3 Resonance A": {
+          "display": "1.0"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "9 kHz"
+        },
+        "7 Gain A": -3.0
       }
     },
     {
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.24
+          "display": "24 %"
         },
         "Decay Time": {
-          "norm": 0.0401
+          "display": "2.2 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "15 ms"
         },
         "Room Size": {
-          "norm": 0.2597
+          "norm": 0.7257
         }
       }
     }
@@ -184,5 +239,5 @@
     "length": 8.0,
     "scale": "phrygian"
   },
-  "sound_design_notes": "Фирменное «жужжание» джавари: осциллятор A с обратной связью (35%) — гармоники становятся почти шумовыми, как при касании струны мостика. Резонансный фильтр (Q ~0.32) с быстрой огибающей — «вау» затухающего щипка. Corpus в режиме String добавляет симпатические струны: звук «тянется» после щипка. Фригийский лад в демо — как в индийской раге."
+  "sound_design_notes": "Фирменное «жужжание» джавари: осциллятор A с обратной связью (Feedb 35) — гармоники становятся почти шумовыми, как при касании струны о мостик. Резонансный ФНЧ (Res 0,3, +3 октавы по огибающей, спад 400 мс) — «вау» затухающего щипка. Симпатические струны в рецепте упрощены до реверба 2,2 с. Хоруса нет. Фригийский лад в демо — как в индийской раге."
 }

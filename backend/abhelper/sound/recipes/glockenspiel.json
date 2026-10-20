@@ -48,81 +48,115 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 10,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.8
+        "display": "0 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.762
+        "display": "2.5 s"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.576
+        "display": "500 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
-      "B Coarse": 3,
+      "B Coarse": 2,
+      "B Fine": 760,
       "Osc-B Level": {
-        "norm": 0.34
+        "display": "-8 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.675
+        "display": "1.4 s"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.535
+        "display": "300 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
       "C Coarse": 5,
+      "C Fine": 400,
       "Osc-C Level": {
-        "norm": 0.24
+        "display": "-15 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.6
+        "display": "600 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.483
+        "display": "200 ms"
       },
-      "Osc-D On": 1,
+      "Osc-D On": "On",
       "Osc-D Wave": "Sine",
       "D Coarse": 8,
+      "D Fine": 930,
       "Osc-D Level": {
-        "norm": 0.12
+        "display": "-22 dB"
       },
+      "De Init": 0.0,
       "De Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "De Peak": 1.0,
       "De Decay": {
-        "norm": 0.491
+        "display": "250 ms"
       },
-      "De Sustain": {
-        "norm": 0.0
-      },
+      "De Sustain": 0.0,
       "De Release": {
-        "norm": 0.442
+        "display": "100 ms"
       },
+      "Filter On": "Off",
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.78
+        "display": "-8 dB"
+      },
+      "Time < Key": 35
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "1 ms"
+        },
+        "Amp Decay": {
+          "display": "2 s"
+        },
+        "Amp Sustain": {
+          "norm": 0.0
+        },
+        "Amp Release": {
+          "display": "400 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "12 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
@@ -130,15 +164,10 @@
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0132
-        },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.6362
+          "display": "350 Hz"
         }
       }
     },
@@ -146,16 +175,22 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.26
+          "display": "24 %"
         },
         "Decay Time": {
-          "norm": 0.0401
+          "display": "2.4 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "16 ms"
         },
         "Room Size": {
-          "norm": 0.2797
+          "norm": 0.7456
         },
-        "Predelay": {
-          "norm": 0.0301
+        "HiFilter On": "On",
+        "HiFilter Type": "Lowpass",
+        "HiFilter Freq": {
+          "display": "12 kHz"
         }
       }
     }
@@ -166,5 +201,5 @@
     "length": 8.0,
     "scale": "major"
   },
-  "sound_design_notes": "У металлических пластин обертоны не кратны основному (~1 : 2.76 : 5.4 : 8.9). В Operator-Coarse они округляются до 1:3:5:8 — получается «звонкая» неточность. Верхние парциалы затухают быстрее (130 мс против 1.9 с), как в настоящем инструменте. Нулевая атака и нулевой сустейн; EQ срезает низ, реверб ~2.6 с."
+  "sound_design_notes": "У металлических пластин обертоны не кратны основному: ≈ 1 : 2,76 : 5,40 : 8,93. Алгоритм 11 (параллельно) + Fine дают их точно: A ×1, B ×2,76, C ×5,40, D ×8,93 — чистая аддитивная «металлическая» неточность без FM-каши. Верхние парциалы затухают быстрее (250 мс против 2,5 с), как в настоящем инструменте; нулевая атака, нулевой сустейн; «Time < Key» 35% — высокие ноты короче. EQ срезает низ, реверб 2,4 с."
 }

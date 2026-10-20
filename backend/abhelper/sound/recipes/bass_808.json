@@ -32,8 +32,8 @@
     "boom"
   ],
   "description": {
-    "ru": "Длинный 808-бас: синус с «щелчком», сатурация, затухание ~1.8 с.",
-    "en": "Long 808 bass: sine with a click, saturation and a ~1.8 s decay."
+    "ru": "Длинный 808-бас: синус с питч-дропом и «щелчком», сатурация, затухание ~2 с.",
+    "en": "Long 808 bass: sine with a pitch drop and a click, saturation and a ~2 s decay."
   },
   "preset_search": [
     "808 bass",
@@ -52,69 +52,108 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.9
+        "display": "0 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.757
+        "display": "2.2 s"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.506
+        "display": "150 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
-      "B Coarse": 1,
+      "B Coarse": 4,
       "Osc-B Level": {
-        "norm": 0.14
+        "display": "-16 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.325
+        "display": "25 ms"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.302
+        "display": "20 ms"
       },
+      "Osc-C On": "Off",
+      "Osc-D On": "Off",
+      "Filter On": "Off",
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.84
-      }
+        "display": "-6 dB"
+      },
+      "Pe On": "On",
+      "Pe Amount": 1.0,
+      "Pe Init": 12.0,
+      "Pe Peak": 12.0,
+      "Pe Attack": {
+        "display": "1 ms"
+      },
+      "Pe Decay": {
+        "display": "70 ms"
+      },
+      "Pe Sustain": 0.0,
+      "Pe Release": {
+        "display": "50 ms"
+      },
+      "Pe End": 0.0
     },
     "fallback_parameters": {
       "Analog": {
-        "OSC1 On": 1,
+        "Voices": "Mono",
+        "OSC1 On/Off": "On",
         "OSC1 Shape": "Sine",
-        "AEG1 Attack": {
+        "OSC1 Octave": 0,
+        "OSC1 Semi": 0,
+        "OSC1 Level": {
+          "display": "-3 dB"
+        },
+        "F1 On/Off": "On",
+        "F1 Type": "Low-pass 12dB/oct",
+        "F1 Freq": {
+          "display": "3 kHz"
+        },
+        "F1 Resonance": {
           "norm": 0.0
         },
+        "F1 Freq < Key": 0.0,
+        "AMP1 On/Off": "On",
+        "AEG1 Attack": {
+          "display": "1 ms"
+        },
         "AEG1 Decay": {
-          "norm": 0.757
+          "display": "2.2 s"
         },
         "AEG1 Sustain": {
           "norm": 0.0
         },
-        "AEG1 Release": {
-          "norm": 0.506
+        "AEG1 Rel": {
+          "display": "150 ms"
         },
-        "F1 Type": "Lowpass",
-        "F1 Freq": {
-          "norm": 0.826
-        },
-        "F1 Res": {
-          "norm": 0.0
+        "OSC2 On/Off": "Off",
+        "F2 On/Off": "Off",
+        "AMP2 On/Off": "Off",
+        "Noise On/Off": "Off",
+        "Unison On/Off": "Off",
+        "Vib On/Off": "Off",
+        "Glide On/Off": "Off",
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
@@ -124,50 +163,49 @@
       "device": "Saturator",
       "parameters": {
         "Type": "Soft Sine",
-        "Drive": {
-          "norm": 0.6667
-        },
+        "Drive": 10.0,
         "Dry/Wet": {
-          "norm": 0.65
-        }
-      }
-    },
-    {
-      "device": "EQ Eight",
-      "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
-        "1 Frequency A": {
-          "norm": 0.0006
+          "display": "60 %"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.2951
-        }
+        "Output": -4.0
       }
     },
     {
       "device": "Compressor",
       "parameters": {
         "Threshold": {
-          "norm": 0.1798
+          "display": "-14 dB"
         },
         "Attack": {
-          "norm": 0.005
+          "display": "5 ms"
         },
         "Release": {
-          "norm": 0.0263
+          "display": "80 ms"
         },
         "Dry/Wet": {
-          "norm": 1.0
+          "display": "100 %"
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 48dB",
+        "1 Frequency A": {
+          "display": "28 Hz"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "Low Pass 12dB",
+        "7 Frequency A": {
+          "display": "6 kHz"
         }
       }
     },
     {
       "device": "Utility",
       "parameters": {
-        "Bass Mono": 1
+        "Mono": "On"
       }
     }
   ],
@@ -178,5 +216,5 @@
     "scale": "minor",
     "variant": "trap"
   },
-  "sound_design_notes": "Классическая 808 — синус с долгим затуханием (~1.8 с) и нулевым сустейном: нота «ложится» и тает. Тонкий короткий модулятор B (25 мс) даёт щелчок атаки, который помогает 808-й «пробить» микс. Soft-Sine сатурация на 12 дБ добавляет гармоник (808 слышно на телефоне). Моно-низ + срез <24 Гц. Демо — трэп-паттерн с длинными нотами. Питч-дроп (как у настоящей 808) в рецепт не включён — добавьте Pitch-огибающую вручную."
+  "sound_design_notes": "Классическая 808 — синус с долгим затуханием (2,2 с) и нулевым сустейном: нота «ложится» и тает. Питч-огибающая Operator (+12 полутонов, спад 70 мс) даёт характерный «буммм» с падением тона. Короткий модулятор B (25 мс, ×4) — щелчок атаки, который помогает 808-й пробить микс. Soft-Sine сатурация 10 дБ добавляет гармоник (808 слышно на телефоне), компрессор (−14 дБ, атака 5 мс) выравнивает, моно + срез <28 Гц."
 }

@@ -51,107 +51,149 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 10,
-      "Osc-A On": 1,
-      "Osc-A Wave": "Saw 16",
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
+      "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.7
+        "display": "-2 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.687
+        "display": "1.8 s"
       },
       "Ae Sustain": {
         "norm": 0.35
       },
       "Ae Release": {
-        "norm": 0.454
+        "display": "150 ms"
       },
-      "Osc-B On": 1,
-      "Osc-B Wave": "Sine",
+      "Osc-B On": "On",
+      "Osc-B Wave": "Saw 16",
       "B Coarse": 1,
       "Osc-B Level": {
-        "norm": 0.5
+        "display": "-9 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.698
+        "display": "600 ms"
       },
       "Be Sustain": {
-        "norm": 0.45
+        "norm": 0.15
       },
       "Be Release": {
-        "norm": 0.454
+        "display": "120 ms"
       },
-      "Filter On": 1,
+      "Osc-C On": "On",
+      "Osc-C Wave": "Sine",
+      "C Coarse": 2,
+      "Osc-C Level": {
+        "display": "-14 dB"
+      },
+      "Ce Init": 0.0,
+      "Ce Attack": {
+        "display": "1 ms"
+      },
+      "Ce Peak": 1.0,
+      "Ce Decay": {
+        "display": "250 ms"
+      },
+      "Ce Sustain": 0.0,
+      "Ce Release": {
+        "display": "100 ms"
+      },
+      "Osc-D On": "Off",
+      "Filter On": "On",
       "Filter Type": "Lowpass",
       "Filter Freq": {
-        "norm": 0.543
+        "display": "1.6 kHz"
       },
-      "Filter Res": {
-        "norm": 0.12
-      },
-      "Fe Amount": {
-        "norm": 0.725
-      },
+      "Filter Res": 0.08,
+      "Filt < Key": 40,
+      "Fe Amount": 30,
+      "Fe Init": 0.0,
       "Fe Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Fe Peak": 1.0,
       "Fe Decay": {
-        "norm": 0.53
+        "display": "250 ms"
       },
       "Fe Sustain": {
         "norm": 0.1
       },
       "Fe Release": {
-        "norm": 0.442
+        "display": "120 ms"
       },
+      "Fe End": 0.0,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.82
+        "display": "-6 dB"
       }
     },
     "fallback_parameters": {
       "Analog": {
-        "OSC1 On": 1,
+        "Voices": "Mono",
+        "OSC1 On/Off": "On",
         "OSC1 Shape": "Saw",
+        "OSC1 Octave": 0,
+        "OSC1 Semi": 0,
+        "OSC1 Level": {
+          "display": "-4 dB"
+        },
+        "F1 On/Off": "On",
+        "F1 Type": "Low-pass 24dB/oct",
+        "F1 Freq": {
+          "display": "800 Hz"
+        },
+        "F1 Resonance": {
+          "norm": 0.1
+        },
+        "F1 Freq < Env": 0.3,
+        "F1 Freq < Key": 0.4,
+        "AMP1 On/Off": "On",
         "AEG1 Attack": {
-          "norm": 0.0
+          "display": "1 ms"
         },
         "AEG1 Decay": {
-          "norm": 0.687
+          "display": "1.5 s"
         },
         "AEG1 Sustain": {
           "norm": 0.35
         },
-        "AEG1 Release": {
-          "norm": 0.454
-        },
-        "F1 Type": "Lowpass",
-        "F1 Freq": {
-          "norm": 0.543
-        },
-        "F1 Res": {
-          "norm": 0.12
-        },
-        "F1 Freq < Env": {
-          "norm": 0.725
+        "AEG1 Rel": {
+          "display": "150 ms"
         },
         "FEG1 Attack": {
-          "norm": 0.0
+          "display": "1 ms"
         },
         "FEG1 Decay": {
-          "norm": 0.53
+          "display": "250 ms"
         },
         "FEG1 Sustain": {
           "norm": 0.1
         },
-        "FEG1 Release": {
-          "norm": 0.442
+        "FEG1 Rel": {
+          "display": "120 ms"
+        },
+        "OSC2 On/Off": "Off",
+        "F2 On/Off": "Off",
+        "AMP2 On/Off": "Off",
+        "Noise On/Off": "Off",
+        "Unison On/Off": "Off",
+        "Vib On/Off": "Off",
+        "Glide On/Off": "Off",
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
@@ -161,42 +203,40 @@
       "device": "Compressor",
       "parameters": {
         "Threshold": {
-          "norm": 0.2198
+          "display": "-18 dB"
         },
         "Attack": {
-          "norm": 0.012
+          "display": "10 ms"
         },
         "Release": {
-          "norm": 0.0397
+          "display": "120 ms"
         },
         "Dry/Wet": {
-          "norm": 1.0
+          "display": "100 %"
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0011
+          "display": "35 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.2269
-        },
-        "3 Filter On A": 1,
-        "3 Filter Type A": 3,
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
         "3 Frequency A": {
-          "norm": 0.0337
+          "display": "800 Hz"
         },
-        "3 Gain A": {
-          "norm": 0.5667
-        },
+        "3 Gain A": 2.0,
         "3 Resonance A": {
-          "norm": 0.0503
+          "display": "1.0"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "Low Pass 12dB",
+        "7 Frequency A": {
+          "display": "5 kHz"
         }
       }
     },
@@ -204,11 +244,18 @@
       "device": "Saturator",
       "parameters": {
         "Type": "Soft Sine",
-        "Drive": {
-          "norm": 0.5417
-        },
+        "Drive": 5.0,
         "Dry/Wet": {
-          "norm": 0.4
+          "display": "35 %"
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Bass Mono": "On",
+        "Bass Freq": {
+          "display": "150 Hz"
         }
       }
     }
@@ -219,5 +266,5 @@
     "length": 8.0,
     "scale": "minor"
   },
-  "sound_design_notes": "Синус даёт фундамент, пила — «струну» и щелчок. Фильтр 850 Гц с короткой (190 мс) огибающей — удар пальца. Сустейн 0.35–0.45: струна звучит, но уходит. Компрессор + мягкая сатурация создают плотность, EQ — присутствие на 750 Гц (чтобы бас слышался на колонках). Диапазон E1–G3."
+  "sound_design_notes": "Синус даёт фундамент, пила Saw 16 — «струну» и щелчок пальца. Фильтр 1,6 кГц с короткой (250 мс) огибающей — удар пальца, потом звук темнеет. Сустейн 35%: струна звучит, но уходит. Компрессор (−18 дБ, атака 10 мс) + мягкая Soft-Sine сатурация (5 дБ, 35%) создают плотность, EQ — присутствие +2 дБ на 800 Гц (чтобы бас слышался на колонках) и срез ниже 35 Гц; Utility делает всё ниже 150 Гц моно. Диапазон E1–G3."
 }

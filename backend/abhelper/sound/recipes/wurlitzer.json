@@ -43,123 +43,149 @@
       "Analog"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
-      "Osc-A Wave": "Triangle D",
+      "Algorithm": "Alg. 1",
+      "Osc-A On": "On",
+      "Osc-A Wave": "Triangle",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.8
+        "display": "0 dB"
       },
+      "Osc-A Lev < Vel": 25,
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.757
+        "display": "1.4 s"
       },
-      "Ae Sustain": {
-        "norm": 0.3
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.512
+        "display": "180 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 2,
       "Osc-B Level": {
-        "norm": 0.5
+        "display": "-12 dB"
       },
+      "Osc-B Lev < Vel": 40,
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.6
+        "display": "380 ms"
       },
-      "Be Sustain": {
-        "norm": 0.15
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.465
+        "display": "100 ms"
       },
-      "Osc-C On": 1,
-      "Osc-C Wave": "Saw 8",
-      "C Coarse": 1,
+      "Osc-C On": "On",
+      "Osc-C Wave": "Sine",
+      "C Coarse": 8,
       "Osc-C Level": {
-        "norm": 0.14
+        "display": "-26 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.483
+        "display": "22 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.413
+        "display": "15 ms"
       },
-      "Filter On": 1,
+      "Osc-D On": "Off",
+      "Filter On": "On",
       "Filter Type": "Lowpass",
       "Filter Freq": {
-        "norm": 0.805
+        "display": "5 kHz"
       },
-      "Filter Res": {
-        "norm": 0.1
-      },
+      "Filter Res": 0.05,
+      "Filt < Key": 25,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.8
+        "display": "-6 dB"
+      },
+      "Time < Key": 25
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "1 ms"
+        },
+        "Amp Decay": {
+          "display": "1.6 s"
+        },
+        "Amp Sustain": {
+          "norm": 0.0
+        },
+        "Amp Release": {
+          "display": "180 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "5 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
   "effects": [
     {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
+        "1 Frequency A": {
+          "display": "90 Hz"
+        },
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
+        "3 Frequency A": {
+          "display": "1 kHz"
+        },
+        "3 Gain A": 2.0,
+        "3 Resonance A": {
+          "display": "0.8"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "8 kHz"
+        },
+        "7 Gain A": -3.0
+      }
+    },
+    {
       "device": "Overdrive",
       "parameters": {
-        "Drive": {
-          "norm": 0.42
-        },
-        "Tone": {
-          "norm": 0.5
-        },
-        "Dry/Wet": {
-          "norm": 0.6
-        }
+        "Drive": 22,
+        "Tone": 55,
+        "Dry/Wet": 45
       }
     },
     {
       "device": "Auto Pan",
       "parameters": {
+        "LFO Type": "Frequency",
         "Amount": {
-          "norm": 0.5
+          "display": "30 %"
         },
-        "Rate": {
-          "norm": 0.2696
-        }
-      }
-    },
-    {
-      "device": "EQ Eight",
-      "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
-        "1 Frequency A": {
-          "norm": 0.0045
-        },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.3633
-        },
-        "3 Filter On A": 1,
-        "3 Filter Type A": 3,
-        "3 Frequency A": {
-          "norm": 0.0496
-        },
-        "3 Gain A": {
-          "norm": 0.5667
-        },
-        "3 Resonance A": {
-          "norm": 0.0503
+        "Frequency": {
+          "display": "5.3 Hz"
         }
       }
     },
@@ -167,13 +193,14 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.1
+          "display": "10 %"
         },
         "Decay Time": {
-          "norm": 0.0134
+          "display": "1.2 s"
         },
+        "Chorus On": "Off",
         "Room Size": {
-          "norm": 0.0796
+          "norm": 0.5835
         }
       }
     }
@@ -184,5 +211,5 @@
     "length": 8.0,
     "scale": "minor"
   },
-  "sound_design_notes": "Модулятор B с отношением 2:1 даёт чётные гармоники и «язычковый» оттенок; в отличие от Rhodes у него более высокий сустейн и грубая нижняя треть. C — пила с короткой огибающей — шум удара язычка. Овердрайв подмешан (60%) — фирменное «рычание» усилителя; Auto Pan 5.4 Гц с глубиной 50% — тремоло. Фильтр 5.2 кГц сглаживает цифровую резкость."
+  "sound_design_notes": "Wurlitzer — язычковое электропиано: треугольная несущая и модулятор 2:1 (чётные гармоники, «язычковый» оттенок), затухание короче, чем у Rhodes (1,4 с). C (×8, 22 мс) — стук молоточка по язычку. Velocity открывает модуляцию — характерный «лай». Overdrive 22/100 подмешан на 45% (усилитель), Auto Pan 5,3 Гц/30% — встроенное тремоло. Фильтр 5 кГц сглаживает цифровую резкость; маленькая комната 1,2 с."
 }

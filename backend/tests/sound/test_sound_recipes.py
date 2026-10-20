@@ -73,9 +73,9 @@ def test_aliases_are_unique_enough():
 
 
 # ------------------------------------------------------------------ consistency with the catalog
-def test_catalog_is_marked_unverified_and_covers_every_device():
+def test_catalog_is_the_verified_live_dump_and_covers_every_device():
     cat = load_catalog()
-    assert cat["_meta"]["verified"] is False
+    assert cat["_meta"]["verified"] is True and cat["_meta"]["live_version"] == "11.3.25"
     assert "note" in cat["_meta"]
     missing = set(recipe_device_names(LIB)) - set(cat["devices"])
     assert not missing, f"devices used by recipes but absent from catalog: {missing}"
@@ -83,6 +83,9 @@ def test_catalog_is_marked_unverified_and_covers_every_device():
         assert spec["type"] in ("instrument", "audio_effect", "midi_effect"), name
         for p in spec["parameters"]:
             assert p["min"] <= p["default"] <= p["max"], (name, p["name"])
+    # Erosion failed to load during the user's calibration: the old hand-written entry is kept, flagged per device
+    assert "UNVERIFIED" in cat["devices"]["Erosion"]["note"]
+    assert "Erosion" in cat["_meta"].get("failed", {})
 
 
 def test_param_aliases_file_is_wellformed():
@@ -172,6 +175,17 @@ def test_validate_rejects_bad_recipes():
     assert any("pitch" in e for e in validate_recipe(r))
     r = _good(); r["track"] = {"color_index": 99}
     assert any("color_index" in e for e in validate_recipe(r))
+
+
+def test_validate_accepts_display_values_and_rejects_malformed_ones():
+    for ok in ("1.3 kHz", "80 Hz", "-6 dB", "18 %", "1,2 s", "-inf dB", "0.9", "4 : 1", "250 ms"):
+        r = _good(); r["instrument"]["parameters"]["X"] = {"display": ok}
+        assert validate_recipe(r) == [], ok
+    for bad in ("", "  ", "loud", "kHz", 5, None):
+        r = _good(); r["instrument"]["parameters"]["X"] = {"display": bad}
+        assert any("display" in e for e in validate_recipe(r)), bad
+    r = _good(); r["instrument"]["parameters"]["X"] = {"display": "1 kHz", "norm": 0.5}
+    assert any("exactly" in e for e in validate_recipe(r))
 
 
 def test_custom_recipes_may_omit_id_aliases_name_and_category():

@@ -55,88 +55,144 @@
     "device": "Analog",
     "fallback_devices": [
       "Wavetable",
-      "Drift",
-      "Operator"
+      "Drift"
     ],
     "parameters": {
-      "OSC1 On": 1,
+      "OSC1 On/Off": "On",
       "OSC1 Shape": "Saw",
+      "OSC1 Octave": 0,
+      "OSC1 Semi": 0,
+      "OSC1 Level": {
+        "display": "-5 dB"
+      },
+      "F1 On/Off": "On",
+      "F1 Type": "Low-pass 12dB/oct",
+      "F1 Freq": {
+        "display": "1.5 kHz"
+      },
+      "F1 Resonance": {
+        "norm": 0.12
+      },
+      "F1 Freq < Env": 0.1,
+      "F1 Freq < Key": 0.4,
+      "AMP1 On/Off": "On",
       "AEG1 Attack": {
-        "norm": 0.654
+        "display": "650 ms"
       },
       "AEG1 Decay": {
-        "norm": 0.687
+        "display": "1 s"
       },
       "AEG1 Sustain": {
         "norm": 0.85
       },
-      "AEG1 Release": {
-        "norm": 0.738
-      },
-      "F1 Type": "Lowpass",
-      "F1 Freq": {
-        "norm": 0.625
-      },
-      "F1 Res": {
-        "norm": 0.12
-      },
-      "OSC2 On": 1,
-      "OSC2 Shape": "Rectangle",
-      "OSC2 Detune": {
-        "norm": 0.55
-      },
-      "OSC2 Level": {
-        "norm": 0.6
-      },
-      "OSC2 PW": {
-        "norm": 0.4
-      },
-      "F1 Freq < Env": {
-        "norm": 0.625
+      "AEG1 Rel": {
+        "display": "1.4 s"
       },
       "FEG1 Attack": {
-        "norm": 0.675
+        "display": "800 ms"
       },
       "FEG1 Decay": {
-        "norm": 0.738
+        "display": "1.2 s"
       },
       "FEG1 Sustain": {
         "norm": 0.5
       },
-      "FEG1 Release": {
-        "norm": 0.716
+      "FEG1 Rel": {
+        "display": "1.2 s"
+      },
+      "OSC2 On/Off": "On",
+      "OSC2 Shape": "Rect",
+      "OSC2 Octave": 0,
+      "OSC2 Semi": 0,
+      "OSC2 Level": {
+        "display": "-8 dB"
+      },
+      "OSC2 PW": {
+        "norm": 0.4
+      },
+      "OSC2 Detune": {
+        "norm": 0.54
+      },
+      "F2 On/Off": "On",
+      "F2 Type": "Low-pass 12dB/oct",
+      "F2 Freq": {
+        "display": "1.5 kHz"
+      },
+      "F2 Resonance": {
+        "norm": 0.12
+      },
+      "F2 Freq < Env": 0.1,
+      "F2 Freq < Key": 0.4,
+      "AMP2 On/Off": "On",
+      "AEG2 Attack": {
+        "display": "650 ms"
+      },
+      "AEG2 Decay": {
+        "display": "1 s"
+      },
+      "AEG2 Sustain": {
+        "norm": 0.85
+      },
+      "AEG2 Rel": {
+        "display": "1.4 s"
+      },
+      "FEG2 Attack": {
+        "display": "800 ms"
+      },
+      "FEG2 Decay": {
+        "display": "1.2 s"
+      },
+      "FEG2 Sustain": {
+        "norm": 0.5
+      },
+      "FEG2 Rel": {
+        "display": "1.2 s"
+      },
+      "Noise On/Off": "Off",
+      "Unison On/Off": "On",
+      "Unison Voices": "2",
+      "Unison Detune": {
+        "norm": 0.15
+      },
+      "Vib On/Off": "Off",
+      "Glide On/Off": "Off",
+      "Volume": {
+        "display": "-7 dB"
       }
     },
     "fallback_parameters": {
       "Wavetable": {
         "Amp Attack": {
-          "norm": 0.654
+          "display": "650 ms"
         },
         "Amp Decay": {
-          "norm": 0.687
+          "display": "1 s"
         },
         "Amp Sustain": {
           "norm": 0.85
         },
         "Amp Release": {
-          "norm": 0.738
+          "display": "1.4 s"
         },
-        "Filter 1 On": 1,
+        "Filter 1 On": "On",
         "Filter 1 Type": "Lowpass",
         "Filter 1 Freq": {
-          "norm": 0.651
+          "display": "1.8 kHz"
         },
         "Filter 1 Res": {
-          "norm": 0.08
+          "norm": 0.1
         },
-        "Unison Mode": "Classic",
-        "Unison Voices": 4,
-        "Unison Amount": {
-          "norm": 0.3
+        "Volume": {
+          "display": "-6 dB"
         },
-        "Sub On": 1,
+        "Sub On": "On",
         "Sub Gain": {
-          "norm": 0.2
+          "display": "-14 dB"
+        },
+        "Osc 2 On": "On",
+        "Osc 2 Transp": 0,
+        "Osc 2 Detune": {
+          "norm": 0.54
         }
       }
     }
@@ -146,12 +202,11 @@
       "device": "Saturator",
       "parameters": {
         "Type": "Soft Sine",
-        "Drive": {
-          "norm": 0.5556
-        },
+        "Drive": 5.0,
         "Dry/Wet": {
-          "norm": 0.4
-        }
+          "display": "35 %"
+        },
+        "Output": -2.0
       }
     },
     {
@@ -159,45 +214,52 @@
       "parameters": {
         "Mode": "Ensemble",
         "Amount": {
-          "norm": 0.5
+          "display": "45 %"
         },
         "Dry/Wet": {
-          "norm": 0.45
+          "display": "40 %"
         },
         "Warmth": {
-          "norm": 0.6
+          "display": "55 %"
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0041
+          "display": "100 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4088
-        }
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "9 kHz"
+        },
+        "7 Gain A": -3.0
       }
     },
     {
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.3
+          "display": "28 %"
         },
         "Decay Time": {
-          "norm": 0.0803
+          "display": "4.5 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "30 ms"
         },
         "Room Size": {
-          "norm": 0.4398
+          "norm": 0.8153
         },
-        "Predelay": {
-          "norm": 0.0982
+        "HiFilter On": "On",
+        "HiFilter Type": "Lowpass",
+        "HiFilter Freq": {
+          "display": "9 kHz"
         }
       }
     }
@@ -208,5 +270,5 @@
     "length": 16.0,
     "scale": "minor"
   },
-  "sound_design_notes": "Рецепт «винтажного» пэда: пила + узкий импульс (PW 0.4) с расстройкой ~+12 центов; фильтр 1.5 кГц, который очень медленно открывается (800 мс) — «вдох». Усилитель: атака 650 мс, релиз 1.5 с — ноты наплывают друг на друга. Тёплая сатурация Soft Sine на 40% — ламповая/ленточная «грязь», EQ срезает верх (9 кГц) — звук «из прошлого», Chorus-Ensemble с Warmth — стерео-плавание, реверб 5 с."
+  "sound_design_notes": "Рецепт «винтажного» пэда: пила + узкий импульс (PW 0,4) с расстройкой и Unison ×2; ФНЧ 12 дБ на 1,5 кГц очень медленно открывается (атака фильтра 800 мс) — «вдох». Усилитель: атака 650 мс, релиз 1,4 с — ноты наплывают друг на друга. Тёплая Soft-Sine сатурация (35%) — ленточная «грязь», EQ срезает верх (полка −3 дБ от 9 кГц), Chorus-Ensemble с Warmth 55% — стерео-плавание (для пэда это то, что нужно), реверб 4,5 с."
 }

@@ -33,8 +33,8 @@
     "клавиши"
   ],
   "description": {
-    "ru": "Rhodes-подобное FM-электропиано: колокольчатый «тайн», мягкий укус, тремоло и хорус.",
-    "en": "Rhodes-style FM e-piano: bell-like tine, soft bark, tremolo and chorus."
+    "ru": "Rhodes-подобное FM-электропиано: колокольчатый «тайн», velocity-«укус», тремоло и ансамблевый хорус.",
+    "en": "Rhodes-style FM e-piano: bell-like tine, velocity bark, tremolo and ensemble chorus."
   },
   "preset_search": [
     "electric piano",
@@ -53,114 +53,152 @@
       "Analog"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 1",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.85
+        "display": "0 dB"
       },
+      "Osc-A Lev < Vel": 30,
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.801
+        "display": "3.2 s"
       },
-      "Ae Sustain": {
-        "norm": 0.35
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.545
+        "display": "300 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 1,
       "Osc-B Level": {
-        "norm": 0.4
+        "display": "-13 dB"
       },
+      "Osc-B Lev < Vel": 45,
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.654
+        "display": "650 ms"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.483
+        "display": "120 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
       "C Coarse": 14,
       "Osc-C Level": {
-        "norm": 0.1
+        "display": "-26 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.429
+        "display": "40 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.395
+        "display": "20 ms"
       },
+      "Osc-D On": "Off",
+      "Filter On": "On",
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "display": "7 kHz"
+      },
+      "Filter Res": 0.0,
+      "Filt < Key": 25,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.82
-      }
+        "display": "-6 dB"
+      },
+      "Time < Key": 30
     },
     "fallback_parameters": {
       "Wavetable": {
         "Amp Attack": {
-          "norm": 0.0
+          "display": "1 ms"
         },
         "Amp Decay": {
-          "norm": 0.777
+          "display": "2.5 s"
         },
         "Amp Sustain": {
-          "norm": 0.3
+          "norm": 0.0
         },
         "Amp Release": {
-          "norm": 0.545
+          "display": "250 ms"
         },
-        "Filter 1 On": 1,
+        "Filter 1 On": "On",
         "Filter 1 Type": "Lowpass",
         "Filter 1 Freq": {
-          "norm": 0.826
+          "display": "6 kHz"
         },
         "Filter 1 Res": {
           "norm": 0.0
         },
-        "Osc 1 Pos": {
-          "norm": 0.0
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
   },
   "effects": [
     {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
+        "1 Frequency A": {
+          "display": "60 Hz"
+        },
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
+        "3 Frequency A": {
+          "display": "250 Hz"
+        },
+        "3 Gain A": -1.5,
+        "3 Resonance A": {
+          "display": "0.8"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "9 kHz"
+        },
+        "7 Gain A": -2.0
+      }
+    },
+    {
       "device": "Saturator",
       "parameters": {
         "Type": "Soft Sine",
-        "Drive": {
-          "norm": 0.5556
-        },
+        "Drive": 4.0,
         "Dry/Wet": {
-          "norm": 0.5
-        }
+          "display": "45 %"
+        },
+        "Output": -2.0
       }
     },
     {
       "device": "Auto Pan",
       "parameters": {
+        "LFO Type": "Frequency",
         "Amount": {
-          "norm": 0.3
+          "display": "18 %"
         },
-        "Rate": {
-          "norm": 0.2096
+        "Frequency": {
+          "display": "4.8 Hz"
         }
       }
     },
@@ -169,10 +207,13 @@
       "parameters": {
         "Mode": "Ensemble",
         "Amount": {
-          "norm": 0.35
+          "display": "30 %"
         },
         "Dry/Wet": {
-          "norm": 0.3
+          "display": "28 %"
+        },
+        "Warmth": {
+          "display": "30 %"
         }
       }
     },
@@ -180,13 +221,17 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.15
+          "display": "13 %"
         },
         "Decay Time": {
-          "norm": 0.0217
+          "display": "1.6 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "12 ms"
         },
         "Room Size": {
-          "norm": 0.1596
+          "norm": 0.636
         }
       }
     }
@@ -197,5 +242,5 @@
     "length": 8.0,
     "scale": "dorian"
   },
-  "sound_design_notes": "Классика DX-эпиано. A — несущая (1:1) с умеренным сустейном 0.35; B — модулятор 1:1, быстро затухающий: «тело» звука тёмное после атаки. C (×14) — короткий «звон тайна». Saturator Soft Sine добавляет «лай» при сильной игре, Auto Pan (~4 Гц) — тремоло/панорамный вибрато чемодан-Rhodes, Chorus-Ensemble — характерная ширина. Демо в дорийском ладу (неосоул-вайб)."
+  "sound_design_notes": "Rhodes по рецепту DX: A — синусная несущая (спад 3,2 с), B (1:1) — модулятор с быстрым спадом 650 мс = «колокольчик» на атаке, затем остаётся мягкий гул; C (×14, 40 мс) — металлический «клик» зубца. Velocity усиливает модуляцию («лай» при сильной игре). Soft-Sine сатурация (4 дБ) — ламповый предусилитель, Auto Pan 4,8 Гц/18% — панорамное тремоло «чемодана» Rhodes, Chorus-Ensemble 28% — фирменная ширина электропиано (здесь он уместен). Комната 1,6 с."
 }

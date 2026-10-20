@@ -60,66 +60,105 @@
       "Analog"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 1",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.85
+        "display": "0 dB"
       },
+      "Osc-A Lev < Vel": 25,
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.07
+        "display": "3 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.786
+        "display": "2.5 s"
       },
       "Ae Sustain": {
-        "norm": 0.2
+        "norm": 0.15
       },
       "Ae Release": {
-        "norm": 0.561
+        "display": "300 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 1,
+      "B Fine": 10,
       "Osc-B Level": {
-        "norm": 0.34
+        "display": "-14 dB"
       },
-      "B Fine": {
-        "norm": 0.01
-      },
+      "Osc-B Lev < Vel": 40,
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.07
+        "display": "3 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.646
+        "display": "600 ms"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.483
+        "display": "150 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
       "C Coarse": 14,
       "Osc-C Level": {
-        "norm": 0.07
+        "display": "-28 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.07
+        "display": "3 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.405
+        "display": "40 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.372
+        "display": "20 ms"
       },
+      "Osc-D On": "Off",
+      "Filter On": "On",
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "display": "4.5 kHz"
+      },
+      "Filter Res": 0.0,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.8
+        "display": "-6 dB"
+      },
+      "Time < Key": 25
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "3 ms"
+        },
+        "Amp Decay": {
+          "display": "2.5 s"
+        },
+        "Amp Sustain": {
+          "norm": 0.15
+        },
+        "Amp Release": {
+          "display": "300 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "4 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
@@ -129,13 +168,13 @@
       "parameters": {
         "Mode": "Vibrato",
         "Amount": {
-          "norm": 0.35
+          "display": "22 %"
         },
         "Dry/Wet": {
-          "norm": 0.9
+          "display": "100 %"
         },
         "Rate": {
-          "norm": 0.0394
+          "display": "0.6 Hz"
         }
       }
     },
@@ -143,62 +182,56 @@
       "device": "Saturator",
       "parameters": {
         "Type": "Soft Sine",
-        "Drive": {
-          "norm": 0.5694
-        },
+        "Drive": 5.0,
         "Dry/Wet": {
-          "norm": 0.6
-        }
+          "display": "60 %"
+        },
+        "Output": -2.0
       }
     },
     {
       "device": "Redux",
       "parameters": {
-        "Bit Depth": {
-          "norm": 0.7333
-        },
+        "Bit Depth": 12,
         "Sample Rate": {
-          "norm": 0.88
+          "display": "14 kHz"
+        },
+        "Dry/Wet": {
+          "display": "60 %"
         }
       }
     },
     {
       "device": "Vinyl Distortion",
       "parameters": {
-        "Crackle Volume": {
-          "norm": 0.32
-        },
-        "Crackle Density": {
-          "norm": 0.5
-        },
+        "Crackle Volume": 0.35,
+        "Crackle Density": 20.0,
         "Tracing Drive": {
-          "norm": 0.35
+          "norm": 0.3
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0055
+          "display": "130 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.236
-        },
-        "3 Filter On A": 1,
-        "3 Filter Type A": 3,
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
         "3 Frequency A": {
-          "norm": 0.0678
+          "display": "400 Hz"
         },
-        "3 Gain A": {
-          "norm": 0.55
-        },
+        "3 Gain A": 2.0,
         "3 Resonance A": {
-          "norm": 0.0447
+          "display": "0.8"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "Low Pass 12dB",
+        "7 Frequency A": {
+          "display": "5.5 kHz"
         }
       }
     },
@@ -206,13 +239,17 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.14
+          "display": "14 %"
         },
         "Decay Time": {
-          "norm": 0.0201
+          "display": "1.6 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "12 ms"
         },
         "Room Size": {
-          "norm": 0.1196
+          "norm": 0.636
         }
       }
     }
@@ -223,5 +260,5 @@
     "length": 8.0,
     "scale": "dorian"
   },
-  "sound_design_notes": "База — Rhodes-образное FM (A + B, расстроенные на ~10 центов). «Лоу-фай» достигается обработкой: медленное «ленточное плавание» (Chorus-Ensemble Vibrato ~0.6 Гц, глубина 35%, 90% wet), Redux (12 бит) — дискретизационная грязь, Vinyl Distortion — треск и тонкий драйв, EQ режет верх выше 5.2 кГц и низ ниже 130 Гц — «пыльный радиоприёмник». Дорийский лад и аккорды — типичная лоу-фай прогрессия."
+  "sound_design_notes": "База — Rhodes-образное FM (A + B, расстроенные на ~10 тысячных). «Лоу-фай» достигается обработкой: медленное «ленточное плавание» (Chorus-Ensemble Vibrato, 0,6 Гц, 22%, 100% wet — это эффект wow, здесь он по делу), Soft-Sine сатурация, Redux (12 бит, 14 кГц, 60%) — дискретизационная грязь, Vinyl Distortion — треск и тонкий драйв, EQ режет верх выше 5,5 кГц и низ ниже 130 Гц — «пыльный радиоприёмник». Дорийский лад и аккорды — типичная лоу-фай прогрессия."
 }

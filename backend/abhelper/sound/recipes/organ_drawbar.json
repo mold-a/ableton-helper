@@ -30,8 +30,8 @@
     "электроорган"
   ],
   "description": {
-    "ru": "Аддитивный орган с шкалой «драбаров»: 16', 8', 4' и перкуссия 3-й гармоники, овердрайв и Лесли.",
-    "en": "Additive drawbar organ: 16', 8', 4' plus percussive 3rd harmonic, overdrive and Leslie-style movement."
+    "ru": "Аддитивный орган с «драбарами»: 16', 8', 4' и перкуссия 3-й гармоники, овердрайв и Лесли (вибрато + тремоло).",
+    "en": "Additive drawbar organ: 16', 8', 4' plus percussive 3rd harmonic, overdrive and Leslie-style vibrato/tremolo."
   },
   "preset_search": [
     "hammond",
@@ -51,113 +51,114 @@
       "Analog"
     ],
     "parameters": {
-      "Algorithm": 10,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.7
+        "display": "-3 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.14
+        "display": "3 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.465
+        "display": "50 ms"
       },
-      "Ae Sustain": {
-        "norm": 1.0
-      },
+      "Ae Sustain": 1.0,
       "Ae Release": {
-        "norm": 0.372
+        "display": "25 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 2,
       "Osc-B Level": {
-        "norm": 0.5
+        "display": "-6 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.14
+        "display": "3 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.465
+        "display": "50 ms"
       },
-      "Be Sustain": {
-        "norm": 1.0
-      },
+      "Be Sustain": 1.0,
       "Be Release": {
-        "norm": 0.372
+        "display": "25 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
       "C Coarse": 3,
       "Osc-C Level": {
-        "norm": 0.34
+        "display": "-9 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.512
+        "display": "260 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.343
+        "display": "20 ms"
       },
-      "Osc-D On": 1,
+      "Osc-D On": "On",
       "Osc-D Wave": "Sine",
       "D Coarse": 0,
       "Osc-D Level": {
-        "norm": 0.5
+        "display": "-7 dB"
       },
+      "De Init": 0.0,
       "De Attack": {
-        "norm": 0.14
+        "display": "3 ms"
       },
+      "De Peak": 1.0,
       "De Decay": {
-        "norm": 0.465
+        "display": "50 ms"
       },
-      "De Sustain": {
-        "norm": 1.0
-      },
+      "De Sustain": 1.0,
       "De Release": {
-        "norm": 0.372
+        "display": "25 ms"
       },
+      "Filter On": "Off",
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.8
+        "display": "-8 dB"
       }
     },
     "fallback_parameters": {
-      "Analog": {
-        "OSC1 On": 1,
-        "OSC1 Shape": "Sine",
-        "AEG1 Attack": {
-          "norm": 0.14
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "3 ms"
         },
-        "AEG1 Decay": {
-          "norm": 0.465
+        "Amp Decay": {
+          "display": "50 ms"
         },
-        "AEG1 Sustain": {
+        "Amp Sustain": {
           "norm": 1.0
         },
-        "AEG1 Release": {
-          "norm": 0.372
+        "Amp Release": {
+          "display": "25 ms"
         },
-        "F1 Type": "Lowpass",
-        "F1 Freq": {
-          "norm": 0.884
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "9 kHz"
         },
-        "F1 Res": {
+        "Filter 1 Res": {
           "norm": 0.0
         },
-        "OSC2 On": 1,
-        "OSC2 Shape": "Sine",
-        "OSC2 Detune": {
-          "norm": 0.5
+        "Volume": {
+          "display": "-6 dB"
         },
-        "OSC2 Level": {
-          "norm": 0.6
+        "Sub On": "On",
+        "Sub Gain": {
+          "display": "-9 dB"
         }
       }
     }
@@ -166,15 +167,9 @@
     {
       "device": "Overdrive",
       "parameters": {
-        "Drive": {
-          "norm": 0.34
-        },
-        "Tone": {
-          "norm": 0.55
-        },
-        "Dry/Wet": {
-          "norm": 0.7
-        }
+        "Drive": 24,
+        "Tone": 55,
+        "Dry/Wet": 65
       }
     },
     {
@@ -182,38 +177,56 @@
       "parameters": {
         "Mode": "Vibrato",
         "Amount": {
-          "norm": 0.28
+          "display": "22 %"
         },
         "Dry/Wet": {
-          "norm": 0.5
+          "display": "100 %"
         },
         "Rate": {
-          "norm": 0.433
+          "display": "6.7 Hz"
         }
       }
     },
     {
       "device": "Auto Pan",
       "parameters": {
+        "LFO Type": "Frequency",
         "Amount": {
-          "norm": 0.25
+          "display": "14 %"
         },
-        "Rate": {
-          "norm": 0.3347
+        "Frequency": {
+          "display": "6.5 Hz"
         }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
+        "1 Frequency A": {
+          "display": "70 Hz"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "7 kHz"
+        },
+        "7 Gain A": -2.0
       }
     },
     {
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.12
+          "display": "10 %"
         },
         "Decay Time": {
-          "norm": 0.0151
+          "display": "1.2 s"
         },
+        "Chorus On": "Off",
         "Room Size": {
-          "norm": 0.0896
+          "norm": 0.6124
         }
       }
     }
@@ -224,5 +237,5 @@
     "length": 8.0,
     "scale": "mixolydian"
   },
-  "sound_design_notes": "Классическая аддитивная схема (алгоритм 10, четыре синусоиды — «драбары»): D=16', A=8', B=4', C=2⅔' (3-я гармоника) с мгновенно затухающей огибающей = знаменитая перкуссия Hammond. Усиление/гейт: атака 4 мс, сустейн 1.0, релиз 40 мс (клавиши Hammond щёлкают, а не плавно гаснут). Овердрайв = ламповый предусилитель; Лесли имитирован вибрато (Chorus-Ensemble Vibrato ~6.5 Гц) + быстрым Auto Pan."
+  "sound_design_notes": "Классическая аддитивная схема (алгоритм 11, четыре синуса — «драбары»): D = 16', A = 8', B = 4', C = 2⅔' (3-я гармоника) с мгновенно затухающей огибающей (260 мс, сустейн 0) — знаменитая перкуссия Hammond. Огибающие органа: атака 3 мс, сустейн полный, релиз 25 мс — клавиши щёлкают, а не плавно гаснут. Overdrive = ламповый предусилитель; Leslie имитирован вибрато Chorus-Ensemble (режим Vibrato, 100% wet, 6,7 Гц) плюс быстрый Auto Pan 14% — здесь модуляция уместна. Небольшая комната 1,2 с."
 }

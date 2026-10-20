@@ -48,63 +48,97 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 1",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.8
+        "display": "0 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.894
+        "display": "5 s"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.646
+        "display": "1.2 s"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 3,
+      "B Fine": 500,
       "Osc-B Level": {
-        "norm": 0.42
+        "display": "-8 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.815
+        "display": "2.5 s"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.605
+        "display": "600 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
-      "C Coarse": 7,
+      "C Coarse": 1,
+      "C Fine": 410,
       "Osc-C Level": {
-        "norm": 0.14
+        "display": "-18 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.661
+        "display": "700 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.535
+        "display": "300 ms"
       },
+      "Osc-D On": "Off",
+      "Filter On": "Off",
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.8
+        "display": "-7 dB"
+      },
+      "Time < Key": 25
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "1 ms"
+        },
+        "Amp Decay": {
+          "display": "4 s"
+        },
+        "Amp Sustain": {
+          "norm": 0.0
+        },
+        "Amp Release": {
+          "display": "1 s"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "8 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
@@ -112,15 +146,19 @@
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0036
+          "display": "100 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.5452
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
+        "3 Frequency A": {
+          "display": "700 Hz"
+        },
+        "3 Gain A": -1.5,
+        "3 Resonance A": {
+          "display": "1.0"
         }
       }
     },
@@ -128,16 +166,22 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.35
+          "display": "34 %"
         },
         "Decay Time": {
-          "norm": 0.0719
+          "display": "4.5 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "25 ms"
         },
         "Room Size": {
-          "norm": 0.4998
+          "norm": 0.8442
         },
-        "Predelay": {
-          "norm": 0.0701
+        "HiFilter On": "On",
+        "HiFilter Type": "Lowpass",
+        "HiFilter Freq": {
+          "display": "9 kHz"
         }
       }
     }
@@ -148,5 +192,5 @@
     "length": 8.0,
     "scale": "minor"
   },
-  "sound_design_notes": "FM-колокол: A — несущая 1:1, B (×3) и C (×7) — модуляторы с нецелыми для A отношениями относительно друг друга, что даёт негармоничный, «металлический» спектр. Огибающая B затухает вдвое быстрее A, поэтому звук сначала «лязгает», потом остаётся чистым гулом. Релиз 600 мс и реверб 4.5 с — гул колокола."
+  "sound_design_notes": "FM-колокол по цепочке «C→B→A»: A — несущая 1:1 (спад 5 с), B (×3,5) и C (×1,41) — модуляторы с нецелыми отношениями, дающие негармоничный, «металлический» спектр. Огибающая B затухает вдвое быстрее A, поэтому звук сначала «лязгает», потом остаётся чистым гулом; релиз 1,2 с. −1,5 дБ на 700 Гц убирает «картонность». Реверб 4,5 с, 34% — гул колокола в нефе."
 }

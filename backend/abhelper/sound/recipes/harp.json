@@ -45,119 +45,150 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 1",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.82
+        "display": "0 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.794
+        "display": "2.8 s"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.605
+        "display": "400 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 2,
       "Osc-B Level": {
-        "norm": 0.3
+        "display": "-10 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.646
+        "display": "800 ms"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.506
+        "display": "200 ms"
       },
-      "Osc-C On": 1,
-      "Osc-C Wave": "Triangle D",
+      "Osc-C On": "On",
+      "Osc-C Wave": "Triangle",
       "C Coarse": 3,
       "Osc-C Level": {
-        "norm": 0.14
+        "display": "-16 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.506
+        "display": "200 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.429
+        "display": "100 ms"
       },
+      "Osc-D On": "Off",
+      "Filter On": "On",
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "display": "7 kHz"
+      },
+      "Filter Res": 0.0,
+      "Filt < Key": 30,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.82
+        "display": "-6 dB"
+      },
+      "Time < Key": 30
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "1 ms"
+        },
+        "Amp Decay": {
+          "display": "2.5 s"
+        },
+        "Amp Sustain": {
+          "norm": 0.0
+        },
+        "Amp Release": {
+          "display": "400 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "6 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
   "effects": [
     {
-      "device": "Chorus-Ensemble",
-      "parameters": {
-        "Mode": "Classic",
-        "Amount": {
-          "norm": 0.25
-        },
-        "Dry/Wet": {
-          "norm": 0.22
-        }
-      }
-    },
-    {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0045
+          "display": "100 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4998
-        },
-        "3 Filter On A": 1,
-        "3 Filter Type A": 3,
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
         "3 Frequency A": {
-          "norm": 0.1132
+          "display": "2.5 kHz"
         },
-        "3 Gain A": {
-          "norm": 0.55
-        },
+        "3 Gain A": 1.5,
         "3 Resonance A": {
-          "norm": 0.0503
-        }
+          "display": "0.9"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "9 kHz"
+        },
+        "7 Gain A": -3.0
       }
     },
     {
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.3
+          "display": "22 %"
         },
         "Decay Time": {
-          "norm": 0.0468
+          "display": "2.4 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "18 ms"
         },
         "Room Size": {
-          "norm": 0.2997
+          "norm": 0.7629
         },
-        "Predelay": {
-          "norm": 0.0541
+        "HiFilter On": "On",
+        "HiFilter Type": "Lowpass",
+        "HiFilter Freq": {
+          "display": "9 kHz"
         }
       }
     }
@@ -168,5 +199,5 @@
     "length": 8.0,
     "scale": "major"
   },
-  "sound_design_notes": "Щипок арфы — это быстро затухающие верхние гармоники над долгим основным тоном: A (затухание 2.6 с) + B ×2 (600 мс) + C ×3 (150 мс). Нулевая атака и сустейн. Хорус добавляет «дрожание» струн, реверб ~3 с — концертный зал. Арпеджио-демо имитирует глиссандо-арпеджиато."
+  "sound_design_notes": "Щипок арфы — быстро затухающие верхние гармоники над долгим основным тоном: A (затухание 2,8 с) + модулятор B ×2 (800 мс) + C ×3 (200 мс) в цепочке FM. Нулевая атака и сустейн; «Time < Key» 30% укорачивает высокие струны. Хоруса нет — у арфы нет биений. EQ: срез ниже 100 Гц, +1,5 дБ на 2,5 кГц; реверб — небольшой зал 2,4 с, 22%. Арпеджио-демо имитирует глиссандо."
 }

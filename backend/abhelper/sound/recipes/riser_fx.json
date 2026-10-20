@@ -53,94 +53,110 @@
   "instrument": {
     "device": "Analog",
     "fallback_devices": [
-      "Wavetable",
-      "Operator"
+      "Operator",
+      "Wavetable"
     ],
     "parameters": {
-      "OSC1 On": 0,
-      "OSC1 Shape": "Saw",
+      "OSC1 On/Off": "Off",
+      "F1 On/Off": "On",
+      "F1 Type": "Band-pass 12dB/oct",
+      "F1 Freq": {
+        "display": "400 Hz"
+      },
+      "F1 Resonance": {
+        "norm": 0.45
+      },
+      "F1 Freq < Env": 0.6,
+      "AMP1 On/Off": "On",
       "AEG1 Attack": {
-        "norm": 0.878
+        "display": "3.4 s"
       },
       "AEG1 Decay": {
-        "norm": 0.675
+        "display": "2 s"
       },
       "AEG1 Sustain": {
         "norm": 1.0
       },
-      "AEG1 Release": {
-        "norm": 0.646
-      },
-      "F1 Type": "Bandpass",
-      "F1 Freq": {
-        "norm": 0.392
-      },
-      "F1 Res": {
-        "norm": 0.38
-      },
-      "F1 Freq < Env": {
-        "norm": 0.95
+      "AEG1 Rel": {
+        "display": "400 ms"
       },
       "FEG1 Attack": {
-        "norm": 0.887
+        "display": "3.4 s"
       },
       "FEG1 Decay": {
-        "norm": 0.605
+        "display": "2 s"
       },
       "FEG1 Sustain": {
         "norm": 1.0
       },
-      "FEG1 Release": {
-        "norm": 0.628
+      "FEG1 Rel": {
+        "display": "500 ms"
       },
-      "Noise On": 1,
+      "OSC2 On/Off": "Off",
+      "F2 On/Off": "Off",
+      "AMP2 On/Off": "Off",
+      "Noise On/Off": "On",
       "Noise Level": {
-        "norm": 0.85
+        "display": "-6 dB"
+      },
+      "Noise Color": {
+        "norm": 0.7
+      },
+      "Unison On/Off": "Off",
+      "Vib On/Off": "Off",
+      "Glide On/Off": "Off",
+      "Volume": {
+        "display": "-8 dB"
       }
     },
     "fallback_parameters": {
       "Operator": {
-        "Algorithm": 10,
-        "Osc-A On": 1,
+        "Algorithm": "Alg. 11",
+        "Osc-A On": "On",
         "Osc-A Wave": "Noise White",
         "A Coarse": 1,
         "Osc-A Level": {
-          "norm": 0.7
+          "display": "-3 dB"
         },
+        "Ae Init": 0.0,
         "Ae Attack": {
-          "norm": 0.878
+          "display": "3.4 s"
         },
+        "Ae Peak": 1.0,
         "Ae Decay": {
-          "norm": 0.675
+          "display": "2 s"
         },
-        "Ae Sustain": {
-          "norm": 1.0
-        },
+        "Ae Sustain": 1.0,
         "Ae Release": {
-          "norm": 0.646
+          "display": "400 ms"
         },
-        "Filter On": 1,
+        "Osc-B On": "Off",
+        "Osc-C On": "Off",
+        "Osc-D On": "Off",
+        "Filter On": "On",
         "Filter Type": "Bandpass",
         "Filter Freq": {
-          "norm": 0.392
+          "display": "400 Hz"
         },
-        "Filter Res": {
-          "norm": 0.35
-        },
-        "Fe Amount": {
-          "norm": 0.95
-        },
+        "Filter Res": 0.35,
+        "Fe Amount": 60,
+        "Fe Init": 0.0,
         "Fe Attack": {
-          "norm": 0.887
+          "display": "3.4 s"
         },
+        "Fe Peak": 1.0,
         "Fe Decay": {
-          "norm": 0.605
+          "display": "2 s"
         },
-        "Fe Sustain": {
-          "norm": 1.0
-        },
+        "Fe Sustain": 1.0,
         "Fe Release": {
-          "norm": 0.628
+          "display": "500 ms"
+        },
+        "Fe End": 0.0,
+        "LFO On": "Off",
+        "Glide On": "Off",
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
@@ -150,17 +166,18 @@
       "device": "Phaser-Flanger",
       "parameters": {
         "Mode": "Flanger",
-        "Rate": {
-          "norm": 0.021
+        "Mod Sync": "Off",
+        "Mod Freq": {
+          "display": "0.2 Hz"
         },
         "Amount": {
-          "norm": 0.7
+          "display": "70 %"
         },
         "Feedback": {
-          "norm": 0.6111
+          "display": "55 %"
         },
         "Dry/Wet": {
-          "norm": 0.35
+          "display": "35 %"
         }
       }
     },
@@ -168,21 +185,22 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.3
+          "display": "30 %"
         },
         "Decay Time": {
-          "norm": 0.0468
+          "display": "3 s"
         },
+        "Chorus On": "Off",
         "Room Size": {
-          "norm": 0.3597
+          "norm": 0.7918
         }
       }
     },
     {
       "device": "Utility",
       "parameters": {
-        "Width": {
-          "norm": 0.7
+        "Stereo Width": {
+          "display": "140 %"
         }
       }
     }
@@ -192,5 +210,5 @@
     "root": 60,
     "length": 8.0
   },
-  "sound_design_notes": "Весь рост происходит за ОДНУ длинную ноту (демо — 7.2 доли): атака усилителя ~6 с поднимает громкость, а огибающая фильтра (атака 6.5 с, амплитуда +90%) открывает полосовой фильтр от 300 Гц к верхам — классический шумовой свип. Шум включён, тональные осцилляторы выключены. Flanger добавляет «реактивность», Reverb — дымку, Utility Width — ширину. Для более быстрого райзера уменьшите время атаки."
+  "sound_design_notes": "Весь рост происходит за ОДНУ длинную ноту (демо — 7,2 доли): атака усилителя 3,4 с поднимает громкость, а огибающая фильтра (атака 3,4 с, +6 октав) открывает полосовой фильтр от 400 Гц к верхам — классический шумовой свип. Тональные осцилляторы выключены, работает шум. Flanger добавляет «реактивность», Reverb — дымку, Utility Width 140% — ширину. Для более быстрого райзера уменьшите атаки."
 }

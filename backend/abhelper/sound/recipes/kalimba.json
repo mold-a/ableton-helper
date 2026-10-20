@@ -44,105 +44,136 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.85
+        "display": "0 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.698
+        "display": "1.1 s"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.483
+        "display": "200 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
-      "B Coarse": 5,
+      "B Coarse": 6,
       "Osc-B Level": {
-        "norm": 0.2
+        "display": "-18 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.491
+        "display": "90 ms"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.395
+        "display": "50 ms"
       },
-      "Osc-C On": 1,
-      "Osc-C Wave": "Triangle D",
-      "C Coarse": 3,
+      "Osc-C On": "On",
+      "Osc-C Wave": "Noise White",
+      "C Coarse": 1,
       "Osc-C Level": {
-        "norm": 0.1
+        "display": "-32 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.561
+        "display": "15 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.429
+        "display": "10 ms"
       },
+      "Osc-D On": "Off",
+      "Filter On": "On",
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "display": "6 kHz"
+      },
+      "Filter Res": 0.0,
+      "Filt < Key": 30,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.82
+        "display": "-7 dB"
+      },
+      "Time < Key": 25
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "1 ms"
+        },
+        "Amp Decay": {
+          "display": "1.1 s"
+        },
+        "Amp Sustain": {
+          "norm": 0.0
+        },
+        "Amp Release": {
+          "display": "200 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "6 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
   "effects": [
     {
-      "device": "Corpus",
-      "parameters": {
-        "Resonance Type": "Beam",
-        "Dry/Wet": {
-          "norm": 0.25
-        },
-        "Decay": {
-          "norm": 0.4
-        },
-        "Brightness": {
-          "norm": 0.6
-        }
-      }
-    },
-    {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0086
+          "display": "150 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4543
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
+        "3 Frequency A": {
+          "display": "2 kHz"
+        },
+        "3 Gain A": 1.5,
+        "3 Resonance A": {
+          "display": "1.0"
         }
       }
     },
     {
       "device": "Delay",
       "parameters": {
-        "Dry/Wet": {
-          "norm": 0.2
-        },
+        "L Sync": "On",
+        "R Sync": "On",
+        "L 16th": "3",
+        "R 16th": "4",
         "Feedback": {
-          "norm": 0.3684
+          "display": "30 %"
+        },
+        "Dry/Wet": {
+          "display": "10 %"
         }
       }
     },
@@ -150,13 +181,17 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.18
+          "display": "18 %"
         },
         "Decay Time": {
-          "norm": 0.0268
+          "display": "1.5 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "10 ms"
         },
         "Room Size": {
-          "norm": 0.1796
+          "norm": 0.636
         }
       }
     }
@@ -167,5 +202,5 @@
     "length": 8.0,
     "scale": "major"
   },
-  "sound_design_notes": "Калимба — основной тон и яркий короткий «щелчок» высоких гармоник. B (×5) живёт ~130 мс: это стук язычка. Corpus Beam имитирует деревянный резонаторный корпус. Delay с 35% обратной связи — лёгкая «пещерность». Играйте в диапазоне C4–C6."
+  "sound_design_notes": "Калимба — основной тон языка и яркий короткий «пинг» металла: B (×6, 90 мс) — звон язычка, шумовой щелчок 15 мс — удар большого пальца. Корпус-резонатор имитирует EQ (+1,5 дБ на 2 кГц) и небольшая комната. Лёгкое эхо (10%, 30%) — «пещерность». Играйте в диапазоне C4–C6."
 }

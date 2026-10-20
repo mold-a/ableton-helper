@@ -60,37 +60,36 @@
     {
       "device": "Drum Buss",
       "parameters": {
+        "Compressor On": "On",
         "Drive": {
-          "norm": 0.2
+          "display": "20 %"
         },
+        "Drive Type": "Medium",
         "Crunch": {
-          "norm": 0.25
+          "display": "25 %"
         },
-        "Boom": {
-          "norm": 0.3
+        "Boom Amt": {
+          "display": "30 %"
         },
-        "Transients": {
-          "norm": 0.55
+        "Boom Freq": {
+          "display": "55 Hz"
         },
+        "Transients": 0.25,
         "Dry/Wet": {
-          "norm": 1.0
+          "display": "100 %"
         }
       }
     },
     {
       "device": "Glue Compressor",
       "parameters": {
-        "Threshold": {
-          "norm": 0.65
-        },
-        "Ratio": "4",
-        "Attack": "10",
-        "Release": "0.2",
-        "Makeup": {
-          "norm": 0.1
-        },
+        "Threshold": -18.0,
+        "Ratio": 1,
+        "Attack": 5,
+        "Release": 1,
+        "Makeup": 2.0,
         "Dry/Wet": {
-          "norm": 1.0
+          "display": "100 %"
         }
       }
     }
@@ -100,5 +99,5 @@
     "length": 8.0,
     "variant": "trap"
   },
-  "sound_design_notes": "Drum Rack — контейнер без собственных параметров синтеза; сам кит нужно брать из браузера Live (пресет «808 Core Kit» и т. п.) — стратегия auto так и делает. Если пресета нет, создаётся пустой Drum Rack: перетащите сэмплы вручную. Обработка: Drum Buss (Drive, Crunch и Boom) для плотности низов, Glue Compressor (4:1, атака 10 мс) склеивает. Демо — трэп (полутакт): кик 36, снейр/клэп 38/39 на 3-й доле, хэты 42/46 с роллами."
+  "sound_design_notes": "Drum Rack — контейнер без собственных параметров синтеза; сам кит нужно брать из браузера Live (пресет «808 Core Kit» и т. п.) — стратегия auto так и делает. Если пресета нет, создаётся пустой Drum Rack: перетащите сэмплы вручную. Обработка: Drum Buss (Drive 20%, Crunch 25%, Boom 30% на 55 Гц, Transients +25%, компрессор) для плотности низов, Glue Compressor (4:1, атака 10 мс, релиз 0,2 с) склеивает. Демо — трэп (полутакт): кик 36, снейр/клэп 38/39 на 3-й доле, хэты 42/46 с роллами."
 }

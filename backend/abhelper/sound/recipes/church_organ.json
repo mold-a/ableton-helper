@@ -47,89 +47,120 @@
       "Analog"
     ],
     "parameters": {
-      "Algorithm": 10,
-      "Osc-A On": 1,
-      "Osc-A Wave": "Square 6",
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
+      "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.58
+        "display": "-3 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.429
+        "display": "70 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.576
+        "display": "200 ms"
       },
-      "Ae Sustain": {
-        "norm": 1.0
-      },
+      "Ae Sustain": 1.0,
       "Ae Release": {
-        "norm": 0.61
+        "display": "380 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 2,
       "Osc-B Level": {
-        "norm": 0.5
+        "display": "-7 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.436
+        "display": "75 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.576
+        "display": "200 ms"
       },
-      "Be Sustain": {
-        "norm": 1.0
-      },
+      "Be Sustain": 1.0,
       "Be Release": {
-        "norm": 0.61
+        "display": "380 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
-      "C Coarse": 4,
+      "C Coarse": 3,
       "Osc-C Level": {
-        "norm": 0.3
+        "display": "-12 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.442
+        "display": "85 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.576
+        "display": "200 ms"
       },
-      "Ce Sustain": {
-        "norm": 1.0
-      },
+      "Ce Sustain": 1.0,
       "Ce Release": {
-        "norm": 0.61
+        "display": "380 ms"
       },
-      "Osc-D On": 1,
-      "Osc-D Wave": "Square 4",
+      "Osc-D On": "On",
+      "Osc-D Wave": "Triangle",
       "D Coarse": 0,
       "Osc-D Level": {
-        "norm": 0.46
+        "display": "-8 dB"
       },
+      "De Init": 0.0,
       "De Attack": {
-        "norm": 0.422
+        "display": "95 ms"
       },
+      "De Peak": 1.0,
       "De Decay": {
-        "norm": 0.576
+        "display": "200 ms"
       },
-      "De Sustain": {
-        "norm": 1.0
-      },
+      "De Sustain": 1.0,
       "De Release": {
-        "norm": 0.61
+        "display": "420 ms"
       },
-      "Filter On": 1,
+      "Filter On": "On",
       "Filter Type": "Lowpass",
       "Filter Freq": {
-        "norm": 0.805
+        "display": "7.5 kHz"
       },
-      "Filter Res": {
-        "norm": 0.0
-      },
+      "Filter Res": 0.0,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.78
+        "display": "-8 dB"
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "70 ms"
+        },
+        "Amp Decay": {
+          "display": "200 ms"
+        },
+        "Amp Sustain": {
+          "norm": 1.0
+        },
+        "Amp Release": {
+          "display": "380 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "7 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        },
+        "Sub On": "On",
+        "Sub Gain": {
+          "display": "-9 dB"
+        }
       }
     }
   },
@@ -139,42 +170,52 @@
       "parameters": {
         "Mode": "Ensemble",
         "Amount": {
-          "norm": 0.22
+          "display": "18 %"
         },
         "Dry/Wet": {
-          "norm": 0.22
+          "display": "22 %"
+        },
+        "Warmth": {
+          "display": "20 %"
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0016
+          "display": "40 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4316
-        }
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "9 kHz"
+        },
+        "7 Gain A": -3.0
       }
     },
     {
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.38
+          "display": "38 %"
         },
         "Decay Time": {
-          "norm": 0.1054
+          "display": "6 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "28 ms"
         },
         "Room Size": {
-          "norm": 0.7599
+          "norm": 0.9103
         },
-        "Predelay": {
-          "norm": 0.0862
+        "HiFilter On": "On",
+        "HiFilter Type": "Lowpass",
+        "HiFilter Freq": {
+          "display": "6 kHz"
         }
       }
     }
@@ -185,5 +226,5 @@
     "length": 16.0,
     "scale": "minor"
   },
-  "sound_design_notes": "Лабиальные трубы богаты гармониками: A и D — квадраты (8' и 16'), B и C — синусы 4' и 2' (принципал и октава). Атака 70–80 мс и долгий релиз 420 мс — воздух наполняет трубу и звук уходит в акустику. Главное — реверб: ~6.5 с, большой размер, предзадержка 22 мс. Лёгкий Ensemble-хорус добавляет «живое» биение рядов."
+  "sound_design_notes": "Лабиальные трубы богаты гармониками, но без «пилы»: аддитивные синусы 8' (A), 4' (B), 2⅔' (C) и треугольник 16' (D) (алгоритм 11). Атака 70–95 мс — нижние трубы «говорят» с задержкой, чем выше гармоника, тем позже она вступает; релиз 400 мс — звук уходит в акустику. Главное — собор: реверб 6 с, 38%, большой размер, предзадержка 28 мс, верх срезан на 6 кГц. Лёгкий Ensemble 22% — слабое биение рядов (селеста)."
 }

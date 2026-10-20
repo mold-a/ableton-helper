@@ -58,69 +58,95 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 10,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.9
+        "display": "-2 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.111
+        "display": "4 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.576
+        "display": "300 ms"
       },
-      "Ae Sustain": {
-        "norm": 0.92
-      },
+      "Ae Sustain": 1.0,
       "Ae Release": {
-        "norm": 0.442
+        "display": "90 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 2,
       "Osc-B Level": {
-        "norm": 0.12
+        "display": "-20 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.111
+        "display": "4 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.535
+        "display": "300 ms"
       },
       "Be Sustain": {
         "norm": 0.7
       },
       "Be Release": {
-        "norm": 0.442
+        "display": "90 ms"
       },
+      "Osc-C On": "Off",
+      "Osc-D On": "Off",
+      "Filter On": "Off",
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.82
+        "display": "-6 dB"
       }
     },
     "fallback_parameters": {
       "Analog": {
-        "OSC1 On": 1,
+        "Voices": "Mono",
+        "OSC1 On/Off": "On",
         "OSC1 Shape": "Sine",
+        "OSC1 Octave": 0,
+        "OSC1 Semi": 0,
+        "OSC1 Level": {
+          "display": "-3 dB"
+        },
+        "F1 On/Off": "On",
+        "F1 Type": "Low-pass 12dB/oct",
+        "F1 Freq": {
+          "display": "1.5 kHz"
+        },
+        "F1 Resonance": {
+          "norm": 0.0
+        },
+        "F1 Freq < Key": 0.0,
+        "AMP1 On/Off": "On",
         "AEG1 Attack": {
-          "norm": 0.111
+          "display": "4 ms"
         },
         "AEG1 Decay": {
-          "norm": 0.576
+          "display": "300 ms"
         },
         "AEG1 Sustain": {
           "norm": 0.92
         },
-        "AEG1 Release": {
-          "norm": 0.442
+        "AEG1 Rel": {
+          "display": "90 ms"
         },
-        "F1 Type": "Lowpass",
-        "F1 Freq": {
-          "norm": 0.767
-        },
-        "F1 Res": {
-          "norm": 0.0
+        "OSC2 On/Off": "Off",
+        "F2 On/Off": "Off",
+        "AMP2 On/Off": "Off",
+        "Noise On/Off": "Off",
+        "Unison On/Off": "Off",
+        "Vib On/Off": "Off",
+        "Glide On/Off": "Off",
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
@@ -130,50 +156,49 @@
       "device": "Saturator",
       "parameters": {
         "Type": "Soft Sine",
-        "Drive": {
-          "norm": 0.5833
-        },
+        "Drive": 6.0,
         "Dry/Wet": {
-          "norm": 0.55
-        }
+          "display": "40 %"
+        },
+        "Output": -3.0
       }
     },
     {
       "device": "Compressor",
       "parameters": {
         "Threshold": {
-          "norm": 0.1998
+          "display": "-16 dB"
         },
         "Attack": {
-          "norm": 0.01
+          "display": "10 ms"
         },
         "Release": {
-          "norm": 0.033
+          "display": "100 ms"
         },
         "Dry/Wet": {
-          "norm": 1.0
+          "display": "100 %"
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 48dB",
         "1 Frequency A": {
-          "norm": 0.0008
+          "display": "28 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.136
+        "7 Filter On A": "On",
+        "7 Filter Type A": "Low Pass 12dB",
+        "7 Frequency A": {
+          "display": "3 kHz"
         }
       }
     },
     {
       "device": "Utility",
       "parameters": {
-        "Bass Mono": 1
+        "Mono": "On"
       }
     }
   ],
@@ -183,5 +208,5 @@
     "length": 8.0,
     "scale": "minor"
   },
-  "sound_design_notes": "Синус — единственный «чистый» звук для суб-диапазона. Тихая 2-я гармоника (12%) и Soft-Sine сатурация (55%) делают бас слышимым на маленьких колонках. Атака 3 мс, без клика. Компрессор выравнивает, EQ срезает инфразвук <28 Гц и всё выше 3 кГц; Utility Bass Mono гарантирует моно-низ. Играйте C1–C2."
+  "sound_design_notes": "Синус — единственный «чистый» звук для суб-диапазона. Тихая 2-я гармоника (−20 дБ) и Soft-Sine сатурация (6 дБ, 40%) делают бас слышимым на маленьких колонках. Атака 4 мс — без клика. Компрессор выравнивает, EQ срезает инфразвук ниже 28 Гц (48 дБ/окт) и всё выше 3 кГц; Utility в моно гарантирует центр. Играйте C1–C2."
 }

@@ -56,17 +56,13 @@
     {
       "device": "Glue Compressor",
       "parameters": {
-        "Threshold": {
-          "norm": 0.7
-        },
-        "Ratio": "2",
-        "Attack": "30",
-        "Release": "0.2",
-        "Makeup": {
-          "norm": 0.05
-        },
+        "Threshold": -14.0,
+        "Ratio": 0,
+        "Attack": 6,
+        "Release": 1,
+        "Makeup": 1.0,
         "Dry/Wet": {
-          "norm": 0.6
+          "display": "60 %"
         }
       }
     },
@@ -74,13 +70,14 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.1
+          "display": "10 %"
         },
         "Decay Time": {
-          "norm": 0.0117
+          "display": "0.8 s"
         },
+        "Chorus On": "Off",
         "Room Size": {
-          "norm": 0.0896
+          "norm": 0.5174
         }
       }
     }
@@ -90,5 +87,5 @@
     "length": 8.0,
     "variant": "rock"
   },
-  "sound_design_notes": "Как и у любого кита, звук берётся из пресета Drum Rack в браузере («Studio Kit», «Rock Kit» и т. п.); без пресета создаётся пустой рэк. Склейка Glue Compressor (2:1, параллельно 60%) оживляет ударные, короткая комната — воздух. Демо — рок-грув: кик на 1 и 3 (с синкопой), снейр на 2 и 4, 8-е хэты."
+  "sound_design_notes": "Как и у любого кита, звук берётся из пресета Drum Rack в браузере («Studio Kit», «Rock Kit» и т. п.); без пресета создаётся пустой рэк. Параллельная склейка Glue Compressor (2:1, атака 30 мс, релиз 0,2 с, 60% wet) оживляет ударные, короткая комната 0,8 с — воздух. Демо — рок-грув: кик на 1 и 3 (с синкопой), снейр на 2 и 4, 8-е хэты."
 }

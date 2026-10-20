@@ -57,92 +57,118 @@
       "Wavetable"
     ],
     "parameters": {
-      "OSC1 On": 1,
+      "Voices": "Mono",
+      "OSC1 On/Off": "On",
       "OSC1 Shape": "Saw",
+      "OSC1 Octave": 0,
+      "OSC1 Semi": 0,
+      "OSC1 Level": {
+        "display": "-3 dB"
+      },
+      "F1 On/Off": "On",
+      "F1 Type": "Low-pass 24dB/oct",
+      "F1 Freq": {
+        "display": "300 Hz"
+      },
+      "F1 Resonance": {
+        "norm": 0.72
+      },
+      "F1 Freq < Env": 0.45,
+      "F1 Freq < Key": 0.3,
+      "AMP1 On/Off": "On",
       "AEG1 Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
       "AEG1 Decay": {
-        "norm": 0.561
+        "display": "1.5 s"
       },
       "AEG1 Sustain": {
-        "norm": 0.0
+        "norm": 0.75
       },
-      "AEG1 Release": {
-        "norm": 0.429
-      },
-      "F1 Type": "Lowpass",
-      "F1 Freq": {
-        "norm": 0.451
-      },
-      "F1 Res": {
-        "norm": 0.78
-      },
-      "F1 Freq < Env": {
-        "norm": 0.875
+      "AEG1 Rel": {
+        "display": "60 ms"
       },
       "FEG1 Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
       "FEG1 Decay": {
-        "norm": 0.549
+        "display": "220 ms"
       },
       "FEG1 Sustain": {
         "norm": 0.0
       },
-      "FEG1 Release": {
-        "norm": 0.429
+      "FEG1 Rel": {
+        "display": "120 ms"
       },
+      "OSC2 On/Off": "Off",
+      "F2 On/Off": "Off",
+      "AMP2 On/Off": "Off",
+      "Noise On/Off": "Off",
+      "Unison On/Off": "Off",
+      "Vib On/Off": "Off",
+      "Glide On/Off": "On",
       "Glide Time": {
-        "norm": 0.14
+        "display": "55 ms"
+      },
+      "Glide Legato": "Off",
+      "Volume": {
+        "display": "-6 dB"
       }
     },
     "fallback_parameters": {
       "Operator": {
-        "Algorithm": 10,
-        "Osc-A On": 1,
+        "Algorithm": "Alg. 11",
+        "Osc-A On": "On",
         "Osc-A Wave": "Saw 16",
         "A Coarse": 1,
         "Osc-A Level": {
-          "norm": 0.8
+          "display": "-3 dB"
         },
+        "Ae Init": 0.0,
         "Ae Attack": {
-          "norm": 0.0
+          "display": "1 ms"
         },
+        "Ae Peak": 1.0,
         "Ae Decay": {
-          "norm": 0.561
+          "display": "1.5 s"
         },
         "Ae Sustain": {
-          "norm": 0.0
+          "norm": 0.75
         },
         "Ae Release": {
-          "norm": 0.429
+          "display": "60 ms"
         },
-        "Filter On": 1,
+        "Osc-B On": "Off",
+        "Osc-C On": "Off",
+        "Osc-D On": "Off",
+        "Filter On": "On",
         "Filter Type": "Lowpass",
         "Filter Freq": {
-          "norm": 0.451
+          "display": "300 Hz"
         },
-        "Filter Res": {
-          "norm": 0.7
-        },
-        "Fe Amount": {
-          "norm": 0.85
-        },
+        "Filter Res": 0.7,
+        "Filter Slope": "24 dB",
+        "Fe Amount": 45,
+        "Fe Init": 0.0,
         "Fe Attack": {
-          "norm": 0.0
+          "display": "1 ms"
         },
+        "Fe Peak": 1.0,
         "Fe Decay": {
-          "norm": 0.549
+          "display": "220 ms"
         },
-        "Fe Sustain": {
-          "norm": 0.0
-        },
+        "Fe Sustain": 0.0,
         "Fe Release": {
-          "norm": 0.429
+          "display": "120 ms"
+        },
+        "Fe End": 0.0,
+        "LFO On": "Off",
+        "Glide On": "On",
+        "Volume": {
+          "display": "-6 dB"
         },
         "Glide Time": {
-          "norm": 0.14
+          "display": "55 ms"
         }
       }
     }
@@ -151,40 +177,42 @@
     {
       "device": "Overdrive",
       "parameters": {
-        "Drive": {
-          "norm": 0.52
-        },
-        "Tone": {
-          "norm": 0.6
-        },
-        "Dry/Wet": {
-          "norm": 0.75
-        }
+        "Drive": 55,
+        "Tone": 60,
+        "Dry/Wet": 80
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0016
+          "display": "40 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4088
+        "7 Filter On A": "On",
+        "7 Filter Type A": "Low Pass 12dB",
+        "7 Frequency A": {
+          "display": "6 kHz"
         }
       }
     },
     {
       "device": "Delay",
       "parameters": {
-        "Dry/Wet": {
-          "norm": 0.18
-        },
+        "L Sync": "On",
+        "R Sync": "On",
+        "L 16th": "3",
+        "R 16th": "4",
         "Feedback": {
-          "norm": 0.4211
+          "display": "35 %"
+        },
+        "Dry/Wet": {
+          "display": "18 %"
+        },
+        "Filter On": "On",
+        "Filter Freq": {
+          "display": "1.8 kHz"
         }
       }
     },
@@ -192,10 +220,14 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.08
+          "display": "8 %"
         },
         "Decay Time": {
-          "norm": 0.01
+          "display": "0.9 s"
+        },
+        "Chorus On": "Off",
+        "Room Size": {
+          "norm": 0.5463
         }
       }
     }
@@ -206,5 +238,5 @@
     "length": 8.0,
     "scale": "phrygian"
   },
-  "sound_design_notes": "303: пила → резонансный НЧ-фильтр (Res 78%) со стартом 450 Гц и мощной огибающей (+75%, спад 230 мс) = «скуилч». Сустейн усилителя 0 — каждая нота обрывается. Glide (портаменто) связывает ноты. Overdrive 52% — дисторшн, Delay — эхо в стиле хауса. Демо во фригийском ладу (C – Db – C – Bb), классическом для эйсида."
+  "sound_design_notes": "303: пила → резонансный ФНЧ 24 дБ (Res 72%) со стартом 300 Гц и мощной огибающей (+4,5 октавы, спад 220 мс) = «скуилч». Моно-голос с глайдом 55 мс связывает ноты. Усилитель держит ноту (сустейн 75%) и быстро отпускает (60 мс). Overdrive 55/60 — дисторшн, тёмное эхо Delay — хаус-приём. Демо во фригийском ладу (C – Db – C – Bb), классическом для эйсида."
 }

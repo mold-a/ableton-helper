@@ -54,69 +54,93 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 10,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.9
+        "display": "0 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.553
+        "display": "240 ms"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.429
+        "display": "120 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 2,
       "Osc-B Level": {
-        "norm": 0.32
+        "display": "-14 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.0
+        "display": "1 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.384
+        "display": "80 ms"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.343
+        "display": "60 ms"
       },
+      "Osc-C On": "Off",
+      "Osc-D On": "Off",
+      "Filter On": "Off",
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.84
+        "display": "-6 dB"
       }
     },
     "fallback_parameters": {
       "Analog": {
-        "OSC1 On": 1,
+        "Voices": "Mono",
+        "OSC1 On/Off": "On",
         "OSC1 Shape": "Sine",
-        "AEG1 Attack": {
+        "OSC1 Octave": 0,
+        "OSC1 Semi": 0,
+        "OSC1 Level": {
+          "display": "-3 dB"
+        },
+        "F1 On/Off": "On",
+        "F1 Type": "Low-pass 12dB/oct",
+        "F1 Freq": {
+          "display": "2 kHz"
+        },
+        "F1 Resonance": {
           "norm": 0.0
         },
+        "F1 Freq < Key": 0.0,
+        "AMP1 On/Off": "On",
+        "AEG1 Attack": {
+          "display": "1 ms"
+        },
         "AEG1 Decay": {
-          "norm": 0.553
+          "display": "240 ms"
         },
         "AEG1 Sustain": {
           "norm": 0.0
         },
-        "AEG1 Release": {
-          "norm": 0.429
+        "AEG1 Rel": {
+          "display": "120 ms"
         },
-        "F1 Type": "Lowpass",
-        "F1 Freq": {
-          "norm": 0.725
-        },
-        "F1 Res": {
-          "norm": 0.0
+        "OSC2 On/Off": "Off",
+        "F2 On/Off": "Off",
+        "AMP2 On/Off": "Off",
+        "Noise On/Off": "Off",
+        "Unison On/Off": "Off",
+        "Vib On/Off": "Off",
+        "Glide On/Off": "Off",
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
@@ -126,31 +150,29 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.85
+          "display": "85 %"
         },
         "Decay Time": {
-          "norm": 0.0368
+          "display": "2.4 s"
         },
+        "Chorus On": "Off",
         "Room Size": {
-          "norm": 0.3197
-        },
-        "Predelay": {
-          "norm": 0.022
+          "norm": 0.7257
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0009
+          "display": "35 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.0077
+        "7 Filter On A": "On",
+        "7 Filter Type A": "Low Pass 48dB",
+        "7 Frequency A": {
+          "display": "170 Hz"
         }
       }
     },
@@ -158,35 +180,37 @@
       "device": "Saturator",
       "parameters": {
         "Type": "Medium Curve",
-        "Drive": {
-          "norm": 0.6528
-        },
+        "Drive": 8.0,
         "Dry/Wet": {
-          "norm": 0.6
-        }
+          "display": "55 %"
+        },
+        "Output": -3.0
       }
     },
     {
       "device": "Compressor",
       "parameters": {
         "Threshold": {
-          "norm": 0.1197
+          "display": "-24 dB"
         },
         "Attack": {
-          "norm": 0.001
+          "display": "1 ms"
         },
         "Release": {
-          "norm": 0.0297
+          "display": "80 ms"
         },
         "Dry/Wet": {
-          "norm": 1.0
+          "display": "100 %"
         }
       }
     },
     {
       "device": "Utility",
       "parameters": {
-        "Bass Mono": 1
+        "Bass Mono": "On",
+        "Bass Freq": {
+          "display": "200 Hz"
+        }
       }
     }
   ],
@@ -197,5 +221,5 @@
     "scale": "phrygian",
     "variant": "four_on_floor"
   },
-  "sound_design_notes": "Рамбл рождается из хвоста реверба: короткий синусный «удар» (240 мс) гонится в реверб с 85% wet и 2.4 с затухания, потом EQ оставляет только <180 Гц — получается низкий «гул» между ударами кика. Сатурация склеивает, компрессор (threshold ~0.12) делает «пампинг». Играйте ноты на офф-битах (демо так и записано). Подмешайте к кику через сайдчейн для настоящего техно-эффекта."
+  "sound_design_notes": "Рамбл рождается из хвоста реверба: короткий синусный «удар» (240 мс) гонится в реверб с 85% wet и 2,4 с затухания, потом EQ (ФНЧ 48 дБ/окт на 170 Гц) оставляет только низ — получается «гул» между ударами кика. Сатурация склеивает, компрессор (−24 дБ, атака 1 мс) делает «пампинг». Играйте ноты на офф-битах (демо так и записано). Подмешайте к кику через сайдчейн для настоящего техно-эффекта."
 }

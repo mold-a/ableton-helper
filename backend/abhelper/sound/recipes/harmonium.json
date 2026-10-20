@@ -22,8 +22,8 @@
     "acoustic"
   ],
   "description": {
-    "ru": "Педальный язычковый орган: тёплые, чуть расстроенные язычки, медленная атака.",
-    "en": "Pump/reed organ: warm, slightly detuned reeds, gentle attack."
+    "ru": "Педальный язычковый орган: тёплые язычки 8′ + 16′, медленная атака, лёгкая нестабильность воздуха.",
+    "en": "Pump/reed organ: warm 8' + 16' reeds, gentle attack and a slight wind flutter."
   },
   "preset_search": [
     "harmonium",
@@ -42,170 +42,228 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 10,
-      "Osc-A On": 1,
-      "Osc-A Wave": "Saw D",
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
+      "Osc-A Wave": "Saw 16",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.5
+        "display": "-3 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.405
+        "display": "55 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.576
+        "display": "300 ms"
       },
-      "Ae Sustain": {
-        "norm": 1.0
-      },
+      "Ae Sustain": 1.0,
       "Ae Release": {
-        "norm": 0.491
+        "display": "160 ms"
       },
-      "Osc-B On": 1,
-      "Osc-B Wave": "Square D",
+      "Osc-B On": "On",
+      "Osc-B Wave": "Saw 16",
       "B Coarse": 1,
+      "B Fine": 3,
       "Osc-B Level": {
-        "norm": 0.38
+        "display": "-5 dB"
       },
-      "B Fine": {
-        "norm": 0.008
-      },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.405
+        "display": "55 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.576
+        "display": "300 ms"
       },
-      "Be Sustain": {
-        "norm": 1.0
-      },
+      "Be Sustain": 1.0,
       "Be Release": {
-        "norm": 0.491
+        "display": "160 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Saw 8",
       "C Coarse": 2,
       "Osc-C Level": {
-        "norm": 0.2
+        "display": "-14 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.413
+        "display": "60 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.576
+        "display": "300 ms"
       },
-      "Ce Sustain": {
-        "norm": 1.0
-      },
+      "Ce Sustain": 1.0,
       "Ce Release": {
-        "norm": 0.499
+        "display": "160 ms"
       },
-      "Osc-D On": 1,
-      "Osc-D Wave": "Square 4",
+      "Osc-D On": "On",
+      "Osc-D Wave": "Square 8",
       "D Coarse": 0,
       "Osc-D Level": {
-        "norm": 0.18
+        "display": "-9 dB"
       },
+      "De Init": 0.0,
       "De Attack": {
-        "norm": 0.422
+        "display": "65 ms"
       },
+      "De Peak": 1.0,
       "De Decay": {
-        "norm": 0.576
+        "display": "300 ms"
       },
-      "De Sustain": {
-        "norm": 1.0
-      },
+      "De Sustain": 1.0,
       "De Release": {
-        "norm": 0.506
+        "display": "180 ms"
       },
-      "Filter On": 1,
+      "Filter On": "On",
       "Filter Type": "Lowpass",
       "Filter Freq": {
-        "norm": 0.674
+        "display": "3.4 kHz"
       },
-      "Filter Res": {
-        "norm": 0.06
-      },
+      "Filter Res": 0.05,
+      "Filt < Key": 20,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.8
+        "display": "-8 dB"
       }
     },
     "fallback_parameters": {
       "Analog": {
-        "OSC1 On": 1,
+        "OSC1 On/Off": "On",
         "OSC1 Shape": "Saw",
+        "OSC1 Octave": 0,
+        "OSC1 Semi": 0,
+        "OSC1 Level": {
+          "display": "-4 dB"
+        },
+        "F1 On/Off": "On",
+        "F1 Type": "Low-pass 12dB/oct",
+        "F1 Freq": {
+          "display": "3.4 kHz"
+        },
+        "F1 Resonance": {
+          "norm": 0.05
+        },
+        "F1 Freq < Key": 0.3,
+        "AMP1 On/Off": "On",
         "AEG1 Attack": {
-          "norm": 0.405
+          "display": "55 ms"
         },
         "AEG1 Decay": {
-          "norm": 0.576
+          "display": "300 ms"
         },
         "AEG1 Sustain": {
           "norm": 1.0
         },
-        "AEG1 Release": {
-          "norm": 0.491
+        "AEG1 Rel": {
+          "display": "160 ms"
         },
-        "F1 Type": "Lowpass",
-        "F1 Freq": {
-          "norm": 0.674
-        },
-        "F1 Res": {
-          "norm": 0.06
-        },
-        "OSC2 On": 1,
-        "OSC2 Shape": "Rectangle",
-        "OSC2 Detune": {
-          "norm": 0.55
-        },
+        "OSC2 On/Off": "On",
+        "OSC2 Shape": "Saw",
+        "OSC2 Octave": 0,
+        "OSC2 Semi": 0,
         "OSC2 Level": {
-          "norm": 0.55
+          "display": "-8 dB"
+        },
+        "OSC2 Detune": {
+          "norm": 0.505
+        },
+        "F2 On/Off": "On",
+        "F2 Type": "Low-pass 12dB/oct",
+        "F2 Freq": {
+          "display": "3.4 kHz"
+        },
+        "F2 Resonance": {
+          "norm": 0.05
+        },
+        "F2 Freq < Key": 0.3,
+        "AMP2 On/Off": "On",
+        "AEG2 Attack": {
+          "display": "55 ms"
+        },
+        "AEG2 Decay": {
+          "display": "300 ms"
+        },
+        "AEG2 Sustain": {
+          "norm": 1.0
+        },
+        "AEG2 Rel": {
+          "display": "160 ms"
+        },
+        "Noise On/Off": "Off",
+        "Unison On/Off": "Off",
+        "Vib On/Off": "Off",
+        "Glide On/Off": "Off",
+        "Volume": {
+          "display": "-6 dB"
         }
       }
     }
   },
   "effects": [
     {
-      "device": "Chorus-Ensemble",
+      "device": "Auto Pan",
       "parameters": {
-        "Mode": "Classic",
+        "LFO Type": "Frequency",
         "Amount": {
-          "norm": 0.3
+          "display": "10 %"
         },
-        "Dry/Wet": {
-          "norm": 0.28
-        },
-        "Warmth": {
-          "norm": 0.5
+        "Frequency": {
+          "display": "4.6 Hz"
         }
       }
     },
     {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0041
+          "display": "70 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.3179
-        }
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
+        "3 Frequency A": {
+          "display": "450 Hz"
+        },
+        "3 Gain A": 2.0,
+        "3 Resonance A": {
+          "display": "0.9"
+        },
+        "4 Filter On A": "On",
+        "4 Filter Type A": "Bell",
+        "4 Frequency A": {
+          "display": "1.2 kHz"
+        },
+        "4 Gain A": 1.5,
+        "4 Resonance A": {
+          "display": "1.0"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "6 kHz"
+        },
+        "7 Gain A": -4.0
       }
     },
     {
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.16
+          "display": "14 %"
         },
         "Decay Time": {
-          "norm": 0.0234
+          "display": "1.4 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "10 ms"
         },
         "Room Size": {
-          "norm": 0.1096
+          "norm": 0.5835
         }
       }
     }
@@ -216,5 +274,5 @@
     "length": 16.0,
     "scale": "mixolydian"
   },
-  "sound_design_notes": "Тот же принцип, что у баяна, но темнее и «воздушнее»: фильтр 2.1 кГц, атака 55 мс (нужно качнуть педаль), ровный сустейн. Нижний регистр D (16') делает «гудение». Хорус Classic с тёплым тоном — лёгкая нестабильность ходов воздуха."
+  "sound_design_notes": "Тот же принцип свободного язычка, что у баяна (алгоритм 11, четыре генератора параллельно), но темнее и «воздушнее»: фильтр 3,4 кГц, атака 55 мс (нужно качнуть педаль), полный сустейн. A и B — основной регистр 8' (Saw 16, B выше на Fine 3 — едва слышное биение двух язычков), D — 16' (гудение), C — 4' тихо. EQ: +2 дБ на 450 Гц (носовой корпус), +1,5 на 1,2 кГц, срез верха от 6 кГц. Auto Pan 4,6 Гц/10% — лёгкая нестабильность воздуха (регистр Vox humana). Хоруса нет. Комната 1,4 с."
 }

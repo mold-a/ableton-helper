@@ -45,108 +45,193 @@
       "Operator"
     ],
     "parameters": {
-      "OSC1 On": 1,
+      "Voices": "Mono",
+      "OSC1 On/Off": "On",
       "OSC1 Shape": "Saw",
+      "OSC1 Octave": 0,
+      "OSC1 Semi": 0,
+      "OSC1 Level": {
+        "display": "-4 dB"
+      },
+      "F1 On/Off": "On",
+      "F1 Type": "Low-pass 12dB/oct",
+      "F1 Freq": {
+        "display": "850 Hz"
+      },
+      "F1 Resonance": {
+        "norm": 0.2
+      },
+      "F1 Freq < Env": 0.35,
+      "F1 Freq < Key": 0.5,
+      "AMP1 On/Off": "On",
       "AEG1 Attack": {
-        "norm": 0.359
+        "display": "28 ms"
       },
       "AEG1 Decay": {
-        "norm": 0.535
+        "display": "200 ms"
       },
       "AEG1 Sustain": {
         "norm": 0.9
       },
-      "AEG1 Release": {
-        "norm": 0.475
+      "AEG1 Rel": {
+        "display": "110 ms"
       },
-      "F1 Type": "Lowpass",
-      "F1 Freq": {
-        "norm": 0.659
+      "FEG1 Attack": {
+        "display": "40 ms"
       },
-      "F1 Res": {
-        "norm": 0.2
+      "FEG1 Decay": {
+        "display": "250 ms"
       },
-      "OSC2 On": 1,
-      "OSC2 Shape": "Rectangle",
-      "OSC2 Detune": {
+      "FEG1 Sustain": {
         "norm": 0.5
       },
+      "FEG1 Rel": {
+        "display": "120 ms"
+      },
+      "OSC2 On/Off": "On",
+      "OSC2 Shape": "Rect",
+      "OSC2 Octave": 0,
+      "OSC2 Semi": 0,
       "OSC2 Level": {
-        "norm": 0.5
+        "display": "-9 dB"
       },
       "OSC2 PW": {
         "norm": 0.3
       },
-      "F1 Freq < Env": {
-        "norm": 0.8
+      "F2 On/Off": "On",
+      "F2 Type": "Low-pass 12dB/oct",
+      "F2 Freq": {
+        "display": "850 Hz"
       },
-      "FEG1 Attack": {
-        "norm": 0.413
+      "F2 Resonance": {
+        "norm": 0.2
       },
-      "FEG1 Decay": {
-        "norm": 0.553
+      "F2 Freq < Env": 0.35,
+      "F2 Freq < Key": 0.5,
+      "AMP2 On/Off": "On",
+      "AEG2 Attack": {
+        "display": "28 ms"
       },
-      "FEG1 Sustain": {
-        "norm": 0.55
+      "AEG2 Decay": {
+        "display": "200 ms"
       },
-      "FEG1 Release": {
-        "norm": 0.499
+      "AEG2 Sustain": {
+        "norm": 0.9
+      },
+      "AEG2 Rel": {
+        "display": "110 ms"
+      },
+      "FEG2 Attack": {
+        "display": "40 ms"
+      },
+      "FEG2 Decay": {
+        "display": "250 ms"
+      },
+      "FEG2 Sustain": {
+        "norm": 0.5
+      },
+      "FEG2 Rel": {
+        "display": "120 ms"
+      },
+      "Noise On/Off": "Off",
+      "Unison On/Off": "Off",
+      "Vib On/Off": "On",
+      "Vib Speed": {
+        "display": "5.2 Hz"
+      },
+      "Vib Amount": {
+        "norm": 0.12
+      },
+      "Vib Delay": {
+        "display": "500 ms"
+      },
+      "Glide On/Off": "On",
+      "Glide Time": {
+        "display": "35 ms"
+      },
+      "Glide Legato": "On",
+      "Volume": {
+        "display": "-6 dB"
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "28 ms"
+        },
+        "Amp Decay": {
+          "display": "200 ms"
+        },
+        "Amp Sustain": {
+          "norm": 0.9
+        },
+        "Amp Release": {
+          "display": "110 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "2.4 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.15
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
   "effects": [
     {
-      "device": "Chorus-Ensemble",
-      "parameters": {
-        "Mode": "Vibrato",
-        "Amount": {
-          "norm": 0.18
-        },
-        "Dry/Wet": {
-          "norm": 0.5
-        },
-        "Rate": {
-          "norm": 0.3462
-        }
-      }
-    },
-    {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0073
+          "display": "160 Hz"
         },
-        "8 Filter On A": 1,
-        "8 Filter Type A": 6,
-        "8 Frequency A": {
-          "norm": 0.4543
-        },
-        "3 Filter On A": 1,
-        "3 Filter Type A": 3,
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
         "3 Frequency A": {
-          "norm": 0.1041
+          "display": "1.2 kHz"
         },
-        "3 Gain A": {
-          "norm": 0.5833
-        },
+        "3 Gain A": 2.0,
         "3 Resonance A": {
-          "norm": 0.0503
-        }
+          "display": "0.9"
+        },
+        "4 Filter On A": "On",
+        "4 Filter Type A": "Bell",
+        "4 Frequency A": {
+          "display": "2.6 kHz"
+        },
+        "4 Gain A": 1.5,
+        "4 Resonance A": {
+          "display": "1.0"
+        },
+        "7 Filter On A": "On",
+        "7 Filter Type A": "High Shelf",
+        "7 Frequency A": {
+          "display": "10 kHz"
+        },
+        "7 Gain A": -3.0
       }
     },
     {
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.2
+          "display": "14 %"
         },
         "Decay Time": {
-          "norm": 0.0251
+          "display": "1.5 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "12 ms"
         },
         "Room Size": {
-          "norm": 0.1796
+          "norm": 0.6732
         }
       }
     }
@@ -157,5 +242,5 @@
     "length": 8.0,
     "scale": "major"
   },
-  "sound_design_notes": "Пила + узкий импульс (PW ~0.3) — резкий «трубный» спектр. Фильтр 1.9 кГц с быстрым (60 мс) раскрытием, как давление губ. Вибрато — тонкое (18%), потому что на трубе оно мягче скрипичного. Бугор EQ ~2.3 кГц — «звон»."
+  "sound_design_notes": "Моно-голос с легато-глайдом 35 мс. Пила + узкий импульс (PW 0,3) — резкий «трубный» спектр. Фильтр 850 Гц раскрывается за 40 мс огибающей (+3,5 октавы) — давление губ. Атака 28 мс. Вибрато очень слабое и включается только через 0,5 с (на трубе оно мягче скрипичного). EQ: срез ниже 160 Гц, бугры +2 дБ на 1,2 кГц и +1,5 дБ на 2,6 кГц — «звон». Без хоруса. Комната 1,5 с."
 }

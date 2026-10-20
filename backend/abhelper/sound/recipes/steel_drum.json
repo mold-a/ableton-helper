@@ -49,108 +49,154 @@
       "Wavetable"
     ],
     "parameters": {
-      "Algorithm": 0,
-      "Osc-A On": 1,
+      "Algorithm": "Alg. 11",
+      "Osc-A On": "On",
       "Osc-A Wave": "Sine",
       "A Coarse": 1,
       "Osc-A Level": {
-        "norm": 0.8
+        "display": "0 dB"
       },
+      "Ae Init": 0.0,
       "Ae Attack": {
-        "norm": 0.07
+        "display": "4 ms"
       },
+      "Ae Peak": 1.0,
       "Ae Decay": {
-        "norm": 0.716
+        "display": "1.6 s"
       },
-      "Ae Sustain": {
-        "norm": 0.0
-      },
+      "Ae Sustain": 0.0,
       "Ae Release": {
-        "norm": 0.483
+        "display": "250 ms"
       },
-      "Osc-B On": 1,
+      "Osc-B On": "On",
       "Osc-B Wave": "Sine",
       "B Coarse": 2,
+      "B Fine": 6,
       "Osc-B Level": {
-        "norm": 0.45
+        "display": "-5 dB"
       },
+      "Be Init": 0.0,
       "Be Attack": {
-        "norm": 0.07
+        "display": "4 ms"
       },
+      "Be Peak": 1.0,
       "Be Decay": {
-        "norm": 0.628
+        "display": "1.1 s"
       },
-      "Be Sustain": {
-        "norm": 0.0
-      },
+      "Be Sustain": 0.0,
       "Be Release": {
-        "norm": 0.454
+        "display": "200 ms"
       },
-      "Osc-C On": 1,
+      "Osc-C On": "On",
       "Osc-C Wave": "Sine",
       "C Coarse": 3,
+      "C Fine": 5,
       "Osc-C Level": {
-        "norm": 0.22
+        "display": "-11 dB"
       },
+      "Ce Init": 0.0,
       "Ce Attack": {
-        "norm": 0.07
+        "display": "4 ms"
       },
+      "Ce Peak": 1.0,
       "Ce Decay": {
-        "norm": 0.545
+        "display": "700 ms"
       },
-      "Ce Sustain": {
-        "norm": 0.0
-      },
+      "Ce Sustain": 0.0,
       "Ce Release": {
-        "norm": 0.429
+        "display": "150 ms"
       },
+      "Osc-D On": "On",
+      "Osc-D Wave": "Sine",
+      "D Coarse": 4,
+      "Osc-D Level": {
+        "display": "-24 dB"
+      },
+      "De Init": 0.0,
+      "De Attack": {
+        "display": "1 ms"
+      },
+      "De Peak": 1.0,
+      "De Decay": {
+        "display": "60 ms"
+      },
+      "De Sustain": 0.0,
+      "De Release": {
+        "display": "40 ms"
+      },
+      "Filter On": "On",
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "display": "7 kHz"
+      },
+      "Filter Res": 0.0,
+      "Filt < Key": 30,
+      "LFO On": "Off",
+      "Glide On": "Off",
       "Volume": {
-        "norm": 0.82
+        "display": "-8 dB"
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "display": "4 ms"
+        },
+        "Amp Decay": {
+          "display": "1.6 s"
+        },
+        "Amp Sustain": {
+          "norm": 0.0
+        },
+        "Amp Release": {
+          "display": "250 ms"
+        },
+        "Filter 1 On": "On",
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "display": "7 kHz"
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Volume": {
+          "display": "-6 dB"
+        }
       }
     }
   },
   "effects": [
     {
-      "device": "Chorus-Ensemble",
-      "parameters": {
-        "Mode": "Classic",
-        "Amount": {
-          "norm": 0.3
-        },
-        "Dry/Wet": {
-          "norm": 0.3
-        }
-      }
-    },
-    {
       "device": "EQ Eight",
       "parameters": {
-        "1 Filter On A": 1,
-        "1 Filter Type A": 1,
+        "1 Filter On A": "On",
+        "1 Filter Type A": "High Pass 12dB",
         "1 Frequency A": {
-          "norm": 0.0064
+          "display": "150 Hz"
         },
-        "3 Filter On A": 1,
-        "3 Filter Type A": 3,
+        "3 Filter On A": "On",
+        "3 Filter Type A": "Bell",
         "3 Frequency A": {
-          "norm": 0.0632
+          "display": "1.2 kHz"
         },
-        "3 Gain A": {
-          "norm": 0.5667
-        },
+        "3 Gain A": 2.0,
         "3 Resonance A": {
-          "norm": 0.0503
+          "display": "0.9"
         }
       }
     },
     {
       "device": "Delay",
       "parameters": {
-        "Dry/Wet": {
-          "norm": 0.15
-        },
+        "L Sync": "On",
+        "R Sync": "On",
+        "L 16th": "3",
+        "R 16th": "4",
         "Feedback": {
-          "norm": 0.3158
+          "display": "30 %"
+        },
+        "Dry/Wet": {
+          "display": "12 %"
         }
       }
     },
@@ -158,13 +204,17 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.18
+          "display": "18 %"
         },
         "Decay Time": {
-          "norm": 0.0234
+          "display": "1.6 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "10 ms"
         },
         "Room Size": {
-          "norm": 0.1796
+          "norm": 0.636
         }
       }
     }
@@ -175,5 +225,5 @@
     "length": 8.0,
     "scale": "mixolydian"
   },
-  "sound_design_notes": "У стил-пана ярко выражены первые три парциала с отношением 1 : 2 : 3 (основной, октава, дюодецима): A, B (×2), C (×3) в цепочке FM дают это «бульканье». Короткая, но мягкая атака (2 мс), затухание 1.2 с. Chorus Classic — лёгкое биение между нотами, Delay и реверб — тропическая атмосфера."
+  "sound_design_notes": "У стил-пана ярко выражены первые три парциала 1 : 2 : 3 (основной, октава, дюодецима) — алгоритм 11 складывает их аддитивно: A, B (×2), C (×3), плюс короткий «тонк» ×4. Fine 5–6 на B и C — едва заметное биение парных гармоник, как у настоящей панной «ноты». Короткая мягкая атака 4 мс, затухание 1,6 с. Delay и реверб — тропическая атмосфера. Хоруса нет."
 }

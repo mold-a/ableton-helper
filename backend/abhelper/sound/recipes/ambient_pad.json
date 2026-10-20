@@ -38,8 +38,8 @@
     "атмосферный"
   ],
   "description": {
-    "ru": "Медленно эволюционирующий пэд: шиммер-унисон, 2.5-секундная атака, дрейф фильтра и огромный реверб.",
-    "en": "Slowly evolving pad: shimmer unison, 2.5 s attack, drifting filter and a huge reverb."
+    "ru": "Медленно эволюционирующий пэд: два осциллятора Wavetable, 2.5-секундная атака, дышащий фильтр (Auto Filter) и огромный реверб.",
+    "en": "Slowly evolving pad: two Wavetable oscillators, 2.5 s attack, a breathing Auto Filter and a huge reverb."
   },
   "preset_search": [
     "ambient pad",
@@ -60,76 +60,120 @@
     ],
     "parameters": {
       "Amp Attack": {
-        "norm": 0.79
+        "display": "2.5 s"
       },
       "Amp Decay": {
-        "norm": 0.777
+        "display": "3 s"
       },
       "Amp Sustain": {
         "norm": 0.9
       },
       "Amp Release": {
-        "norm": 0.837
+        "display": "4 s"
       },
-      "Filter 1 On": 1,
+      "Filter 1 On": "On",
       "Filter 1 Type": "Lowpass",
       "Filter 1 Freq": {
-        "norm": 0.735
+        "display": "4.5 kHz"
       },
       "Filter 1 Res": {
-        "norm": 0.1
+        "norm": 0.05
       },
-      "Unison Mode": "Shimmer",
-      "Unison Voices": 4,
-      "Unison Amount": {
-        "norm": 0.55
+      "Volume": {
+        "display": "-7 dB"
       },
       "Osc 1 Pos": {
         "norm": 0.4
       },
-      "Sub On": 1,
+      "Sub On": "On",
       "Sub Gain": {
-        "norm": 0.15
+        "display": "-18 dB"
       },
-      "Osc 2 On": 1,
+      "Osc 2 On": "On",
+      "Osc 2 Transp": 12,
+      "Osc 2 Detune": {
+        "norm": 0.54
+      },
       "Osc 2 Pos": {
         "norm": 0.65
       },
-      "Osc 2 Transp": 12,
-      "Osc 2 Detune": {
-        "norm": 0.5
+      "Osc 1 Detune": {
+        "norm": 0.47
       }
     },
     "fallback_parameters": {
       "Analog": {
-        "OSC1 On": 1,
+        "OSC1 On/Off": "On",
         "OSC1 Shape": "Saw",
+        "OSC1 Octave": 0,
+        "OSC1 Semi": 0,
+        "OSC1 Level": {
+          "display": "-5 dB"
+        },
+        "F1 On/Off": "On",
+        "F1 Type": "Low-pass 12dB/oct",
+        "F1 Freq": {
+          "display": "3 kHz"
+        },
+        "F1 Resonance": {
+          "norm": 0.1
+        },
+        "F1 Freq < Key": 0.3,
+        "AMP1 On/Off": "On",
         "AEG1 Attack": {
-          "norm": 0.79
+          "display": "2.5 s"
         },
         "AEG1 Decay": {
-          "norm": 0.777
+          "display": "3 s"
         },
         "AEG1 Sustain": {
           "norm": 0.9
         },
-        "AEG1 Release": {
-          "norm": 0.837
+        "AEG1 Rel": {
+          "display": "4 s"
         },
-        "F1 Type": "Lowpass",
-        "F1 Freq": {
-          "norm": 0.705
-        },
-        "F1 Res": {
-          "norm": 0.1
-        },
-        "OSC2 On": 1,
+        "OSC2 On/Off": "On",
         "OSC2 Shape": "Saw",
+        "OSC2 Octave": 0,
+        "OSC2 Semi": 0,
+        "OSC2 Level": {
+          "display": "-7 dB"
+        },
         "OSC2 Detune": {
           "norm": 0.58
         },
-        "OSC2 Level": {
-          "norm": 0.7
+        "F2 On/Off": "On",
+        "F2 Type": "Low-pass 12dB/oct",
+        "F2 Freq": {
+          "display": "3 kHz"
+        },
+        "F2 Resonance": {
+          "norm": 0.1
+        },
+        "F2 Freq < Key": 0.3,
+        "AMP2 On/Off": "On",
+        "AEG2 Attack": {
+          "display": "2.5 s"
+        },
+        "AEG2 Decay": {
+          "display": "3 s"
+        },
+        "AEG2 Sustain": {
+          "norm": 0.9
+        },
+        "AEG2 Rel": {
+          "display": "4 s"
+        },
+        "Noise On/Off": "Off",
+        "Unison On/Off": "On",
+        "Unison Voices": "2",
+        "Unison Detune": {
+          "norm": 0.2
+        },
+        "Vib On/Off": "Off",
+        "Glide On/Off": "Off",
+        "Volume": {
+          "display": "-8 dB"
         }
       }
     }
@@ -140,16 +184,15 @@
       "parameters": {
         "Filter Type": "Lowpass",
         "Frequency": {
-          "norm": 0.638
+          "display": "2.8 kHz"
         },
         "Resonance": {
-          "norm": 0.12
+          "display": "15 %"
         },
-        "LFO Amount": {
-          "norm": 0.4667
-        },
+        "LFO Amount": 8.0,
+        "LFO Sync": "Free",
         "LFO Frequency": {
-          "norm": 0.0028
+          "display": "0.12 Hz"
         }
       }
     },
@@ -158,21 +201,29 @@
       "parameters": {
         "Mode": "Ensemble",
         "Amount": {
-          "norm": 0.45
+          "display": "35 %"
         },
         "Dry/Wet": {
-          "norm": 0.4
+          "display": "30 %"
         }
       }
     },
     {
       "device": "Delay",
       "parameters": {
-        "Dry/Wet": {
-          "norm": 0.28
-        },
+        "L Sync": "On",
+        "R Sync": "On",
+        "L 16th": "6",
+        "R 16th": "8",
         "Feedback": {
-          "norm": 0.5789
+          "display": "55 %"
+        },
+        "Dry/Wet": {
+          "display": "28 %"
+        },
+        "Filter On": "On",
+        "Filter Freq": {
+          "display": "1.5 kHz"
         }
       }
     },
@@ -180,24 +231,30 @@
       "device": "Reverb",
       "parameters": {
         "Dry/Wet": {
-          "norm": 0.5
+          "display": "45 %"
         },
         "Decay Time": {
-          "norm": 0.1973
+          "display": "8 s"
+        },
+        "Chorus On": "Off",
+        "Predelay": {
+          "display": "40 ms"
         },
         "Room Size": {
-          "norm": 0.6999
+          "norm": 0.9103
         },
-        "Predelay": {
-          "norm": 0.1583
+        "HiFilter On": "On",
+        "HiFilter Type": "Lowpass",
+        "HiFilter Freq": {
+          "display": "8 kHz"
         }
       }
     },
     {
       "device": "Utility",
       "parameters": {
-        "Width": {
-          "norm": 0.65
+        "Stereo Width": {
+          "display": "130 %"
         }
       }
     }
@@ -208,5 +265,5 @@
     "length": 16.0,
     "scale": "dorian"
   },
-  "sound_design_notes": "Wavetable: два осциллятора (второй октавой выше и с другой позицией волны), унисон Shimmer — «мерцающая» дымка. Атака 2.5 с и релиз 4 с — звук рождается и тает. «Эволюция» достигается внешним Auto Filter с очень медленным (~0.12 Гц) LFO — фильтр дышит. Delay с высокой обратной связью и Reverb ~12 с превращают ноты в облако; Utility расширяет стерео. Смените таблицу волн (Osc 1 Category/Table) под настроение — рецепт задаёт позицию, а не таблицу."
+  "sound_design_notes": "Wavetable: два осциллятора (второй на октаву выше и с другой позицией волны), лёгкое расстроение и тихий саб — основа. Атака 2,5 с и релиз 4 с — звук рождается и тает. «Эволюция» достигается внешним Auto Filter с очень медленным LFO (0,12 Гц) — фильтр дышит. Delay с высокой обратной связью (55%, 3/16 и 1/2 шага) и Reverb 8 с превращают ноты в облако; Utility расширяет стерео до 130%. Смените таблицу волн (Osc 1 Category/Table) под настроение — рецепт задаёт позицию, а не таблицу."
 }
