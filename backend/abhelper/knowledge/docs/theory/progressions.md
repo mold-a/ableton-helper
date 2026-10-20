@@ -1,5 +1,5 @@
 # Аккордовые прогрессии по настроению и жанрам
-keywords: прогрессия, аккордовая последовательность, аккорды, chord progression, progressions, гармония, harmony, I-V-vi-IV, поп прогрессия, четыре аккорда, 4 chords, ii-V-I, джаз, jazz, i-VI-III-VII, минорная прогрессия, дип хаус, deep house chords, лоу-фай, lo-fi chords, транс, trance, андалузская каденция, andalusian, романс, блатной, шансон, каденция, cadence, вальс, waltz, 12-bar blues, блюз, какие аккорды использовать, аккорды для песни, harmonic rhythm
+keywords: прогрессия, аккордовая последовательность, аккорды, chord progression, progressions, гармония, harmony, I-V-vi-IV, поп прогрессия, четыре аккорда, 4 chords, ii-V-I, джаз, jazz, i-VI-III-VII, минорная прогрессия, дип хаус, deep house chords, лоу-фай, lo-fi chords, транс, trance, андалузская каденция, andalusian, романс, блатной, шансон, каденция, cadence, вальс, waltz, 12-bar blues, блюз, какие аккорды использовать, аккорды для песни, harmonic rhythm, аккорды для минора, аккорды для мажора, minor chords, major chords, какие аккорды подходят
 
 ## Как записывать прогрессию в MIDI
 Прогрессия (chord progression) — последовательность аккордов, обычно по одному на такт (4 доли) или по два на такт. Типичная петля — 4 такта (clip length 16) или 8 тактов (32).
