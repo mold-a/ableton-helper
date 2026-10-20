@@ -447,8 +447,11 @@ def test_delay_and_chorus_mix_and_autoload():
 
 # --------------------------------------------------------------------------- fallbacks
 def test_parameters_without_usable_display_fall_back_to_relative_norm_steps():
-    bridge = make_bridge("Operator", catalog=FakeBridge._load_default_catalog(),
-                         state={0: {"Filter On": "On", "Filter Freq": {"norm": 0.4}}})
+    catalog = FakeBridge._load_default_catalog()
+    for dev in catalog.values():                      # simulate a Live that gives no unit information
+        for p in dev.get("parameters", []):
+            p.pop("display_samples", None)
+    bridge = make_bridge("Operator", catalog=catalog, state={0: {"Filter On": "On", "Filter Freq": {"norm": 0.4}}})
     before = param(bridge, 0, "Filter Freq")["value"]
     res = adjust_sound(bridge, 0, "brighter")
     assert res["ok"]

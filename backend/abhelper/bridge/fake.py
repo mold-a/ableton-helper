@@ -84,7 +84,10 @@ class FakeParam:
             i = int(round(raw))
             return self.value_items[i] if 0 <= i < len(self.value_items) else str(i)
         if self.display_samples:
-            pts = [(float(r), *parse_display(t)) for r, t in self.display_samples]
+            try:
+                pts = [(float(r), *parse_display(t)) for r, t in self.display_samples]
+            except DisplayError:   # non-numeric display ("C", "50L"): show the nearest real sample text
+                return min(self.display_samples, key=lambda rt: abs(float(rt[0]) - raw))[1]
             dim = next((d for _r, _v, d in pts if d != "number"), "number")
             if raw <= pts[0][0]:
                 return format_display(pts[0][1], dim)

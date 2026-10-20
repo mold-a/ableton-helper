@@ -143,7 +143,10 @@ def test_display_values_have_a_plausible_unit_for_the_parameter(rid):
             continue
         number, dim = parse_display(value["display"])
         want = DISPLAY_EXCEPTIONS.get(name, expected_dims(name))
-        if want and dim not in want:
+        calibrated = any(p["name"] == name and p.get("display_samples")
+                         for p in CAT.get(dev, {}).get("parameters", []))
+        # the name heuristic only guards uncalibrated parameters; real display samples are checked below
+        if want and dim not in want and not calibrated:
             errors.append(f"{where} {dev}.{name}: {value['display']!r} is {dim}, expected one of {sorted(want)}")
         if dim in RANGES and not math.isinf(number):
             lo, hi = RANGES[dim]

@@ -62,3 +62,29 @@ def test_fake_bridge_display_values():
                                         "value": {"display": "20 ms"}})
     samples = b.call("get_parameter_displays", {"track_index": t, "device_index": d, "samples": 3})["parameters"]
     assert samples[0]["samples"][0] == [0.0, "10.0 Hz"]
+
+
+# Real Live 11.3.25 displays (user calibration): Analog shows its cutoff without "Hz" and with a "k" suffix.
+ANALOG_F1_FREQ = [[0.0, " 30"], [0.125, " 69"], [0.25, "158"], [0.375, "363"], [0.5, "834"], [0.625, "1.9k"],
+                  [0.75, "4.3k"], [0.875, "9.7k"], [1.0, "22.0k"]]
+
+
+def _interp(samples):
+    from abhelper.bridge.fake import FakeParam
+    return FakeParam(name="x", min=samples[0][0], max=samples[-1][0], display_samples=samples).str_for_value
+
+
+def test_k_suffix_and_bare_numbers_are_hertz():
+    assert parse_display("1.9k") == (pytest.approx(1900.0), "freq")
+    fmt = _interp(ANALOG_F1_FREQ)
+    raw = solve_display("300 Hz", 0.0, 1.0, fmt)
+    assert 0.3 < raw < 0.4 and parse_display(fmt(raw))[0] == pytest.approx(300, rel=0.03)
+    raw = solve_display("2.2 kHz", 0.0, 1.0, fmt)
+    assert parse_display(fmt(raw))[0] == pytest.approx(2200, rel=0.03)
+
+
+def test_pan_displays():
+    assert parse_display("C") == (0.0, "pan")
+    assert parse_display("50L") == (-50.0, "pan") and parse_display("25R") == (25.0, "pan")
+    fmt = lambda raw: "C" if abs(raw) < 0.01 else ("%dL" % round(-raw * 50) if raw < 0 else "%dR" % round(raw * 50))
+    assert solve_display("25L", -1.0, 1.0, fmt) == pytest.approx(-0.5, abs=0.02)

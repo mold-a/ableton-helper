@@ -13,7 +13,7 @@ import re
 
 # unit token (lower-case) -> (dimension, factor to the canonical unit)
 UNITS = {
-    "hz": ("freq", 1.0), "khz": ("freq", 1000.0),
+    "hz": ("freq", 1.0), "khz": ("freq", 1000.0), "k": ("freq", 1000.0),
     "ms": ("time", 1.0), "s": ("time", 1000.0), "sec": ("time", 1000.0),
     "db": ("level", 1.0),
     "%": ("percent", 1.0),
@@ -27,6 +27,9 @@ _NUMBER = re.compile(r"([-+]?(?:inf|\d+(?:[.,]\d+)?|[.,]\d+))", re.IGNORECASE)
 _UNIT_JUNK = re.compile(u"[^a-z%°:1]")
 
 
+_PAN = re.compile(r"^(\d+(?:[.,]\d+)?)\s*([LR])$", re.IGNORECASE)
+
+
 class DisplayError(ValueError):
     pass
 
@@ -34,6 +37,12 @@ class DisplayError(ValueError):
 def parse_display(text):
     """'2.53 kHz' -> (2530.0, 'freq'); '-inf dB' -> (-inf, 'level'); '4.00 : 1' -> (4.0, 'ratio')."""
     s = str(text).strip()
+    if s.upper() == "C":                       # pan centre
+        return 0.0, "pan"
+    pan = _PAN.match(s)
+    if pan:                                    # "50L" -> -50, "50R" -> +50
+        value = float(pan.group(1).replace(",", "."))
+        return (-value if pan.group(2).upper() == "L" else value), "pan"
     m = _NUMBER.search(s)
     if not m:
         raise DisplayError("no number in display %r" % (text,))
@@ -60,6 +69,8 @@ def solve_display(target, lo, hi, formatter, iterations=48):
     want, want_dim = parse_display(target)
     v_lo, dim_lo = parse_display(formatter(lo))
     v_hi, dim_hi = parse_display(formatter(hi))
+    # Some devices omit the unit on part of the range (Analog cutoff: " 834" .. "1.9k"):
+    # a bare number then means the parameter's own unit, already in its base scale.
     dims = set([dim_lo, dim_hi]) - set(["number"]) if want_dim != "number" else set()
     if dims and want_dim not in dims:
         raise DisplayError("unit mismatch: target %r, parameter shows %r..%r" % (

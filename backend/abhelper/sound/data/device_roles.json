@@ -1,177 +1,794 @@
 {
-"_meta": {"verified": true, "live_version": "11.3.25", "note": "Role -> exact parameter names per device (names verified against device_catalog.json by tests). A parameter entry is a name or {\"param\", \"when\"}: `when` names a quantized On/Off parameter that must be On for the parameter to matter (e.g. Operator's Ae Attack needs Osc-A On). Used by the get_device_parameters prioritisation and by sound/tweaks.py (adjust_sound)."},
-"role_labels": {
-  "cutoff": {"ru": "Срез фильтра", "en": "Filter cutoff"},
-  "resonance": {"ru": "Резонанс", "en": "Resonance"},
-  "drive": {"ru": "Драйв", "en": "Drive"},
-  "filter_env_amount": {"ru": "Глубина огибающей фильтра", "en": "Filter envelope amount"},
-  "attack": {"ru": "Атака", "en": "Attack"},
-  "decay": {"ru": "Спад", "en": "Decay"},
-  "sustain": {"ru": "Сустейн", "en": "Sustain"},
-  "release": {"ru": "Релиз", "en": "Release"},
-  "volume": {"ru": "Громкость", "en": "Volume"},
-  "output_gain": {"ru": "Выходной уровень", "en": "Output gain"},
-  "wet": {"ru": "Dry/Wet", "en": "Dry/Wet"},
-  "decay_time": {"ru": "Время затухания", "en": "Decay time"},
-  "room_size": {"ru": "Размер комнаты", "en": "Room size"},
-  "predelay": {"ru": "Предзадержка", "en": "Predelay"},
-  "width": {"ru": "Ширина", "en": "Width"},
-  "tone": {"ru": "Тон", "en": "Tone"},
-  "warmth": {"ru": "Теплота", "en": "Warmth"},
-  "feedback": {"ru": "Фидбэк", "en": "Feedback"},
-  "transients": {"ru": "Транзиенты", "en": "Transients"},
-  "unison": {"ru": "Унисон", "en": "Unison"},
-  "unison_enable": {"ru": "Унисон (вкл.)", "en": "Unison on"},
-  "detune": {"ru": "Расстройка", "en": "Detune"},
-  "sub_level": {"ru": "Саб", "en": "Sub level"},
-  "sub_enable": {"ru": "Саб (вкл.)", "en": "Sub on"},
-  "vibrato_amount": {"ru": "Вибрато", "en": "Vibrato amount"},
-  "vibrato_enable": {"ru": "Вибрато (вкл.)", "en": "Vibrato on"}
-},
-"role_groups": {
-  "filter": ["cutoff", "resonance", "drive", "filter_env_amount"],
-  "envelope": ["attack", "decay", "sustain", "release", "filter_env_amount"],
-  "amp": ["attack", "decay", "sustain", "release", "volume"],
-  "env": ["attack", "decay", "sustain", "release", "filter_env_amount"],
-  "tone": ["cutoff", "resonance", "tone", "warmth"],
-  "brightness": ["cutoff", "tone"],
-  "lfo": ["vibrato_amount", "vibrato_enable"],
-  "vibrato": ["vibrato_amount", "vibrato_enable"],
-  "level": ["volume", "output_gain"],
-  "mix": ["wet"],
-  "dry/wet": ["wet"],
-  "space": ["wet", "decay_time", "room_size", "predelay", "width"],
-  "unison": ["unison", "unison_enable", "detune"],
-  "stereo": ["width"]
-},
-"devices": {
-  "Operator": {"class_name": "Operator", "kind": "instrument", "roles": {
-      "cutoff": [{"param": "Filter Freq", "when": "Filter On"}],
-      "resonance": [{"param": "Filter Res", "when": "Filter On"}],
-      "drive": [{"param": "Filter Drive", "when": "Filter On"}],
-      "filter_env_amount": [{"param": "Fe Amount", "when": "Filter On"}],
-      "attack": [{"param": "Ae Attack", "when": "Osc-A On"}, {"param": "Be Attack", "when": "Osc-B On"}, {"param": "Ce Attack", "when": "Osc-C On"}, {"param": "De Attack", "when": "Osc-D On"}],
-      "decay": [{"param": "Ae Decay", "when": "Osc-A On"}, {"param": "Be Decay", "when": "Osc-B On"}, {"param": "Ce Decay", "when": "Osc-C On"}, {"param": "De Decay", "when": "Osc-D On"}],
-      "sustain": [{"param": "Ae Sustain", "when": "Osc-A On"}, {"param": "Be Sustain", "when": "Osc-B On"}, {"param": "Ce Sustain", "when": "Osc-C On"}, {"param": "De Sustain", "when": "Osc-D On"}],
-      "release": [{"param": "Ae Release", "when": "Osc-A On"}, {"param": "Be Release", "when": "Osc-B On"}, {"param": "Ce Release", "when": "Osc-C On"}, {"param": "De Release", "when": "Osc-D On"}],
-      "volume": ["Volume"],
-      "width": ["Spread"]
-    }},
-  "Analog": {"class_name": "UltraAnalog", "kind": "instrument", "roles": {
-      "cutoff": [{"param": "F1 Freq", "when": "F1 On/Off"}, {"param": "F2 Freq", "when": "F2 On/Off"}],
-      "resonance": [{"param": "F1 Resonance", "when": "F1 On/Off"}, {"param": "F2 Resonance", "when": "F2 On/Off"}],
-      "drive": [{"param": "F1 Drive", "when": "F1 On/Off"}, {"param": "F2 Drive", "when": "F2 On/Off"}],
-      "filter_env_amount": [{"param": "F1 Freq < Env", "when": "F1 On/Off"}, {"param": "F2 Freq < Env", "when": "F2 On/Off"}],
-      "attack": [{"param": "AEG1 Attack", "when": "AMP1 On/Off"}, {"param": "AEG2 Attack", "when": "AMP2 On/Off"}],
-      "decay": [{"param": "AEG1 Decay", "when": "AMP1 On/Off"}, {"param": "AEG2 Decay", "when": "AMP2 On/Off"}],
-      "sustain": [{"param": "AEG1 Sustain", "when": "AMP1 On/Off"}, {"param": "AEG2 Sustain", "when": "AMP2 On/Off"}],
-      "release": [{"param": "AEG1 Rel", "when": "AMP1 On/Off"}, {"param": "AEG2 Rel", "when": "AMP2 On/Off"}],
-      "volume": ["Volume"],
-      "vibrato_amount": ["Vib Amount"],
-      "vibrato_enable": ["Vib On/Off"],
-      "unison_enable": ["Unison On/Off"],
-      "unison": ["Unison Detune"]
-    }},
-  "Wavetable": {"class_name": "InstrumentVector", "kind": "instrument", "roles": {
-      "cutoff": [{"param": "Filter 1 Freq", "when": "Filter 1 On"}, {"param": "Filter 2 Freq", "when": "Filter 2 On"}],
-      "resonance": [{"param": "Filter 1 Res", "when": "Filter 1 On"}, {"param": "Filter 2 Res", "when": "Filter 2 On"}],
-      "drive": [{"param": "Filter 1 Drive", "when": "Filter 1 On"}, {"param": "Filter 2 Drive", "when": "Filter 2 On"}],
-      "attack": ["Amp Attack"],
-      "decay": ["Amp Decay"],
-      "sustain": ["Amp Sustain"],
-      "release": ["Amp Release"],
-      "volume": ["Volume"],
-      "unison": ["Unison Amount"],
-      "sub_level": [{"param": "Sub Gain", "when": "Sub On"}],
-      "sub_enable": ["Sub On"]
-    }},
-  "Drift": {"class_name": "Drift", "kind": "instrument", "roles": {
-      "cutoff": ["LP Freq"],
-      "resonance": ["LP Reso"],
-      "attack": ["Env 1 Attack"],
-      "decay": ["Env 1 Decay"],
-      "sustain": ["Env 1 Sustain"],
-      "release": ["Env 1 Release"],
-      "volume": ["Volume"],
-      "width": ["Spread"],
-      "detune": [{"param": "Osc 2 Detune", "when": "Osc 2 On"}]
-    }},
-  "Simpler": {"class_name": "OriginalSimpler", "kind": "instrument", "roles": {
-      "cutoff": [{"param": "Filter Freq", "when": "F On"}],
-      "resonance": [{"param": "Filter Res", "when": "F On"}],
-      "drive": [{"param": "Filter Drive", "when": "F On"}],
-      "filter_env_amount": [{"param": "Fe < Env", "when": "F On"}],
-      "attack": ["Ve Attack"],
-      "decay": ["Ve Decay"],
-      "sustain": ["Ve Sustain"],
-      "release": ["Ve Release"],
-      "volume": ["Volume"],
-      "width": ["Spread"]
-    }},
-  "Drum Rack": {"class_name": "DrumGroupDevice", "kind": "instrument", "roles": {}},
-  "Auto Filter": {"class_name": "AutoFilter", "kind": "effect", "roles": {
-      "cutoff": ["Frequency"],
-      "resonance": ["Resonance"],
-      "drive": ["Drive"]
-    }},
-  "Auto Pan": {"class_name": "AutoPan", "kind": "effect", "roles": {}},
-  "Chorus-Ensemble": {"class_name": "Chorus2", "kind": "effect", "roles": {
-      "wet": ["Dry/Wet"],
-      "width": ["Width"],
-      "warmth": ["Warmth"]
-    }},
-  "Compressor": {"class_name": "Compressor2", "kind": "effect", "roles": {
-      "wet": ["Dry/Wet"],
-      "output_gain": ["Output Gain"]
-    }},
-  "Corpus": {"class_name": "Corpus", "kind": "effect", "roles": {
-      "wet": ["Dry Wet"]
-    }},
-  "Delay": {"class_name": "Delay", "kind": "effect", "roles": {
-      "wet": ["Dry/Wet"],
-      "feedback": ["Feedback"]
-    }},
-  "Drum Buss": {"class_name": "DrumBuss", "kind": "effect", "roles": {
-      "drive": ["Drive"],
-      "transients": ["Transients"],
-      "wet": ["Dry/Wet"],
-      "output_gain": ["Output Gain"]
-    }},
-  "EQ Eight": {"class_name": "Eq8", "kind": "effect", "roles": {
-      "output_gain": ["Output Gain"]
-    }},
-  "Glue Compressor": {"class_name": "GlueCompressor", "kind": "effect", "roles": {
-      "wet": ["Dry/Wet"]
-    }},
-  "Overdrive": {"class_name": "Overdrive", "kind": "effect", "roles": {
-      "drive": ["Drive"],
-      "wet": ["Dry/Wet"],
-      "tone": ["Tone"]
-    }},
-  "Phaser-Flanger": {"class_name": "PhaserNew", "kind": "effect", "roles": {
-      "wet": ["Dry/Wet"],
-      "feedback": ["Feedback"]
-    }},
-  "Redux": {"class_name": "Redux2", "kind": "effect", "roles": {
-      "wet": ["Dry/Wet"]
-    }},
-  "Reverb": {"class_name": "Reverb", "kind": "effect", "roles": {
-      "wet": ["Dry/Wet"],
-      "decay_time": ["Decay Time"],
-      "room_size": ["Room Size"],
-      "predelay": ["Predelay"],
-      "width": ["Stereo Image"]
-    }},
-  "Saturator": {"class_name": "Saturator", "kind": "effect", "roles": {
-      "drive": ["Drive"],
-      "wet": ["Dry/Wet"],
-      "output_gain": ["Output"]
-    }},
-  "Utility": {"class_name": "StereoGain", "kind": "effect", "roles": {
-      "width": ["Stereo Width"],
-      "output_gain": ["Gain"]
-    }},
-  "Vinyl Distortion": {"class_name": "Vinyl", "kind": "effect", "roles": {}},
-  "Erosion": {"class_name": "Erosion", "kind": "effect", "roles": {}}
-}
+  "_meta": {
+    "verified": true,
+    "live_version": "11.3.25",
+    "note": "Role -> exact parameter names per device (names verified against device_catalog.json by tests). A parameter entry is a name or {\"param\", \"when\"}: `when` names a quantized On/Off parameter that must be On for the parameter to matter (e.g. Operator's Ae Attack needs Osc-A On). Used by the get_device_parameters prioritisation and by sound/tweaks.py (adjust_sound)."
+  },
+  "role_labels": {
+    "cutoff": {
+      "ru": "Срез фильтра",
+      "en": "Filter cutoff"
+    },
+    "resonance": {
+      "ru": "Резонанс",
+      "en": "Resonance"
+    },
+    "drive": {
+      "ru": "Драйв",
+      "en": "Drive"
+    },
+    "filter_env_amount": {
+      "ru": "Глубина огибающей фильтра",
+      "en": "Filter envelope amount"
+    },
+    "attack": {
+      "ru": "Атака",
+      "en": "Attack"
+    },
+    "decay": {
+      "ru": "Спад",
+      "en": "Decay"
+    },
+    "sustain": {
+      "ru": "Сустейн",
+      "en": "Sustain"
+    },
+    "release": {
+      "ru": "Релиз",
+      "en": "Release"
+    },
+    "volume": {
+      "ru": "Громкость",
+      "en": "Volume"
+    },
+    "output_gain": {
+      "ru": "Выходной уровень",
+      "en": "Output gain"
+    },
+    "wet": {
+      "ru": "Dry/Wet",
+      "en": "Dry/Wet"
+    },
+    "decay_time": {
+      "ru": "Время затухания",
+      "en": "Decay time"
+    },
+    "room_size": {
+      "ru": "Размер комнаты",
+      "en": "Room size"
+    },
+    "predelay": {
+      "ru": "Предзадержка",
+      "en": "Predelay"
+    },
+    "width": {
+      "ru": "Ширина",
+      "en": "Width"
+    },
+    "tone": {
+      "ru": "Тон",
+      "en": "Tone"
+    },
+    "warmth": {
+      "ru": "Теплота",
+      "en": "Warmth"
+    },
+    "feedback": {
+      "ru": "Фидбэк",
+      "en": "Feedback"
+    },
+    "transients": {
+      "ru": "Транзиенты",
+      "en": "Transients"
+    },
+    "unison": {
+      "ru": "Унисон",
+      "en": "Unison"
+    },
+    "unison_enable": {
+      "ru": "Унисон (вкл.)",
+      "en": "Unison on"
+    },
+    "detune": {
+      "ru": "Расстройка",
+      "en": "Detune"
+    },
+    "sub_level": {
+      "ru": "Саб",
+      "en": "Sub level"
+    },
+    "sub_enable": {
+      "ru": "Саб (вкл.)",
+      "en": "Sub on"
+    },
+    "vibrato_amount": {
+      "ru": "Вибрато",
+      "en": "Vibrato amount"
+    },
+    "vibrato_enable": {
+      "ru": "Вибрато (вкл.)",
+      "en": "Vibrato on"
+    }
+  },
+  "role_groups": {
+    "filter": [
+      "cutoff",
+      "resonance",
+      "drive",
+      "filter_env_amount"
+    ],
+    "envelope": [
+      "attack",
+      "decay",
+      "sustain",
+      "release",
+      "filter_env_amount"
+    ],
+    "amp": [
+      "attack",
+      "decay",
+      "sustain",
+      "release",
+      "volume"
+    ],
+    "env": [
+      "attack",
+      "decay",
+      "sustain",
+      "release",
+      "filter_env_amount"
+    ],
+    "tone": [
+      "cutoff",
+      "resonance",
+      "tone",
+      "warmth"
+    ],
+    "brightness": [
+      "cutoff",
+      "tone"
+    ],
+    "lfo": [
+      "vibrato_amount",
+      "vibrato_enable"
+    ],
+    "vibrato": [
+      "vibrato_amount",
+      "vibrato_enable"
+    ],
+    "level": [
+      "volume",
+      "output_gain"
+    ],
+    "mix": [
+      "wet"
+    ],
+    "dry/wet": [
+      "wet"
+    ],
+    "space": [
+      "wet",
+      "decay_time",
+      "room_size",
+      "predelay",
+      "width"
+    ],
+    "unison": [
+      "unison",
+      "unison_enable",
+      "detune"
+    ],
+    "stereo": [
+      "width"
+    ]
+  },
+  "devices": {
+    "Operator": {
+      "class_name": "Operator",
+      "kind": "instrument",
+      "roles": {
+        "cutoff": [
+          {
+            "param": "Filter Freq",
+            "when": "Filter On"
+          }
+        ],
+        "resonance": [
+          {
+            "param": "Filter Res",
+            "when": "Filter On"
+          }
+        ],
+        "drive": [
+          {
+            "param": "Filter Drive",
+            "when": "Filter On"
+          }
+        ],
+        "filter_env_amount": [
+          {
+            "param": "Fe Amount",
+            "when": "Filter On"
+          }
+        ],
+        "attack": [
+          {
+            "param": "Ae Attack",
+            "when": "Osc-A On"
+          },
+          {
+            "param": "Be Attack",
+            "when": "Osc-B On"
+          },
+          {
+            "param": "Ce Attack",
+            "when": "Osc-C On"
+          },
+          {
+            "param": "De Attack",
+            "when": "Osc-D On"
+          }
+        ],
+        "decay": [
+          {
+            "param": "Ae Decay",
+            "when": "Osc-A On"
+          },
+          {
+            "param": "Be Decay",
+            "when": "Osc-B On"
+          },
+          {
+            "param": "Ce Decay",
+            "when": "Osc-C On"
+          },
+          {
+            "param": "De Decay",
+            "when": "Osc-D On"
+          }
+        ],
+        "sustain": [
+          {
+            "param": "Ae Sustain",
+            "when": "Osc-A On"
+          },
+          {
+            "param": "Be Sustain",
+            "when": "Osc-B On"
+          },
+          {
+            "param": "Ce Sustain",
+            "when": "Osc-C On"
+          },
+          {
+            "param": "De Sustain",
+            "when": "Osc-D On"
+          }
+        ],
+        "release": [
+          {
+            "param": "Ae Release",
+            "when": "Osc-A On"
+          },
+          {
+            "param": "Be Release",
+            "when": "Osc-B On"
+          },
+          {
+            "param": "Ce Release",
+            "when": "Osc-C On"
+          },
+          {
+            "param": "De Release",
+            "when": "Osc-D On"
+          }
+        ],
+        "volume": [
+          "Volume"
+        ],
+        "width": [
+          "Spread"
+        ]
+      }
+    },
+    "Analog": {
+      "class_name": "UltraAnalog",
+      "kind": "instrument",
+      "roles": {
+        "cutoff": [
+          {
+            "param": "F1 Freq",
+            "when": "F1 On/Off"
+          },
+          {
+            "param": "F2 Freq",
+            "when": "F2 On/Off"
+          }
+        ],
+        "resonance": [
+          {
+            "param": "F1 Resonance",
+            "when": "F1 On/Off"
+          },
+          {
+            "param": "F2 Resonance",
+            "when": "F2 On/Off"
+          }
+        ],
+        "drive": [
+          {
+            "param": "F1 Drive",
+            "when": "F1 On/Off"
+          },
+          {
+            "param": "F2 Drive",
+            "when": "F2 On/Off"
+          }
+        ],
+        "filter_env_amount": [
+          {
+            "param": "F1 Freq < Env",
+            "when": "F1 On/Off"
+          },
+          {
+            "param": "F2 Freq < Env",
+            "when": "F2 On/Off"
+          }
+        ],
+        "attack": [
+          {
+            "param": "AEG1 Attack",
+            "when": "AMP1 On/Off"
+          },
+          {
+            "param": "AEG2 Attack",
+            "when": "AMP2 On/Off"
+          }
+        ],
+        "decay": [
+          {
+            "param": "AEG1 Decay",
+            "when": "AMP1 On/Off"
+          },
+          {
+            "param": "AEG2 Decay",
+            "when": "AMP2 On/Off"
+          }
+        ],
+        "sustain": [
+          {
+            "param": "AEG1 Sustain",
+            "when": "AMP1 On/Off"
+          },
+          {
+            "param": "AEG2 Sustain",
+            "when": "AMP2 On/Off"
+          }
+        ],
+        "release": [
+          {
+            "param": "AEG1 Rel",
+            "when": "AMP1 On/Off"
+          },
+          {
+            "param": "AEG2 Rel",
+            "when": "AMP2 On/Off"
+          }
+        ],
+        "volume": [
+          "Volume"
+        ],
+        "vibrato_amount": [
+          "Vib Amount"
+        ],
+        "vibrato_enable": [
+          "Vib On/Off"
+        ],
+        "unison_enable": [
+          "Unison On/Off"
+        ],
+        "unison": [
+          "Unison Detune"
+        ]
+      }
+    },
+    "Wavetable": {
+      "class_name": "InstrumentVector",
+      "kind": "instrument",
+      "roles": {
+        "cutoff": [
+          {
+            "param": "Filter 1 Freq",
+            "when": "Filter 1 On"
+          },
+          {
+            "param": "Filter 2 Freq",
+            "when": "Filter 2 On"
+          }
+        ],
+        "resonance": [
+          {
+            "param": "Filter 1 Res",
+            "when": "Filter 1 On"
+          },
+          {
+            "param": "Filter 2 Res",
+            "when": "Filter 2 On"
+          }
+        ],
+        "drive": [
+          {
+            "param": "Filter 1 Drive",
+            "when": "Filter 1 On"
+          },
+          {
+            "param": "Filter 2 Drive",
+            "when": "Filter 2 On"
+          }
+        ],
+        "attack": [
+          "Amp Attack"
+        ],
+        "decay": [
+          "Amp Decay"
+        ],
+        "sustain": [
+          "Amp Sustain"
+        ],
+        "release": [
+          "Amp Release"
+        ],
+        "volume": [
+          "Volume"
+        ],
+        "unison": [
+          "Unison Amount"
+        ],
+        "sub_level": [
+          {
+            "param": "Sub Gain",
+            "when": "Sub On"
+          }
+        ],
+        "sub_enable": [
+          "Sub On"
+        ]
+      }
+    },
+    "Drift": {
+      "class_name": "Drift",
+      "kind": "instrument",
+      "roles": {
+        "cutoff": [
+          "LP Freq"
+        ],
+        "resonance": [
+          "LP Reso"
+        ],
+        "attack": [
+          "Env 1 Attack"
+        ],
+        "decay": [
+          "Env 1 Decay"
+        ],
+        "sustain": [
+          "Env 1 Sustain"
+        ],
+        "release": [
+          "Env 1 Release"
+        ],
+        "volume": [
+          "Volume"
+        ],
+        "width": [
+          "Spread"
+        ],
+        "detune": [
+          {
+            "param": "Osc 2 Detune",
+            "when": "Osc 2 On"
+          }
+        ]
+      }
+    },
+    "Simpler": {
+      "class_name": "OriginalSimpler",
+      "kind": "instrument",
+      "roles": {
+        "cutoff": [
+          {
+            "param": "Filter Freq",
+            "when": "F On"
+          }
+        ],
+        "resonance": [
+          {
+            "param": "Filter Res",
+            "when": "F On"
+          }
+        ],
+        "drive": [
+          {
+            "param": "Filter Drive",
+            "when": "F On"
+          }
+        ],
+        "filter_env_amount": [
+          {
+            "param": "Fe < Env",
+            "when": "F On"
+          }
+        ],
+        "attack": [
+          "Ve Attack"
+        ],
+        "decay": [
+          "Ve Decay"
+        ],
+        "sustain": [
+          "Ve Sustain"
+        ],
+        "release": [
+          "Ve Release"
+        ],
+        "volume": [
+          "Volume"
+        ],
+        "width": [
+          "Spread"
+        ]
+      }
+    },
+    "Drum Rack": {
+      "class_name": "DrumGroupDevice",
+      "kind": "instrument",
+      "roles": {}
+    },
+    "Auto Filter": {
+      "class_name": "AutoFilter",
+      "kind": "effect",
+      "roles": {
+        "cutoff": [
+          "Frequency"
+        ],
+        "resonance": [
+          "Resonance"
+        ],
+        "drive": [
+          "Drive"
+        ]
+      }
+    },
+    "Auto Pan": {
+      "class_name": "AutoPan",
+      "kind": "effect",
+      "roles": {}
+    },
+    "Chorus-Ensemble": {
+      "class_name": "Chorus2",
+      "kind": "effect",
+      "roles": {
+        "wet": [
+          "Dry/Wet"
+        ],
+        "width": [
+          "Width"
+        ],
+        "warmth": [
+          "Warmth"
+        ]
+      }
+    },
+    "Compressor": {
+      "class_name": "Compressor2",
+      "kind": "effect",
+      "roles": {
+        "wet": [
+          "Dry/Wet"
+        ],
+        "output_gain": [
+          "Output Gain"
+        ]
+      }
+    },
+    "Corpus": {
+      "class_name": "Corpus",
+      "kind": "effect",
+      "roles": {
+        "wet": [
+          "Dry Wet"
+        ]
+      }
+    },
+    "Delay": {
+      "class_name": "Delay",
+      "kind": "effect",
+      "roles": {
+        "wet": [
+          "Dry/Wet"
+        ],
+        "feedback": [
+          "Feedback"
+        ]
+      }
+    },
+    "Drum Buss": {
+      "class_name": "DrumBuss",
+      "kind": "effect",
+      "roles": {
+        "drive": [
+          "Drive"
+        ],
+        "transients": [
+          "Transients"
+        ],
+        "wet": [
+          "Dry/Wet"
+        ],
+        "output_gain": [
+          "Output Gain"
+        ]
+      }
+    },
+    "EQ Eight": {
+      "class_name": "Eq8",
+      "kind": "effect",
+      "roles": {
+        "output_gain": [
+          "Output Gain"
+        ]
+      }
+    },
+    "Glue Compressor": {
+      "class_name": "GlueCompressor",
+      "kind": "effect",
+      "roles": {
+        "wet": [
+          "Dry/Wet"
+        ]
+      }
+    },
+    "Overdrive": {
+      "class_name": "Overdrive",
+      "kind": "effect",
+      "roles": {
+        "drive": [
+          "Drive"
+        ],
+        "wet": [
+          "Dry/Wet"
+        ],
+        "tone": [
+          "Tone"
+        ]
+      }
+    },
+    "Phaser-Flanger": {
+      "class_name": "PhaserNew",
+      "kind": "effect",
+      "roles": {
+        "wet": [
+          "Dry/Wet"
+        ],
+        "feedback": [
+          "Feedback"
+        ]
+      }
+    },
+    "Redux": {
+      "class_name": "Redux2",
+      "kind": "effect",
+      "roles": {
+        "wet": [
+          "Dry/Wet"
+        ]
+      }
+    },
+    "Reverb": {
+      "class_name": "Reverb",
+      "kind": "effect",
+      "roles": {
+        "wet": [
+          "Dry/Wet"
+        ],
+        "decay_time": [
+          "Decay Time"
+        ],
+        "room_size": [
+          "Room Size"
+        ],
+        "predelay": [
+          "Predelay"
+        ],
+        "width": [
+          "Stereo Image"
+        ]
+      }
+    },
+    "Saturator": {
+      "class_name": "Saturator",
+      "kind": "effect",
+      "roles": {
+        "drive": [
+          "Drive"
+        ],
+        "wet": [
+          "Dry/Wet"
+        ],
+        "output_gain": [
+          "Output"
+        ]
+      }
+    },
+    "Utility": {
+      "class_name": "StereoGain",
+      "kind": "effect",
+      "roles": {
+        "width": [
+          "Stereo Width"
+        ],
+        "output_gain": [
+          "Gain"
+        ]
+      }
+    },
+    "Vinyl Distortion": {
+      "class_name": "Vinyl",
+      "kind": "effect",
+      "roles": {}
+    },
+    "Erosion": {
+      "class_name": "Erosion",
+      "kind": "effect",
+      "roles": {}
+    },
+    "Sampler": {
+      "class_name": "MultiSampler",
+      "kind": "instrument",
+      "roles": {
+        "cutoff": [
+          {
+            "param": "Filter Freq",
+            "when": "F On"
+          }
+        ],
+        "resonance": [
+          {
+            "param": "Filter Res",
+            "when": "F On"
+          }
+        ],
+        "drive": [
+          {
+            "param": "Filter Drive",
+            "when": "F On"
+          }
+        ],
+        "filter_env_amount": [
+          {
+            "param": "Fe < Env",
+            "when": "F On"
+          }
+        ],
+        "attack": [
+          "Ve Attack"
+        ],
+        "decay": [
+          "Ve Decay"
+        ],
+        "sustain": [
+          "Ve Sustain"
+        ],
+        "release": [
+          "Ve Release"
+        ],
+        "volume": [
+          "Volume"
+        ],
+        "width": [
+          "Spread"
+        ]
+      }
+    }
+  }
 }

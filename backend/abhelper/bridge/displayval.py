@@ -16,7 +16,7 @@ from typing import Callable
 
 # unit token (lower-case) -> (dimension, factor to the canonical unit)
 UNITS: dict[str, tuple[str, float]] = {
-    "hz": ("freq", 1.0), "khz": ("freq", 1000.0),
+    "hz": ("freq", 1.0), "khz": ("freq", 1000.0), "k": ("freq", 1000.0),
     "ms": ("time", 1.0), "s": ("time", 1000.0), "sec": ("time", 1000.0),
     "db": ("level", 1.0),
     "%": ("percent", 1.0),
@@ -29,6 +29,9 @@ UNITS: dict[str, tuple[str, float]] = {
 _NUMBER = re.compile(r"([-+]?(?:inf|\d+(?:[.,]\d+)?|[.,]\d+))", re.IGNORECASE)
 
 
+_PAN = re.compile(r"^(\d+(?:[.,]\d+)?)\s*([LR])$", re.IGNORECASE)
+
+
 class DisplayError(ValueError):
     pass
 
@@ -36,6 +39,12 @@ class DisplayError(ValueError):
 def parse_display(text: str) -> tuple[float, str]:
     """'2.53 kHz' -> (2530.0, 'freq'); '-inf dB' -> (-inf, 'level'); '4.00 : 1' -> (4.0, 'ratio')."""
     s = str(text).strip()
+    if s.upper() == "C":                       # pan centre
+        return 0.0, "pan"
+    pan = _PAN.match(s)
+    if pan:                                    # "50L" -> -50, "50R" -> +50
+        value = float(pan.group(1).replace(",", "."))
+        return (-value if pan.group(2).upper() == "L" else value), "pan"
     m = _NUMBER.search(s)
     if not m:
         raise DisplayError(f"no number in display {text!r}")
@@ -63,6 +72,8 @@ def solve_display(target: str, lo: float, hi: float, formatter: Callable[[float]
     want, want_dim = parse_display(target)
     v_lo, dim_lo = parse_display(formatter(lo))
     v_hi, dim_hi = parse_display(formatter(hi))
+    # Some devices omit the unit on part of the range (Analog cutoff: " 834" .. "1.9k"):
+    # a bare number then means the parameter's own unit, already in its base scale.
     dims = {dim_lo, dim_hi} - {"number"} if want_dim != "number" else set()
     if dims and want_dim not in dims:
         raise DisplayError(f"unit mismatch: target {target!r}, parameter shows {formatter(lo)!r}..{formatter(hi)!r}")

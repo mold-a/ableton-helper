@@ -26,7 +26,7 @@ _DEVICE_ALIASES = {
     "phaser": "Phaser-Flanger", "phaser flanger": "Phaser-Flanger", "phasernew": "Phaser-Flanger",
     "eq 8": "EQ Eight", "eq8": "EQ Eight", "eq-8": "EQ Eight",
     "vinyl": "Vinyl Distortion", "ultraanalog": "Analog", "instrumentvector": "Wavetable",
-    "stereogain": "Utility", "originalsimpler": "Simpler", "drumgroupdevice": "Drum Rack",
+    "stereogain": "Utility", "originalsimpler": "Simpler", "multisampler": "Sampler", "drumgroupdevice": "Drum Rack",
 }
 
 

@@ -346,3 +346,16 @@ def test_device_type_heuristics():
     dev = D()
     dev.type = 4
     assert device_type(dev) == "midi_effect"
+
+
+def test_rs_display_parser_handles_analog_k_suffix_and_pan():
+    from AbletonHelper import display
+    samples = [(0.0, " 30"), (0.25, "158"), (0.5, "834"), (0.75, "4.3k"), (1.0, "22.0k")]
+
+    def fmt(raw):  # nearest-sample formatter is enough to exercise the parser and the unit check
+        return min(samples, key=lambda s: abs(s[0] - raw))[1]
+
+    assert display.parse_display("4.3k") == (4300.0, "freq")
+    raw = display.solve_display("900 Hz", 0.0, 1.0, fmt)
+    assert 0.45 <= raw <= 0.8
+    assert display.parse_display("C") == (0.0, "pan") and display.parse_display("50L") == (-50.0, "pan")

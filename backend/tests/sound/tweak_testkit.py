@@ -55,6 +55,11 @@ WIDTH_UTILITY = {"unit": "%", "scale": "lin", "min": 0, "max": 200}
 def curved_catalog(skip: tuple[str, ...] = ()) -> dict:
     """Real catalog + display curves on every role parameter (except roles/devices listed in ``skip``)."""
     cat = copy.deepcopy(json.loads(CATALOG.read_text(encoding="utf-8"))["devices"])
+    # These unit tests pin the display curves themselves; real calibration samples are exercised
+    # separately (test_sound_tweaks_real_displays.py).
+    for dev in cat.values():
+        for p in dev.get("parameters", []):
+            p.pop("display_samples", None)
     book = load_roles()
     for dev_name, roles in book.devices.items():
         by_name = {p["name"]: p for p in cat[dev_name]["parameters"]}
