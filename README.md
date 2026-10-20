@@ -93,12 +93,13 @@ abhelper chat --fake         # то же самое в терминале
 
 ```bash
 abhelper doctor              # проверка установки: Remote Script, мост, ключ, порты
-abhelper calibrate           # записывает реальные имена параметров устройств из вашего Live,
+abhelper calibrate           # записывает реальные имена параметров устройств из вашего Live
+                             # (по умолчанию в ~/.ableton-helper/device_catalog.json),
                              # чтобы рецепты звуков применялись точнее
-abhelper calibrate --devices Operator,Wavetable --out calibration.json
+abhelper calibrate --devices Operator Wavetable --out мой_каталог.json
 ```
 
-Команды реализуются отдельно; список опций смотрите в `abhelper --help`.
+Все опции: `abhelper --help`, `abhelper <команда> --help`. Live при `calibrate` должен быть запущен с включённым Remote Script.
 
 Удаление Remote Script: `python scripts/install_remote_script.py --uninstall`. Проверка без изменений: `--dry-run`.
 
