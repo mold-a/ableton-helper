@@ -1,0 +1,17 @@
+# Drift: гид по синтезатору (Live 11.3.25)
+keywords: drift, дрифт, аналоговый, тёплый синтезатор, osc 1 wave, shark tooth, saturated, lp freq, lp reso, hp freq, env 1, env 2, cyc env, cycling envelope, thickness, spread, strength, drift amount, детюн, живой звук, vintage
+
+## Drift: сигнальный путь
+Drift — простой синтезатор с аналоговым характером: два осциллятора (Osc 1, Osc 2) и Noise → фильтр (Low-pass LP + High-pass HP) → усилитель. Огибающие: Env 1 (громкость), Env 2 (модуляция; может работать как циклическая Cyc Env), один LFO и компактная матрица на три связи. Особенность — параметр Drift: у каждого голоса случайно «плавает» высота и фильтр, как у нестабильных аналоговых генераторов — это бесплатная «живость» и естественное биение (подходит для живых язычковых, смычковых и органных тембров). Режим голосов (Poly, Mono, Stereo, Unison) задаёт пресет и по API не выбирается; доступен регулятор силы — Spread (стерео), Strength (унисон), Thickness (моно), плюс Poly Voice Depth. Источники и цели модуляции (LP Mod Amt 1/2, Mod Matrix Amt 1–3) назначены в пресете: меняются только глубины, поэтому берите пресет, близкий по смыслу.
+
+## Drift: осцилляторы и шум
+Osc 1 Wave: Sine, Triangle, Shark Tooth, Saturated, Saw, Pulse, Rectangle. Osc 1 Shape (0…1) меняет гармоническое содержание (у Pulse/Rectangle — ширину импульса, у остальных — «форму»). Osc 1 Oct (−2…3), Osc 1 Gain. Osc 2 Wave: Sine, Triangle, Saturated, Saw, Rectangle; Osc 2 Oct (−3…2); Osc 2 Detune (0.5 — ноль, в полутонах; для биения ставьте очень близко к 0.5, на деле ±0.02–0.1 st = 2–10 ct); Osc 2 Gain. Noise On / Noise Gain (дыхание, шипение; −40…−30 dB). Osc 1/2/Noise Flt On — идёт ли источник через фильтр. Osc Retrig On — фаза стартует с нуля на каждой ноте (Off — свободная фаза, живее). Pitch Mod Amt 1/2 — глубина назначенных в пресете модуляций высоты (вибрато).
+
+## Drift: фильтр, огибающие, LFO
+LP Freq (0…1; display «1.8 kHz»), LP Reso, LP Type: I (12 dB, мягкий) или II (24 dB, жёстче), HP Freq (срез низа, чтобы убрать муть), Key > LPF (слежение за нотой, 0…1). LP Mod Amt 1 / 2 — глубина назначенных модуляций частоты (по умолчанию 0.5). Env 1 Attack / Decay / Sustain / Release — амплитудная (Slope-параметры A/D/R Slope). Env 2 Attack / Decay / Sustain / Release / Initial / Peak / Final; Env 2 Cyc On переключает Env 2 в циклический режим (Cyc Env Rate/Time/Ratio/Synced, Tilt, Hold) — LFO-подобный повторяющийся импульс. LFO Wave: Sine, Triangle, Saw Up, Saw Down, Square, Sample & Hold, Wander, Linear Env, Exponential Env; LFO Rate/Time/Ratio/Synced (по LFO Time Mode: Freq, Time, Ratio, Sync); LFO Amt; LFO Mod Amt; LFO Retrig On. Vel > Vol — реакция громкости на velocity (0.1 по умолчанию, 0 — игнорировать).
+
+## Drift: «живость» и ширина
+Global: Drift (0…1; по умолчанию ≈ 0.07) — случайное «плавание» голосов; 0.05–0.15 — приятная жизнь, больше 0.3 — расстроенный «винтаж». Spread (0.7 по умолчанию) — стерео-разнос двух голосов, Strength — сила унисона, Thickness — насыщенность моно (дубль-голоса). Legato On, Glide Time, Note Pitch Bend On, Transpose (±48), Volume (оставлять запас). Практика: для тёплого пэда — Osc 1 Saw + Osc 2 Saw с Oct −1, LP Freq 1.5–3 kHz, LP Type II, Env 1 Attack 300–600 ms, Release 800 ms, Drift 0.15; для мягкого баса — Osc 1 Saw, Osc 2 Sine Oct −1, LP Freq 600–900 Hz, Env 1 Attack ~3 ms; для «живого» баяна/гармоники — Osc 1 Pulse (Shape 0.3), Osc 2 Saw, Drift 0.1, LP Freq ~4 kHz без хоруса.
+
+## Источники
+- https://www.ableton.com/en/live-manual/11/live-instrument-reference/

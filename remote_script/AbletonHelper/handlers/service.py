@@ -1,5 +1,7 @@
 """Service commands: ping, get_capabilities, batch."""
 
+import os
+
 from ..constants import SCRIPT_VERSION
 from ..dispatcher import BAD_REQUEST, CommandError, get_bool, get_list
 from ..livecompat import safe_get
@@ -13,8 +15,20 @@ def live_version(application):
         return "unknown"
 
 
+def script_path():
+    """Folder this Remote Script runs from (<...>/MIDI Remote Scripts/AbletonHelper), or None."""
+    try:
+        return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    except Exception:
+        return None
+
+
 def ping(ctx, params):
-    return {"pong": True, "script_version": SCRIPT_VERSION, "live_version": live_version(ctx.application)}
+    result = {"pong": True, "script_version": SCRIPT_VERSION, "live_version": live_version(ctx.application)}
+    path = script_path()
+    if path:
+        result["script_path"] = path
+    return result
 
 
 def _live_class_has(ctx, module_name, class_name, attr):

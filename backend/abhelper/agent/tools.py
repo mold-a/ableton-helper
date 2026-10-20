@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable
 
 from ..bridge.base import BridgeCommandError, BridgeConnectionError
+from ..knowledge import COLLECTIONS as KNOWLEDGE_COLLECTIONS
 
 log = logging.getLogger(__name__)
 
@@ -22,7 +23,8 @@ MAX_PARAMS = 120
 MAX_BROWSER_ITEMS = 15
 MAX_TRACKS = 60
 MAX_NOTES = 2000
-MAX_HELP_CHARS = 1800
+MAX_KNOWLEDGE_CHARS = 1300
+MAX_PARAMS_JSON_CHARS = 20000  # keep get_device_parameters well below MAX_RESULT_CHARS
 MAX_RESULT_CHARS = 24000
 LONG_TIMEOUT = 30.0  # browser / device loading can be slow in Live
 
@@ -193,14 +195,25 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
         "name": "get_device_parameters",
         "description": (
             "Read the REAL parameters of one device: name, current value, min, max, display text (e.g. "
-            "'2.5 kHz') and, for dropdown/quantized parameters, the list of allowed items. Parameter names "
-            "and ranges differ between Live versions and devices, so always call this before editing a "
-            "device you did not just configure, and to resolve `unmatched_parameters` from create_sound. "
-            "Long lists are truncated to the first 120 parameters."
+            "'2.5 kHz'), `role` (what the parameter does: cutoff, resonance, attack, release, wet, ... when "
+            "known) and, for dropdown/quantized parameters, the list of allowed items. Parameter names and "
+            "ranges differ between Live versions and devices, so always call this before editing a device you "
+            "did not just configure, and to resolve `unmatched_parameters` from create_sound. Big devices "
+            "(Operator has 195 parameters, Analog 172) are not shown in full: without filters you get the "
+            "important parameters first (filter, envelopes, volume, effects mix) and then the rest up to a "
+            "cap, and the result states how many were omitted. To find anything specific pass `query` "
+            "(substring of the name or a role/keyword: 'filter', 'cutoff', 'attack', 'release', 'lfo', "
+            "'osc-b', 'unison', 'wet') and/or `names` (exact parameter names). Filtered lookups are cheap, "
+            "prefer them for big devices."
         ),
-        "input_schema": {"type": "object", "properties": {"track_index": _TRACK_INDEX, "device_index": _DEVICE_INDEX},
-                         "required": ["track_index", "device_index"], "additionalProperties": False},
-        "strict": True,
+        "input_schema": {"type": "object", "properties": {
+            "track_index": _TRACK_INDEX, "device_index": _DEVICE_INDEX,
+            "query": {"type": "string", "description": (
+                "Optional filter: words that must all occur in the parameter name, or a role / role group "
+                "('filter', 'envelope', 'cutoff', 'attack', 'lfo', 'wet'). Example: 'filter'.")},
+            "names": {"type": "array", "items": {"type": "string"}, "description": (
+                "Optional list of exact parameter names to read, e.g. ['Filter Freq', 'Filter Res'].")},
+        }, "required": ["track_index", "device_index"], "additionalProperties": False},
     },
     {
         "name": "set_device_parameters",
@@ -290,10 +303,11 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
     {
         "name": "search_ableton_help",
         "description": (
-            "Search the built-in Ableton Live knowledge base (how-to articles in Russian/English: warping, "
-            "recording, routing, clips, devices, shortcuts, Live 11/12 differences). Use it FIRST for any "
-            "'how do I do X in Ableton' question and ground the answer in the returned sections. Returns up "
-            "to 4 sections with title, section heading and text. Works without a Live connection."
+            "Alias of search_knowledge(collection='help'): search the Ableton Live how-to articles in "
+            "Russian/English (warping, recording, routing, clips, devices, shortcuts, Live 11/12 differences). "
+            "Use it FIRST for any 'how do I do X in Ableton' question and ground the answer in the returned "
+            "sections. Returns up to 4 sections with title, section heading and text. Works without a Live "
+            "connection."
         ),
         "input_schema": {"type": "object", "properties": {"query": {
             "type": "string", "description": "The question or key terms, e.g. 'как сделать варп лупа'."}},
@@ -318,6 +332,55 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
         "input_schema": {"type": "object", "properties": {"track_index": _TRACK_INDEX},
                          "required": ["track_index"], "additionalProperties": False},
         "strict": True,
+    },
+    {
+        "name": "search_knowledge",
+        "description": (
+            "Search the built-in knowledge base (Russian/English, works without a Live connection) and ground "
+            "your answer in the returned sections. Collections: 'help' = how to do things in Ableton Live "
+            "(interface, recording, warping, routing, shortcuts, troubleshooting); 'sound' = sound design: "
+            "guides to the native devices with their REAL parameter names and display units, how to "
+            "imitate acoustic instruments, what adjectives like 'brighter/warmer' mean in parameters; "
+            "'theory' = music theory and production: scales, chords, progressions, rhythm and drum patterns "
+            "by genre, bass lines, arrangement, mixing, with MIDI examples in Live's numbering (C3 = 60). "
+            "Omit `collection` to search everything. Call it BEFORE designing or tweaking a sound "
+            "(collection 'sound'), BEFORE writing MIDI (collection 'theory'), and for how-to questions "
+            "(collection 'help'). Returns up to 4 sections: collection, file, title, section, text, score."
+        ),
+        "input_schema": {"type": "object", "properties": {
+            "query": {"type": "string", "description": (
+                "What to look up, in Russian or English, e.g. 'как включить варп', 'Operator filter envelope', "
+                "'dorian chords', 'lo-fi hip hop drum pattern', 'гитара тембр'.")},
+            "collection": {"type": "string", "enum": list(KNOWLEDGE_COLLECTIONS), "description": (
+                "Optional: help | sound | theory. Omit to search all collections.")},
+        }, "required": ["query"], "additionalProperties": False},
+    },
+    {
+        "name": "adjust_sound",
+        "description": (
+            "Deterministic one-call tweak of an EXISTING sound on a track by an adjective or effect request: "
+            "it finds the right parameters in every device on the track (instrument and effects), changes "
+            "them by a musically meaningful step in the units Live displays (Hz, ms, dB, %), and returns a "
+            "before -> after list. This is the RELIABLE way to handle 'make it brighter/darker/warmer/harsher/"
+            "softer', 'softer/punchier attack', 'longer/shorter release', 'more/less reverb', 'longer/shorter "
+            "tail', 'wider/narrower', 'more drive/cleaner', 'more/less resonance', 'louder/quieter', "
+            "'more/less vibrato', 'fatter/thinner' (also in Russian: ярче, темнее, теплее, мягче атака, "
+            "длиннее релиз, больше реверба, шире, жирнее...), including several at once ('ярче и больше "
+            "реверба'). It adds a Reverb/Delay/Chorus/Saturator/Utility when the request needs one and the "
+            "track has none. PREFER it over set_device_parameters for such requests; use "
+            "get_device_parameters + set_device_parameters only to fine-tune afterwards or when the request "
+            "is not covered (result code 'unknown_request' lists what is supported). `amount` scales the "
+            "step: small (a touch), medium (default), large (a lot); words like 'чуть' / 'намного' in the "
+            "request are also understood."
+        ),
+        "input_schema": {"type": "object", "properties": {
+            "track_index": _TRACK_INDEX,
+            "request": {"type": "string", "description": (
+                "The tweak in the user's words or as a keyword: 'brighter', 'ярче', 'softer attack', "
+                "'больше реверба', 'longer release', 'wider', 'more drive'. Several are allowed in one string.")},
+            "amount": {"type": "string", "enum": ["small", "medium", "large"], "description": (
+                "Optional step size, default medium.")},
+        }, "required": ["track_index", "request"], "additionalProperties": False},
     },
 ]
 
@@ -621,19 +684,60 @@ class ToolExecutor:
         return self._create(description=description, recipe=recipe, strategy="recipe")
 
     # ---- devices
-    def _t_get_device_parameters(self, track_index: int, device_index: int) -> ToolResult:
+    def _t_get_device_parameters(self, track_index: int, device_index: int, query: str | None = None,
+                                 names: list[str] | None = None) -> ToolResult:
+        from ..sound.roles import filter_parameters, load_roles
+
         res = self._call("get_device_parameters", {"track_index": track_index, "device_index": device_index})
-        params = []
+        device = res.get("device", {})
+        book = load_roles()
+        droles = book.get(device.get("name"), device.get("class_name"))
+        prio = {n: i for i, n in enumerate(droles.priority_names())} if droles else {}
+        rows = []
         for p in res.get("parameters", []):
             row = {"index": p.get("index"), "name": p.get("name"), "value": _num(p.get("value")),
                    "min": _num(p.get("min")), "max": _num(p.get("max")), "display": p.get("display")}
+            if droles:
+                roles = droles.roles_of(p.get("name"))
+                if roles:
+                    row["role"] = ",".join(roles)
             if p.get("is_quantized") and p.get("value_items"):
                 row["items"] = list(p["value_items"])[:30]
-            params.append(row)
-        params, extra = _cap(params, MAX_PARAMS)
-        device = res.get("device", {})
-        data = {"device": device, "parameters": params, **extra}
-        return _ok(data, f"Параметры «{device.get('name', '?')}»: {len(params)}")
+            rows.append(row)
+        total = len(rows)
+        missing: list[str] = []
+        filtered = rows
+        if (query and query.strip()) or names:
+            filtered, missing = filter_parameters(book, droles, rows, query, names)
+        matched = len(filtered)
+        if matched > MAX_PARAMS and not names:
+            # big device: the parameters that matter (roles: filter, envelopes, volume, mix...) come first
+            filtered = sorted(filtered, key=lambda r: (prio.get(r["name"], len(prio) + 1_000_000), r["index"]))
+        shown = filtered[:MAX_PARAMS]
+        while shown and len(json.dumps(shown, ensure_ascii=False, separators=(",", ":"))) > MAX_PARAMS_JSON_CHARS:
+            drop = next((i for i in range(len(shown) - 1, -1, -1) if shown[i]["name"] not in prio), len(shown) - 1)
+            shown.pop(drop)
+        omitted = matched - len(shown)
+        data: dict[str, Any] = {"device": device, "parameters": shown, "total": total}
+        if query or names:
+            data["matched"] = matched
+        if omitted:
+            data.update(truncated=True, omitted=omitted)
+            data["hint"] = (
+                f"Showing {len(shown)} of {matched} parameters; {omitted} omitted (the important ones - filter, "
+                "envelopes, volume, effect mix - are listed first). Call again with `query` (a word from the "
+                "parameter name or a role: 'filter', 'cutoff', 'attack', 'release', 'lfo', 'osc-b', 'wet') or "
+                "`names` (exact names) to see specific parameters.")
+        elif not shown:
+            roles_hint = sorted(droles.roles) if droles else []
+            data["hint"] = ("No parameter matches. Try another query"
+                            + (f" (roles of this device: {', '.join(roles_hint)})" if roles_hint else "")
+                            + " or omit the filters.")
+        if missing:
+            data["not_found"] = missing
+        label = device.get("name", "?")
+        summary = f"Параметры «{label}»: {len(shown)} из {matched if (query or names) else total}"
+        return _ok(data, summary)
 
     def _t_set_device_parameters(self, track_index: int, device_index: int, values: dict) -> ToolResult:
         if not values:
@@ -717,17 +821,40 @@ class ToolExecutor:
             return _ok(res, "Последнее действие отменено")
         return _ok({"done": False, "message": "Nothing to undo."}, "Отменять нечего")
 
-    # ---- help
-    def _t_search_ableton_help(self, query: str) -> ToolResult:
-        hits = self.knowledge.search(query, limit=4) if self.knowledge is not None else []
+    # ---- tweaks
+    def _t_adjust_sound(self, track_index: int, request: str, amount: str | None = None) -> ToolResult:
+        from ..sound.tweaks import adjust_sound
+
+        data = adjust_sound(self.bridge, track_index, request, amount)
+        if not data.get("ok"):
+            return ToolResult(False, data, data.get("message") or "Ничего не изменено",
+                              data.get("code", "adjust_failed"))
+        changed = len(data.get("changes", []))
+        added = ", ".join(a["device"] for a in data.get("added_devices", []))
+        summary = f"Подстроено параметров: {changed}" + (f"; добавлено: {added}" if added else "")
+        return _ok(data, summary)
+
+    # ---- knowledge
+    def _t_search_knowledge(self, query: str, collection: str | None = None) -> ToolResult:
+        hits = self.knowledge.search(query, limit=4, collection=collection) if self.knowledge is not None else []
         out = []
         for h in hits:
             text = h.get("text", "")
-            if len(text) > MAX_HELP_CHARS:
-                text = text[:MAX_HELP_CHARS].rstrip() + " …"
-            out.append({"file": h.get("file"), "title": h.get("title"), "section": h.get("section"),
-                        "text": text, "score": _num(h.get("score"))})
+            if len(text) > MAX_KNOWLEDGE_CHARS:
+                text = text[:MAX_KNOWLEDGE_CHARS].rstrip() + " …"
+            out.append({"collection": h.get("collection"), "file": h.get("file"), "title": h.get("title"),
+                        "section": h.get("section"), "text": text, "score": _num(h.get("score"))})
         data: dict[str, Any] = {"results": out}
+        if collection:
+            data["collection"] = collection
         if not out:
-            data["hint"] = "No relevant sections in the built-in docs. Say so if you answer from general knowledge."
-        return _ok(data, f"В справке найдено разделов: {len(out)}")
+            data["hint"] = ("Nothing relevant in the built-in knowledge base"
+                            + (f" (collection '{collection}')" if collection else "")
+                            + ". Try other words or another collection, or say that you answer from general "
+                              "knowledge, not from the built-in docs.")
+        where = {"help": "справке", "sound": "базе по саунд-дизайну", "theory": "базе по теории"}.get(
+            collection or "", "базе знаний")
+        return _ok(data, f"В {where} найдено разделов: {len(out)}")
+
+    def _t_search_ableton_help(self, query: str) -> ToolResult:
+        return self._t_search_knowledge(query, "help")

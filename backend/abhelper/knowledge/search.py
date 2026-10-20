@@ -374,6 +374,9 @@ class KnowledgeBase:
         ranked.sort(key=lambda x: (-x[0], chunks[x[1]].collection, chunks[x[1]].file, x[1]))
 
         results: list[dict] = []
+        limit = max(0, int(limit))
+        if limit == 0:
+            return results
         seen: set[tuple[str, str, str]] = set()
         for sc, cid in ranked:
             ch = chunks[cid]
@@ -383,7 +386,7 @@ class KnowledgeBase:
             seen.add(key)
             results.append({"collection": ch.collection, "file": ch.file, "title": ch.title,
                             "section": ch.section, "text": ch.text, "score": round(sc, 3)})
-            if len(results) >= max(0, int(limit)):
+            if len(results) >= limit:
                 break
         return results
 

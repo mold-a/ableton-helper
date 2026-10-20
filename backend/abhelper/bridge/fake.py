@@ -18,7 +18,7 @@ from typing import Any
 from .base import BridgeCommandError
 from .displayval import DisplayError, format_display, parse_display, solve_display
 
-SCRIPT_VERSION = "0.2.0"
+SCRIPT_VERSION = "0.3.0"
 LIVE_VERSION = "12.1.0 (fake)"
 
 CATALOG_PATH = Path(__file__).resolve().parent.parent / "sound" / "data" / "device_catalog.json"
@@ -341,7 +341,10 @@ class FakeBridge:
 
     # ------------------------------------------------------------------ service
     def _cmd_ping(self) -> dict:
-        return {"pong": True, "script_version": SCRIPT_VERSION, "live_version": LIVE_VERSION}
+        out = {"pong": True, "script_version": SCRIPT_VERSION, "live_version": LIVE_VERSION}
+        if getattr(self, "script_path", None):
+            out["script_path"] = self.script_path
+        return out
 
     def _cmd_get_capabilities(self) -> dict:
         return dict(self.capabilities)

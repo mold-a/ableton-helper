@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "comment": "Каталог бесплатных sample-паков. Все паки здесь CC0; sha256 посчитан при проверке ссылок.",
+  "packs": [
+    {
+      "id": "accordion-hn",
+      "name": "Button Accordion HN (Hohner)",
+      "kind": "accordion",
+      "license": {
+        "name": "CC0 1.0",
+        "spdx": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "attribution": "Hohner accordion recorded by Jeff Stauffer; sound bank by michael02022; FreePats project",
+      "homepage": "https://freepats.zenvoid.org/Organ/accordion.html",
+      "url": "https://github.com/freepats/button-accordion-HN/releases/download/2024-03-29/ButtonAccordionHN-SFZ+WAV-20240329.7z",
+      "size_bytes": 6020026,
+      "sha256": "818d3dcdbbf5c454ba3f46a3fa2c9fd77555a476a16d8e881121d6a4d0a907c7",
+      "archive": "7z",
+      "sfz": "PRESET Button Accordion HN tuned.sfz",
+      "preset_name": "AbletonHelper Accordion HN",
+      "aliases": [
+        "accordion",
+        "bayan",
+        "button accordion",
+        "баян",
+        "аккордеон",
+        "гармонь"
+      ],
+      "recipe_ids": [
+        "bayan"
+      ],
+      "default": true,
+      "verified": true,
+      "notes": "17 зон с циклами, один слой громкости. Сэмплы «отпускания» (rel/) не используются: Sampler не умеет играть по отпусканию клавиши."
+    },
+    {
+      "id": "upright-piano-kw",
+      "name": "Upright Piano KW (small)",
+      "kind": "piano",
+      "license": {
+        "name": "CC0 1.0",
+        "spdx": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "attribution": "Kawai upright recorded by Gonzalo and Roberto; FreePats project",
+      "homepage": "https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html",
+      "url": "https://freepats.zenvoid.org/Piano/UprightPianoKW/UprightPianoKW-small-SFZ+FLAC-20190703.7z",
+      "size_bytes": 3092715,
+      "sha256": "e346ef198fcda0694fc66ddb80c2db2a1c700e96e3a1801930e3cebfed37047f",
+      "archive": "7z",
+      "sfz": "UprightPianoKW-small-20190703.sfz",
+      "preset_name": "AbletonHelper Upright Piano KW",
+      "aliases": [
+        "piano",
+        "upright piano",
+        "пианино"
+      ],
+      "recipe_ids": [
+        "grand_piano"
+      ],
+      "default": true,
+      "verified": true,
+      "notes": "Пианино Kawai в гостиной: тёплое и камерное, 26 зон, FLAC."
+    },
+    {
+      "id": "spanish-classical-guitar",
+      "name": "Spanish Classical Guitar",
+      "kind": "guitar",
+      "license": {
+        "name": "CC0 1.0",
+        "spdx": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "attribution": "Roberto (roberto@zenvoid.org); FreePats project",
+      "homepage": "https://freepats.zenvoid.org/Guitar/acoustic-guitar.html",
+      "url": "https://freepats.zenvoid.org/Guitar/SpanishClassicalGuitar/SpanishClassicalGuitar-SFZ+FLAC-20190618.7z",
+      "size_bytes": 4713892,
+      "sha256": "903916921a21662d2237ade7f0e98e55de93cb7b86da219e4e10f4ad385b8f5e",
+      "archive": "7z",
+      "sfz": "SpanishClassicalGuitar-20190618.sfz",
+      "preset_name": "AbletonHelper Classical Guitar",
+      "aliases": [
+        "guitar",
+        "classical guitar",
+        "nylon guitar",
+        "акустическая гитара",
+        "гитара"
+      ],
+      "recipe_ids": [
+        "acoustic_guitar"
+      ],
+      "default": true,
+      "verified": true,
+      "notes": "Нейлоновая классическая гитара, 48 зон, FLAC."
+    },
+    {
+      "id": "concert-harp-small",
+      "name": "Concert Harp (small)",
+      "kind": "harp",
+      "license": {
+        "name": "CC0 1.0",
+        "spdx": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "attribution": "Versilian Community Sample Library (Versilian Studios LLC), K. Smith; assembled by Roberto, FreePats project",
+      "homepage": "https://freepats.zenvoid.org/OrchestralStrings/harp.html",
+      "url": "https://freepats.zenvoid.org/OrchestralStrings/ConcertHarp/ConcertHarp-small-SFZ+FLAC-20200702.tar.gz",
+      "size_bytes": 2602719,
+      "sha256": "4444c00317ab0e5ccb2b3f5454da29c68be9ba3e35bce9535fee4e5f452fc56e",
+      "archive": "tar.gz",
+      "sfz": "ConcertHarp-small-20200702.sfz",
+      "preset_name": "AbletonHelper Concert Harp",
+      "aliases": [
+        "harp",
+        "арфа"
+      ],
+      "recipe_ids": [
+        "harp"
+      ],
+      "default": true,
+      "verified": true,
+      "notes": "22 зоны без циклов (щипковый звук затухает сам), FLAC."
+    },
+    {
+      "id": "tenor-sax-small",
+      "name": "Tenor Saxophone (small)",
+      "kind": "saxophone",
+      "license": {
+        "name": "CC0 1.0",
+        "spdx": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "attribution": "Versilian Community Sample Library (Versilian Studios LLC); assembled by Roberto, FreePats project",
+      "homepage": "https://freepats.zenvoid.org/Reed/saxophone.html",
+      "url": "https://freepats.zenvoid.org/Reed/TenorSaxophone/TenorSaxophone-small-SFZ+FLAC-20200717.tar.gz",
+      "size_bytes": 4901341,
+      "sha256": "a94847ba5bafdc0b922bfd54cef0b475a8023cd5d111f91f984a18b03fead04a",
+      "archive": "tar.gz",
+      "sfz": "TenorSaxophone-small-20200717.sfz",
+      "preset_name": "AbletonHelper Tenor Sax",
+      "aliases": [
+        "saxophone",
+        "sax",
+        "tenor sax",
+        "саксофон"
+      ],
+      "recipe_ids": [
+        "saxophone"
+      ],
+      "default": true,
+      "verified": true,
+      "notes": "18 зон, два слоя громкости, циклы для длинных нот, FLAC."
+    },
+    {
+      "id": "clarinet",
+      "name": "Clarinet",
+      "kind": "clarinet",
+      "license": {
+        "name": "CC0 1.0",
+        "spdx": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "attribution": "Tyler Dence (recording), Kaili Dence (performer); loops by Roberto; FreePats project",
+      "homepage": "https://freepats.zenvoid.org/Reed/clarinet.html",
+      "url": "https://freepats.zenvoid.org/Reed/Clarinet1/Clarinet-SFZ-20190818.tar.xz",
+      "size_bytes": 6963336,
+      "sha256": "481fd688f003fc4930e49123199fd88e7430376cb80f3ecfa685d7f610d20a98",
+      "archive": "tar.xz",
+      "sfz": "Clarinet-20190818.sfz",
+      "preset_name": "AbletonHelper Clarinet",
+      "aliases": [
+        "clarinet",
+        "кларнет"
+      ],
+      "recipe_ids": [
+        "clarinet"
+      ],
+      "default": true,
+      "verified": true,
+      "notes": "9 зон с циклами, WAV."
+    },
+    {
+      "id": "recorder",
+      "name": "Recorder (blockflute)",
+      "kind": "recorder",
+      "license": {
+        "name": "CC0 1.0",
+        "spdx": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "attribution": "Eugene Vlaskin (performer); processed by Roberto; FreePats project",
+      "homepage": "https://freepats.zenvoid.org/Wind/recorder.html",
+      "url": "https://freepats.zenvoid.org/Wind/Recorder1/Recorder-SFZ+FLAC-20201205.7z",
+      "size_bytes": 9323066,
+      "sha256": "871910afe843f90b604acb6acca99697afd0113d4cb0871a93c7660cebab30f1",
+      "archive": "7z",
+      "sfz": "RecorderN1-20201205.sfz",
+      "preset_name": "AbletonHelper Recorder",
+      "aliases": [
+        "recorder",
+        "блокфлейта",
+        "flute"
+      ],
+      "recipe_ids": [],
+      "default": true,
+      "verified": true,
+      "notes": "17 зон с циклами, FLAC. Берётся набор N1 (без случайных вариантов)."
+    }
+  ]
+}

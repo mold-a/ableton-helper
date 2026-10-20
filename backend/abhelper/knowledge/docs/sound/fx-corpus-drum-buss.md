@@ -1,0 +1,11 @@
+# Corpus и Drum Buss (Live 11.3.25)
+keywords: corpus, корпус, резонатор, resonator, physical modeling, физическое моделирование, drum buss, драм басс, boom, бум, crunch, transients, транзиенты, marimba, beam, string, membrane, plate, pipe, tube, body resonance, резонанс корпуса, ударные
+
+## Corpus: параметры
+Corpus — резонатор, моделирующий корпус (физическая модель): подмешивает к входному сигналу резонанс выбранного объекта. Resonance Type: Beam, Marimba, String, Membrane, Plate, Pipe, Tube. Resonator Quality: Eco, Low, Med, High (качество/CPU). Tune (0…1) и Transpose (±48), Fine (±50 ct) настраивают основной тон; Spread (−1…1) раздвигает тона левый/правый; Decay (время звучания), Material (мягкий–жёсткий), Radius (размер), Brightness (−1…1, яркость), Inharmonics (−1…1; негармоничность — металл, колокола), Opening (степень открытости трубы/сосуда), Ratio, Hit (положение удара), Listening L / R (точки «прослушивания»), LFO (On/Off, Shape, Sync, Rate, Amount), Filter On/Off + Mid Freq, Width (Q), MIDI Frequency (резонатор следует за нотами: Last/Low), Gain, Bleed, Dry Wet. Типовое применение: маримба/бруски — Marimba, Decay 0.3–0.6, Brightness небольшой; корпус гитары/арфы — Plate или Beam, Decay короткий, Dry Wet 10–20 %; звон металлических пластин — Plate, Inharmonics +; барабан/том — Membrane, Decay 0.3.
+
+## Drum Buss: параметры
+Drum Buss — обработка барабанов: Drive (0…1) и Drive Type (Soft, Medium, Hard) — насыщение, Crunch (0…1) — искажение средне-высоких, Damping Freq — срез верха после искажения, Transients (−1…1): положительные — резче атака, отрицательные — мягче; Boom Freq, Boom Amt, Boom Decay — низкочастотный резонатор (Boom Audition прослушивает), Compressor On — встроенный быстрый компрессор, Trim (входной уровень), Output Gain, Dry/Wet. Применение: плотность кита — Drive 0.2–0.3, Crunch 0.2–0.3, Transients +0.2…+0.3, Boom Amt 0.2–0.3 на 50–60 Hz, Compressor On; для кика — Boom Freq на его фундамент (45–60 Hz), Boom Decay 0.5–0.7. Чтобы «смягчить» агрессивный кит — Transients −0.2…−0.3, Damping Freq ниже, Drive 0.1. Не перебарщивайте с Boom: низ быстро подбирает общий уровень (следите за Trim/Output Gain).
+
+## Источники
+- https://www.ableton.com/en/live-manual/11/live-audio-effect-reference/

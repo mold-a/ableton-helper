@@ -1,0 +1,14 @@
+# Chorus-Ensemble и Phaser-Flanger (Live 11.3.25)
+keywords: chorus, хорус, ensemble, ансамбль, vibrato, вибрато, phaser, фейзер, flanger, флэнжер, doubler, дублирование, ширина, width, stereo, стерео, thick, толще, движение, плавание, detune, ансамбль струнных, electric piano
+
+## Chorus-Ensemble: параметры
+Chorus-Ensemble размножает сигнал модулируемыми линиями задержки. Mode: Classic (две линии, классический хорус), Ensemble (три линии, струнный ансамбль), Vibrato (чистая модуляция высоты, без сухого сигнала: Dry/Wet в этом режиме не работает). Rate (display в Hz), Amount (глубина модуляции, в %), Feedback (+ FB Inv), Width (ширина волны: 0 % — моно, 100 % — равный mid/side, 200 % — максимум) в Classic/Ensemble; в Vibrato вместо Width — Offset (сдвиг фаз L/R, 180° полностью противофаза) и Shape (форма модуляции от синуса к треугольнику). HPF Enabled + HPF Freq (20…2000 Hz) — исключает басы из хоруса (хорошо ставить 100–200 Hz). Warmth — лёгкая окраска (тёплая сатурация и фильтрация). Gain (Output) — выходной уровень. Dry/Wet — смесь: 20–40 % — «подкраска», 50 % — заметный хорус, на return — 100 %.
+
+## Chorus-Ensemble: когда использовать
+Хорус нужен там, где в реальности много источников: струнная секция, хор, электропиано (Rhodes), 12-струнная гитара, синтетические пэды. Для сольных акустических инструментов (баян, гитара, флейта, скрипка, труба, арфа) хорус НЕ добавляют: он создаёт «плавающую» высоту и ломает ощущение единого инструмента. Для пэдов: Ensemble, Rate 0.4–0.8 Hz, Amount 30–50 %, Width 100–150 %, Dry/Wet 30–40 %. Для электропиано: Classic или Ensemble, Dry/Wet 25–30 %. Для «шире» без плавания: Vibrato mode не используйте; лучше Utility Stereo Width 120–140 % или Spread в самом инструменте. Для имитации лёгкой расстройки голоса — Classic, Rate 0.3 Hz, Amount 5–10 %, Dry/Wet 15–20 %.
+
+## Phaser-Flanger: параметры
+Phaser-Flanger имеет три режима (Mode): Phaser (набор все-проходных фильтров — «гребёнка» провалов, параметры Notches 1…42, Center Freq, Spread, Mod Blend), Flanger (короткая линия задержки с обратной связью — «реактивный» звук; Flange Time) и Doubler (очень короткое удвоение, 10–30 ms, Doubler Time). Общее: Amount (глубина модуляции), Mod Wave (Sine, Triangle, Triangle Analog, Triangle 8, Triangle 16, Saw Up, Saw Down, Rectangle, Random, Random S&H), Mod Freq / Mod Rate (при Mod Sync = On — в долях), Mod Phase / Spin (разнесение каналов), Duty Cycle, Lfo Blend (смесь с LFO2), Env Enabled / Env Amount / Env Attack / Env Release (огибающая входа), Feedback (+FB Inv), Warmth, Safe Freq (защита низа), Output Gain, Dry/Wet. Phaser: Notches 4–6, Feedback 20–50 %, Mod Freq 0.2–0.5 Hz, Dry/Wet 40–60 %. Flanger: Flange Time 1–5 ms, Feedback 30–60 %. Для реверса/пэда — медленный фейзер (0.18 Hz, Amount 60 %); для гитары — очень слабый (Dry/Wet ≤ 25 %).
+
+## Источники
+- https://www.ableton.com/en/live-manual/11/live-audio-effect-reference/

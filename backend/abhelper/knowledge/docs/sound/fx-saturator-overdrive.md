@@ -1,0 +1,14 @@
+# Saturator и Overdrive: насыщение и дисторшн (Live 11.3.25)
+keywords: saturator, сатуратор, overdrive, овердрайв, distortion, дисторшн, грязнее, чище, тепло, warm, сатурация, drive, драйв, harmonics, гармоники, waveshaper, soft clip, analog clip, soft sine, tone, color, ламповый, аналоговость
+
+## Saturator: параметры
+Saturator добавляет гармоники искажением формы волны. Drive (−36…36 dB) — уровень, на котором сигнал начинают ограничивать; Output (−36…0 dB) возвращает громкость обратно — компенсируйте примерно половину Drive. Type: Analog Clip (мягкий, «аналоговый»), Soft Sine (самый мягкий, тёплый), Medium Curve, Hard Curve (агрессивнее), Sinoid Fold (складка, металлическая), Digital Clip (жёсткий), Waveshaper (+ параметры WS Drive, WS Lin, WS Curve, WS Damp, WS Period, WS Depth). Base — вклад эффекта на очень низких частотах; Color = On включает фильтры Frequency, Width, Depth (−24…24 dB), позволяющие подчеркнуть нужную полосу искажений. Soft Clip = On добавляет мягкий клиппинг на выходе. Dry/Wet — смесь с сухим сигналом. Для тепла: Type Soft Sine или Analog Clip, Drive 3–6 dB, Output −2…−3 dB, Dry/Wet 100 % или 40–60 %. Для плотности баса: Drive 6–12 dB, Dry/Wet 40–60 % (добавляются 2-я и 3-я гармоники, и бас слышно на маленьких колонках).
+
+## Overdrive: параметры
+Overdrive — педаль дисторшна. Перед искажением сигнал проходит полосовой фильтр: Filter Freq (0…1; display в Hz/kHz) задаёт центр, Filter Width (0.5…9, это Q) — ширину; узкий фильтр даёт «телефонный» хрип, широкий — полнополосный. Drive (0…100 %) — искажение (даже 0 % слегка искажает). Tone (0…100 %) — яркость после искажения (50 — нейтрально). Preserve Dynamics (в интерфейсе «Dynamics», 0…1) — меньше сжатия, больше динамики. Dry/Wet (0…100 %). Применения: гитара — Drive 40–70 %, Filter Freq ≈ 1.2 kHz, Width ≈ 2–4, Tone 50–60; «микрофон в кулаке» (гармоника) — Drive 18–30 %, узкий фильтр 1.5–2.5 kHz, Dry/Wet 30–40 %; ламповый пред — Drive 15–25 %, Dry/Wet 100 %. Overdrive — для «грязи» и характера, Saturator — для тепла и плотности.
+
+## Как «греть» и «пачкать» звук
+Теплее: Saturator Soft Sine, Drive 3–5 dB, затем High Shelf −1…−2 dB на 8–10 kHz; Low Shelf +1 dB на 150 Hz. Грязнее/агрессивнее: Hard Curve или Sinoid Fold, Drive 8–14 dB, Overdrive Drive +15–25 %; можно добавить Redux (Bit Depth 12–14). Чище: уменьшить Drive на 3–6 dB, Dry/Wet вниз, Type Soft Sine. Против «цифровой остроты» (пила в Operator) поможет Saturator Soft Sine Drive 2–4 dB перед фильтром EQ. Ограничения: не крутите Drive у басовых ниже 100 Hz одновременно с Output выше −6 dB — перегруз мастера; на реверберации и хвостах сатурацию не используйте (она поднимает шум); на соло-акустических инструментах держите сатурацию тонкой (Drive ≤ 4 dB), иначе звук станет «электрическим». После Drive всегда сравнивайте на одинаковой громкости.
+
+## Источники
+- https://www.ableton.com/en/live-manual/11/live-audio-effect-reference/

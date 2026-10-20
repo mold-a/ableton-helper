@@ -236,6 +236,9 @@ def build_parser() -> argparse.ArgumentParser:
     k.add_argument("--out", help="куда писать JSON (по умолчанию <ABHELPER_HOME>/device_catalog.json, т. е. ~/.ableton-helper)")
     k.add_argument("--fake", action="store_true")
     k.set_defaults(func=cmd_calibrate)
+    from .samples.cli import register as register_samples
+
+    register_samples(sub)
     return p
 
 
