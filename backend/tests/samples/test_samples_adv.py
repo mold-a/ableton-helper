@@ -275,3 +275,22 @@ def test_midi_name_and_describe(tmp_path):
     _sfz, parts = parts_for(tmp_path, "<region> sample=a.wav key=c4 lovel=20 hivel=90 loop_mode=loop_continuous loop_start=1 loop_end=5", {})
     line = describe_parts(parts)[0]
     assert "root  60" in line and "vel 20-90" in line and "loop 1..5" in line
+
+
+def test_templates_saved_before_live_11_are_rejected(tmp_path):
+    import gzip
+    from abhelper.samples import adv
+    import re
+    from samples_testkit import synth_template_xml
+
+    new = synth_template_xml()
+    old = re.sub(r'Creator="[^"]*"', 'Creator="Ableton Live 10.1.30"', new, count=1)
+    old = re.sub(r'MinorVersion="[^"]*"', 'MinorVersion="10.0_377"', old, count=1)
+    with pytest.raises(adv.TemplateError):
+        adv.template_from_xml(old, "old.adv")
+    core = tmp_path / "Resources" / "Core Library" / "Sampler"
+    core.mkdir(parents=True)
+    (core / "a_small_old.adv").write_bytes(gzip.compress(old.encode()))
+    (core / "b_bigger_new.adv").write_bytes(gzip.compress((new + "<!--" + "x" * 2000 + "-->").encode()))
+    tpl = adv.find_template(None, [tmp_path / "Resources"])
+    assert tpl is not None and tpl.source.endswith("b_bigger_new.adv")

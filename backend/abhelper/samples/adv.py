@@ -13,6 +13,7 @@ from __future__ import annotations
 import copy
 import gzip
 import os
+import re
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -60,6 +61,18 @@ class Template:
     part: ET.Element                           # its first <MultiSamplePart>
 
 
+MIN_TEMPLATE_MAJOR = 11      # Live 11 switched FileRef to path strings; older presets use a binary <Data> ref
+
+
+def live_major_version(root_attrib: dict) -> int | None:
+    """Live version a document was saved with: Creator 'Ableton Live 11.3.22' or MinorVersion '11.0_11300'."""
+    m = re.search(r"Live\s+(\d+)", root_attrib.get("Creator", ""))
+    if m:
+        return int(m.group(1))
+    m = re.match(r"(\d+)\.", root_attrib.get("MinorVersion", ""))
+    return int(m.group(1)) if m else None
+
+
 def template_from_xml(data: bytes | str, source: str = "memory", kind: str = "memory") -> Template:
     """Take the first `<MultiSampler>` that has at least one `<MultiSamplePart>` out of a Live XML document."""
     if isinstance(data, str):
@@ -68,6 +81,10 @@ def template_from_xml(data: bytes | str, source: str = "memory", kind: str = "me
         root = ET.fromstring(data)
     except ET.ParseError as exc:
         raise TemplateError("%s: не XML (%s)" % (source, exc))
+    major = live_major_version(dict(root.attrib))
+    if major is not None and major < MIN_TEMPLATE_MAJOR:
+        raise TemplateError("%s: сохранён в Live %d — нужен шаблон из Live %d+ (иначе Live отбрасывает зоны)"
+                            % (source, major, MIN_TEMPLATE_MAJOR))
     for dev in root.iter("MultiSampler"):
         part = dev.find(".//MultiSamplePart")
         if part is not None:

@@ -180,7 +180,10 @@ def cmd_doctor(args: argparse.Namespace) -> int:
             tpl = None
         else:
             if tpl is not None:
-                print("%s Шаблон Sampler: %s (%s)" % (OK, tpl.source, tpl.kind))
+                from .adv import live_major_version
+                ver = live_major_version(tpl.root_attrib) if hasattr(tpl, "root_attrib") else None
+                print("%s Шаблон Sampler: %s (%s, сохранён в %s)" % (
+                    OK, tpl.source, tpl.kind, tpl.root_attrib.get("Creator", "Live %s" % ver) if hasattr(tpl, "root_attrib") else "?"))
             else:
                 print("%s Шаблон Sampler не найден." % BAD)
                 print("    " + HOW_TO_MAKE_TEMPLATE)
