@@ -23,10 +23,14 @@ python scripts/install_remote_script.py --dry-run  # только показат
 python scripts/install_remote_script.py --uninstall
 ```
 
-Куда копируется по умолчанию:
+Куда копируется по умолчанию — в `<User Library>/Remote Scripts/AbletonHelper`, где User Library ищется так:
 
-- macOS: `~/Music/Ableton/User Library/Remote Scripts/AbletonHelper`
-- Windows: `%USERPROFILE%\Documents\Ableton\User Library\Remote Scripts\AbletonHelper`
+1. путь, который использует сам Live: `Library.cfg` последней запускавшейся версии
+   (Windows `%APPDATA%\Ableton\Live <версия>\Preferences`, macOS `~/Library/Preferences/Ableton/Live <версия>`);
+2. иначе macOS `~/Music/Ableton/User Library`, Windows `<Документы>\Ableton\User Library`
+   (настоящая папка «Документы», даже если она перенесена на другой диск или в OneDrive).
+
+Если папки User Library по указанному пути нет, установщик откажется (защита от опечаток в `--dest`); `--force` создаёт её.
 
 Затем: перезапустить Live → **Settings → Link, Tempo & MIDI → Control Surface → AbletonHelper**, Input/Output = None. В строке состояния Live появится «AbletonHelper: listening on 9888».
 

@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Install / uninstall the AbletonHelper MIDI Remote Script into Ableton Live.
 
-Copies remote_script/AbletonHelper into the "Remote Scripts" folder of the User Library:
+Copies remote_script/AbletonHelper into the "Remote Scripts" folder of the User Library.
+The User Library is found in this order:
 
-  macOS    ~/Music/Ableton/User Library/Remote Scripts/AbletonHelper
-  Windows  %USERPROFILE%\\Documents\\Ableton\\User Library\\Remote Scripts\\AbletonHelper
+  1. the path Live itself uses, read from Library.cfg of the most recently used Live version
+     (Windows %APPDATA%\\Ableton\\Live <ver>\\Preferences, macOS ~/Library/Preferences/Ableton/Live <ver>)
+  2. macOS    ~/Music/Ableton/User Library
+     Windows  <Documents>\\Ableton\\User Library (the real Documents folder, even if it was moved)
 
 Usage:
   python scripts/install_remote_script.py                 # install
@@ -18,6 +21,7 @@ the package is copied to <dest>/AbletonHelper. Standard library only, Python 3.8
 
 import argparse
 import os
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -29,16 +33,71 @@ IGNORE_NAMES = {"__pycache__", "tests", ".pytest_cache", ".DS_Store"}
 IGNORE_SUFFIXES = (".pyc", ".pyo")
 
 
-def default_remote_scripts_dir(platform=None, home=None):
-    """User Library 'Remote Scripts' folder for this OS, or None if the OS is not supported."""
+def live_preferences_dirs(platform=None, home=None, appdata=None):
+    """Preferences folders of installed Live versions, most recently used first."""
     platform = platform or sys.platform
     home = Path(home) if home else Path.home()
     if platform == "darwin":
-        return home / "Music" / "Ableton" / "User Library" / "Remote Scripts"
-    if platform.startswith("win"):
-        profile = Path(os.environ.get("USERPROFILE") or str(home))
-        return profile / "Documents" / "Ableton" / "User Library" / "Remote Scripts"
+        pattern_root = home / "Library" / "Preferences" / "Ableton"
+        dirs = list(pattern_root.glob("Live *")) if pattern_root.is_dir() else []
+    elif platform.startswith("win"):
+        root = Path(appdata or os.environ.get("APPDATA") or (home / "AppData" / "Roaming")) / "Ableton"
+        dirs = [d / "Preferences" for d in root.glob("Live *")] if root.is_dir() else []
+    else:
+        return []
+    dirs = [d for d in dirs if (d / "Library.cfg").is_file()]
+    return sorted(dirs, key=lambda d: (d / "Library.cfg").stat().st_mtime, reverse=True)
+
+
+_USER_LIBRARY_BLOCK = re.compile(r"<UserLibrary>(.*?)</UserLibrary>", re.S)
+_PROJECT_PATH = re.compile(r'<ProjectPath\s+Value="([^"]*)"')
+
+
+def user_library_from_cfg(cfg_path):
+    """User Library folder recorded in Live's Library.cfg, or None."""
+    try:
+        text = Path(cfg_path).read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return None
+    block = _USER_LIBRARY_BLOCK.search(text)
+    match = _PROJECT_PATH.search(block.group(1) if block else "")
+    if not match or not match.group(1).strip():
+        return None
+    path = Path(match.group(1).strip())
+    if path.name != "User Library" and (path / "User Library").is_dir():
+        path = path / "User Library"
+    return path if path.is_dir() else None
+
+
+def windows_documents_dir():
+    """The real Documents folder on Windows (it may be moved, e.g. to another drive or OneDrive)."""
+    try:
+        import ctypes
+        buf = ctypes.create_unicode_buffer(260)
+        if ctypes.windll.shell32.SHGetFolderPathW(None, 5, None, 0, buf) == 0 and buf.value:  # CSIDL_PERSONAL
+            return Path(buf.value)
+    except Exception:
+        pass
     return None
+
+
+def default_remote_scripts_dir(platform=None, home=None, appdata=None, documents=None):
+    """User Library 'Remote Scripts' folder for this OS, or None if the OS is not supported."""
+    platform = platform or sys.platform
+    home = Path(home) if home else Path.home()
+    if not (platform == "darwin" or platform.startswith("win")):
+        return None
+    for prefs in live_preferences_dirs(platform, home, appdata):
+        library = user_library_from_cfg(prefs / "Library.cfg")
+        if library is not None:
+            return library / "Remote Scripts"
+    if platform == "darwin":
+        return home / "Music" / "Ableton" / "User Library" / "Remote Scripts"
+    if documents is None and platform == sys.platform:
+        documents = windows_documents_dir()
+    if documents is None:
+        documents = Path(os.environ.get("USERPROFILE") or str(home)) / "Documents"
+    return Path(documents) / "Ableton" / "User Library" / "Remote Scripts"
 
 
 def _ignore(_directory, names):
@@ -56,7 +115,7 @@ def verify_package(package_dir):
     return True, str(init)
 
 
-def install(remote_scripts_dir, dry_run=False, out=print):
+def install(remote_scripts_dir, dry_run=False, out=print, force=False):
     target = Path(remote_scripts_dir) / PACKAGE_NAME
     if not SOURCE.is_dir():
         out("Ошибка: не найден исходник %s" % SOURCE)
@@ -74,6 +133,12 @@ def install(remote_scripts_dir, dry_run=False, out=print):
         for path in sorted(_walk_files(SOURCE)):
             out("  " + str(path.relative_to(SOURCE)))
         return 0
+    library = Path(remote_scripts_dir).parent
+    if not library.is_dir() and not force:
+        out("Отказ: папка %s не существует — похоже, путь указан неверно." % library)
+        out("Путь к User Library смотрите в Live: Settings/Preferences -> Library. "
+            "Если папку действительно нужно создать, добавьте --force.")
+        return 1
     Path(remote_scripts_dir).mkdir(parents=True, exist_ok=True)
     if target.exists():
         if not (target / "__init__.py").is_file():
@@ -139,6 +204,7 @@ def build_parser():
                                        "(по умолчанию — User Library)")
     parser.add_argument("--uninstall", action="store_true", help="удалить установленный скрипт")
     parser.add_argument("--dry-run", action="store_true", help="ничего не менять, только показать план")
+    parser.add_argument("--force", action="store_true", help="создать папку User Library, если её нет")
     return parser
 
 
@@ -157,7 +223,7 @@ def main(argv=None):
             return 2
     if args.uninstall:
         return uninstall(dest, args.dry_run)
-    return install(dest, args.dry_run)
+    return install(dest, args.dry_run, force=args.force)
 
 
 if __name__ == "__main__":
