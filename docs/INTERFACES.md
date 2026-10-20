@@ -155,7 +155,7 @@ class AssistantAgent:
 `get_session_overview`, `get_track_details`, `search_sound_library`, `search_live_browser`,
 `create_sound`, `design_custom_sound`, `get_device_parameters`, `set_device_parameters`,
 `load_device`, `create_midi_clip`, `transport`, `undo_last_action`, `search_ableton_help`,
-`rename_track`, `delete_track`.
+`rename_track`, `delete_track`, `search_knowledge`, `adjust_sound`.
 
 ## 5. HTTP API (`abhelper.server`)
 
@@ -172,7 +172,15 @@ class AssistantAgent:
 ### Переменные окружения
 `ANTHROPIC_API_KEY`, `ABHELPER_MODEL`, `ABHELPER_EFFORT`, `ABHELPER_BRIDGE_HOST`, `ABHELPER_BRIDGE_PORT`, `ABHELPER_HOST`, `ABHELPER_PORT`, `ABHELPER_HOME` (папка данных, по умолчанию ~/.ableton-helper), `ABHELPER_CONFIG`, `ABHELPER_ENV_FILE`, `ABHELPER_UI_DIR`, `ABHELPER_FALLBACKS` (0 — выключить server-side fallback), `ABHELPER_STRICT_TOOLS` (0 — убрать `strict` у инструментов).
 
-## 6. База знаний (`abhelper/knowledge/docs/*.md`)
+## 6. База знаний (RAG)
+
+Три коллекции — подпапки `backend/abhelper/knowledge/docs/`:
+
+| Коллекция | Папка | Содержимое |
+|---|---|---|
+| `help` | `docs/help/` | работа в Ableton Live: интерфейс, запись, варп, маршрутизация… |
+| `sound` | `docs/sound/` | саунд-дизайн: гиды по нативным устройствам (реальные имена параметров Live 11.3.25, единицы отображения), словарь «прилагательное → параметры», имитация акустических инструментов |
+| `theory` | `docs/theory/` | музыкальная теория и продакшн: лады, аккорды, гармония, ритм и паттерны по жанрам, бас, аранжировка, сведение — с MIDI-примерами в нумерации Live (C3 = 60) |
 
 Формат файла:
 ```markdown
@@ -180,8 +188,16 @@ class AssistantAgent:
 keywords: warp, варп, растяжение, темп сэмпла, warping
 
 ## Подраздел
-Текст...
+Текст (свой, не копия источника)...
+
+## Источники
+- https://...
 ```
-Поиск (`abhelper.knowledge.search.KnowledgeBase.search(query, limit=4) -> list[dict]`,
-элемент: `{"file", "title", "section", "text", "score"}`) режет файлы по `## `, ищет по
-словам запроса, `keywords` и заголовкам (RU/EN, совпадение по префиксу ≥ 4 символов).
+Тексты пишутся своими словами (краткие пересказы, без длинных дословных цитат), со ссылками на источники.
+
+Поиск: `abhelper.knowledge.search.KnowledgeBase.search(query, limit=4, collection=None) -> list[dict]`,
+элемент: `{"collection", "file", "title", "section", "text", "score"}`. BM25 по чанкам (раздел `## `),
+RU/EN, лёгкий стемминг (префикс ≥ 4–5 символов, ё→е), словарь синонимов RU↔EN
+(`knowledge/synonyms.json`), бонус за совпадение с заголовком/keywords.
+Инструмент агента: `search_knowledge(query, collection?)`; `search_ableton_help` остаётся как
+синоним с `collection="help"`.
