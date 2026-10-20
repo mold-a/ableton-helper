@@ -17,6 +17,7 @@ _WORD_RE = re.compile(r"[a-zа-я0-9]+(?:[-'][a-zа-я0-9]+)*", re.IGNORECASE)
 
 STOPWORDS = frozenset("""
 как что где это эти этот эта для при или про над под без как-то можно нужно надо хочу хотел хотела
+сделать делать сделай сделайте использовать пользоваться
 чтобы если когда какой какая какие какое мне меня мой моя мои есть быть будет там тут его ее
 the and for how what where when why can could should would does with from into that this these those
 are was were has have you your use using make get want need
@@ -65,6 +66,7 @@ class _Section:
     text: str
     keywords: list[str] = field(default_factory=list)
     kw_tokens: set[str] = field(default_factory=set)
+    kw_phrases: list[str] = field(default_factory=list)
     title_tokens: set[str] = field(default_factory=set)
     head_tokens: set[str] = field(default_factory=set)
     body_counts: Counter = field(default_factory=Counter)
@@ -121,6 +123,7 @@ class KnowledgeBase:
             if not body:
                 continue
             sec = _Section(file=filename, title=title, section=heading, text=body, keywords=list(keywords))
+            sec.kw_phrases = [" ".join(tokenize(k)) for k in keywords]
             sec.kw_tokens = {t for k in keywords for t in tokenize(k)}
             sec.title_tokens = set(tokenize(title))
             sec.head_tokens = set(tokenize(heading))
@@ -173,7 +176,7 @@ class KnowledgeBase:
                     m = _match_strength(t, d)
                     if m > body_m:
                         body_m, tf = m, c
-            s = max(kw * 3.0, ti * 2.0, hd * 2.5) + body_m * (1.0 + 0.3 * math.log(max(tf, 1)))
+            s = max(kw * 2.0, ti * 1.5, hd * 3.0) + body_m * (1.0 + 0.3 * math.log(max(tf, 1)))
             if s > 0:
                 matched += 1
                 total += s
@@ -183,4 +186,9 @@ class KnowledgeBase:
         total *= 0.4 + 0.6 * coverage
         if len(q_tokens) > 1 and q_phrase in sec.haystack:
             total += 2.0
+        # a whole keyword phrase appearing in the query ("как включить warp") is a strong signal
+        for k in sec.kw_phrases:
+            if len(k) >= 4 and k in q_phrase:
+                total += 1.5
+                break
         return total

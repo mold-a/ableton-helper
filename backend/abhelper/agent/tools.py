@@ -451,7 +451,10 @@ def _default_recipe_validator(recipe: dict) -> list[str]:
     try:
         from ..sound import validate_recipe  # type: ignore
 
-        return validate_recipe(recipe)
+        try:
+            return validate_recipe(recipe, custom=True)  # LLM recipes may omit id/aliases/name
+        except TypeError:  # older signature: validate_recipe(recipe)
+            return validate_recipe(recipe)
     except ImportError:
         errors = []
         inst = recipe.get("instrument") if isinstance(recipe, dict) else None
