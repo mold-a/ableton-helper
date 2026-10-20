@@ -24,7 +24,7 @@ abhelper = "abhelper.cli:main"
 where = ["backend"]
 
 [tool.setuptools.package-data]
-abhelper = ["sound/recipes/*.json", "sound/data/*.json", "knowledge/docs/*.md"]
+abhelper = ["sound/recipes/*.json", "sound/data/*.json", "knowledge/docs/*/*.md", "knowledge/docs/*.md", "knowledge/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["backend/tests", "remote_script/tests"]

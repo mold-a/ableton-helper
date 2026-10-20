@@ -15,6 +15,8 @@
     transport: "Транспорт",
     undo_last_action: "Отменяю",
     search_ableton_help: "Ищу в справке",
+    search_knowledge: "Ищу в базе знаний",
+    adjust_sound: "Подстраиваю звук",
     rename_track: "Переименовываю дорожку",
     delete_track: "Удаляю дорожку",
     get_track_details: "Смотрю дорожку"

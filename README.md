@@ -125,7 +125,8 @@ ableton-helper/
 ├── backend/abhelper/              локальный сервер
 │   ├── agent/                     цикл tool-use с Claude
 │   ├── sound/                     рецепты звуков, поиск пресетов, применение
-│   ├── knowledge/docs/            база знаний по Ableton (Markdown)
+│   ├── knowledge/                 база знаний (RAG): BM25-поиск, synonyms.json
+│   │   └── docs/{help,sound,theory}/   Markdown: справка по Live, саунд-дизайн, теория
 │   ├── bridge/                    клиент моста и FakeBridge
 │   └── server/                    FastAPI (HTTP + SSE)
 ├── ui/                            веб-чат (HTML/CSS/JS без сборки)

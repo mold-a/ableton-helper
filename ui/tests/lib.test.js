@@ -124,7 +124,10 @@ test("markdown: empty / null input", () => {
 test("toolLabel: known and unknown names", () => {
   assert.strictEqual(lib.toolLabel("create_sound"), "Создаю звук");
   assert.strictEqual(lib.toolLabel("get_track_details"), "Смотрю дорожку");
+  assert.strictEqual(lib.toolLabel("search_knowledge"), "Ищу в базе знаний");
+  assert.strictEqual(lib.toolLabel("adjust_sound"), "Подстраиваю звук");
+  assert.strictEqual(lib.toolLabel("search_ableton_help"), "Ищу в справке");
   assert.strictEqual(lib.toolLabel("something_new"), "something_new");
   assert.strictEqual(lib.toolLabel("constructor"), "constructor");
-  assert.strictEqual(Object.keys(lib.TOOL_LABELS).length, 15);
+  assert.strictEqual(Object.keys(lib.TOOL_LABELS).length, 17);
 });

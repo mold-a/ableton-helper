@@ -146,8 +146,15 @@ def run_doctor(settings: Settings, bridge: Any = None, ui_dir: Path | None = Non
     rows.append((OK if has_ui else BAD, f"Интерфейс чата: {ui}" + ("" if has_ui else " (index.html не найден)"),
                  "" if has_ui else "Задайте ABHELPER_UI_DIR или переустановите проект."))
     kb = KnowledgeBase()
-    rows.append((OK if kb.sections else WARN, f"База знаний: {len(kb.sections)} разделов",
-                 "" if kb.sections else "Папка knowledge/docs пуста: справочные ответы будут из общих знаний модели."))
+    cols = kb.collections()
+    detail = ", ".join(f"{name}: {n}" for name, n in cols.items())
+    rows.append((OK if kb.sections else WARN,
+                 f"База знаний: {len(kb.sections)} фрагментов" + (f" ({detail})" if detail else ""),
+                 "" if kb.sections else "Папка knowledge/docs пуста: ответы будут из общих знаний модели."))
+    missing = [c for c in ("help", "sound", "theory") if c not in cols]
+    if kb.sections and missing:
+        rows.append((WARN, "В базе знаний нет коллекций: " + ", ".join(missing),
+                     "Папки knowledge/docs/<коллекция>/ пусты или не установлены."))
     try:
         import abhelper.sound  # noqa: F401
 
