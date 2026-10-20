@@ -1,6 +1,6 @@
 """Shared constants of the AbletonHelper Remote Script."""
 
-SCRIPT_VERSION = "0.1.0"
+SCRIPT_VERSION = "0.2.0"
 DEFAULT_PORT = 9888
 PORT_ENV_VAR = "ABHELPER_BRIDGE_PORT"
 HOST = "127.0.0.1"

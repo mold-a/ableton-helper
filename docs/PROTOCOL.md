@@ -72,7 +72,7 @@
 ### Сервис
 | command | params | result |
 |---|---|---|
-| `ping` | — | `{"pong": true, "script_version": "0.1.0", "live_version": "12.1.5"}` |
+| `ping` | — | `{"pong": true, "script_version": "0.2.0", "live_version": "12.1.5"}` |
 | `get_capabilities` | — | `{"insert_device": bool, "create_audio_clip": bool, "add_new_notes": bool, "browser": bool}` |
 | `batch` | `{"commands": [{"command": str, "params": {}}...], "stop_on_error": true}` | `{"results": [<конверт без id>...]}` — выполняется в одном тике главного потока |
 

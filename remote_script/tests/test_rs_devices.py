@@ -1,7 +1,9 @@
+import math
+
 import pytest
 
-from rs_fakes import (FakeDevice, SilentBrowser, call, error, make_dispatcher, make_operator, make_world,
-                      result)
+from rs_fakes import (FakeDevice, FakeParam, NoDisplayParam, SilentBrowser, call, db_curve, error, exp_ms,
+                      inverse_hz, log_hz, make_dispatcher, make_operator, make_world, percent, result)
 
 
 def setup(**kw):
@@ -151,6 +153,170 @@ def test_set_parameters_partial_failure(op):
     assert {f["parameter"]: f["code"] for f in out["failed"]} == {"Bogus": "not_found", "Locked": "bad_request", "Osc-A Wave": "bad_request"}
     assert song.tracks[0].devices[0].parameters[2].value == 1.0
     assert error(d, "set_device_parameters", track_index=0, device_index=0, values=[]) == "bad_request"
+
+
+# ---------------------------------------------------------------- display values
+
+@pytest.fixture
+def eq():
+    song, app, d = setup()
+    song.tracks[0].devices.append(FakeDevice("EQ Eight", "Eq8", 2, [
+        FakeParam("1 Frequency A", 0.5, curve=log_hz),
+        FakeParam("Release", 0.2, curve=exp_ms),
+        FakeParam("Gain", 0.5, curve=db_curve),
+        FakeParam("Dry/Wet", 0.1, curve=percent),
+        FakeParam("Inv", 0.5, curve=inverse_hz),
+        FakeParam("Filter Type", 0.0, 0.0, 2.0, items=("Low", "Mid", "High"), curve=log_hz),
+        NoDisplayParam("Mystery", 0.3),
+    ]))
+    return song.tracks[0].devices[0], d
+
+
+def _display(d, name, text):
+    return result(d, "set_device_parameter", track_index=0, device_index=0, parameter=name, value={"display": text})
+
+
+def test_display_frequency_log_curve(eq):
+    dev, d = eq
+    out = _display(d, "1 Frequency A", "1.3 kHz")
+    assert out["display"] == "1.30 kHz"
+    # 10 Hz * 2200**raw == 1300 Hz
+    assert dev.parameters[1].value == pytest.approx(math.log(130.0) / math.log(2200.0), abs=1e-6)
+    out = _display(d, "1 Frequency A", "9 kHz")
+    assert out["display"] == "9.00 kHz"
+    out = _display(d, "1 Frequency A", "440 Hz")
+    assert out["display"] == "440.0 Hz"
+    out = _display(d, "1 Frequency A", "0.44 kHz")   # unit conversion kHz -> Hz
+    assert out["display"] == "440.0 Hz"
+
+
+def test_display_time_curve(eq):
+    dev, d = eq
+    assert _display(d, "Release", "25 ms")["display"] == "25.0 ms"
+    assert _display(d, "Release", "1.5 s")["display"] == "1.50 s"
+    assert _display(d, "Release", "1500 ms")["display"] == "1.50 s"
+    assert _display(d, "Release", "2,5 s")["display"] == "2.50 s"   # decimal comma
+
+
+def test_display_db_and_inf(eq):
+    dev, d = eq
+    out = _display(d, "Gain", "-6 dB")
+    assert out["display"] == "-6.0 dB" and dev.parameters[3].value == pytest.approx(0.501, abs=1e-3)
+    out = _display(d, "Gain", "-inf dB")
+    assert dev.parameters[3].value == 0.0 and out["display"] == "-inf dB"
+    out = _display(d, "Gain", "-inf")
+    assert dev.parameters[3].value == 0.0
+    _display(d, "Gain", "+inf dB")
+    assert dev.parameters[3].value == 1.0
+
+
+def test_display_percent(eq):
+    dev, d = eq
+    assert _display(d, "Dry/Wet", "30 %")["display"] == "30.0 %"
+    assert dev.parameters[4].value == pytest.approx(0.3, abs=1e-3)
+    _display(d, "Dry/Wet", "50")   # no unit: compare numbers as shown
+    assert dev.parameters[4].value == pytest.approx(0.5, abs=1e-3)
+
+
+def test_display_decreasing_curve(eq):
+    dev, d = eq
+    out = _display(d, "Inv", "1 kHz")
+    assert out["display"] == "1.00 kHz"
+    assert dev.parameters[5].value == pytest.approx(1.0 - math.log(100.0) / math.log(2200.0), abs=1e-6)
+    _display(d, "Inv", "100 kHz")   # louder than the maximum -> the end that shows the most
+    assert dev.parameters[5].value == 0.0
+    _display(d, "Inv", "1 Hz")
+    assert dev.parameters[5].value == 1.0
+
+
+def test_display_clamps_out_of_range(eq):
+    dev, d = eq
+    _display(d, "1 Frequency A", "100 kHz")
+    assert dev.parameters[1].value == 1.0
+    _display(d, "1 Frequency A", "1 Hz")
+    assert dev.parameters[1].value == 0.0
+    _display(d, "Release", "500 s")
+    assert dev.parameters[2].value == 1.0
+
+
+def test_display_unit_mismatch_and_bad_text(eq):
+    dev, d = eq
+    before = dev.parameters[1].value
+    assert error(d, "set_device_parameter", track_index=0, device_index=0, parameter="1 Frequency A",
+                 value={"display": "25 ms"}) == "bad_request"
+    assert error(d, "set_device_parameter", track_index=0, device_index=0, parameter="1 Frequency A",
+                 value={"display": "loud"}) == "bad_request"
+    assert error(d, "set_device_parameter", track_index=0, device_index=0, parameter="1 Frequency A",
+                 value={"display": 5}) == "bad_request"
+    assert dev.parameters[1].value == before
+    env = call(d, "set_device_parameter", track_index=0, device_index=0, parameter="Release",
+               value={"display": "-6 dB"})
+    assert env["error"]["code"] == "bad_request" and "Release" in env["error"]["message"]
+
+
+def test_display_mismatch_is_per_parameter_in_batch(eq):
+    dev, d = eq
+    out = result(d, "set_device_parameters", track_index=0, device_index=0, values={
+        "1 Frequency A": {"display": "2 kHz"}, "Release": {"display": "3 kHz"}, "Dry/Wet": {"display": "10 %"}})
+    assert [p["name"] for p in out["applied"]] == ["1 Frequency A", "Dry/Wet"]
+    assert [(f["parameter"], f["code"]) for f in out["failed"]] == [("Release", "bad_request")]
+
+
+def test_display_quantized_uses_item_names(eq):
+    dev, d = eq
+    assert _display(d, "Filter Type", "high")["value"] == 2.0
+    assert _display(d, "Filter Type", "Mid")["value"] == 1.0
+    assert error(d, "set_device_parameter", track_index=0, device_index=0, parameter="Filter Type",
+                 value={"display": "9 kHz"}) == "bad_request"
+
+
+def test_display_without_str_for_value_is_unsupported(eq):
+    dev, d = eq
+    assert error(d, "set_device_parameter", track_index=0, device_index=0, parameter="Mystery",
+                 value={"display": "1 kHz"}) == "unsupported"
+    out = result(d, "set_device_parameters", track_index=0, device_index=0,
+                 values={"Mystery": {"display": "1 kHz"}, "Gain": 0.5})
+    assert out["failed"][0]["code"] == "unsupported" and len(out["applied"]) == 1
+
+
+def test_display_str_for_value_raising_is_bad_request(eq):
+    dev, d = eq
+
+    def boom(raw):
+        raise RuntimeError("no")
+    dev.parameters[1].curve = boom
+    assert error(d, "set_device_parameter", track_index=0, device_index=0, parameter="1 Frequency A",
+                 value={"display": "1 kHz"}) == "bad_request"
+
+
+def test_display_object_with_neither_key_and_norm_still_work(eq):
+    dev, d = eq
+    assert error(d, "set_device_parameter", track_index=0, device_index=0, parameter="Gain",
+                 value={"hz": 1}) == "bad_request"
+    result(d, "set_device_parameter", track_index=0, device_index=0, parameter="Gain", value={"norm": 0.25})
+    assert dev.parameters[3].value == 0.25
+
+
+def test_get_parameter_displays_shape_and_no_mutation(eq):
+    dev, d = eq
+    before = [p.value for p in dev.parameters]
+    out = result(d, "get_parameter_displays", track_index=0, device_index=0)
+    names = [x["name"] for x in out["parameters"]]
+    assert names == ["1 Frequency A", "Release", "Gain", "Dry/Wet", "Inv", "Mystery"]   # quantized skipped
+    freq = out["parameters"][0]
+    assert freq["index"] == 1 and len(freq["samples"]) == 9
+    assert freq["samples"][0] == [0.0, "10.0 Hz"] and freq["samples"][-1] == [1.0, "22.00 kHz"]
+    assert out["parameters"][2]["samples"][0] == [0.0, "-inf dB"]
+    assert all(s[1] == "" for s in out["parameters"][-1]["samples"])   # no str_for_value -> empty text
+    assert [p.value for p in dev.parameters] == before
+
+
+def test_get_parameter_displays_sample_clamp(eq):
+    dev, d = eq
+    n = lambda **kw: len(result(d, "get_parameter_displays", track_index=0, device_index=0, **kw)["parameters"][0]["samples"])
+    assert n() == 9 and n(samples=2) == 2 and n(samples=1) == 2 and n(samples=500) == 33 and n(samples=33) == 33
+    assert error(d, "get_parameter_displays", track_index=0, device_index=0, samples="x") == "bad_request"
+    assert error(d, "get_parameter_displays", track_index=0, device_index=5) == "not_found"
 
 
 def test_enabled_and_delete(op):

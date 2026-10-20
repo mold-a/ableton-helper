@@ -1,8 +1,44 @@
 """Fakes of the Live API objects used by the Remote Script tests."""
+import math
+
+
+def _fmt_hz(hz):
+    return "%.2f kHz" % (hz / 1000.0) if hz >= 1000 else "%.1f Hz" % hz
+
+
+def _fmt_ms(ms):
+    return "%.2f s" % (ms / 1000.0) if ms >= 1000 else "%.1f ms" % ms
+
+
+def log_hz(raw):
+    """Normalised 0..1 on a log curve 10 Hz .. 22 kHz."""
+    return _fmt_hz(10.0 * (2200.0 ** raw))
+
+
+def inverse_hz(raw):
+    """Display DEcreases as raw grows (22 kHz at min, 10 Hz at max)."""
+    return log_hz(1.0 - raw)
+
+
+def exp_ms(raw):
+    """Normalised 0..1 on an exponential curve 1 ms .. 10 s."""
+    return _fmt_ms(10000.0 ** raw)
+
+
+def db_curve(raw):
+    """-inf dB at raw 0, 0 dB at raw 1 (20*log10)."""
+    if raw <= 0.0:
+        return "-inf dB"
+    return "%.1f dB" % (20.0 * math.log10(raw))
+
+
+def percent(raw):
+    return "%.1f %%" % (raw * 100.0)
 
 
 class FakeParam(object):
-    def __init__(self, name, value=0.0, vmin=0.0, vmax=1.0, default=None, items=None, enabled=True):
+    def __init__(self, name, value=0.0, vmin=0.0, vmax=1.0, default=None, items=None, enabled=True, curve=None):
+        self.curve = curve
         self.name = name
         self.original_name = name
         self.value = value
@@ -16,7 +52,14 @@ class FakeParam(object):
     def str_for_value(self, v):
         if self.is_quantized:
             return self.value_items[int(v)]
+        if self.curve is not None:
+            return self.curve(v)
         return "%.2f" % v
+
+
+class NoDisplayParam(FakeParam):
+    """A parameter whose Live object has no str_for_value."""
+    str_for_value = None
 
 
 class FakeDevice(object):

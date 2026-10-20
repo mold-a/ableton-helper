@@ -25,8 +25,11 @@ def _is_number(x: Any) -> bool:
     return isinstance(x, (int, float)) and not isinstance(x, bool)
 
 
+_DISPLAY_RE = re.compile(r"^[-+]?(?:inf|\d+(?:[.,]\d+)?|[.,]\d+)\s*(?:[A-Za-z%°]+|:\s*1)?\.?$", re.IGNORECASE)
+
+
 def _check_value(value: Any, where: str, errors: list[str]) -> None:
-    """A parameter value: raw number, a quantized item name or {"norm": 0..1}."""
+    """A parameter value: raw number, a quantized item name, {"display": "1.3 kHz"} or {"norm": 0..1}."""
     if _is_number(value):
         return
     if isinstance(value, str):
@@ -34,12 +37,19 @@ def _check_value(value: Any, where: str, errors: list[str]) -> None:
             errors.append(f"{where}: empty string value")
         return
     if isinstance(value, dict):
+        if set(value) == {"display"}:
+            d = value["display"]
+            if not isinstance(d, str) or not d.strip():
+                errors.append(f'{where}: display must be a non-empty string like "1.3 kHz"')
+            elif not _DISPLAY_RE.match(d.strip()):
+                errors.append(f'{where}: display {d!r} must be a number with an optional unit, e.g. "1.3 kHz"')
+            return
         if set(value) != {"norm"} or not _is_number(value["norm"]):
-            errors.append(f'{where}: object value must be exactly {{"norm": 0..1}}')
+            errors.append(f'{where}: object value must be exactly {{"display": "1.3 kHz"}} or {{"norm": 0..1}}')
         elif not 0.0 <= float(value["norm"]) <= 1.0:
             errors.append(f"{where}: norm {value['norm']} is outside 0..1")
         return
-    errors.append(f"{where}: unsupported value {value!r} (number, string or {{'norm': x}})")
+    errors.append(f"{where}: unsupported value {value!r} (number, string, {{'display': '1.3 kHz'}} or {{'norm': x}})")
 
 
 def _check_params(params: Any, where: str, errors: list[str]) -> None:

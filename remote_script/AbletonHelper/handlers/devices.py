@@ -3,6 +3,7 @@
 import re
 
 from ..browser_index import category_root, get_children
+from ..display import DisplayError, solve_display
 from ..dispatcher import (BAD_REQUEST, INTERNAL, NOT_FOUND, UNSUPPORTED, CommandError,
                           get_bool, get_dict, get_int, get_str)
 from ..livecompat import (device_list, device_summary, param_to_dict, safe_get, same)
@@ -140,6 +141,35 @@ def find_parameter(device, key):
     raise CommandError(NOT_FOUND, "Parameter '%s' not found on %s" % (key, safe_get(device, "name", "device")))
 
 
+def _quantized_item_index(param, name, text):
+    items = [str(x).lower() for x in safe_get(param, "value_items", [])]
+    if text.lower() not in items:
+        raise CommandError(BAD_REQUEST, "'%s' is not one of %s" % (text, list(items)))
+    return float(items.index(text.lower()))
+
+
+def _display_value(param, name, quantized, target):
+    if not isinstance(target, str):
+        raise CommandError(BAD_REQUEST, "'display' must be a string like \"1.3 kHz\"")
+    if quantized:
+        return _quantized_item_index(param, name, target)
+    formatter = getattr(param, "str_for_value", None)
+    if formatter is None:
+        raise CommandError(UNSUPPORTED, "Parameter '%s' cannot be set by display (no str_for_value)" % name)
+
+    def fmt(raw):
+        try:
+            return str(formatter(raw))
+        except Exception as exc:
+            raise DisplayError("str_for_value failed (%s)" % (exc,))
+    pmin = float(safe_get(param, "min", 0.0))
+    pmax = float(safe_get(param, "max", 1.0))
+    try:
+        return solve_display(target, pmin, pmax, fmt)
+    except DisplayError as exc:
+        raise CommandError(BAD_REQUEST, "Parameter '%s': %s" % (name, exc))
+
+
 def coerce_value(param, value):
     """Protocol value coercion -> float within [min, max], rounded for quantized params."""
     pmin = float(safe_get(param, "min", 0.0))
@@ -147,19 +177,19 @@ def coerce_value(param, value):
     quantized = bool(safe_get(param, "is_quantized", False))
     name = safe_get(param, "name", "")
     if isinstance(value, dict):
-        if "norm" not in value:
-            raise CommandError(BAD_REQUEST, "Object value must be {\"norm\": number}")
-        norm = value["norm"]
-        if isinstance(norm, bool) or not isinstance(norm, (int, float)):
-            raise CommandError(BAD_REQUEST, "'norm' must be a number")
-        result = pmin + float(norm) * (pmax - pmin)
+        if "display" in value:
+            result = _display_value(param, name, quantized, value["display"])
+        elif "norm" in value:
+            norm = value["norm"]
+            if isinstance(norm, bool) or not isinstance(norm, (int, float)):
+                raise CommandError(BAD_REQUEST, "'norm' must be a number")
+            result = pmin + float(norm) * (pmax - pmin)
+        else:
+            raise CommandError(BAD_REQUEST, "Object value must be {\"display\": str} or {\"norm\": number}")
     elif isinstance(value, str):
         if not quantized:
             raise CommandError(BAD_REQUEST, "Parameter '%s' is not quantized; string value not allowed" % name)
-        items = [str(x).lower() for x in safe_get(param, "value_items", [])]
-        if value.lower() not in items:
-            raise CommandError(BAD_REQUEST, "'%s' is not one of %s" % (value, list(items)))
-        result = float(items.index(value.lower()))
+        result = _quantized_item_index(param, name, value)
     elif isinstance(value, (int, float)) and not isinstance(value, bool):
         result = float(value)
     else:
@@ -189,6 +219,29 @@ def get_device_parameters(ctx, params):
         "device": {"name": summary["name"], "class_name": summary["class_name"], "type": summary["type"]},
         "parameters": [param_to_dict(i, p) for i, p in enumerate(plist)],
     }
+
+
+def get_parameter_displays(ctx, params):
+    """Sample each continuous parameter's display text across [min, max] (read-only)."""
+    _ti, _track, _di, device = resolve_device(ctx, params)
+    samples = get_int(params, "samples", 9)
+    samples = max(2, min(33, samples))
+    out = []
+    for i, param in enumerate(list(safe_get(device, "parameters", []) or [])):
+        if safe_get(param, "is_quantized", False):
+            continue
+        pmin = float(safe_get(param, "min", 0.0))
+        pmax = float(safe_get(param, "max", 1.0))
+        points = []
+        for k in range(samples):
+            raw = pmin + (pmax - pmin) * k / (samples - 1.0)
+            try:
+                text = str(param.str_for_value(raw))
+            except Exception:
+                text = ""
+            points.append([raw, text])
+        out.append({"index": i, "name": str(safe_get(param, "name", "")), "samples": points})
+    return {"parameters": out}
 
 
 def set_device_parameter(ctx, params):
@@ -239,5 +292,6 @@ COMMANDS = {
     "get_device_parameters": get_device_parameters,
     "set_device_parameter": set_device_parameter,
     "set_device_parameters": set_device_parameters,
+    "get_parameter_displays": get_parameter_displays,
     "set_device_enabled": set_device_enabled,
 }

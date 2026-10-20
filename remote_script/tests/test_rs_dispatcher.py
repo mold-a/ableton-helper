@@ -14,7 +14,7 @@ def test_envelope_echoes_id_and_ok(d):
     env = d.handle({"id": "42", "command": "ping"})
     assert env["id"] == "42" and env["ok"] is True
     assert env["result"]["pong"] is True
-    assert env["result"]["script_version"] == "0.1.0"
+    assert env["result"]["script_version"] == "0.2.0"
     assert env["result"]["live_version"] == "12.1.5"
 
 

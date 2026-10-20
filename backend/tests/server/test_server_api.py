@@ -46,7 +46,7 @@ def test_status_with_fake_bridge():
     c, *_ = make_client()
     j = c.get("/api/status").json()
     assert j["bridge"]["connected"] is True and "fake" in j["bridge"]["live_version"]
-    assert j["bridge"]["script_version"] == "0.1.0"
+    assert j["bridge"]["script_version"] == "0.2.0"
     assert j["llm"] == {"configured": True, "model": "claude-opus-5-5"}
     assert j["version"]
 
