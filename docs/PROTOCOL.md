@@ -106,6 +106,7 @@
 | `get_device_parameters` | `{"track_index", "device_index"}` | `{"device": {"name", "class_name", "type"}, "parameters": [Parameter...]}` |
 | `set_device_parameter` | `{"track_index", "device_index", "parameter": int\|str, "value": number\|str}` | `Parameter` (после изменения) |
 | `set_device_parameters` | `{"track_index", "device_index", "values": {"<name or index>": number\|str, ...}}` | `{"applied": [Parameter...], "failed": [{"parameter", "code", "message"}]}` — не падает целиком из-за одного параметра |
+| `get_parameter_displays` | `{"track_index", "device_index", "samples"?: int = 9 (2..33)}` | `{"parameters": [{"index", "name", "samples": [[raw, "display"], ...]}]}` — для каждого **неквантованного** параметра: `samples` равномерных сырых точек от `min` до `max` и их `str_for_value`. Используется калибровкой, параметры не меняет |
 | `set_device_enabled` | `{"track_index", "device_index", "enabled": bool}` | `{"enabled"}` |
 
 `load_device` грузит **нативное** устройство по имени, как оно называется в браузере
@@ -121,6 +122,17 @@
 - `str` → только для квантованных: элемент `value_items` (сравнение без учёта регистра);
   иначе `bad_request`.
 - `{"norm": 0..1}` → `min + norm*(max-min)`.
+- `{"display": "1.3 kHz"}` → **рекомендуемая форма для непрерывных параметров**: значение так, как его
+  показывает Live. Большинство параметров нативных устройств отдаются в API нормализованными 0..1 на
+  нелинейной (лог/эксп) кривой, поэтому `norm` и сырые числа для частот/времён/уровней почти всегда
+  неверны. Скрипт находит сырое значение бисекцией по `[min, max]` с помощью
+  `DeviceParameter.str_for_value(raw)` (~48 вызовов, без изменения параметра). Грамматика цели:
+  число (`2.53`, `-6`, `-inf`, запятая как разделитель допустима) + необязательная единица:
+  `Hz`/`kHz` (частота), `ms`/`s` (время), `dB`, `%`, `st` (полутоны), `ct` (центы), `°`, `: 1` (ratio);
+  без единицы — сравнение чисел как есть. Единицы приводятся к канону (kHz→Hz, s→ms). Если единица
+  цели не совпадает с единицей отображения параметра или отображение не числовое — `bad_request`.
+  Цель за пределами диапазона → `min`/`max`. Для квантованных параметров строка `display`
+  трактуется как элемент `value_items`. Эталонная реализация: `backend/abhelper/bridge/displayval.py`.
 
 ### Браузер
 | command | params | result |

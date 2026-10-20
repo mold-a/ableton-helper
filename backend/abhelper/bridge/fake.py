@@ -9,12 +9,14 @@ from __future__ import annotations
 
 import copy
 import json
+import math
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
 from .base import BridgeCommandError
+from .displayval import DisplayError, format_display, parse_display, solve_display
 
 SCRIPT_VERSION = "0.1.0"
 LIVE_VERSION = "12.1.0 (fake)"
@@ -72,13 +74,44 @@ class FakeParam:
     is_quantized: bool = False
     value_items: list[str] = field(default_factory=list)
     value: float = 0.0
+    # How Live displays this parameter (from calibration): [[raw, "2.53 kHz"], ...] sorted by raw,
+    # or a curve {"unit": "Hz", "scale": "log", "min": 10, "max": 22000}. Absent = unknown.
+    display_samples: list = field(default_factory=list)
+    display_curve: dict | None = None
+
+    def str_for_value(self, raw: float) -> str:
+        if self.is_quantized and self.value_items:
+            i = int(round(raw))
+            return self.value_items[i] if 0 <= i < len(self.value_items) else str(i)
+        if self.display_samples:
+            pts = [(float(r), *parse_display(t)) for r, t in self.display_samples]
+            dim = next((d for _r, _v, d in pts if d != "number"), "number")
+            if raw <= pts[0][0]:
+                return format_display(pts[0][1], dim)
+            for (r0, v0, _), (r1, v1, _) in zip(pts, pts[1:]):
+                if raw <= r1:
+                    if math.isinf(v0) or math.isinf(v1):
+                        return format_display(v1 if raw > r0 else v0, dim)
+                    t = (raw - r0) / (r1 - r0) if r1 != r0 else 0.0
+                    if v0 > 0 and v1 > 0 and dim in ("freq", "time"):   # Live's curves are ~exponential
+                        return format_display(v0 * (v1 / v0) ** t, dim)
+                    return format_display(v0 + t * (v1 - v0), dim)
+            return format_display(pts[-1][1], dim)
+        if self.display_curve:
+            c = self.display_curve
+            factor, dim = parse_display(f"1 {c.get('unit', '')}")
+            lo, hi = float(c["min"]) * factor, float(c["max"]) * factor
+            t = (raw - self.min) / (self.max - self.min) if self.max != self.min else 0.0
+            v = lo * (hi / lo) ** t if c.get("scale") == "log" and lo > 0 else lo + t * (hi - lo)
+            return format_display(v, dim)
+        return f"{raw:.2f}"
+
+    @property
+    def display_known(self) -> bool:
+        return bool(self.display_samples or self.display_curve) or self.is_quantized
 
     def to_dict(self, index: int) -> dict:
-        if self.is_quantized and self.value_items:
-            i = int(self.value)
-            display = self.value_items[i] if 0 <= i < len(self.value_items) else str(i)
-        else:
-            display = f"{self.value:.2f}"
+        display = self.str_for_value(self.value)
         return {
             "index": index, "name": self.name, "value": self.value, "min": self.min,
             "max": self.max, "default": self.default, "display": display,
@@ -232,6 +265,8 @@ class FakeBridge:
                 default=float(p.get("default", p.get("min", 0.0))),
                 is_quantized=bool(p.get("is_quantized", bool(p.get("value_items")))),
                 value_items=list(p.get("value_items", [])),
+                display_samples=list(p.get("display_samples") or []),
+                display_curve=p.get("display_curve"),
             )
             fp.value = fp.default
             if fp.name != "Device On":
@@ -259,6 +294,20 @@ class FakeBridge:
 
     @staticmethod
     def _coerce_value(p: FakeParam, value: Any) -> float:
+        if isinstance(value, dict) and "display" in value:
+            target = value["display"]
+            if not isinstance(target, str):
+                raise BridgeCommandError("bad_request", "'display' must be a string like \"1.3 kHz\"")
+            if p.is_quantized and p.value_items:
+                return FakeBridge._coerce_value(p, target)
+            if not p.display_known:
+                # Unknown display curve (catalog without calibration samples): accept, land mid-range.
+                p.approximate_display = True  # type: ignore[attr-defined]
+                return p.min + 0.5 * (p.max - p.min)
+            try:
+                return solve_display(target, p.min, p.max, p.str_for_value)
+            except DisplayError as e:
+                raise BridgeCommandError("bad_request", f"Parameter '{p.name}': {e}")
         if isinstance(value, dict) and "norm" in value:
             v = p.min + float(value["norm"]) * (p.max - p.min)
         elif isinstance(value, str):
@@ -455,6 +504,17 @@ class FakeBridge:
             except BridgeCommandError as e:
                 failed.append({"parameter": key, "code": e.code, "message": e.message})
         return {"applied": applied, "failed": failed}
+
+    def _cmd_get_parameter_displays(self, track_index: int, device_index: int, samples: int = 9) -> dict:
+        d = self._device(track_index, device_index)
+        n = max(2, min(33, int(samples)))
+        out = []
+        for i, p in enumerate(d.parameters):
+            if p.is_quantized:
+                continue
+            raws = [p.min + (p.max - p.min) * k / (n - 1) for k in range(n)]
+            out.append({"index": i, "name": p.name, "samples": [[r, p.str_for_value(r)] for r in raws]})
+        return {"parameters": out}
 
     def _cmd_set_device_enabled(self, track_index: int, device_index: int, enabled: bool) -> dict:
         self._device(track_index, device_index).enabled = bool(enabled)

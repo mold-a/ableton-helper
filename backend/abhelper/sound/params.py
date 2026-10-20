@@ -103,6 +103,11 @@ def resolve_value(value: Any, param: dict, aliases: AliasTable | None = None) ->
         return True, int(value), ""
     if isinstance(value, (int, float)):
         return True, value, ""
+    if isinstance(value, dict) and "display" in value:
+        target = value["display"]
+        if not isinstance(target, str) or not target.strip():
+            return False, None, "значение display должно быть строкой вида «1.3 kHz»"
+        return True, {"display": target.strip()}, ""
     if isinstance(value, dict) and "norm" in value:
         try:
             x = max(0.0, min(1.0, float(value["norm"])))

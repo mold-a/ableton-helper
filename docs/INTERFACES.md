@@ -121,7 +121,7 @@ class SoundEngine:
 Поля:
 - обязательные: `id` (`[a-z0-9_]+`), `name.en`, `category`, `aliases` (≥1), `instrument.device`.
 - `category` ∈ `keys, piano, organ, strings, brass, woodwind, reed, plucked, guitar, bass, lead, pad, bell, mallet, choir, fx, drums, percussion, ethnic, synth`.
-- значения параметров: число (сырое), строка (элемент `value_items`), `{"norm": 0..1}`.
+- значения параметров: `{"display": "1.3 kHz"}` (**основная форма** для частот, времён, уровней, процентов — значение как его показывает Live), строка (элемент `value_items`), число (сырое — только когда сырой диапазон осмыслен, напр. `A Coarse`, `Transpose`, gain EQ в дБ), `{"norm": 0..1}` (только для параметров, у которых нет единиц).
 - `instrument.fallback_devices`: если основное устройство не загрузилось — следующее
   (параметры тогда не применяются, только `fallback_parameters` если указаны:
   `"fallback_parameters": {"Wavetable": {...}}`).
