@@ -90,7 +90,7 @@ abhelper serve
 - **Live** (зелёный): Remote Script подключён;
 - **AI** (зелёный): ключ API задан. Если индикатор жёлтый, нажмите шестерёнку и вставьте ключ.
 
-Ключ можно также задать переменной окружения `ANTHROPIC_API_KEY`. В настройках чата он сохраняется в `~/.ableton-helper/config.json` (на Windows: `%USERPROFILE%\.ableton-helper\config.json`).
+Удобнее всего задать ключ в файле `.env` в корне проекта: `cp .env.example .env`, затем впишите ключ после `ANTHROPIC_API_KEY=` и перезапустите `abhelper serve`. Файл `.env` в git не попадает. Приоритет: переменная окружения `ANTHROPIC_API_KEY` > `.env` > настройки чата. В настройках чата он сохраняется в `~/.ableton-helper/config.json` (на Windows: `%USERPROFILE%\.ableton-helper\config.json`).
 
 Попробуйте написать: «Хочу звук баяна».
 

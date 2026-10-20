@@ -1,4 +1,4 @@
-"""Runtime settings: environment > config file > defaults.
+"""Runtime settings: environment > .env file > config file > defaults.
 
 The config file lives at ``~/.ableton-helper/config.json`` (override with
 ``ABHELPER_CONFIG``). It is created with mode 600 on POSIX because it may hold the
@@ -42,6 +42,53 @@ def config_path() -> Path:
     if override:
         return Path(override).expanduser()
     return Path.home() / ".ableton-helper" / "config.json"
+
+
+def dotenv_paths() -> list[Path]:
+    """Candidate .env files: ABHELPER_ENV_FILE, else ./.env and the repository root's .env."""
+    override = os.environ.get("ABHELPER_ENV_FILE")
+    if override:
+        return [Path(override).expanduser()]
+    repo_root = Path(__file__).resolve().parents[2]
+    paths = [Path.cwd() / ".env", repo_root / ".env"]
+    return list(dict.fromkeys(p.resolve() for p in paths))
+
+
+def parse_dotenv(text: str) -> dict[str, str]:
+    """Parse KEY=VALUE lines; supports comments, `export KEY=...` and single/double quotes."""
+    values: dict[str, str] = {}
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        if key.startswith("export "):
+            key = key[len("export "):].strip()
+        value = value.strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+            value = value[1:-1]
+        elif " #" in value:
+            value = value.split(" #", 1)[0].rstrip()
+        if key:
+            values[key] = value
+    return values
+
+
+def load_dotenv(paths: Iterable[Path] | None = None) -> list[Path]:
+    """Copy variables from .env files into os.environ without overriding variables that are
+    already set (the real environment wins). Empty values are skipped. Returns files read."""
+    loaded = []
+    for path in paths if paths is not None else dotenv_paths():
+        try:
+            text = Path(path).read_text(encoding="utf-8")
+        except OSError:
+            continue
+        for key, value in parse_dotenv(text).items():
+            if value and not (os.environ.get(key) or "").strip():
+                os.environ[key] = value
+        loaded.append(Path(path))
+    return loaded
 
 
 def _to_bool(value: Any, default: bool) -> bool:

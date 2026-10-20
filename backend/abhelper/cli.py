@@ -12,7 +12,7 @@ from typing import Any
 from . import __version__
 from .bridge.base import BridgeError
 from .bridge.client import SerializedBridge, TcpBridge
-from .config import Settings, config_path
+from .config import Settings, config_path, load_dotenv
 
 OK = "✅"
 BAD = "❌"
@@ -51,7 +51,7 @@ def cmd_serve(args: argparse.Namespace) -> int:
     url = f"http://{settings.http_host}:{settings.http_port}"
     print(f"Ableton Helper {__version__} -> {url}" + ("  [режим --fake: Live не нужен]" if args.fake else ""))
     if not settings.api_key:
-        print(f"{WARN} API-ключ не задан: введите его в настройках чата или задайте ANTHROPIC_API_KEY.")
+        print(f"{WARN} API-ключ не задан: впишите ANTHROPIC_API_KEY в файл .env (см. .env.example) или введите ключ в настройках чата.")
     uvicorn.run(app, host=settings.http_host, port=settings.http_port, log_level="warning")
     return 0
 
@@ -66,7 +66,7 @@ def cmd_chat(args: argparse.Namespace) -> int:
     agent = build_agent(settings, bridge)
     conv = Conversation()
     if not settings.api_key:
-        print(f"{WARN} Нет API-ключа (ANTHROPIC_API_KEY): модель отвечать не сможет.")
+        print(f"{WARN} Нет API-ключа: впишите ANTHROPIC_API_KEY в файл .env (см. .env.example).")
     print("Ableton Helper: чат в терминале. /reset — очистить диалог, /exit — выход.")
     while True:
         try:
@@ -117,7 +117,7 @@ def run_doctor(settings: Settings, bridge: Any = None, ui_dir: Path | None = Non
         rows.append((BAD, "Библиотека anthropic не установлена", "pip install anthropic"))
     rows.append((OK if settings.api_key else BAD,
                  "API-ключ Anthropic " + ("задан" if settings.api_key else "не задан"),
-                 "" if settings.api_key else f"Задайте ANTHROPIC_API_KEY или введите ключ в настройках чата ({config_path()})."))
+                 "" if settings.api_key else f"Впишите ANTHROPIC_API_KEY в файл .env в корне проекта (шаблон — .env.example) или введите ключ в настройках чата ({config_path()})."))
     rows.append((OK, f"Модель: {settings.model}, effort: {settings.effort}", ""))
 
     bridge = bridge or TcpBridge(settings.bridge_host, settings.bridge_port)
@@ -241,6 +241,8 @@ def main(argv: list[str] | None = None) -> int:
     if not getattr(args, "func", None):
         parser.print_help()
         return 0
+    for path in load_dotenv():
+        logging.getLogger(__name__).info("loaded %s", path)
     return int(args.func(args) or 0)
 
 

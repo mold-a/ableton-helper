@@ -66,6 +66,9 @@ AI-ассистент, встроенный в Ableton Live, для русско
 # 1. Установка пакета (из корня репозитория)
 pip install -e .
 
+# 1a. API-ключ: скопируйте шаблон и впишите ключ в ANTHROPIC_API_KEY=
+cp .env.example .env
+
 # 2. Установка Remote Script в Live
 python scripts/install_remote_script.py
 
@@ -80,7 +83,7 @@ abhelper serve
 #    http://127.0.0.1:8765
 ```
 
-В чате нажмите шестерёнку и вставьте API-ключ (или задайте переменную `ANTHROPIC_API_KEY`). Затем попробуйте: «Хочу звук баяна».
+Ключ берётся из файла `.env` в корне проекта (или из переменной `ANTHROPIC_API_KEY`, или из настроек чата ⚙). Затем попробуйте: «Хочу звук баяна».
 
 ### Попробовать без Live
 
@@ -110,7 +113,7 @@ abhelper calibrate --devices Operator Wavetable --out мой_каталог.json
 | Мост Remote Script | `127.0.0.1:9888` | `ABHELPER_BRIDGE_PORT` |
 | Веб-сервер и чат | `127.0.0.1:8765` | `ABHELPER_PORT` или `abhelper serve --port` |
 | Модель | `claude-opus-5-5` | `ABHELPER_MODEL` или настройки в чате |
-| API-ключ | `ANTHROPIC_API_KEY` | настройки в чате → `~/.ableton-helper/config.json` |
+| API-ключ | `ANTHROPIC_API_KEY` (в окружении или в `.env`) | настройки в чате → `~/.ableton-helper/config.json` |
 
 Всё слушает только `127.0.0.1`.
 
