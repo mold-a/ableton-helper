@@ -175,7 +175,7 @@ def test_generated_preset_parses_back_with_correct_zones(tmp_path):
     root = parse_adv(tmp_path / "out" / "Test.adv")
     assert root.tag == "Ableton" and root.get("Creator") == "Ableton Live 11.3.25"
     dev = root.find("MultiSampler")
-    assert dev.get("Id") == "0" and val(dev, "UserName") == "AbletonHelper Test" and val(dev, "Annotation") == ""
+    assert dev.get("Id") is None and val(dev, "UserName") == "AbletonHelper Test" and val(dev, "Annotation") == ""
     zones = dev.findall("Player/MultiSampleMap/SampleParts/MultiSamplePart")
     assert [z.get("Id") for z in zones] == ["0", "1", "2"]
     low, mid, hi = zones
@@ -195,7 +195,7 @@ def test_generated_preset_parses_back_with_correct_zones(tmp_path):
     assert val(ref, "DefaultDuration") == "2000" and val(ref, "DefaultSampleRate") == "44100"
     assert int(val(ref, "LastModDate")) > 0
     # stale data from the template's own sample must be gone
-    assert val(low, "Name") == "low" and val(low, "Selection") == "true" and val(mid, "Selection") == "false"
+    assert val(low, "Name") == "low.wav" and val(low, "Selection") == "true" and val(mid, "Selection") == "false"
     assert low.find("SampleWarpProperties/WarpMarkers") is not None and len(low.find("SampleWarpProperties/WarpMarkers")) == 0
     assert val(low, "SampleWarpProperties/IsWarped") == "false" and val(low, "SampleWarpProperties/WarpMode") == "0"
     assert len(low.find("SampleWarpProperties/Onsets/UserOnsets")) == 0

@@ -287,7 +287,7 @@ def region_to_part(region: Region, info: AudioInfo, abs_path: Path, rel_path: st
 
 def _fill_part(part: ET.Element, index: int, spec: PartSpec) -> None:
     part.set("Id", str(index))
-    set_value(part, "Name", spec.name)
+    set_value(part, "Name", Path(spec.abs_path).name or spec.name)   # Live stores the file name with extension
     set_value(part, "Selection", index == 0)
     set_value(part, "IsActive", True)
     set_value(part, "Solo", False)
@@ -319,7 +319,7 @@ def _fill_part(part: ET.Element, index: int, spec: PartSpec) -> None:
     fr = _child(ref, "FileRef")
     set_value(fr, "RelativePathType", 6)
     set_value(fr, "RelativePath", spec.rel_path)
-    set_value(fr, "Path", spec.abs_path)
+    set_value(fr, "Path", spec.abs_path.replace("\\", "/"))           # Live writes forward slashes, also on Windows
     set_value(fr, "Type", 1)
     set_value(fr, "LivePackName", "")
     set_value(fr, "LivePackId", "")
@@ -392,7 +392,7 @@ def apply_device_settings(dev: ET.Element, envelope: dict | None) -> None:
         ("DecayLevel", 1.0),
         ("SustainLevel", _clamp(sustain / 100.0, MIN_LEVEL, 1.0)),
         ("ReleaseTime", _clamp(release * 1000.0, 1.0, 60000.0)),
-        ("ReleaseLevel", 0.0),
+        ("ReleaseLevel", MIN_LEVEL),
         ("LoopMode", 0),
     )
     for name, value in values:
@@ -409,7 +409,7 @@ def build_preset_xml(template: Template, parts: list[PartSpec], name: str, envel
         raise TemplateError("нет ни одной зоны сэмплов — пресет получился бы пустым")
     root = ET.Element("Ableton", dict(template.root_attrib))
     dev = copy.deepcopy(template.device)
-    dev.set("Id", "0")
+    dev.attrib.pop("Id", None)          # a top-level preset device carries no Id (only devices inside racks do)
     root.append(dev)
     holder = dev.find("Player/MultiSampleMap/SampleParts")
     if holder is None:
