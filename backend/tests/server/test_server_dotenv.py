@@ -42,3 +42,13 @@ def test_missing_dotenv_is_fine(tmp_path):
 
 def test_tests_never_see_real_dotenv():
     assert os.environ["ABHELPER_ENV_FILE"].endswith("no-such.env")
+
+
+def test_abhelper_home_moves_config_and_data(tmp_path, monkeypatch):
+    from abhelper.config import config_path, data_dir
+    monkeypatch.delenv("ABHELPER_CONFIG", raising=False)
+    monkeypatch.setenv("ABHELPER_HOME", str(tmp_path / "D" / "ah"))
+    assert data_dir() == tmp_path / "D" / "ah"
+    assert config_path() == tmp_path / "D" / "ah" / "config.json"
+    monkeypatch.setenv("ABHELPER_CONFIG", str(tmp_path / "x.json"))
+    assert config_path() == tmp_path / "x.json"

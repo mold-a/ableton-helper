@@ -170,7 +170,7 @@ class AssistantAgent:
 | GET | `/api/suggestions` | `{"items": [str]}` — примеры запросов для пустого чата |
 
 ### Переменные окружения
-`ANTHROPIC_API_KEY`, `ABHELPER_MODEL`, `ABHELPER_EFFORT`, `ABHELPER_BRIDGE_HOST`, `ABHELPER_BRIDGE_PORT`, `ABHELPER_HOST`, `ABHELPER_PORT`, `ABHELPER_CONFIG`, `ABHELPER_UI_DIR`, `ABHELPER_FALLBACKS` (0 — выключить server-side fallback), `ABHELPER_STRICT_TOOLS` (0 — убрать `strict` у инструментов).
+`ANTHROPIC_API_KEY`, `ABHELPER_MODEL`, `ABHELPER_EFFORT`, `ABHELPER_BRIDGE_HOST`, `ABHELPER_BRIDGE_PORT`, `ABHELPER_HOST`, `ABHELPER_PORT`, `ABHELPER_HOME` (папка данных, по умолчанию ~/.ableton-helper), `ABHELPER_CONFIG`, `ABHELPER_ENV_FILE`, `ABHELPER_UI_DIR`, `ABHELPER_FALLBACKS` (0 — выключить server-side fallback), `ABHELPER_STRICT_TOOLS` (0 — убрать `strict` у инструментов).
 
 ## 6. База знаний (`abhelper/knowledge/docs/*.md`)
 

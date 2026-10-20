@@ -1,7 +1,7 @@
 """Runtime settings: environment > .env file > config file > defaults.
 
-The config file lives at ``~/.ableton-helper/config.json`` (override with
-``ABHELPER_CONFIG``). It is created with mode 600 on POSIX because it may hold the
+The config file lives at ``~/.ableton-helper/config.json`` (move the whole folder with
+``ABHELPER_HOME``, or just the file with ``ABHELPER_CONFIG``). It is created with mode 600 on POSIX because it may hold the
 API key. The key is never logged or echoed.
 """
 
@@ -37,11 +37,19 @@ ENV_VARS: dict[str, str] = {
 DEFAULT_SAVED_FIELDS = ("api_key", "model", "effort")
 
 
+def data_dir() -> Path:
+    """Folder for files the app writes (config, calibration): ABHELPER_HOME or ~/.ableton-helper."""
+    override = os.environ.get("ABHELPER_HOME")
+    if override and override.strip():
+        return Path(override.strip()).expanduser()
+    return Path.home() / ".ableton-helper"
+
+
 def config_path() -> Path:
     override = os.environ.get("ABHELPER_CONFIG")
     if override:
         return Path(override).expanduser()
-    return Path.home() / ".ableton-helper" / "config.json"
+    return data_dir() / "config.json"
 
 
 def dotenv_paths() -> list[Path]:

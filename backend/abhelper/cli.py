@@ -12,7 +12,7 @@ from typing import Any
 from . import __version__
 from .bridge.base import BridgeError
 from .bridge.client import SerializedBridge, TcpBridge
-from .config import Settings, config_path, load_dotenv
+from .config import Settings, config_path, data_dir, load_dotenv
 
 OK = "✅"
 BAD = "❌"
@@ -178,7 +178,7 @@ def cmd_calibrate(args: argparse.Namespace) -> int:
         return 1
     settings = Settings.load()
     bridge = make_bridge(settings, args.fake)
-    out = Path(args.out).expanduser() if args.out else Path.home() / ".ableton-helper" / "device_catalog.json"
+    out = Path(args.out).expanduser() if args.out else data_dir() / "device_catalog.json"
     try:
         names = args.devices or recipe_device_names()
         if not names:
@@ -226,7 +226,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     k = sub.add_parser("calibrate", help="снять каталог параметров устройств из запущенного Live")
     k.add_argument("--devices", nargs="*", help="имена устройств (по умолчанию — все из библиотеки рецептов)")
-    k.add_argument("--out", help="куда писать JSON (по умолчанию ~/.ableton-helper/device_catalog.json)")
+    k.add_argument("--out", help="куда писать JSON (по умолчанию <ABHELPER_HOME>/device_catalog.json, т. е. ~/.ableton-helper)")
     k.add_argument("--fake", action="store_true")
     k.set_defaults(func=cmd_calibrate)
     return p
