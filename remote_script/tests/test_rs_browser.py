@@ -69,7 +69,7 @@ def test_category_order_and_entries():
         if not cats or cats[-1] != e["category"]:
             cats.append(e["category"])
     assert cats == [c for c in CATEGORY_ORDER if c in cats]
-    assert cats[0] == "instruments" and cats[-1] == "user_folders"
+    assert cats[0] in ("user_library", "instruments") and cats[-1] == "user_folders"
     by_path = dict((e["path"], e) for e in idx._entries)
     op = by_path["instruments/Operator"]
     assert op["is_device"] and op["is_loadable"] and op["uri"] == "query:Instruments#Operator"
@@ -118,8 +118,8 @@ def test_depth_limit():
 def test_default_limits_match_protocol():
     from AbletonHelper import browser_index
     assert browser_index.MAX_DEPTH == 8 and browser_index.MAX_ITEMS == 60000
-    assert browser_index.CATEGORY_ORDER == ("instruments", "sounds", "drums", "audio_effects", "midi_effects",
-                                            "user_library", "packs", "samples", "clips", "plugins",
+    assert browser_index.CATEGORY_ORDER == ("user_library", "instruments", "sounds", "drums", "audio_effects",
+                                            "midi_effects", "packs", "samples", "clips", "plugins",
                                             "max_for_live", "user_folders")
 
 
@@ -188,7 +188,7 @@ def test_browser_list_categories_and_children():
     song, app = make_world()
     d = make_dispatcher(song, app, with_index=False)
     cats = [i["name"] for i in result(d, "browser_list")["items"]]
-    assert cats[0] == "instruments" and "user_folders" in cats and "current_project" not in cats
+    assert cats[0] == "user_library" and "user_folders" in cats and "current_project" not in cats
     items = result(d, "browser_list", path="sounds/Piano & Keys")["items"]
     assert [i["name"] for i in items] == ["Grand Piano.adg", "Piano Pad.adv"]
     assert items[0]["path"] == "sounds/Piano & Keys/Grand Piano.adg" and items[0]["category"] == "sounds"

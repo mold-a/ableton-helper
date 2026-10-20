@@ -153,7 +153,7 @@
 `browser_list` с пустым путём включает `current_project`, но эта категория не индексируется для `browser_search`.
 
 Лимиты индекса: глубина ≤ 8, до 60 000 элементов (иначе `truncated=true`). Порядок обхода
-категорий: `instruments, sounds, drums, audio_effects, midi_effects, user_library, packs,
+категорий: `user_library, instruments, sounds, drums, audio_effects, midi_effects, packs,
 samples, clips, plugins, max_for_live, user_folders`.
 
 ### Клипы

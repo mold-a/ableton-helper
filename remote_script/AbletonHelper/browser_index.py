@@ -10,7 +10,7 @@ import traceback
 from .livecompat import safe_get
 
 CATEGORY_ORDER = (
-    "instruments", "sounds", "drums", "audio_effects", "midi_effects", "user_library",
+    "user_library", "instruments", "sounds", "drums", "audio_effects", "midi_effects",
     "packs", "samples", "clips", "plugins", "max_for_live", "user_folders",
 )
 LIST_CATEGORIES = CATEGORY_ORDER + ("current_project",)

@@ -228,10 +228,33 @@ class SoundEngine:
         return r
 
     # ------------------------------------------------------------------ preset selection
+    HELPER_PRESET_DIRS = ("user_library/Presets/Instruments/Sampler/AbletonHelper",
+                          "user_library/Presets/Instruments/Simpler/AbletonHelper")
+
+    def _find_helper_preset(self, terms: list[str]) -> dict | None:
+        """Presets made by `abhelper samples` live at a known path: list it directly instead of relying on
+        the browser index (which on a large Suite library may not reach the User Library in time)."""
+        wanted = [t.strip().lower() for t in terms if t.strip().lower().startswith("abletonhelper")]
+        if not wanted:
+            return None
+        for folder in self.HELPER_PRESET_DIRS:
+            try:
+                items = self.bridge.call("browser_list", {"path": folder}).get("items") or []
+            except (BridgeCommandError, BridgeConnectionError):
+                continue
+            for want in wanted:
+                for it in items:
+                    if it.get("is_loadable") and clean_name(it.get("name", "")).lower().startswith(want):
+                        return {**it, "score": 1.0}
+        return None
+
     def _pick_preset(self, run: _Run, recipe: dict | None, is_custom: bool, matches: list[RecipeMatch]) -> dict | None:
         terms = self._preset_terms(run.request, recipe, is_custom, matches)
         if not terms:
             return None
+        helper = self._find_helper_preset(terms)
+        if helper is not None:
+            return helper
         category = recipe.get("category") if recipe else None
         device = (recipe.get("instrument") or {}).get("device") if recipe else None
         candidates = self.searcher.search(terms, recipe_category=category, instrument=device, limit=5)

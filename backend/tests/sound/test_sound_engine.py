@@ -537,3 +537,17 @@ def test_search_presets_without_matches_is_empty():
 def test_search_presets_survives_bridge_command_errors():
     bridge = ScriptedBridge(fail={"browser_search": BridgeCommandError("unsupported", "no browser")})
     assert engine(bridge).search_presets("piano") == []
+
+
+def test_helper_sample_preset_found_without_browser_index():
+    """On a big Suite library the index may not reach the User Library: the engine lists the known folder."""
+    from abhelper.bridge.fake import FakeBridge
+    from abhelper.sound import SoundEngine, SoundRequest
+
+    path = "user_library/Presets/Instruments/Sampler/AbletonHelper/AbletonHelper Accordion HN.adv"
+    b = FakeBridge(browser_items=[{"path": path, "loads": ["Sampler"]}])
+    b._cmd_browser_search = lambda **kw: {"items": [], "index_complete": False}   # index never got there
+    b._cmd_browser_status = lambda: {"indexed": 60000, "complete": True, "scanning": False, "truncated": True}
+    res = SoundEngine(b, sleep=lambda s: None).create_sound(SoundRequest(description="хочу звук баяна"))
+    assert res.ok and res.source == "preset", res.to_dict()
+    assert res.preset["name"] == "AbletonHelper Accordion HN.adv"
