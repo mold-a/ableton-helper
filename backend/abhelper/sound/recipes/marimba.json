@@ -1,0 +1,154 @@
+{
+  "id": "marimba",
+  "version": 1,
+  "name": {
+    "ru": "Маримба",
+    "en": "Marimba / mallets"
+  },
+  "category": "mallet",
+  "aliases": [
+    "маримба",
+    "ксилофон",
+    "вибрафон",
+    "вибро",
+    "мариимба",
+    "деревянный ксилофон",
+    "marimba",
+    "xylophone",
+    "vibraphone",
+    "vibes",
+    "mallets",
+    "mallet",
+    "wood percussion"
+  ],
+  "tags": [
+    "mallet",
+    "wooden",
+    "percussion",
+    "tuned",
+    "warm",
+    "маримба"
+  ],
+  "description": {
+    "ru": "Маримба: тёплая синусная нота с коротким FM-ударом колотушки и резонатором.",
+    "en": "Marimba: warm sine note with a short FM mallet strike and a resonator body."
+  },
+  "preset_search": [
+    "marimba",
+    "xylophone",
+    "vibraphone",
+    "mallet"
+  ],
+  "track": {
+    "name": "Маримба",
+    "color_index": 38
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable",
+      "Analog"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.85
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.668
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.429
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 4,
+      "Osc-B Level": {
+        "norm": 0.28
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.405
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.372
+      },
+      "Volume": {
+        "norm": 0.82
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Corpus",
+      "parameters": {
+        "Resonance Type": "Marimba",
+        "Dry/Wet": {
+          "norm": 0.3
+        },
+        "Decay": {
+          "norm": 0.4
+        },
+        "Brightness": {
+          "norm": 0.5
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0036
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.1087
+        },
+        "3 Gain A": {
+          "norm": 0.55
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.14
+        },
+        "Decay Time": {
+          "norm": 0.0201
+        },
+        "Room Size": {
+          "norm": 0.1396
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 60,
+    "length": 8.0,
+    "scale": "major"
+  },
+  "sound_design_notes": "У маримбы основной тон и очень слабая 4-я гармоника, звук быстро затухает. A=основной тон (затухание ~750 мс), B (×4) со сверхкоротким спадом (55 мс) — «тук» колотушки. Corpus в режиме Marimba добавляет резонанс трубок-резонаторов (30%). Для вибрафона — увеличьте затухание A и добавьте вибрато/тремоло."
+}

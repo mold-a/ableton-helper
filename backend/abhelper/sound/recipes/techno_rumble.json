@@ -1,0 +1,201 @@
+{
+  "id": "techno_rumble",
+  "version": 1,
+  "name": {
+    "ru": "Техно-рамбл",
+    "en": "Techno rumble bass"
+  },
+  "category": "bass",
+  "aliases": [
+    "техно бас",
+    "техно басуха",
+    "басуха для техно",
+    "бас для техно",
+    "жирный бас для техно",
+    "рамбл",
+    "рамбл бас",
+    "гул",
+    "техно рамбл",
+    "techno bass",
+    "techno rumble",
+    "rumble",
+    "rumble bass",
+    "rumbling kick",
+    "techno low end",
+    "rave rumble"
+  ],
+  "tags": [
+    "bass",
+    "techno",
+    "rumble",
+    "reverb",
+    "low end",
+    "club",
+    "техно"
+  ],
+  "description": {
+    "ru": "Техно-«рамбл»: короткий саб-удар, утопленный в низкочастотный реверб, с сатурацией.",
+    "en": "Techno rumble: a short sub thump drowned in a low-passed reverb tail with saturation."
+  },
+  "preset_search": [
+    "techno bass",
+    "rumble",
+    "rumble bass",
+    "techno kick bass"
+  ],
+  "track": {
+    "name": "Техно-рамбл",
+    "color_index": 65
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.9
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.553
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.429
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.32
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.384
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.343
+      },
+      "Volume": {
+        "norm": 0.84
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Sine",
+        "AEG1 Attack": {
+          "norm": 0.0
+        },
+        "AEG1 Decay": {
+          "norm": 0.553
+        },
+        "AEG1 Sustain": {
+          "norm": 0.0
+        },
+        "AEG1 Release": {
+          "norm": 0.429
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.725
+        },
+        "F1 Res": {
+          "norm": 0.0
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.85
+        },
+        "Decay Time": {
+          "norm": 0.0368
+        },
+        "Room Size": {
+          "norm": 0.3197
+        },
+        "Predelay": {
+          "norm": 0.022
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0009
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.0077
+        }
+      }
+    },
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Medium Curve",
+        "Drive": {
+          "norm": 0.6528
+        },
+        "Dry/Wet": {
+          "norm": 0.6
+        }
+      }
+    },
+    {
+      "device": "Compressor",
+      "parameters": {
+        "Threshold": {
+          "norm": 0.1197
+        },
+        "Attack": {
+          "norm": 0.001
+        },
+        "Release": {
+          "norm": 0.0297
+        },
+        "Dry/Wet": {
+          "norm": 1.0
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Bass Mono": 1
+      }
+    }
+  ],
+  "demo": {
+    "style": "bass",
+    "root": 33,
+    "length": 8.0,
+    "scale": "phrygian",
+    "variant": "four_on_floor"
+  },
+  "sound_design_notes": "Рамбл рождается из хвоста реверба: короткий синусный «удар» (240 мс) гонится в реверб с 85% wet и 2.4 с затухания, потом EQ оставляет только <180 Гц — получается низкий «гул» между ударами кика. Сатурация склеивает, компрессор (threshold ~0.12) делает «пампинг». Играйте ноты на офф-битах (демо так и записано). Подмешайте к кику через сайдчейн для настоящего техно-эффекта."
+}

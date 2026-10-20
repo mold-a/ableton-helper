@@ -1,0 +1,172 @@
+{
+  "id": "harp",
+  "version": 1,
+  "name": {
+    "ru": "Арфа",
+    "en": "Harp"
+  },
+  "category": "plucked",
+  "aliases": [
+    "арфа",
+    "арфы",
+    "гусли",
+    "гуслярный",
+    "кельтская арфа",
+    "harp",
+    "celtic harp",
+    "concert harp",
+    "gusli",
+    "psaltery"
+  ],
+  "tags": [
+    "plucked",
+    "harp",
+    "angelic",
+    "arpeggio",
+    "classical",
+    "folk"
+  ],
+  "description": {
+    "ru": "Арфа: чистый щипок с богатым атакой и длинным затуханием, арпеджио.",
+    "en": "Harp: clean pluck with a rich attack and long decay, played as arpeggios."
+  },
+  "preset_search": [
+    "harp",
+    "concert harp",
+    "celtic harp"
+  ],
+  "track": {
+    "name": "Арфа",
+    "color_index": 6
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.82
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.794
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.605
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.3
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.646
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.506
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Triangle D",
+      "C Coarse": 3,
+      "Osc-C Level": {
+        "norm": 0.14
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.506
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.429
+      },
+      "Volume": {
+        "norm": 0.82
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Classic",
+        "Amount": {
+          "norm": 0.25
+        },
+        "Dry/Wet": {
+          "norm": 0.22
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0045
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4998
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.1132
+        },
+        "3 Gain A": {
+          "norm": 0.55
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.3
+        },
+        "Decay Time": {
+          "norm": 0.0468
+        },
+        "Room Size": {
+          "norm": 0.2997
+        },
+        "Predelay": {
+          "norm": 0.0541
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "arp",
+    "root": 60,
+    "length": 8.0,
+    "scale": "major"
+  },
+  "sound_design_notes": "Щипок арфы — это быстро затухающие верхние гармоники над долгим основным тоном: A (затухание 2.6 с) + B ×2 (600 мс) + C ×3 (150 мс). Нулевая атака и сустейн. Хорус добавляет «дрожание» струн, реверб ~3 с — концертный зал. Арпеджио-демо имитирует глиссандо-арпеджиато."
+}

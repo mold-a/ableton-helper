@@ -1,0 +1,248 @@
+{
+  "id": "acoustic_guitar",
+  "version": 1,
+  "name": {
+    "ru": "Акустическая гитара",
+    "en": "Acoustic guitar"
+  },
+  "category": "guitar",
+  "aliases": [
+    "акустическая гитара",
+    "гитара",
+    "гитарка",
+    "акустика",
+    "нейлон",
+    "стальная гитара",
+    "acoustic guitar",
+    "guitar",
+    "steel string guitar",
+    "nylon guitar",
+    "strummed guitar",
+    "folk guitar"
+  ],
+  "tags": [
+    "guitar",
+    "acoustic",
+    "plucked",
+    "strum",
+    "folk",
+    "гитара"
+  ],
+  "description": {
+    "ru": "Акустическая гитара: пилообразный щипок с быстрым фильтром и корпусным резонансом, демо в стиле «бой».",
+    "en": "Acoustic guitar: saw-based pluck with a quick filter and body resonance, strummed demo."
+  },
+  "preset_search": [
+    "acoustic guitar",
+    "steel guitar",
+    "nylon guitar",
+    "guitar"
+  ],
+  "track": {
+    "name": "Акустическая гитара",
+    "color_index": 5
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Saw 16",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.7
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.738
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.491
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.2
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.661
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.465
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Triangle D",
+      "C Coarse": 3,
+      "Osc-C Level": {
+        "norm": 0.1
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.545
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.429
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.604
+      },
+      "Filter Res": {
+        "norm": 0.12
+      },
+      "Fe Amount": {
+        "norm": 0.775
+      },
+      "Fe Attack": {
+        "norm": 0.0
+      },
+      "Fe Decay": {
+        "norm": 0.561
+      },
+      "Fe Sustain": {
+        "norm": 0.0
+      },
+      "Fe Release": {
+        "norm": 0.442
+      },
+      "Volume": {
+        "norm": 0.8
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Saw",
+        "AEG1 Attack": {
+          "norm": 0.0
+        },
+        "AEG1 Decay": {
+          "norm": 0.738
+        },
+        "AEG1 Sustain": {
+          "norm": 0.0
+        },
+        "AEG1 Release": {
+          "norm": 0.491
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.604
+        },
+        "F1 Res": {
+          "norm": 0.12
+        },
+        "F1 Freq < Env": {
+          "norm": 0.775
+        },
+        "FEG1 Attack": {
+          "norm": 0.0
+        },
+        "FEG1 Decay": {
+          "norm": 0.561
+        },
+        "FEG1 Sustain": {
+          "norm": 0.0
+        },
+        "FEG1 Release": {
+          "norm": 0.442
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0032
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.005
+        },
+        "3 Gain A": {
+          "norm": 0.5833
+        },
+        "3 Resonance A": {
+          "norm": 0.0447
+        },
+        "4 Filter On A": 1,
+        "4 Filter Type A": 3,
+        "4 Frequency A": {
+          "norm": 0.1269
+        },
+        "4 Gain A": {
+          "norm": 0.5667
+        },
+        "4 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Compressor",
+      "parameters": {
+        "Threshold": {
+          "norm": 0.2498
+        },
+        "Attack": {
+          "norm": 0.008
+        },
+        "Release": {
+          "norm": 0.0397
+        },
+        "Dry/Wet": {
+          "norm": 0.7
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.14
+        },
+        "Decay Time": {
+          "norm": 0.0184
+        },
+        "Room Size": {
+          "norm": 0.1196
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "chords",
+    "root": 52,
+    "length": 8.0,
+    "scale": "major",
+    "variant": "strum"
+  },
+  "sound_design_notes": "Струна = пила с быстро затухающей огибающей (1.5 с) и фильтром, который на атаке резко открывается (~260 мс) — «трень». Синус ×2 и треугольник ×3 добавляют гармоники. EQ: бугор 120 Гц — корпус, 2.8 кГц — ногти/присутствие. Лёгкая компрессия выравнивает бой. Демо — аккорды с «броском» (ноты аккорда идут с задержкой ~45 мс)."
+}

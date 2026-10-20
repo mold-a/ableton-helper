@@ -1,0 +1,230 @@
+{
+  "id": "choir_aah",
+  "version": 1,
+  "name": {
+    "ru": "Хор «Аа»",
+    "en": "Choir 'aah'"
+  },
+  "category": "choir",
+  "aliases": [
+    "хор",
+    "хора",
+    "хоровой",
+    "хоровое",
+    "хор аа",
+    "вокальный пэд",
+    "голоса",
+    "ангельские голоса",
+    "хоралы",
+    "choir",
+    "aah",
+    "choir aah",
+    "vocal pad",
+    "voices",
+    "ahh choir",
+    "angelic voices"
+  ],
+  "tags": [
+    "choir",
+    "vocal",
+    "pad",
+    "cinematic",
+    "sacred",
+    "formant",
+    "хор"
+  ],
+  "description": {
+    "ru": "Хор «ааа»: плотная пила, пропущенная через формантные пики гласной «а», с большим реверберационным шлейфом.",
+    "en": "Choir 'aah': dense saw run through the formant peaks of an 'ah' vowel with a long reverb tail."
+  },
+  "preset_search": [
+    "choir",
+    "choir aah",
+    "vocal choir",
+    "voices",
+    "aah"
+  ],
+  "track": {
+    "name": "Хор «Аа»",
+    "color_index": 43
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Simpler"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.6
+      },
+      "AEG1 Decay": {
+        "norm": 0.628
+      },
+      "AEG1 Sustain": {
+        "norm": 0.9
+      },
+      "AEG1 Release": {
+        "norm": 0.661
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.76
+      },
+      "F1 Res": {
+        "norm": 0.08
+      },
+      "OSC2 On": 1,
+      "OSC2 Shape": "Saw",
+      "OSC2 Detune": {
+        "norm": 0.57
+      },
+      "OSC2 Level": {
+        "norm": 0.75
+      },
+      "F1 Freq < Env": {
+        "norm": 0.6
+      },
+      "FEG1 Attack": {
+        "norm": 0.576
+      },
+      "FEG1 Decay": {
+        "norm": 0.661
+      },
+      "FEG1 Sustain": {
+        "norm": 0.6
+      },
+      "FEG1 Release": {
+        "norm": 0.628
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "norm": 0.6
+        },
+        "Amp Decay": {
+          "norm": 0.628
+        },
+        "Amp Sustain": {
+          "norm": 0.9
+        },
+        "Amp Release": {
+          "norm": 0.661
+        },
+        "Filter 1 On": 1,
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "norm": 0.76
+        },
+        "Filter 1 Res": {
+          "norm": 0.05
+        },
+        "Unison Mode": "Classic",
+        "Unison Voices": 6,
+        "Unison Amount": {
+          "norm": 0.28
+        }
+      },
+      "Simpler": {
+        "Ve Attack": {
+          "norm": 0.576
+        },
+        "Ve Release": {
+          "norm": 0.646
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0055
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.3861
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.0314
+        },
+        "3 Gain A": {
+          "norm": 0.7667
+        },
+        "3 Resonance A": {
+          "norm": 0.162
+        },
+        "4 Filter On A": 1,
+        "4 Filter Type A": 3,
+        "4 Frequency A": {
+          "norm": 0.0541
+        },
+        "4 Gain A": {
+          "norm": 0.7
+        },
+        "4 Resonance A": {
+          "norm": 0.2179
+        },
+        "5 Filter On A": 1,
+        "5 Filter Type A": 3,
+        "5 Frequency A": {
+          "norm": 0.1223
+        },
+        "5 Gain A": {
+          "norm": 0.6
+        },
+        "5 Resonance A": {
+          "norm": 0.162
+        }
+      }
+    },
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Ensemble",
+        "Amount": {
+          "norm": 0.55
+        },
+        "Dry/Wet": {
+          "norm": 0.45
+        },
+        "Warmth": {
+          "norm": 0.35
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.35
+        },
+        "Decay Time": {
+          "norm": 0.0602
+        },
+        "Room Size": {
+          "norm": 0.3997
+        },
+        "Predelay": {
+          "norm": 0.0782
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "pad",
+    "root": 57,
+    "length": 16.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Гласный «а» характеризуется формантами ≈700, 1200 и 2700 Гц. Три узких бугра EQ Eight (+8/+6/+3 дБ, высокая добротность) прикладывают формантный фильтр к богатой гармониками пиле — получается «хоровой» звук. Расстройка и Chorus-Ensemble — много голосов. Медленная атака 380 мс и релиз 700 мс — дыхание фразы. Для максимального реализма лучше хоровой пресет или сэмплы (Simpler)."
+}

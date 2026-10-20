@@ -1,0 +1,212 @@
+{
+  "id": "ambient_pad",
+  "version": 1,
+  "name": {
+    "ru": "Амбиент-пэд (эволюционирующий)",
+    "en": "Ambient evolving pad"
+  },
+  "category": "pad",
+  "aliases": [
+    "амбиент",
+    "эмбиент",
+    "амбиент пэд",
+    "эмбиент пэд",
+    "эволюционирующий пэд",
+    "атмосфера",
+    "атмосферный пэд",
+    "дрон",
+    "текстура",
+    "саундскейп",
+    "ambient",
+    "ambient pad",
+    "evolving pad",
+    "drone",
+    "soundscape",
+    "texture",
+    "brian eno",
+    "atmosphere",
+    "shimmer pad",
+    "cinematic pad"
+  ],
+  "tags": [
+    "pad",
+    "ambient",
+    "evolving",
+    "drone",
+    "cinematic",
+    "shimmer",
+    "атмосферный"
+  ],
+  "description": {
+    "ru": "Медленно эволюционирующий пэд: шиммер-унисон, 2.5-секундная атака, дрейф фильтра и огромный реверб.",
+    "en": "Slowly evolving pad: shimmer unison, 2.5 s attack, drifting filter and a huge reverb."
+  },
+  "preset_search": [
+    "ambient pad",
+    "evolving pad",
+    "atmosphere",
+    "drone",
+    "pad"
+  ],
+  "track": {
+    "name": "Амбиент-пэд (эволюционирующий)",
+    "color_index": 41
+  },
+  "instrument": {
+    "device": "Wavetable",
+    "fallback_devices": [
+      "Analog",
+      "Drift"
+    ],
+    "parameters": {
+      "Amp Attack": {
+        "norm": 0.79
+      },
+      "Amp Decay": {
+        "norm": 0.777
+      },
+      "Amp Sustain": {
+        "norm": 0.9
+      },
+      "Amp Release": {
+        "norm": 0.837
+      },
+      "Filter 1 On": 1,
+      "Filter 1 Type": "Lowpass",
+      "Filter 1 Freq": {
+        "norm": 0.735
+      },
+      "Filter 1 Res": {
+        "norm": 0.1
+      },
+      "Unison Mode": "Shimmer",
+      "Unison Voices": 4,
+      "Unison Amount": {
+        "norm": 0.55
+      },
+      "Osc 1 Pos": {
+        "norm": 0.4
+      },
+      "Sub On": 1,
+      "Sub Gain": {
+        "norm": 0.15
+      },
+      "Osc 2 On": 1,
+      "Osc 2 Pos": {
+        "norm": 0.65
+      },
+      "Osc 2 Transp": 12,
+      "Osc 2 Detune": {
+        "norm": 0.5
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Saw",
+        "AEG1 Attack": {
+          "norm": 0.79
+        },
+        "AEG1 Decay": {
+          "norm": 0.777
+        },
+        "AEG1 Sustain": {
+          "norm": 0.9
+        },
+        "AEG1 Release": {
+          "norm": 0.837
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.705
+        },
+        "F1 Res": {
+          "norm": 0.1
+        },
+        "OSC2 On": 1,
+        "OSC2 Shape": "Saw",
+        "OSC2 Detune": {
+          "norm": 0.58
+        },
+        "OSC2 Level": {
+          "norm": 0.7
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Auto Filter",
+      "parameters": {
+        "Filter Type": "Lowpass",
+        "Frequency": {
+          "norm": 0.638
+        },
+        "Resonance": {
+          "norm": 0.12
+        },
+        "LFO Amount": {
+          "norm": 0.4667
+        },
+        "LFO Frequency": {
+          "norm": 0.0028
+        }
+      }
+    },
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Ensemble",
+        "Amount": {
+          "norm": 0.45
+        },
+        "Dry/Wet": {
+          "norm": 0.4
+        }
+      }
+    },
+    {
+      "device": "Delay",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.28
+        },
+        "Feedback": {
+          "norm": 0.5789
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.5
+        },
+        "Decay Time": {
+          "norm": 0.1973
+        },
+        "Room Size": {
+          "norm": 0.6999
+        },
+        "Predelay": {
+          "norm": 0.1583
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Width": {
+          "norm": 0.65
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "pad",
+    "root": 50,
+    "length": 16.0,
+    "scale": "dorian"
+  },
+  "sound_design_notes": "Wavetable: два осциллятора (второй октавой выше и с другой позицией волны), унисон Shimmer — «мерцающая» дымка. Атака 2.5 с и релиз 4 с — звук рождается и тает. «Эволюция» достигается внешним Auto Filter с очень медленным (~0.12 Гц) LFO — фильтр дышит. Delay с высокой обратной связью и Reverb ~12 с превращают ноты в облако; Utility расширяет стерео. Смените таблицу волн (Osc 1 Category/Table) под настроение — рецепт задаёт позицию, а не таблицу."
+}

@@ -1,0 +1,141 @@
+{
+  "id": "lofi_drums",
+  "version": 1,
+  "name": {
+    "ru": "Лоу-фай ударные",
+    "en": "Lo-fi drums"
+  },
+  "category": "drums",
+  "aliases": [
+    "лоу-фай ударные",
+    "лоуфай ударные",
+    "лофи ударные",
+    "лоу фай бит",
+    "лофи бит",
+    "лоуфай бит",
+    "лоу-фай",
+    "лоуфай",
+    "бумбэп",
+    "бум бэп",
+    "бумбап",
+    "пыльные барабаны",
+    "lofi drums",
+    "lo-fi drums",
+    "lofi beat",
+    "lo-fi beat",
+    "lofi",
+    "lo-fi",
+    "boom bap",
+    "boom bap drums",
+    "dusty drums",
+    "chillhop drums"
+  ],
+  "tags": [
+    "drums",
+    "lofi",
+    "boom bap",
+    "vinyl",
+    "dusty",
+    "chillhop",
+    "swing",
+    "лоу-фай"
+  ],
+  "description": {
+    "ru": "Лоу-фай кит: Drum Rack с приглушённой, «пыльной» цепочкой — битный Redux, винил и закруглённый верх.",
+    "en": "Lo-fi kit: Drum Rack with a dusty chain of bit-crush, vinyl crackle and rolled-off highs; swung boom bap."
+  },
+  "preset_search": [
+    "lo-fi kit",
+    "lofi kit",
+    "boom bap kit",
+    "dusty kit",
+    "vinyl kit",
+    "lofi drums",
+    "lo-fi drums"
+  ],
+  "track": {
+    "name": "Лоу-фай ударные",
+    "color_index": 67
+  },
+  "instrument": {
+    "device": "Drum Rack",
+    "parameters": {}
+  },
+  "effects": [
+    {
+      "device": "Redux",
+      "parameters": {
+        "Bit Depth": {
+          "norm": 0.7333
+        },
+        "Sample Rate": {
+          "norm": 0.85
+        }
+      }
+    },
+    {
+      "device": "Vinyl Distortion",
+      "parameters": {
+        "Crackle Volume": {
+          "norm": 0.28
+        },
+        "Crackle Density": {
+          "norm": 0.55
+        },
+        "Tracing Drive": {
+          "norm": 0.2
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0014
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.3179
+        }
+      }
+    },
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Soft Sine",
+        "Drive": {
+          "norm": 0.5694
+        },
+        "Dry/Wet": {
+          "norm": 0.5
+        }
+      }
+    },
+    {
+      "device": "Glue Compressor",
+      "parameters": {
+        "Threshold": {
+          "norm": 0.7
+        },
+        "Ratio": "4",
+        "Attack": "10",
+        "Release": "0.4",
+        "Makeup": {
+          "norm": 0.1
+        },
+        "Dry/Wet": {
+          "norm": 0.8
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "drums",
+    "length": 8.0,
+    "variant": "lofi"
+  },
+  "sound_design_notes": "Kit берётся из пресета (например Lo-Fi / Boom Bap Kit); без него — пустой Drum Rack. «Пыльность» — в цепочке: Redux (12 бит, чуть пониженная частота), Vinyl Distortion с треском, EQ срезает верх на 7 кГц и низ на 40 Гц, Soft-Sine сатурация и Glue. Демо — свинговый бум-бэп: слегка «ленивые» хэты (+90 мс свинг), призрачный снейр."
+}

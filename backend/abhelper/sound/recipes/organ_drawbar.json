@@ -1,0 +1,228 @@
+{
+  "id": "organ_drawbar",
+  "version": 1,
+  "name": {
+    "ru": "Орган (Hammond)",
+    "en": "Drawbar organ (Hammond-style)"
+  },
+  "category": "organ",
+  "aliases": [
+    "орган",
+    "хаммонд",
+    "органчик",
+    "орган хаммонд",
+    "ламповый орган",
+    "роковый орган",
+    "organ",
+    "hammond",
+    "b3",
+    "drawbar organ",
+    "tonewheel organ",
+    "rock organ",
+    "leslie organ"
+  ],
+  "tags": [
+    "organ",
+    "drawbar",
+    "rock",
+    "gospel",
+    "jazz",
+    "электроорган"
+  ],
+  "description": {
+    "ru": "Аддитивный орган с шкалой «драбаров»: 16', 8', 4' и перкуссия 3-й гармоники, овердрайв и Лесли.",
+    "en": "Additive drawbar organ: 16', 8', 4' plus percussive 3rd harmonic, overdrive and Leslie-style movement."
+  },
+  "preset_search": [
+    "hammond",
+    "b3 organ",
+    "drawbar organ",
+    "rock organ",
+    "organ"
+  ],
+  "track": {
+    "name": "Орган (Hammond)",
+    "color_index": 17
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable",
+      "Analog"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.7
+      },
+      "Ae Attack": {
+        "norm": 0.14
+      },
+      "Ae Decay": {
+        "norm": 0.465
+      },
+      "Ae Sustain": {
+        "norm": 1.0
+      },
+      "Ae Release": {
+        "norm": 0.372
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.5
+      },
+      "Be Attack": {
+        "norm": 0.14
+      },
+      "Be Decay": {
+        "norm": 0.465
+      },
+      "Be Sustain": {
+        "norm": 1.0
+      },
+      "Be Release": {
+        "norm": 0.372
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 3,
+      "Osc-C Level": {
+        "norm": 0.34
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.512
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.343
+      },
+      "Osc-D On": 1,
+      "Osc-D Wave": "Sine",
+      "D Coarse": 0,
+      "Osc-D Level": {
+        "norm": 0.5
+      },
+      "De Attack": {
+        "norm": 0.14
+      },
+      "De Decay": {
+        "norm": 0.465
+      },
+      "De Sustain": {
+        "norm": 1.0
+      },
+      "De Release": {
+        "norm": 0.372
+      },
+      "Volume": {
+        "norm": 0.8
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Sine",
+        "AEG1 Attack": {
+          "norm": 0.14
+        },
+        "AEG1 Decay": {
+          "norm": 0.465
+        },
+        "AEG1 Sustain": {
+          "norm": 1.0
+        },
+        "AEG1 Release": {
+          "norm": 0.372
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.884
+        },
+        "F1 Res": {
+          "norm": 0.0
+        },
+        "OSC2 On": 1,
+        "OSC2 Shape": "Sine",
+        "OSC2 Detune": {
+          "norm": 0.5
+        },
+        "OSC2 Level": {
+          "norm": 0.6
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Overdrive",
+      "parameters": {
+        "Drive": {
+          "norm": 0.34
+        },
+        "Tone": {
+          "norm": 0.55
+        },
+        "Dry/Wet": {
+          "norm": 0.7
+        }
+      }
+    },
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Vibrato",
+        "Amount": {
+          "norm": 0.28
+        },
+        "Dry/Wet": {
+          "norm": 0.5
+        },
+        "Rate": {
+          "norm": 0.433
+        }
+      }
+    },
+    {
+      "device": "Auto Pan",
+      "parameters": {
+        "Amount": {
+          "norm": 0.25
+        },
+        "Rate": {
+          "norm": 0.3347
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.12
+        },
+        "Decay Time": {
+          "norm": 0.0151
+        },
+        "Room Size": {
+          "norm": 0.0896
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "chords",
+    "root": 48,
+    "length": 8.0,
+    "scale": "mixolydian"
+  },
+  "sound_design_notes": "Классическая аддитивная схема (алгоритм 10, четыре синусоиды — «драбары»): D=16', A=8', B=4', C=2⅔' (3-я гармоника) с мгновенно затухающей огибающей = знаменитая перкуссия Hammond. Усиление/гейт: атака 4 мс, сустейн 1.0, релиз 40 мс (клавиши Hammond щёлкают, а не плавно гаснут). Овердрайв = ламповый предусилитель; Лесли имитирован вибрато (Chorus-Ensemble Vibrato ~6.5 Гц) + быстрым Auto Pan."
+}

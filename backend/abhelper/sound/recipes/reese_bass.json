@@ -1,0 +1,197 @@
+{
+  "id": "reese_bass",
+  "version": 1,
+  "name": {
+    "ru": "Риз-бас (DnB)",
+    "en": "Reese bass"
+  },
+  "category": "bass",
+  "aliases": [
+    "риз",
+    "риз бас",
+    "ризе",
+    "рис бас",
+    "нойз бас",
+    "днб бас",
+    "драм-н-бэйс бас",
+    "драм н бейс бас",
+    "нейро бас",
+    "нейрофанк",
+    "reese",
+    "reese bass",
+    "dnb bass",
+    "drum and bass bass",
+    "neuro bass",
+    "detuned bass",
+    "jungle bass"
+  ],
+  "tags": [
+    "bass",
+    "reese",
+    "dnb",
+    "jungle",
+    "detuned",
+    "phasing",
+    "neuro"
+  ],
+  "description": {
+    "ru": "Reese: две расстроенные пилы, «фазирующий» бас в стиле drum & bass.",
+    "en": "Reese: two detuned saws with slow phasing, the drum & bass staple."
+  },
+  "preset_search": [
+    "reese bass",
+    "reese",
+    "dnb bass",
+    "neuro bass"
+  ],
+  "track": {
+    "name": "Риз-бас (DnB)",
+    "color_index": 61
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Operator"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.14
+      },
+      "AEG1 Decay": {
+        "norm": 0.605
+      },
+      "AEG1 Sustain": {
+        "norm": 1.0
+      },
+      "AEG1 Release": {
+        "norm": 0.483
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.525
+      },
+      "F1 Res": {
+        "norm": 0.15
+      },
+      "OSC2 On": 1,
+      "OSC2 Shape": "Saw",
+      "OSC2 Detune": {
+        "norm": 0.512
+      },
+      "OSC2 Level": {
+        "norm": 0.9
+      },
+      "F1 Freq < Env": {
+        "norm": 0.6
+      },
+      "FEG1 Attack": {
+        "norm": 0.0
+      },
+      "FEG1 Decay": {
+        "norm": 0.576
+      },
+      "FEG1 Sustain": {
+        "norm": 0.7
+      },
+      "FEG1 Release": {
+        "norm": 0.483
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "norm": 0.14
+        },
+        "Amp Decay": {
+          "norm": 0.605
+        },
+        "Amp Sustain": {
+          "norm": 1.0
+        },
+        "Amp Release": {
+          "norm": 0.483
+        },
+        "Filter 1 On": 1,
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "norm": 0.551
+        },
+        "Filter 1 Res": {
+          "norm": 0.1
+        },
+        "Unison Mode": "Classic",
+        "Unison Voices": 3,
+        "Unison Amount": {
+          "norm": 0.18
+        },
+        "Sub On": 1,
+        "Sub Gain": {
+          "norm": 0.35
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Phaser-Flanger",
+      "parameters": {
+        "Mode": "Phaser",
+        "Rate": {
+          "norm": 0.017
+        },
+        "Amount": {
+          "norm": 0.6
+        },
+        "Feedback": {
+          "norm": 0.3889
+        },
+        "Dry/Wet": {
+          "norm": 0.45
+        }
+      }
+    },
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Medium Curve",
+        "Drive": {
+          "norm": 0.625
+        },
+        "Dry/Wet": {
+          "norm": 0.7
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.001
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.2951
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Bass Mono": 1
+      }
+    }
+  ],
+  "demo": {
+    "style": "bass",
+    "root": 33,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Рецепт Reese: два пильчатых голоса с малой, но нестабильной разницей высоты (~+8 центов) — бас «кружится». Фильтр 750 Гц оставляет только тело. Медленный Phaser (0.18 Гц, 60%) усиливает движение, Medium-Curve сатурация (9 дБ) добавляет агрессии. Utility Bass Mono — центр для баса, EQ — чистка. Играйте A0–A2."
+}

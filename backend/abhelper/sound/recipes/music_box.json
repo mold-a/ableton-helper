@@ -1,0 +1,161 @@
+{
+  "id": "music_box",
+  "version": 1,
+  "name": {
+    "ru": "Музыкальная шкатулка",
+    "en": "Music box"
+  },
+  "category": "bell",
+  "aliases": [
+    "музыкальная шкатулка",
+    "шкатулка",
+    "музыкальная коробка",
+    "колыбельная",
+    "детская музыка",
+    "music box",
+    "musicbox",
+    "jewelry box",
+    "lullaby",
+    "toy piano",
+    "toybox"
+  ],
+  "tags": [
+    "bell",
+    "toy",
+    "lullaby",
+    "delicate",
+    "cute",
+    "horror",
+    "шкатулка"
+  ],
+  "description": {
+    "ru": "Музыкальная шкатулка: хрупкий синус с «гребёночным» звоном, вальс.",
+    "en": "Music box: fragile sine with a comb-like ping, played as a waltz."
+  },
+  "preset_search": [
+    "music box",
+    "musicbox",
+    "toy piano",
+    "celesta"
+  ],
+  "track": {
+    "name": "Музыкальная шкатулка",
+    "color_index": 35
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.8
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.672
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.454
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 5,
+      "Osc-B Level": {
+        "norm": 0.22
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.483
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.372
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 9,
+      "Osc-C Level": {
+        "norm": 0.07
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.372
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.343
+      },
+      "Volume": {
+        "norm": 0.78
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0177
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.5452
+        }
+      }
+    },
+    {
+      "device": "Delay",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.12
+        },
+        "Feedback": {
+          "norm": 0.3158
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.24
+        },
+        "Decay Time": {
+          "norm": 0.0334
+        },
+        "Room Size": {
+          "norm": 0.2397
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 76,
+    "length": 12.0,
+    "scale": "major",
+    "variant": "waltz"
+  },
+  "sound_design_notes": "Гребёнка шкатулки даёт чистый тон с короткими, высокими «пингами» в атаке (B ×5 и C ×9 живут 120/40 мс). Нет сустейна — каждая нота «капает». EQ вырезает всё ниже 400 Гц (корпус крошечный), реверб — комнатный. Демо: мелодия в 3/4 в тональности до-мажор, регистр E5."
+}

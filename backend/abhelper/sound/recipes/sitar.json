@@ -1,0 +1,188 @@
+{
+  "id": "sitar",
+  "version": 1,
+  "name": {
+    "ru": "Ситар",
+    "en": "Sitar"
+  },
+  "category": "ethnic",
+  "aliases": [
+    "ситар",
+    "ситары",
+    "индийский ситар",
+    "индийский",
+    "рага",
+    "индийская музыка",
+    "sitar",
+    "indian sitar",
+    "raga",
+    "indian"
+  ],
+  "tags": [
+    "ethnic",
+    "indian",
+    "plucked",
+    "drone",
+    "buzz",
+    "ситар"
+  ],
+  "description": {
+    "ru": "Ситар: щипок с «жужжащим» мостиком (джавари), резонанс симпатических струн.",
+    "en": "Sitar: plucked tone with buzzing jawari bridge and sympathetic string resonance."
+  },
+  "preset_search": [
+    "sitar",
+    "indian sitar",
+    "raga"
+  ],
+  "track": {
+    "name": "Ситар",
+    "color_index": 13
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Saw D",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.7
+      },
+      "Osc-A Feedback": {
+        "norm": 0.35
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.767
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.558
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Saw 16",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.4
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.628
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.483
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 5,
+      "Osc-C Level": {
+        "norm": 0.1
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.454
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.395
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.739
+      },
+      "Filter Res": {
+        "norm": 0.32
+      },
+      "Fe Amount": {
+        "norm": 0.75
+      },
+      "Fe Attack": {
+        "norm": 0.0
+      },
+      "Fe Decay": {
+        "norm": 0.628
+      },
+      "Fe Sustain": {
+        "norm": 0.0
+      },
+      "Fe Release": {
+        "norm": 0.506
+      },
+      "Volume": {
+        "norm": 0.78
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Corpus",
+      "parameters": {
+        "Resonance Type": "String",
+        "Dry/Wet": {
+          "norm": 0.4
+        },
+        "Decay": {
+          "norm": 0.7
+        },
+        "Brightness": {
+          "norm": 0.7
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0059
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4543
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.24
+        },
+        "Decay Time": {
+          "norm": 0.0401
+        },
+        "Room Size": {
+          "norm": 0.2597
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 57,
+    "length": 8.0,
+    "scale": "phrygian"
+  },
+  "sound_design_notes": "Фирменное «жужжание» джавари: осциллятор A с обратной связью (35%) — гармоники становятся почти шумовыми, как при касании струны мостика. Резонансный фильтр (Q ~0.32) с быстрой огибающей — «вау» затухающего щипка. Corpus в режиме String добавляет симпатические струны: звук «тянется» после щипка. Фригийский лад в демо — как в индийской раге."
+}

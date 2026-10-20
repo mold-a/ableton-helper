@@ -57,7 +57,7 @@ class SoundResult:
     recipe_id: str | None
     preset: dict | None                   # BrowserItem, если грузили пресет
     devices: list[dict]                   # [{index, name, class_name}]
-    unmatched_parameters: list[dict]      # [{device, parameter, value, reason}]
+    unmatched_parameters: list[dict]      # [{device, parameter, value, reason, suggestions?: [близкие имена]}]
     demo_clip_slot: int | None
     warnings: list[str]
     message: str                          # краткое человекочитаемое резюме (ru)
@@ -89,7 +89,7 @@ class SoundEngine:
 Движок сначала читает `get_device_parameters`, затем для каждого ключа рецепта ищет
 параметр: точное имя → без регистра → нормализованное → алиасы из
 `abhelper/sound/data/param_aliases.json` (например `"Filter Freq" ↔ "Filter Frequency" ↔ "Frequency"`).
-Найденные отправляет одним `set_device_parameters`, остальные — в `unmatched_parameters`.
+Строковые значения движок сам сопоставляет с `value_items` (с учётом алиасов из `param_aliases.json` → `values`) и отправляет индекс; имена устройств тоже имеют алиасы (`devices`: «Chorus-Ensemble» ↔ «Chorus»). Найденные отправляет одним `set_device_parameters`, остальные — в `unmatched_parameters`.
 
 ## 3. Схема рецепта (`abhelper/sound/recipes/*.json`)
 
@@ -126,7 +126,7 @@ class SoundEngine:
   (параметры тогда не применяются, только `fallback_parameters` если указаны:
   `"fallback_parameters": {"Wavetable": {...}}`).
 - `demo.style` ∈ `chords, melody, bass, arp, drums, pad, single`; `demo.notes` — явные ноты
-  (формат `add_notes`), если заданы — имеют приоритет над `style`.
+  (формат `add_notes`), если заданы — имеют приоритет над `style`. Необязательные `demo.scale` ∈ `major, minor, dorian, phrygian, mixolydian, harmonic_minor` и `demo.variant` ∈ `default, four_on_floor, boom_bap, trap, rock, lofi, waltz, strum`.
 - Для `drums` инструментом может быть `"Drum Rack"` с `preset_search` (пресет-кит) — синтез ударных
   через рецепт допустим упрощённый.
 

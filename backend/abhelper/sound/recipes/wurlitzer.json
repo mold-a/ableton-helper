@@ -1,0 +1,188 @@
+{
+  "id": "wurlitzer",
+  "version": 1,
+  "name": {
+    "ru": "Вурлитцер",
+    "en": "Wurlitzer electric piano"
+  },
+  "category": "keys",
+  "aliases": [
+    "вурлитцер",
+    "вурлитцер",
+    "вурли",
+    "wurlitzer",
+    "wurli",
+    "wurly",
+    "reed electric piano",
+    "200a"
+  ],
+  "tags": [
+    "keys",
+    "electric",
+    "reed",
+    "vintage",
+    "70s"
+  ],
+  "description": {
+    "ru": "Язычковое электропиано: более жёсткое и «квакающее», с овердрайвом и сильным тремоло.",
+    "en": "Reed electric piano: edgier and barkier than a Rhodes, with overdrive and strong tremolo."
+  },
+  "preset_search": [
+    "wurlitzer",
+    "wurli",
+    "electric piano"
+  ],
+  "track": {
+    "name": "Вурлитцер",
+    "color_index": 18
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable",
+      "Analog"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Triangle D",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.8
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.757
+      },
+      "Ae Sustain": {
+        "norm": 0.3
+      },
+      "Ae Release": {
+        "norm": 0.512
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.5
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.6
+      },
+      "Be Sustain": {
+        "norm": 0.15
+      },
+      "Be Release": {
+        "norm": 0.465
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Saw 8",
+      "C Coarse": 1,
+      "Osc-C Level": {
+        "norm": 0.14
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.483
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.413
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.805
+      },
+      "Filter Res": {
+        "norm": 0.1
+      },
+      "Volume": {
+        "norm": 0.8
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Overdrive",
+      "parameters": {
+        "Drive": {
+          "norm": 0.42
+        },
+        "Tone": {
+          "norm": 0.5
+        },
+        "Dry/Wet": {
+          "norm": 0.6
+        }
+      }
+    },
+    {
+      "device": "Auto Pan",
+      "parameters": {
+        "Amount": {
+          "norm": 0.5
+        },
+        "Rate": {
+          "norm": 0.2696
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0045
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.3633
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.0496
+        },
+        "3 Gain A": {
+          "norm": 0.5667
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.1
+        },
+        "Decay Time": {
+          "norm": 0.0134
+        },
+        "Room Size": {
+          "norm": 0.0796
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "chords",
+    "root": 57,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Модулятор B с отношением 2:1 даёт чётные гармоники и «язычковый» оттенок; в отличие от Rhodes у него более высокий сустейн и грубая нижняя треть. C — пила с короткой огибающей — шум удара язычка. Овердрайв подмешан (60%) — фирменное «рычание» усилителя; Auto Pan 5.4 Гц с глубиной 50% — тремоло. Фильтр 5.2 кГц сглаживает цифровую резкость."
+}

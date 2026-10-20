@@ -1,0 +1,223 @@
+{
+  "id": "electric_bass",
+  "version": 1,
+  "name": {
+    "ru": "Бас-гитара",
+    "en": "Electric bass (finger)"
+  },
+  "category": "bass",
+  "aliases": [
+    "бас гитара",
+    "бас-гитара",
+    "электробас",
+    "бас-гитары",
+    "бас пальцами",
+    "пальцевой бас",
+    "фанк бас",
+    "electric bass",
+    "bass guitar",
+    "finger bass",
+    "fingered bass",
+    "funk bass",
+    "precision bass"
+  ],
+  "tags": [
+    "bass",
+    "electric",
+    "finger",
+    "funk",
+    "rock",
+    "acoustic",
+    "бас-гитара"
+  ],
+  "description": {
+    "ru": "Пальцевой бас: пила + синус, короткая фильтровая атака, компрессия.",
+    "en": "Finger-style bass: saw plus sine, short filter pluck, compression."
+  },
+  "preset_search": [
+    "electric bass",
+    "finger bass",
+    "bass guitar",
+    "fingered bass"
+  ],
+  "track": {
+    "name": "Бас-гитара",
+    "color_index": 59
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Saw 16",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.7
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.687
+      },
+      "Ae Sustain": {
+        "norm": 0.35
+      },
+      "Ae Release": {
+        "norm": 0.454
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 1,
+      "Osc-B Level": {
+        "norm": 0.5
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.698
+      },
+      "Be Sustain": {
+        "norm": 0.45
+      },
+      "Be Release": {
+        "norm": 0.454
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.543
+      },
+      "Filter Res": {
+        "norm": 0.12
+      },
+      "Fe Amount": {
+        "norm": 0.725
+      },
+      "Fe Attack": {
+        "norm": 0.0
+      },
+      "Fe Decay": {
+        "norm": 0.53
+      },
+      "Fe Sustain": {
+        "norm": 0.1
+      },
+      "Fe Release": {
+        "norm": 0.442
+      },
+      "Volume": {
+        "norm": 0.82
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Saw",
+        "AEG1 Attack": {
+          "norm": 0.0
+        },
+        "AEG1 Decay": {
+          "norm": 0.687
+        },
+        "AEG1 Sustain": {
+          "norm": 0.35
+        },
+        "AEG1 Release": {
+          "norm": 0.454
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.543
+        },
+        "F1 Res": {
+          "norm": 0.12
+        },
+        "F1 Freq < Env": {
+          "norm": 0.725
+        },
+        "FEG1 Attack": {
+          "norm": 0.0
+        },
+        "FEG1 Decay": {
+          "norm": 0.53
+        },
+        "FEG1 Sustain": {
+          "norm": 0.1
+        },
+        "FEG1 Release": {
+          "norm": 0.442
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Compressor",
+      "parameters": {
+        "Threshold": {
+          "norm": 0.2198
+        },
+        "Attack": {
+          "norm": 0.012
+        },
+        "Release": {
+          "norm": 0.0397
+        },
+        "Dry/Wet": {
+          "norm": 1.0
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0011
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.2269
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.0337
+        },
+        "3 Gain A": {
+          "norm": 0.5667
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Soft Sine",
+        "Drive": {
+          "norm": 0.5417
+        },
+        "Dry/Wet": {
+          "norm": 0.4
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "bass",
+    "root": 40,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Синус даёт фундамент, пила — «струну» и щелчок. Фильтр 850 Гц с короткой (190 мс) огибающей — удар пальца. Сустейн 0.35–0.45: струна звучит, но уходит. Компрессор + мягкая сатурация создают плотность, EQ — присутствие на 750 Гц (чтобы бас слышался на колонках). Диапазон E1–G3."
+}

@@ -1,0 +1,223 @@
+{
+  "id": "flute",
+  "version": 1,
+  "name": {
+    "ru": "Флейта",
+    "en": "Flute"
+  },
+  "category": "woodwind",
+  "aliases": [
+    "флейта",
+    "флейты",
+    "флейтист",
+    "дудочка",
+    "свирель",
+    "flute",
+    "concert flute",
+    "silver flute",
+    "pan flute",
+    "piccolo"
+  ],
+  "tags": [
+    "woodwind",
+    "solo",
+    "breath",
+    "airy",
+    "soft",
+    "флейта"
+  ],
+  "description": {
+    "ru": "Воздушная флейта: почти чистая синусоида с шумом дыхания и вибрато.",
+    "en": "Airy flute: near-pure sine with breath noise and vibrato."
+  },
+  "preset_search": [
+    "flute",
+    "concert flute",
+    "wind flute"
+  ],
+  "track": {
+    "name": "Флейта",
+    "color_index": 22
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable",
+      "Simpler"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.75
+      },
+      "Ae Attack": {
+        "norm": 0.429
+      },
+      "Ae Decay": {
+        "norm": 0.545
+      },
+      "Ae Sustain": {
+        "norm": 0.88
+      },
+      "Ae Release": {
+        "norm": 0.506
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.13
+      },
+      "Be Attack": {
+        "norm": 0.442
+      },
+      "Be Decay": {
+        "norm": 0.545
+      },
+      "Be Sustain": {
+        "norm": 0.8
+      },
+      "Be Release": {
+        "norm": 0.506
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Noise White",
+      "C Coarse": 1,
+      "Osc-C Level": {
+        "norm": 0.05
+      },
+      "Ce Attack": {
+        "norm": 0.372
+      },
+      "Ce Decay": {
+        "norm": 0.512
+      },
+      "Ce Sustain": {
+        "norm": 0.35
+      },
+      "Ce Release": {
+        "norm": 0.483
+      },
+      "Osc-D On": 1,
+      "Osc-D Wave": "Sine",
+      "D Coarse": 3,
+      "Osc-D Level": {
+        "norm": 0.04
+      },
+      "De Attack": {
+        "norm": 0.454
+      },
+      "De Decay": {
+        "norm": 0.545
+      },
+      "De Sustain": {
+        "norm": 0.8
+      },
+      "De Release": {
+        "norm": 0.506
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.805
+      },
+      "Filter Res": {
+        "norm": 0.05
+      },
+      "Volume": {
+        "norm": 0.8
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "norm": 0.429
+        },
+        "Amp Decay": {
+          "norm": 0.545
+        },
+        "Amp Sustain": {
+          "norm": 0.88
+        },
+        "Amp Release": {
+          "norm": 0.506
+        },
+        "Filter 1 On": 1,
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "norm": 0.805
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        }
+      },
+      "Simpler": {
+        "Ve Attack": {
+          "norm": 0.413
+        },
+        "Ve Release": {
+          "norm": 0.506
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Vibrato",
+        "Amount": {
+          "norm": 0.22
+        },
+        "Dry/Wet": {
+          "norm": 0.6
+        },
+        "Rate": {
+          "norm": 0.3596
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0105
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4998
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.22
+        },
+        "Decay Time": {
+          "norm": 0.0301
+        },
+        "Room Size": {
+          "norm": 0.1996
+        },
+        "Predelay": {
+          "norm": 0.0381
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 72,
+    "length": 8.0,
+    "scale": "major"
+  },
+  "sound_design_notes": "Флейта — почти синус: A=основной тон, B/D — тихие 2-я и 3-я гармоники (чем больше, тем «ярче»). C — белый шум на малом уровне с огибающей, дающей «хух» дыхания в начале ноты и тонкую «воздушную» подкладку на сустейне. Атака 70 мс — мягкое вдувание. Вибрато ~5.4 Гц (Chorus-Ensemble Vibrato). Играть выше C4."
+}

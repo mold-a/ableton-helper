@@ -1,0 +1,1941 @@
+{
+ "_meta": {
+  "verified": false,
+  "note": "HAND-WRITTEN FROM MEMORY of Live 11/12, NOT dumped from a running Live. Parameter names, ranges and value_items may differ in your version. Recipes prefer {\"norm\": x} values so wrong ranges stay sane; ambiguous names are covered by param_aliases.json. Run `abhelper calibrate` (sound.calibration.dump_device_catalog) with Live open to replace this file with a verified dump.",
+  "live_version": null
+ },
+ "devices": {
+  "Operator": {
+   "class_name": "Operator",
+   "type": "instrument",
+   "parameters": [
+    {
+     "name": "Algorithm",
+     "min": 0,
+     "max": 10,
+     "default": 0,
+     "is_quantized": true
+    },
+    {
+     "name": "Transpose",
+     "min": -48,
+     "max": 48,
+     "default": 0,
+     "is_quantized": true
+    },
+    {
+     "name": "Volume",
+     "min": 0,
+     "max": 1,
+     "default": 0.85
+    },
+    {
+     "name": "Spread",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Glide Time",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc-A On",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Osc-A Wave",
+     "min": 0,
+     "max": 29,
+     "default": 0,
+     "value_items": [
+      "Sine",
+      "Sine 4 bit",
+      "Sine 8 bit",
+      "Saw 3",
+      "Saw 4",
+      "Saw 6",
+      "Saw 8",
+      "Saw 16",
+      "Saw 32",
+      "Saw 64",
+      "Saw D",
+      "Square 3",
+      "Square 4",
+      "Square 6",
+      "Square 8",
+      "Square 16",
+      "Square 32",
+      "Square 64",
+      "Square D",
+      "Triangle 3",
+      "Triangle 4",
+      "Triangle 6",
+      "Triangle 8",
+      "Triangle 16",
+      "Triangle 32",
+      "Triangle 64",
+      "Triangle D",
+      "Noise Looped",
+      "Noise White",
+      "User"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "A Coarse",
+     "min": 0,
+     "max": 48,
+     "default": 1,
+     "is_quantized": true
+    },
+    {
+     "name": "A Fine",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc-A Level",
+     "min": 0,
+     "max": 1,
+     "default": 0.85
+    },
+    {
+     "name": "Ae Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Ae Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.6
+    },
+    {
+     "name": "Ae Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Ae Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.2
+    },
+    {
+     "name": "Osc-B On",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Osc-B Wave",
+     "min": 0,
+     "max": 29,
+     "default": 0,
+     "value_items": [
+      "Sine",
+      "Sine 4 bit",
+      "Sine 8 bit",
+      "Saw 3",
+      "Saw 4",
+      "Saw 6",
+      "Saw 8",
+      "Saw 16",
+      "Saw 32",
+      "Saw 64",
+      "Saw D",
+      "Square 3",
+      "Square 4",
+      "Square 6",
+      "Square 8",
+      "Square 16",
+      "Square 32",
+      "Square 64",
+      "Square D",
+      "Triangle 3",
+      "Triangle 4",
+      "Triangle 6",
+      "Triangle 8",
+      "Triangle 16",
+      "Triangle 32",
+      "Triangle 64",
+      "Triangle D",
+      "Noise Looped",
+      "Noise White",
+      "User"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "B Coarse",
+     "min": 0,
+     "max": 48,
+     "default": 1,
+     "is_quantized": true
+    },
+    {
+     "name": "B Fine",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc-B Level",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Be Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Be Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.6
+    },
+    {
+     "name": "Be Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Be Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.2
+    },
+    {
+     "name": "Osc-C On",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Osc-C Wave",
+     "min": 0,
+     "max": 29,
+     "default": 0,
+     "value_items": [
+      "Sine",
+      "Sine 4 bit",
+      "Sine 8 bit",
+      "Saw 3",
+      "Saw 4",
+      "Saw 6",
+      "Saw 8",
+      "Saw 16",
+      "Saw 32",
+      "Saw 64",
+      "Saw D",
+      "Square 3",
+      "Square 4",
+      "Square 6",
+      "Square 8",
+      "Square 16",
+      "Square 32",
+      "Square 64",
+      "Square D",
+      "Triangle 3",
+      "Triangle 4",
+      "Triangle 6",
+      "Triangle 8",
+      "Triangle 16",
+      "Triangle 32",
+      "Triangle 64",
+      "Triangle D",
+      "Noise Looped",
+      "Noise White",
+      "User"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "C Coarse",
+     "min": 0,
+     "max": 48,
+     "default": 1,
+     "is_quantized": true
+    },
+    {
+     "name": "C Fine",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc-C Level",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Ce Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Ce Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.6
+    },
+    {
+     "name": "Ce Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Ce Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.2
+    },
+    {
+     "name": "Osc-D On",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Osc-D Wave",
+     "min": 0,
+     "max": 29,
+     "default": 0,
+     "value_items": [
+      "Sine",
+      "Sine 4 bit",
+      "Sine 8 bit",
+      "Saw 3",
+      "Saw 4",
+      "Saw 6",
+      "Saw 8",
+      "Saw 16",
+      "Saw 32",
+      "Saw 64",
+      "Saw D",
+      "Square 3",
+      "Square 4",
+      "Square 6",
+      "Square 8",
+      "Square 16",
+      "Square 32",
+      "Square 64",
+      "Square D",
+      "Triangle 3",
+      "Triangle 4",
+      "Triangle 6",
+      "Triangle 8",
+      "Triangle 16",
+      "Triangle 32",
+      "Triangle 64",
+      "Triangle D",
+      "Noise Looped",
+      "Noise White",
+      "User"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "D Coarse",
+     "min": 0,
+     "max": 48,
+     "default": 1,
+     "is_quantized": true
+    },
+    {
+     "name": "D Fine",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc-D Level",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "De Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "De Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.6
+    },
+    {
+     "name": "De Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "De Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.2
+    },
+    {
+     "name": "Osc-A Feedback",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc-B Feedback",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc-C Feedback",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc-D Feedback",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Filter On",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Filter Type",
+     "min": 0,
+     "max": 4,
+     "default": 0,
+     "value_items": [
+      "Lowpass",
+      "Highpass",
+      "Bandpass",
+      "Notch",
+      "Morph"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Filter Freq",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Filter Res",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Fe Amount",
+     "min": -1,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Fe Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Fe Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Fe Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Fe Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.2
+    }
+   ]
+  },
+  "Wavetable": {
+   "class_name": "InstrumentVector",
+   "type": "instrument",
+   "parameters": [
+    {
+     "name": "Osc 1 Pos",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc 1 Transp",
+     "min": -48,
+     "max": 48,
+     "default": 0,
+     "is_quantized": true
+    },
+    {
+     "name": "Osc 1 Detune",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc 1 Gain",
+     "min": 0,
+     "max": 1,
+     "default": 0.85
+    },
+    {
+     "name": "Osc 2 On",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Osc 2 Pos",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc 2 Transp",
+     "min": -48,
+     "max": 48,
+     "default": 0,
+     "is_quantized": true
+    },
+    {
+     "name": "Osc 2 Detune",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Osc 2 Gain",
+     "min": 0,
+     "max": 1,
+     "default": 0.85
+    },
+    {
+     "name": "Sub On",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Sub Gain",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Sub Transp",
+     "min": 0,
+     "max": 24,
+     "default": 0,
+     "is_quantized": true
+    },
+    {
+     "name": "Unison Mode",
+     "min": 0,
+     "max": 6,
+     "default": 0,
+     "value_items": [
+      "None",
+      "Classic",
+      "Shimmer",
+      "Noise",
+      "Phase Sync",
+      "Position Spread",
+      "Random Note"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Unison Voices",
+     "min": 2,
+     "max": 8,
+     "default": 4,
+     "is_quantized": true
+    },
+    {
+     "name": "Unison Amount",
+     "min": 0,
+     "max": 1,
+     "default": 0.3
+    },
+    {
+     "name": "Filter 1 On",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Filter 1 Type",
+     "min": 0,
+     "max": 4,
+     "default": 0,
+     "value_items": [
+      "Lowpass",
+      "Highpass",
+      "Bandpass",
+      "Notch",
+      "Morph"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Filter 1 Freq",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Filter 1 Res",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Amp Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Amp Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Amp Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Amp Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.3
+    },
+    {
+     "name": "Global Gain",
+     "min": 0,
+     "max": 1,
+     "default": 0.85
+    }
+   ]
+  },
+  "Analog": {
+   "class_name": "UltraAnalog",
+   "type": "instrument",
+   "parameters": [
+    {
+     "name": "OSC1 On",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "OSC1 Shape",
+     "min": 0,
+     "max": 3,
+     "default": 1,
+     "value_items": [
+      "Sine",
+      "Saw",
+      "Rectangle",
+      "Noise"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "OSC1 Detune",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "OSC1 Level",
+     "min": 0,
+     "max": 1,
+     "default": 0.7
+    },
+    {
+     "name": "OSC1 PW",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "OSC2 On",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "OSC2 Shape",
+     "min": 0,
+     "max": 3,
+     "default": 1,
+     "value_items": [
+      "Sine",
+      "Saw",
+      "Rectangle",
+      "Noise"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "OSC2 Detune",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "OSC2 Level",
+     "min": 0,
+     "max": 1,
+     "default": 0.7
+    },
+    {
+     "name": "OSC2 PW",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Noise On",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Noise Level",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "F1 Type",
+     "min": 0,
+     "max": 4,
+     "default": 0,
+     "value_items": [
+      "Lowpass",
+      "Bandpass",
+      "Highpass",
+      "Notch",
+      "Morph"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "F1 Freq",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "F1 Res",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "F1 Freq < Env",
+     "min": -1,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "AEG1 Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "AEG1 Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "AEG1 Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "AEG1 Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.3
+    },
+    {
+     "name": "FEG1 Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "FEG1 Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "FEG1 Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "FEG1 Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.3
+    },
+    {
+     "name": "Glide Time",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    }
+   ]
+  },
+  "Simpler": {
+   "class_name": "OriginalSimpler",
+   "type": "instrument",
+   "parameters": [
+    {
+     "name": "Voices",
+     "min": 1,
+     "max": 32,
+     "default": 6,
+     "is_quantized": true
+    },
+    {
+     "name": "Volume",
+     "min": 0,
+     "max": 1,
+     "default": 0.85
+    },
+    {
+     "name": "Transpose",
+     "min": -48,
+     "max": 48,
+     "default": 0,
+     "is_quantized": true
+    },
+    {
+     "name": "Filter Freq",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Filter Res",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Ve Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Ve Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Ve Sustain",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Ve Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.2
+    }
+   ]
+  },
+  "Drift": {
+   "class_name": "DriftDevice",
+   "type": "instrument",
+   "parameters": [
+    {
+     "name": "Filter Frequency",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Filter Resonance",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Amp Attack",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Amp Release",
+     "min": 0,
+     "max": 1,
+     "default": 0.3
+    }
+   ]
+  },
+  "Drum Rack": {
+   "class_name": "DrumGroupDevice",
+   "type": "instrument",
+   "parameters": []
+  },
+  "Reverb": {
+   "class_name": "Reverb",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 0.33
+    },
+    {
+     "name": "Decay Time",
+     "min": 200,
+     "max": 60000,
+     "default": 1500
+    },
+    {
+     "name": "Predelay",
+     "min": 0.5,
+     "max": 250,
+     "default": 2.5
+    },
+    {
+     "name": "Room Size",
+     "min": 0.22,
+     "max": 500,
+     "default": 100
+    }
+   ]
+  },
+  "Delay": {
+   "class_name": "Delay",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Feedback",
+     "min": 0,
+     "max": 0.95,
+     "default": 0.5
+    },
+    {
+     "name": "Filter Freq",
+     "min": 20,
+     "max": 20000,
+     "default": 1000
+    }
+   ]
+  },
+  "Chorus-Ensemble": {
+   "class_name": "ChorusEnsemble",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Mode",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "value_items": [
+      "Classic",
+      "Ensemble",
+      "Vibrato"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Rate",
+     "min": 0.01,
+     "max": 15,
+     "default": 0.5
+    },
+    {
+     "name": "Amount",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Feedback",
+     "min": -0.95,
+     "max": 0.95,
+     "default": 0.0
+    },
+    {
+     "name": "Width",
+     "min": 0,
+     "max": 1.5,
+     "default": 1.0
+    },
+    {
+     "name": "Warmth",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    }
+   ]
+  },
+  "EQ Eight": {
+   "class_name": "Eq8",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "1 Filter On A",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "1 Filter Type A",
+     "min": 0,
+     "max": 7,
+     "default": 3,
+     "value_items": [
+      "48 dB Low Cut",
+      "12 dB Low Cut",
+      "Low Shelf",
+      "Bell",
+      "Notch",
+      "High Shelf",
+      "12 dB High Cut",
+      "48 dB High Cut"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "1 Frequency A",
+     "min": 10,
+     "max": 22000,
+     "default": 80
+    },
+    {
+     "name": "1 Gain A",
+     "min": -15,
+     "max": 15,
+     "default": 0.0
+    },
+    {
+     "name": "1 Resonance A",
+     "min": 0.1,
+     "max": 18,
+     "default": 0.71
+    },
+    {
+     "name": "2 Filter On A",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "2 Filter Type A",
+     "min": 0,
+     "max": 7,
+     "default": 3,
+     "value_items": [
+      "48 dB Low Cut",
+      "12 dB Low Cut",
+      "Low Shelf",
+      "Bell",
+      "Notch",
+      "High Shelf",
+      "12 dB High Cut",
+      "48 dB High Cut"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "2 Frequency A",
+     "min": 10,
+     "max": 22000,
+     "default": 100
+    },
+    {
+     "name": "2 Gain A",
+     "min": -15,
+     "max": 15,
+     "default": 0.0
+    },
+    {
+     "name": "2 Resonance A",
+     "min": 0.1,
+     "max": 18,
+     "default": 0.71
+    },
+    {
+     "name": "3 Filter On A",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "3 Filter Type A",
+     "min": 0,
+     "max": 7,
+     "default": 3,
+     "value_items": [
+      "48 dB Low Cut",
+      "12 dB Low Cut",
+      "Low Shelf",
+      "Bell",
+      "Notch",
+      "High Shelf",
+      "12 dB High Cut",
+      "48 dB High Cut"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "3 Frequency A",
+     "min": 10,
+     "max": 22000,
+     "default": 250
+    },
+    {
+     "name": "3 Gain A",
+     "min": -15,
+     "max": 15,
+     "default": 0.0
+    },
+    {
+     "name": "3 Resonance A",
+     "min": 0.1,
+     "max": 18,
+     "default": 0.71
+    },
+    {
+     "name": "4 Filter On A",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "4 Filter Type A",
+     "min": 0,
+     "max": 7,
+     "default": 3,
+     "value_items": [
+      "48 dB Low Cut",
+      "12 dB Low Cut",
+      "Low Shelf",
+      "Bell",
+      "Notch",
+      "High Shelf",
+      "12 dB High Cut",
+      "48 dB High Cut"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "4 Frequency A",
+     "min": 10,
+     "max": 22000,
+     "default": 800
+    },
+    {
+     "name": "4 Gain A",
+     "min": -15,
+     "max": 15,
+     "default": 0.0
+    },
+    {
+     "name": "4 Resonance A",
+     "min": 0.1,
+     "max": 18,
+     "default": 0.71
+    },
+    {
+     "name": "5 Filter On A",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "5 Filter Type A",
+     "min": 0,
+     "max": 7,
+     "default": 3,
+     "value_items": [
+      "48 dB Low Cut",
+      "12 dB Low Cut",
+      "Low Shelf",
+      "Bell",
+      "Notch",
+      "High Shelf",
+      "12 dB High Cut",
+      "48 dB High Cut"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "5 Frequency A",
+     "min": 10,
+     "max": 22000,
+     "default": 2000
+    },
+    {
+     "name": "5 Gain A",
+     "min": -15,
+     "max": 15,
+     "default": 0.0
+    },
+    {
+     "name": "5 Resonance A",
+     "min": 0.1,
+     "max": 18,
+     "default": 0.71
+    },
+    {
+     "name": "6 Filter On A",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "6 Filter Type A",
+     "min": 0,
+     "max": 7,
+     "default": 3,
+     "value_items": [
+      "48 dB Low Cut",
+      "12 dB Low Cut",
+      "Low Shelf",
+      "Bell",
+      "Notch",
+      "High Shelf",
+      "12 dB High Cut",
+      "48 dB High Cut"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "6 Frequency A",
+     "min": 10,
+     "max": 22000,
+     "default": 5000
+    },
+    {
+     "name": "6 Gain A",
+     "min": -15,
+     "max": 15,
+     "default": 0.0
+    },
+    {
+     "name": "6 Resonance A",
+     "min": 0.1,
+     "max": 18,
+     "default": 0.71
+    },
+    {
+     "name": "7 Filter On A",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "7 Filter Type A",
+     "min": 0,
+     "max": 7,
+     "default": 3,
+     "value_items": [
+      "48 dB Low Cut",
+      "12 dB Low Cut",
+      "Low Shelf",
+      "Bell",
+      "Notch",
+      "High Shelf",
+      "12 dB High Cut",
+      "48 dB High Cut"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "7 Frequency A",
+     "min": 10,
+     "max": 22000,
+     "default": 8000
+    },
+    {
+     "name": "7 Gain A",
+     "min": -15,
+     "max": 15,
+     "default": 0.0
+    },
+    {
+     "name": "7 Resonance A",
+     "min": 0.1,
+     "max": 18,
+     "default": 0.71
+    },
+    {
+     "name": "8 Filter On A",
+     "min": 0,
+     "max": 1,
+     "default": 1,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "8 Filter Type A",
+     "min": 0,
+     "max": 7,
+     "default": 3,
+     "value_items": [
+      "48 dB Low Cut",
+      "12 dB Low Cut",
+      "Low Shelf",
+      "Bell",
+      "Notch",
+      "High Shelf",
+      "12 dB High Cut",
+      "48 dB High Cut"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "8 Frequency A",
+     "min": 10,
+     "max": 22000,
+     "default": 16000
+    },
+    {
+     "name": "8 Gain A",
+     "min": -15,
+     "max": 15,
+     "default": 0.0
+    },
+    {
+     "name": "8 Resonance A",
+     "min": 0.1,
+     "max": 18,
+     "default": 0.71
+    },
+    {
+     "name": "Scale",
+     "min": 0,
+     "max": 2,
+     "default": 1.0
+    }
+   ]
+  },
+  "Auto Filter": {
+   "class_name": "AutoFilter",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Filter Type",
+     "min": 0,
+     "max": 4,
+     "default": 0,
+     "value_items": [
+      "Lowpass",
+      "Highpass",
+      "Bandpass",
+      "Notch",
+      "Morph"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Frequency",
+     "min": 20,
+     "max": 135,
+     "default": 100
+    },
+    {
+     "name": "Resonance",
+     "min": 0,
+     "max": 1.25,
+     "default": 0.0
+    },
+    {
+     "name": "LFO Amount",
+     "min": 0,
+     "max": 30,
+     "default": 0.0
+    },
+    {
+     "name": "LFO Frequency",
+     "min": 0.01,
+     "max": 40,
+     "default": 1.0
+    },
+    {
+     "name": "LFO Sync",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    }
+   ]
+  },
+  "Saturator": {
+   "class_name": "Saturator",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Drive",
+     "min": -36,
+     "max": 36,
+     "default": 0.0
+    },
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Output",
+     "min": -36,
+     "max": 36,
+     "default": 0.0
+    },
+    {
+     "name": "Type",
+     "min": 0,
+     "max": 5,
+     "default": 0,
+     "value_items": [
+      "Analog Clip",
+      "Soft Sine",
+      "Medium Curve",
+      "Hard Curve",
+      "Sinoid Fold",
+      "Digital Clip"
+     ],
+     "is_quantized": true
+    }
+   ]
+  },
+  "Compressor": {
+   "class_name": "Compressor2",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Threshold",
+     "min": 0.0003,
+     "max": 1,
+     "default": 0.85
+    },
+    {
+     "name": "Attack",
+     "min": 0.01,
+     "max": 1000,
+     "default": 0.1
+    },
+    {
+     "name": "Release",
+     "min": 1,
+     "max": 3000,
+     "default": 30
+    },
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    }
+   ]
+  },
+  "Glue Compressor": {
+   "class_name": "GlueCompressor",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Threshold",
+     "min": -40,
+     "max": 0,
+     "default": 0.0
+    },
+    {
+     "name": "Ratio",
+     "min": 0,
+     "max": 2,
+     "default": 1,
+     "value_items": [
+      "2:1",
+      "4:1",
+      "10:1"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Attack",
+     "min": 0,
+     "max": 6,
+     "default": 2,
+     "value_items": [
+      "0.01 ms",
+      "0.1 ms",
+      "0.3 ms",
+      "1 ms",
+      "3 ms",
+      "10 ms",
+      "30 ms"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Release",
+     "min": 0,
+     "max": 6,
+     "default": 2,
+     "value_items": [
+      "0.1 s",
+      "0.2 s",
+      "0.4 s",
+      "0.6 s",
+      "0.8 s",
+      "1.2 s",
+      "Auto"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Makeup",
+     "min": 0,
+     "max": 20,
+     "default": 0.0
+    },
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    }
+   ]
+  },
+  "Utility": {
+   "class_name": "StereoGain",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Gain",
+     "min": -35,
+     "max": 35,
+     "default": 0.0
+    },
+    {
+     "name": "Width",
+     "min": 0,
+     "max": 2,
+     "default": 1.0
+    },
+    {
+     "name": "Bass Mono",
+     "min": 0,
+     "max": 1,
+     "default": 0,
+     "value_items": [
+      "Off",
+      "On"
+     ],
+     "is_quantized": true
+    }
+   ]
+  },
+  "Phaser-Flanger": {
+   "class_name": "PhaserNew",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Mode",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "value_items": [
+      "Phaser",
+      "Flanger",
+      "Doubler"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Rate",
+     "min": 0.01,
+     "max": 10,
+     "default": 0.5
+    },
+    {
+     "name": "Amount",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Feedback",
+     "min": 0,
+     "max": 0.9,
+     "default": 0.3
+    },
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    }
+   ]
+  },
+  "Auto Pan": {
+   "class_name": "AutoPan",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Amount",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Rate",
+     "min": 0.01,
+     "max": 20,
+     "default": 1.0
+    }
+   ]
+  },
+  "Redux": {
+   "class_name": "Redux2",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Bit Depth",
+     "min": 1,
+     "max": 16,
+     "default": 16,
+     "is_quantized": true
+    },
+    {
+     "name": "Sample Rate",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    }
+   ]
+  },
+  "Erosion": {
+   "class_name": "Erosion",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Mode",
+     "min": 0,
+     "max": 2,
+     "default": 0,
+     "value_items": [
+      "Sine",
+      "Noise",
+      "Wide Noise"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Frequency",
+     "min": 20,
+     "max": 20000,
+     "default": 1000
+    },
+    {
+     "name": "Amount",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    }
+   ]
+  },
+  "Vinyl Distortion": {
+   "class_name": "Vinyl",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Crackle Volume",
+     "min": 0,
+     "max": 1,
+     "default": 0.3
+    },
+    {
+     "name": "Crackle Density",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Tracing Drive",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Pinch Drive",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    }
+   ]
+  },
+  "Corpus": {
+   "class_name": "Corpus",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Resonance Type",
+     "min": 0,
+     "max": 6,
+     "default": 0,
+     "value_items": [
+      "Beam",
+      "Marimba",
+      "String",
+      "Membrane",
+      "Plate",
+      "Pipe",
+      "Tube"
+     ],
+     "is_quantized": true
+    },
+    {
+     "name": "Decay",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Brightness",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    }
+   ]
+  },
+  "Overdrive": {
+   "class_name": "Overdrive",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Drive",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Tone",
+     "min": 0,
+     "max": 1,
+     "default": 0.5
+    },
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    }
+   ]
+  },
+  "Drum Buss": {
+   "class_name": "DrumBuss",
+   "type": "audio_effect",
+   "parameters": [
+    {
+     "name": "Drive",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Crunch",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Damp",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    },
+    {
+     "name": "Transients",
+     "min": -1,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Boom",
+     "min": 0,
+     "max": 1,
+     "default": 0.0
+    },
+    {
+     "name": "Dry/Wet",
+     "min": 0,
+     "max": 1,
+     "default": 1.0
+    }
+   ]
+  }
+ }
+}

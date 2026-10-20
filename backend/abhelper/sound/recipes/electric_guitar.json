@@ -1,0 +1,234 @@
+{
+  "id": "electric_guitar",
+  "version": 1,
+  "name": {
+    "ru": "Электрогитара",
+    "en": "Electric guitar (crunch)"
+  },
+  "category": "guitar",
+  "aliases": [
+    "электрогитара",
+    "электро гитара",
+    "дисторшн гитара",
+    "перегруженная гитара",
+    "рок гитара",
+    "овердрайв гитара",
+    "риф",
+    "electric guitar",
+    "distortion guitar",
+    "rock guitar",
+    "crunch guitar",
+    "overdriven guitar",
+    "riff guitar",
+    "guitar crunch"
+  ],
+  "tags": [
+    "guitar",
+    "electric",
+    "rock",
+    "distortion",
+    "crunch",
+    "riff"
+  ],
+  "description": {
+    "ru": "Рок-гитара: пила + квадрат, мощный овердрайв, срез «кабинета» и задержка.",
+    "en": "Rock guitar: saw plus square, heavy overdrive, cabinet-style roll-off and echo."
+  },
+  "preset_search": [
+    "electric guitar",
+    "distortion guitar",
+    "rock guitar",
+    "crunch guitar",
+    "guitar"
+  ],
+  "track": {
+    "name": "Электрогитара",
+    "color_index": 7
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Saw 16",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.72
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.716
+      },
+      "Ae Sustain": {
+        "norm": 0.45
+      },
+      "Ae Release": {
+        "norm": 0.465
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Square 8",
+      "B Coarse": 1,
+      "Osc-B Level": {
+        "norm": 0.3
+      },
+      "B Fine": {
+        "norm": 0.01
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.716
+      },
+      "Be Sustain": {
+        "norm": 0.45
+      },
+      "Be Release": {
+        "norm": 0.465
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 2,
+      "Osc-C Level": {
+        "norm": 0.15
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.646
+      },
+      "Ce Sustain": {
+        "norm": 0.2
+      },
+      "Ce Release": {
+        "norm": 0.442
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.752
+      },
+      "Filter Res": {
+        "norm": 0.12
+      },
+      "Volume": {
+        "norm": 0.78
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Saw",
+        "AEG1 Attack": {
+          "norm": 0.0
+        },
+        "AEG1 Decay": {
+          "norm": 0.716
+        },
+        "AEG1 Sustain": {
+          "norm": 0.45
+        },
+        "AEG1 Release": {
+          "norm": 0.465
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.752
+        },
+        "F1 Res": {
+          "norm": 0.12
+        },
+        "OSC2 On": 1,
+        "OSC2 Shape": "Rectangle",
+        "OSC2 Detune": {
+          "norm": 0.51
+        },
+        "OSC2 Level": {
+          "norm": 0.4
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Overdrive",
+      "parameters": {
+        "Drive": {
+          "norm": 0.62
+        },
+        "Tone": {
+          "norm": 0.55
+        },
+        "Dry/Wet": {
+          "norm": 0.95
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0036
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.236
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.0405
+        },
+        "3 Gain A": {
+          "norm": 0.5667
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Delay",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.14
+        },
+        "Feedback": {
+          "norm": 0.3158
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.12
+        },
+        "Decay Time": {
+          "norm": 0.0167
+        },
+        "Room Size": {
+          "norm": 0.1096
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "chords",
+    "root": 52,
+    "length": 8.0,
+    "scale": "minor",
+    "variant": "strum"
+  },
+  "sound_design_notes": "Строка = пила + прямоугольник (разница в 10 центов — «двойная струна»). Сустейн 0.45: струна «держится», как при усилении. Overdrive на 62% — основной «грит»; Eq имитирует гитарный кабинет: верх срезан на 5.2 кГц, бугор 900 Гц — «мясо» средин. Демо — рифф, сыгранный аккордами «боем» (минорный лад)."
+}

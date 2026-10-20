@@ -1,0 +1,194 @@
+{
+  "id": "solo_violin",
+  "version": 1,
+  "name": {
+    "ru": "Скрипка",
+    "en": "Solo violin"
+  },
+  "category": "strings",
+  "aliases": [
+    "скрипка",
+    "скрипки",
+    "скрипач",
+    "соло скрипка",
+    "violin",
+    "solo violin",
+    "fiddle",
+    "bowed violin"
+  ],
+  "tags": [
+    "strings",
+    "solo",
+    "bowed",
+    "classical",
+    "expressive",
+    "скрипка"
+  ],
+  "description": {
+    "ru": "Сольная скрипка: пила с «смычковой» огибающей фильтра, вибрато, присутствие на 3 кГц.",
+    "en": "Solo violin: saw with bow-like filter bloom, vibrato and presence around 3 kHz."
+  },
+  "preset_search": [
+    "violin",
+    "solo violin",
+    "fiddle",
+    "strings solo"
+  ],
+  "track": {
+    "name": "Скрипка",
+    "color_index": 27
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Operator",
+      "Simpler"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.454
+      },
+      "AEG1 Decay": {
+        "norm": 0.545
+      },
+      "AEG1 Sustain": {
+        "norm": 0.9
+      },
+      "AEG1 Release": {
+        "norm": 0.519
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.774
+      },
+      "F1 Res": {
+        "norm": 0.12
+      },
+      "OSC2 On": 1,
+      "OSC2 Shape": "Saw",
+      "OSC2 Detune": {
+        "norm": 0.52
+      },
+      "OSC2 Level": {
+        "norm": 0.35
+      },
+      "F1 Freq < Env": {
+        "norm": 0.675
+      },
+      "FEG1 Attack": {
+        "norm": 0.442
+      },
+      "FEG1 Decay": {
+        "norm": 0.576
+      },
+      "FEG1 Sustain": {
+        "norm": 0.5
+      },
+      "FEG1 Release": {
+        "norm": 0.535
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "norm": 0.454
+        },
+        "Amp Decay": {
+          "norm": 0.545
+        },
+        "Amp Sustain": {
+          "norm": 0.9
+        },
+        "Amp Release": {
+          "norm": 0.519
+        },
+        "Filter 1 On": 1,
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "norm": 0.774
+        },
+        "Filter 1 Res": {
+          "norm": 0.1
+        }
+      },
+      "Simpler": {
+        "Ve Attack": {
+          "norm": 0.442
+        },
+        "Ve Release": {
+          "norm": 0.524
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Vibrato",
+        "Amount": {
+          "norm": 0.3
+        },
+        "Dry/Wet": {
+          "norm": 0.7
+        },
+        "Rate": {
+          "norm": 0.3729
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0077
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4998
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.136
+        },
+        "3 Gain A": {
+          "norm": 0.5833
+        },
+        "3 Resonance A": {
+          "norm": 0.0447
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.22
+        },
+        "Decay Time": {
+          "norm": 0.0284
+        },
+        "Room Size": {
+          "norm": 0.1796
+        },
+        "Predelay": {
+          "norm": 0.0381
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 67,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Основной осциллятор — пила, второй (+6 центов, тише) добавляет «густоту» струны. Открытие фильтра по огибающей (80 мс) — трение смычка. Атака 90 мс — мягкий штрих легато. Вибрато ~5.6 Гц сделано Chorus-Ensemble в режиме Vibrato; EQ подчёркивает 3 кГц — «присутствие» скрипки."
+}

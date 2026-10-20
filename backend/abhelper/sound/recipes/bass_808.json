@@ -1,0 +1,182 @@
+{
+  "id": "bass_808",
+  "version": 1,
+  "name": {
+    "ru": "808-бас",
+    "en": "808 bass"
+  },
+  "category": "bass",
+  "aliases": [
+    "808",
+    "808 бас",
+    "бас 808",
+    "восемьсот восемь",
+    "808 басс",
+    "трап бас",
+    "трэп бас",
+    "808 bass",
+    "808 sub",
+    "trap bass",
+    "trap 808",
+    "boom bass",
+    "hip hop 808",
+    "kick bass"
+  ],
+  "tags": [
+    "bass",
+    "808",
+    "trap",
+    "hiphop",
+    "sub",
+    "sine",
+    "boom"
+  ],
+  "description": {
+    "ru": "Длинный 808-бас: синус с «щелчком», сатурация, затухание ~1.8 с.",
+    "en": "Long 808 bass: sine with a click, saturation and a ~1.8 s decay."
+  },
+  "preset_search": [
+    "808 bass",
+    "808",
+    "trap 808",
+    "sub bass 808"
+  ],
+  "track": {
+    "name": "808-бас",
+    "color_index": 63
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.9
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.757
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.506
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 1,
+      "Osc-B Level": {
+        "norm": 0.14
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.325
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.302
+      },
+      "Volume": {
+        "norm": 0.84
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Sine",
+        "AEG1 Attack": {
+          "norm": 0.0
+        },
+        "AEG1 Decay": {
+          "norm": 0.757
+        },
+        "AEG1 Sustain": {
+          "norm": 0.0
+        },
+        "AEG1 Release": {
+          "norm": 0.506
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.826
+        },
+        "F1 Res": {
+          "norm": 0.0
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Soft Sine",
+        "Drive": {
+          "norm": 0.6667
+        },
+        "Dry/Wet": {
+          "norm": 0.65
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0006
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.2951
+        }
+      }
+    },
+    {
+      "device": "Compressor",
+      "parameters": {
+        "Threshold": {
+          "norm": 0.1798
+        },
+        "Attack": {
+          "norm": 0.005
+        },
+        "Release": {
+          "norm": 0.0263
+        },
+        "Dry/Wet": {
+          "norm": 1.0
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Bass Mono": 1
+      }
+    }
+  ],
+  "demo": {
+    "style": "bass",
+    "root": 36,
+    "length": 8.0,
+    "scale": "minor",
+    "variant": "trap"
+  },
+  "sound_design_notes": "Классическая 808 — синус с долгим затуханием (~1.8 с) и нулевым сустейном: нота «ложится» и тает. Тонкий короткий модулятор B (25 мс) даёт щелчок атаки, который помогает 808-й «пробить» микс. Soft-Sine сатурация на 12 дБ добавляет гармоник (808 слышно на телефоне). Моно-низ + срез <24 Гц. Демо — трэп-паттерн с длинными нотами. Питч-дроп (как у настоящей 808) в рецепт не включён — добавьте Pitch-огибающую вручную."
+}

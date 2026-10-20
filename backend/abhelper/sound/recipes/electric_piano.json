@@ -1,0 +1,201 @@
+{
+  "id": "electric_piano",
+  "version": 1,
+  "name": {
+    "ru": "Электропиано (Rhodes)",
+    "en": "Electric piano (Rhodes-style)"
+  },
+  "category": "keys",
+  "aliases": [
+    "электропиано",
+    "электро пиано",
+    "родес",
+    "роудс",
+    "рэйдс",
+    "клавиши",
+    "клавишные",
+    "эпиано",
+    "е-пиано",
+    "rhodes",
+    "electric piano",
+    "e-piano",
+    "epiano",
+    "fender rhodes",
+    "keys",
+    "neo soul keys"
+  ],
+  "tags": [
+    "keys",
+    "electric",
+    "soul",
+    "jazz",
+    "tine",
+    "клавиши"
+  ],
+  "description": {
+    "ru": "Rhodes-подобное FM-электропиано: колокольчатый «тайн», мягкий укус, тремоло и хорус.",
+    "en": "Rhodes-style FM e-piano: bell-like tine, soft bark, tremolo and chorus."
+  },
+  "preset_search": [
+    "electric piano",
+    "rhodes",
+    "e-piano",
+    "suitcase"
+  ],
+  "track": {
+    "name": "Электропиано (Rhodes)",
+    "color_index": 16
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable",
+      "Analog"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.85
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.801
+      },
+      "Ae Sustain": {
+        "norm": 0.35
+      },
+      "Ae Release": {
+        "norm": 0.545
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 1,
+      "Osc-B Level": {
+        "norm": 0.4
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.654
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.483
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 14,
+      "Osc-C Level": {
+        "norm": 0.1
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.429
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.395
+      },
+      "Volume": {
+        "norm": 0.82
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "norm": 0.0
+        },
+        "Amp Decay": {
+          "norm": 0.777
+        },
+        "Amp Sustain": {
+          "norm": 0.3
+        },
+        "Amp Release": {
+          "norm": 0.545
+        },
+        "Filter 1 On": 1,
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "norm": 0.826
+        },
+        "Filter 1 Res": {
+          "norm": 0.0
+        },
+        "Osc 1 Pos": {
+          "norm": 0.0
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Soft Sine",
+        "Drive": {
+          "norm": 0.5556
+        },
+        "Dry/Wet": {
+          "norm": 0.5
+        }
+      }
+    },
+    {
+      "device": "Auto Pan",
+      "parameters": {
+        "Amount": {
+          "norm": 0.3
+        },
+        "Rate": {
+          "norm": 0.2096
+        }
+      }
+    },
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Ensemble",
+        "Amount": {
+          "norm": 0.35
+        },
+        "Dry/Wet": {
+          "norm": 0.3
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.15
+        },
+        "Decay Time": {
+          "norm": 0.0217
+        },
+        "Room Size": {
+          "norm": 0.1596
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "chords",
+    "root": 55,
+    "length": 8.0,
+    "scale": "dorian"
+  },
+  "sound_design_notes": "Классика DX-эпиано. A — несущая (1:1) с умеренным сустейном 0.35; B — модулятор 1:1, быстро затухающий: «тело» звука тёмное после атаки. C (×14) — короткий «звон тайна». Saturator Soft Sine добавляет «лай» при сильной игре, Auto Pan (~4 Гц) — тремоло/панорамный вибрато чемодан-Rhodes, Chorus-Ensemble — характерная ширина. Демо в дорийском ладу (неосоул-вайб)."
+}

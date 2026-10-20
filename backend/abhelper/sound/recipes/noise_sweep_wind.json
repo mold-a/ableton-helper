@@ -1,0 +1,212 @@
+{
+  "id": "noise_sweep_wind",
+  "version": 1,
+  "name": {
+    "ru": "Шумовой свип / ветер",
+    "en": "Noise sweep / wind"
+  },
+  "category": "fx",
+  "aliases": [
+    "ветер",
+    "шум ветра",
+    "шум",
+    "нойз",
+    "белый шум",
+    "шумовой свип",
+    "свип",
+    "свуш",
+    "вуш",
+    "атмосферный шум",
+    "wind",
+    "noise",
+    "white noise",
+    "noise sweep",
+    "sweep",
+    "whoosh",
+    "wind noise",
+    "air noise",
+    "atmos"
+  ],
+  "tags": [
+    "fx",
+    "wind",
+    "noise",
+    "ambient",
+    "texture",
+    "sweep",
+    "atmosphere"
+  ],
+  "description": {
+    "ru": "Ветер/свип: фильтрованный шум с медленным LFO-движением, стерео и огромным реверберациям.",
+    "en": "Wind / sweep: filtered noise with slow LFO movement, wide stereo and long reverb."
+  },
+  "preset_search": [
+    "wind",
+    "noise sweep",
+    "whoosh",
+    "noise",
+    "atmosphere"
+  ],
+  "track": {
+    "name": "Шумовой свип / ветер",
+    "color_index": 50
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Operator"
+    ],
+    "parameters": {
+      "OSC1 On": 0,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.79
+      },
+      "AEG1 Decay": {
+        "norm": 0.808
+      },
+      "AEG1 Sustain": {
+        "norm": 0.8
+      },
+      "AEG1 Release": {
+        "norm": 0.824
+      },
+      "F1 Type": "Bandpass",
+      "F1 Freq": {
+        "norm": 0.551
+      },
+      "F1 Res": {
+        "norm": 0.45
+      },
+      "F1 Freq < Env": {
+        "norm": 0.75
+      },
+      "FEG1 Attack": {
+        "norm": 0.808
+      },
+      "FEG1 Decay": {
+        "norm": 0.86
+      },
+      "FEG1 Sustain": {
+        "norm": 0.3
+      },
+      "FEG1 Release": {
+        "norm": 0.808
+      },
+      "Noise On": 1,
+      "Noise Level": {
+        "norm": 0.8
+      }
+    },
+    "fallback_parameters": {
+      "Operator": {
+        "Algorithm": 10,
+        "Osc-A On": 1,
+        "Osc-A Wave": "Noise White",
+        "A Coarse": 1,
+        "Osc-A Level": {
+          "norm": 0.6
+        },
+        "Ae Attack": {
+          "norm": 0.79
+        },
+        "Ae Decay": {
+          "norm": 0.808
+        },
+        "Ae Sustain": {
+          "norm": 0.8
+        },
+        "Ae Release": {
+          "norm": 0.824
+        },
+        "Filter On": 1,
+        "Filter Type": "Bandpass",
+        "Filter Freq": {
+          "norm": 0.551
+        },
+        "Filter Res": {
+          "norm": 0.4
+        },
+        "Fe Amount": {
+          "norm": 0.75
+        },
+        "Fe Attack": {
+          "norm": 0.808
+        },
+        "Fe Decay": {
+          "norm": 0.86
+        },
+        "Fe Sustain": {
+          "norm": 0.3
+        },
+        "Fe Release": {
+          "norm": 0.808
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Auto Filter",
+      "parameters": {
+        "Filter Type": "Bandpass",
+        "Frequency": {
+          "norm": 0.534
+        },
+        "Resonance": {
+          "norm": 0.32
+        },
+        "LFO Amount": {
+          "norm": 0.4667
+        },
+        "LFO Frequency": {
+          "norm": 0.0043
+        }
+      }
+    },
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Ensemble",
+        "Amount": {
+          "norm": 0.4
+        },
+        "Dry/Wet": {
+          "norm": 0.4
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.5
+        },
+        "Decay Time": {
+          "norm": 0.097
+        },
+        "Room Size": {
+          "norm": 0.4998
+        },
+        "Predelay": {
+          "norm": 0.0982
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Width": {
+          "norm": 0.7
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "single",
+    "root": 60,
+    "length": 16.0
+  },
+  "sound_design_notes": "Шум через полосовой фильтр: огибающая фильтра (амплитуда +50%, спад 5 с) уводит спектр из высокого в средний регистр, а внешний Auto Filter с LFO 0.18 Гц гоняет полосу туда-сюда — порывы ветра. Атака 2.5 с и релиз 3.5 с — звук «наплывает». Хорус и Utility Width 140% — шум обволакивает слушателя; реверб 6 с — простор."
+}

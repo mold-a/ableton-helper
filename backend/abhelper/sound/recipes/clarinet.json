@@ -1,0 +1,227 @@
+{
+  "id": "clarinet",
+  "version": 1,
+  "name": {
+    "ru": "Кларнет",
+    "en": "Clarinet"
+  },
+  "category": "woodwind",
+  "aliases": [
+    "кларнет",
+    "кларнета",
+    "язычковый духовой",
+    "clarinet",
+    "bass clarinet",
+    "reed woodwind",
+    "licorice stick"
+  ],
+  "tags": [
+    "woodwind",
+    "reed",
+    "woody",
+    "hollow",
+    "jazz",
+    "classical"
+  ],
+  "description": {
+    "ru": "Кларнет: «полый» тембр с нечётными гармониками, мягкий воздух.",
+    "en": "Clarinet: hollow, odd-harmonic tone with soft air."
+  },
+  "preset_search": [
+    "clarinet",
+    "bass clarinet",
+    "woodwind"
+  ],
+  "track": {
+    "name": "Кларнет",
+    "color_index": 21
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Square D",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.55
+      },
+      "Ae Attack": {
+        "norm": 0.372
+      },
+      "Ae Decay": {
+        "norm": 0.524
+      },
+      "Ae Sustain": {
+        "norm": 0.9
+      },
+      "Ae Release": {
+        "norm": 0.483
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 3,
+      "Osc-B Level": {
+        "norm": 0.2
+      },
+      "Be Attack": {
+        "norm": 0.384
+      },
+      "Be Decay": {
+        "norm": 0.524
+      },
+      "Be Sustain": {
+        "norm": 0.9
+      },
+      "Be Release": {
+        "norm": 0.483
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Noise White",
+      "C Coarse": 1,
+      "Osc-C Level": {
+        "norm": 0.035
+      },
+      "Ce Attack": {
+        "norm": 0.343
+      },
+      "Ce Decay": {
+        "norm": 0.491
+      },
+      "Ce Sustain": {
+        "norm": 0.4
+      },
+      "Ce Release": {
+        "norm": 0.465
+      },
+      "Osc-D On": 1,
+      "Osc-D Wave": "Triangle D",
+      "D Coarse": 1,
+      "Osc-D Level": {
+        "norm": 0.2
+      },
+      "D Fine": {
+        "norm": 0.006
+      },
+      "De Attack": {
+        "norm": 0.372
+      },
+      "De Decay": {
+        "norm": 0.524
+      },
+      "De Sustain": {
+        "norm": 0.9
+      },
+      "De Release": {
+        "norm": 0.483
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.693
+      },
+      "Filter Res": {
+        "norm": 0.1
+      },
+      "Volume": {
+        "norm": 0.8
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Rectangle",
+        "AEG1 Attack": {
+          "norm": 0.372
+        },
+        "AEG1 Decay": {
+          "norm": 0.524
+        },
+        "AEG1 Sustain": {
+          "norm": 0.9
+        },
+        "AEG1 Release": {
+          "norm": 0.483
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.693
+        },
+        "F1 Res": {
+          "norm": 0.1
+        },
+        "OSC1 PW": {
+          "norm": 0.5
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Vibrato",
+        "Amount": {
+          "norm": 0.12
+        },
+        "Dry/Wet": {
+          "norm": 0.4
+        },
+        "Rate": {
+          "norm": 0.3329
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0055
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.3861
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.045
+        },
+        "3 Gain A": {
+          "norm": 0.55
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.17
+        },
+        "Decay Time": {
+          "norm": 0.0234
+        },
+        "Room Size": {
+          "norm": 0.1396
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 62,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Квадратная волна содержит только нечётные гармоники — это и есть «пустотелый» кларнет. Синус 3:1 усиливает характерную 3-ю гармонику (регистр шалюмо), мягкий треугольник чуть расстроен для «живости». Фильтр 2.4 кГц срезает цифровую остроту; вибрато слабое — кларнет почти прямой."
+}

@@ -1,0 +1,210 @@
+{
+  "id": "acid_bass",
+  "version": 1,
+  "name": {
+    "ru": "Эйсид-бас (303)",
+    "en": "Acid bass (303-style)"
+  },
+  "category": "bass",
+  "aliases": [
+    "ацид",
+    "асид",
+    "эйсид",
+    "ацид бас",
+    "ацидный бас",
+    "ацидная басуха",
+    "ацидная",
+    "303",
+    "тб 303",
+    "tb 303",
+    "tb303",
+    "acid",
+    "acid bass",
+    "acid house",
+    "squelch",
+    "squelchy bass",
+    "303 bass"
+  ],
+  "tags": [
+    "bass",
+    "acid",
+    "303",
+    "resonant",
+    "squelch",
+    "techno",
+    "house",
+    "glide"
+  ],
+  "description": {
+    "ru": "TB-303-подобный бас: пила, высокая резонансная фильтровая огибающая, глайд и дисторшн.",
+    "en": "TB-303-style bass: saw, high-resonance filter envelope, glide and distortion."
+  },
+  "preset_search": [
+    "acid bass",
+    "303",
+    "tb-303",
+    "squelch",
+    "acid"
+  ],
+  "track": {
+    "name": "Эйсид-бас (303)",
+    "color_index": 62
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Operator",
+      "Wavetable"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.0
+      },
+      "AEG1 Decay": {
+        "norm": 0.561
+      },
+      "AEG1 Sustain": {
+        "norm": 0.0
+      },
+      "AEG1 Release": {
+        "norm": 0.429
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.451
+      },
+      "F1 Res": {
+        "norm": 0.78
+      },
+      "F1 Freq < Env": {
+        "norm": 0.875
+      },
+      "FEG1 Attack": {
+        "norm": 0.0
+      },
+      "FEG1 Decay": {
+        "norm": 0.549
+      },
+      "FEG1 Sustain": {
+        "norm": 0.0
+      },
+      "FEG1 Release": {
+        "norm": 0.429
+      },
+      "Glide Time": {
+        "norm": 0.14
+      }
+    },
+    "fallback_parameters": {
+      "Operator": {
+        "Algorithm": 10,
+        "Osc-A On": 1,
+        "Osc-A Wave": "Saw 16",
+        "A Coarse": 1,
+        "Osc-A Level": {
+          "norm": 0.8
+        },
+        "Ae Attack": {
+          "norm": 0.0
+        },
+        "Ae Decay": {
+          "norm": 0.561
+        },
+        "Ae Sustain": {
+          "norm": 0.0
+        },
+        "Ae Release": {
+          "norm": 0.429
+        },
+        "Filter On": 1,
+        "Filter Type": "Lowpass",
+        "Filter Freq": {
+          "norm": 0.451
+        },
+        "Filter Res": {
+          "norm": 0.7
+        },
+        "Fe Amount": {
+          "norm": 0.85
+        },
+        "Fe Attack": {
+          "norm": 0.0
+        },
+        "Fe Decay": {
+          "norm": 0.549
+        },
+        "Fe Sustain": {
+          "norm": 0.0
+        },
+        "Fe Release": {
+          "norm": 0.429
+        },
+        "Glide Time": {
+          "norm": 0.14
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Overdrive",
+      "parameters": {
+        "Drive": {
+          "norm": 0.52
+        },
+        "Tone": {
+          "norm": 0.6
+        },
+        "Dry/Wet": {
+          "norm": 0.75
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0016
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4088
+        }
+      }
+    },
+    {
+      "device": "Delay",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.18
+        },
+        "Feedback": {
+          "norm": 0.4211
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.08
+        },
+        "Decay Time": {
+          "norm": 0.01
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "bass",
+    "root": 36,
+    "length": 8.0,
+    "scale": "phrygian"
+  },
+  "sound_design_notes": "303: пила → резонансный НЧ-фильтр (Res 78%) со стартом 450 Гц и мощной огибающей (+75%, спад 230 мс) = «скуилч». Сустейн усилителя 0 — каждая нота обрывается. Glide (портаменто) связывает ноты. Overdrive 52% — дисторшн, Delay — эхо в стиле хауса. Демо во фригийском ладу (C – Db – C – Bb), классическом для эйсида."
+}

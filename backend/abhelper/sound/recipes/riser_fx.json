@@ -1,0 +1,196 @@
+{
+  "id": "riser_fx",
+  "version": 1,
+  "name": {
+    "ru": "Райзер (нарастание)",
+    "en": "Riser / uplifter"
+  },
+  "category": "fx",
+  "aliases": [
+    "рисер",
+    "райзер",
+    "нарастание",
+    "подъём",
+    "подъем",
+    "апсвип",
+    "нойз райзер",
+    "шумовой райзер",
+    "билдап",
+    "riser",
+    "uplifter",
+    "build up",
+    "buildup",
+    "sweep up",
+    "upsweep",
+    "noise riser",
+    "tension riser",
+    "white noise riser"
+  ],
+  "tags": [
+    "fx",
+    "riser",
+    "noise",
+    "transition",
+    "build",
+    "sweep",
+    "edm"
+  ],
+  "description": {
+    "ru": "Райзер: шум с медленным подъёмом фильтра и громкости на длинной ноте — переход к дропу.",
+    "en": "Riser: noise with a slow filter and volume climb over one long note; a transition into a drop."
+  },
+  "preset_search": [
+    "riser",
+    "uplifter",
+    "noise riser",
+    "sweep up",
+    "buildup"
+  ],
+  "track": {
+    "name": "Райзер (нарастание)",
+    "color_index": 49
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Operator"
+    ],
+    "parameters": {
+      "OSC1 On": 0,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.878
+      },
+      "AEG1 Decay": {
+        "norm": 0.675
+      },
+      "AEG1 Sustain": {
+        "norm": 1.0
+      },
+      "AEG1 Release": {
+        "norm": 0.646
+      },
+      "F1 Type": "Bandpass",
+      "F1 Freq": {
+        "norm": 0.392
+      },
+      "F1 Res": {
+        "norm": 0.38
+      },
+      "F1 Freq < Env": {
+        "norm": 0.95
+      },
+      "FEG1 Attack": {
+        "norm": 0.887
+      },
+      "FEG1 Decay": {
+        "norm": 0.605
+      },
+      "FEG1 Sustain": {
+        "norm": 1.0
+      },
+      "FEG1 Release": {
+        "norm": 0.628
+      },
+      "Noise On": 1,
+      "Noise Level": {
+        "norm": 0.85
+      }
+    },
+    "fallback_parameters": {
+      "Operator": {
+        "Algorithm": 10,
+        "Osc-A On": 1,
+        "Osc-A Wave": "Noise White",
+        "A Coarse": 1,
+        "Osc-A Level": {
+          "norm": 0.7
+        },
+        "Ae Attack": {
+          "norm": 0.878
+        },
+        "Ae Decay": {
+          "norm": 0.675
+        },
+        "Ae Sustain": {
+          "norm": 1.0
+        },
+        "Ae Release": {
+          "norm": 0.646
+        },
+        "Filter On": 1,
+        "Filter Type": "Bandpass",
+        "Filter Freq": {
+          "norm": 0.392
+        },
+        "Filter Res": {
+          "norm": 0.35
+        },
+        "Fe Amount": {
+          "norm": 0.95
+        },
+        "Fe Attack": {
+          "norm": 0.887
+        },
+        "Fe Decay": {
+          "norm": 0.605
+        },
+        "Fe Sustain": {
+          "norm": 1.0
+        },
+        "Fe Release": {
+          "norm": 0.628
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Phaser-Flanger",
+      "parameters": {
+        "Mode": "Flanger",
+        "Rate": {
+          "norm": 0.021
+        },
+        "Amount": {
+          "norm": 0.7
+        },
+        "Feedback": {
+          "norm": 0.6111
+        },
+        "Dry/Wet": {
+          "norm": 0.35
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.3
+        },
+        "Decay Time": {
+          "norm": 0.0468
+        },
+        "Room Size": {
+          "norm": 0.3597
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Width": {
+          "norm": 0.7
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "single",
+    "root": 60,
+    "length": 8.0
+  },
+  "sound_design_notes": "Весь рост происходит за ОДНУ длинную ноту (демо — 7.2 доли): атака усилителя ~6 с поднимает громкость, а огибающая фильтра (атака 6.5 с, амплитуда +90%) открывает полосовой фильтр от 300 Гц к верхам — классический шумовой свип. Шум включён, тональные осцилляторы выключены. Flanger добавляет «реактивность», Reverb — дымку, Utility Width — ширину. Для более быстрого райзера уменьшите время атаки."
+}

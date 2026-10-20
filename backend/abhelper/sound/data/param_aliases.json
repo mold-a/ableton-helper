@@ -1,0 +1,577 @@
+{
+ "_meta": {
+  "note": "Groups of interchangeable names. 'parameters' for device parameters, 'devices' for device names, 'values' for quantized items."
+ },
+ "parameters": [
+  [
+   "Filter Freq",
+   "Filter Frequency",
+   "Frequency",
+   "Cutoff",
+   "Filter Cutoff",
+   "Filter 1 Freq",
+   "F1 Freq"
+  ],
+  [
+   "Filter Res",
+   "Filter Resonance",
+   "Resonance",
+   "Res",
+   "Filter 1 Res",
+   "F1 Res"
+  ],
+  [
+   "Filter Type",
+   "Filter 1 Type",
+   "F1 Type"
+  ],
+  [
+   "Dry/Wet",
+   "Dry Wet",
+   "DryWet",
+   "Mix",
+   "Wet"
+  ],
+  [
+   "Decay Time",
+   "Decay",
+   "Reverb Decay",
+   "Decay Time (ms)"
+  ],
+  [
+   "Room Size",
+   "Size"
+  ],
+  [
+   "Predelay",
+   "Pre-Delay",
+   "Pre Delay"
+  ],
+  [
+   "Feedback",
+   "Fdbk"
+  ],
+  [
+   "Rate",
+   "Frequency",
+   "LFO Rate",
+   "LFO Frequency",
+   "Speed"
+  ],
+  [
+   "Amount",
+   "Depth",
+   "Intensity"
+  ],
+  [
+   "Bit Depth",
+   "Bits",
+   "Bit Reduction",
+   "Bit"
+  ],
+  [
+   "Sample Rate",
+   "Downsample",
+   "Sample Frequency",
+   "Sample Rate Reduction"
+  ],
+  [
+   "Osc-A Level",
+   "A Level",
+   "Oscillator A Level",
+   "Osc A Level"
+  ],
+  [
+   "Osc-B Level",
+   "B Level",
+   "Oscillator B Level",
+   "Osc B Level"
+  ],
+  [
+   "Osc-C Level",
+   "C Level",
+   "Oscillator C Level",
+   "Osc C Level"
+  ],
+  [
+   "Osc-D Level",
+   "D Level",
+   "Oscillator D Level",
+   "Osc D Level"
+  ],
+  [
+   "Osc-A Wave",
+   "A Wave",
+   "Oscillator A Wave",
+   "Osc A Wave"
+  ],
+  [
+   "Osc-B Wave",
+   "B Wave",
+   "Oscillator B Wave",
+   "Osc B Wave"
+  ],
+  [
+   "Osc-C Wave",
+   "C Wave",
+   "Oscillator C Wave",
+   "Osc C Wave"
+  ],
+  [
+   "Osc-D Wave",
+   "D Wave",
+   "Oscillator D Wave",
+   "Osc D Wave"
+  ],
+  [
+   "Osc-A On",
+   "A On",
+   "Oscillator A On",
+   "Osc A On"
+  ],
+  [
+   "Osc-B On",
+   "B On",
+   "Oscillator B On",
+   "Osc B On"
+  ],
+  [
+   "Osc-C On",
+   "C On",
+   "Oscillator C On",
+   "Osc C On"
+  ],
+  [
+   "Osc-D On",
+   "D On",
+   "Oscillator D On",
+   "Osc D On"
+  ],
+  [
+   "A Coarse",
+   "Osc-A Coarse",
+   "Osc A Coarse",
+   "A Freq Coarse"
+  ],
+  [
+   "B Coarse",
+   "Osc-B Coarse",
+   "Osc B Coarse",
+   "B Freq Coarse"
+  ],
+  [
+   "C Coarse",
+   "Osc-C Coarse",
+   "Osc C Coarse",
+   "C Freq Coarse"
+  ],
+  [
+   "D Coarse",
+   "Osc-D Coarse",
+   "Osc D Coarse",
+   "D Freq Coarse"
+  ],
+  [
+   "A Fine",
+   "Osc-A Fine",
+   "Osc A Fine"
+  ],
+  [
+   "B Fine",
+   "Osc-B Fine",
+   "Osc B Fine"
+  ],
+  [
+   "C Fine",
+   "Osc-C Fine",
+   "Osc C Fine"
+  ],
+  [
+   "D Fine",
+   "Osc-D Fine",
+   "Osc D Fine"
+  ],
+  [
+   "Osc-A Feedback",
+   "A Feedback",
+   "Feedback A"
+  ],
+  [
+   "Fe Amount",
+   "Filter Env",
+   "Filter Env Amount",
+   "Filter Envelope",
+   "Fe Amt"
+  ],
+  [
+   "F1 Freq < Env",
+   "F1 Env Amount",
+   "FEG1 Amount",
+   "F1 Freq Env",
+   "Filter 1 Env Amount"
+  ],
+  [
+   "Unison Voices",
+   "Unison Count"
+  ],
+  [
+   "Unison Amount",
+   "Unison Detune"
+  ],
+  [
+   "Amp Attack",
+   "Amp Env Attack"
+  ],
+  [
+   "Amp Decay",
+   "Amp Env Decay"
+  ],
+  [
+   "Amp Sustain",
+   "Amp Env Sustain"
+  ],
+  [
+   "Amp Release",
+   "Amp Env Release"
+  ],
+  [
+   "Ve Attack",
+   "Amp Attack"
+  ],
+  [
+   "Ve Release",
+   "Amp Release"
+  ],
+  [
+   "Global Gain",
+   "Volume",
+   "Master Volume"
+  ],
+  [
+   "Glide Time",
+   "Glide",
+   "Portamento"
+  ],
+  [
+   "LFO Frequency",
+   "LFO Rate",
+   "LFO Freq"
+  ],
+  [
+   "Crackle Volume",
+   "Crackle Level",
+   "Crackle"
+  ],
+  [
+   "Crackle Density",
+   "Crackle Amount"
+  ],
+  [
+   "Resonance Type",
+   "Type",
+   "Resonator Type"
+  ],
+  [
+   "Tracing Drive",
+   "Trace Drive"
+  ],
+  [
+   "Bass Mono",
+   "Bass Mono On"
+  ],
+  [
+   "Width",
+   "Stereo Width"
+  ],
+  [
+   "1 Frequency A",
+   "Band 1 Frequency",
+   "EQ 1 Frequency"
+  ],
+  [
+   "1 Gain A",
+   "Band 1 Gain",
+   "EQ 1 Gain"
+  ],
+  [
+   "1 Resonance A",
+   "Band 1 Resonance",
+   "EQ 1 Resonance"
+  ],
+  [
+   "1 Filter On A",
+   "Band 1 Filter On",
+   "EQ 1 Filter On"
+  ],
+  [
+   "1 Filter Type A",
+   "Band 1 Filter Type",
+   "EQ 1 Filter Type"
+  ],
+  [
+   "2 Frequency A",
+   "Band 2 Frequency",
+   "EQ 2 Frequency"
+  ],
+  [
+   "2 Gain A",
+   "Band 2 Gain",
+   "EQ 2 Gain"
+  ],
+  [
+   "2 Resonance A",
+   "Band 2 Resonance",
+   "EQ 2 Resonance"
+  ],
+  [
+   "2 Filter On A",
+   "Band 2 Filter On",
+   "EQ 2 Filter On"
+  ],
+  [
+   "2 Filter Type A",
+   "Band 2 Filter Type",
+   "EQ 2 Filter Type"
+  ],
+  [
+   "3 Frequency A",
+   "Band 3 Frequency",
+   "EQ 3 Frequency"
+  ],
+  [
+   "3 Gain A",
+   "Band 3 Gain",
+   "EQ 3 Gain"
+  ],
+  [
+   "3 Resonance A",
+   "Band 3 Resonance",
+   "EQ 3 Resonance"
+  ],
+  [
+   "3 Filter On A",
+   "Band 3 Filter On",
+   "EQ 3 Filter On"
+  ],
+  [
+   "3 Filter Type A",
+   "Band 3 Filter Type",
+   "EQ 3 Filter Type"
+  ],
+  [
+   "4 Frequency A",
+   "Band 4 Frequency",
+   "EQ 4 Frequency"
+  ],
+  [
+   "4 Gain A",
+   "Band 4 Gain",
+   "EQ 4 Gain"
+  ],
+  [
+   "4 Resonance A",
+   "Band 4 Resonance",
+   "EQ 4 Resonance"
+  ],
+  [
+   "4 Filter On A",
+   "Band 4 Filter On",
+   "EQ 4 Filter On"
+  ],
+  [
+   "4 Filter Type A",
+   "Band 4 Filter Type",
+   "EQ 4 Filter Type"
+  ],
+  [
+   "5 Frequency A",
+   "Band 5 Frequency",
+   "EQ 5 Frequency"
+  ],
+  [
+   "5 Gain A",
+   "Band 5 Gain",
+   "EQ 5 Gain"
+  ],
+  [
+   "5 Resonance A",
+   "Band 5 Resonance",
+   "EQ 5 Resonance"
+  ],
+  [
+   "5 Filter On A",
+   "Band 5 Filter On",
+   "EQ 5 Filter On"
+  ],
+  [
+   "5 Filter Type A",
+   "Band 5 Filter Type",
+   "EQ 5 Filter Type"
+  ],
+  [
+   "6 Frequency A",
+   "Band 6 Frequency",
+   "EQ 6 Frequency"
+  ],
+  [
+   "6 Gain A",
+   "Band 6 Gain",
+   "EQ 6 Gain"
+  ],
+  [
+   "6 Resonance A",
+   "Band 6 Resonance",
+   "EQ 6 Resonance"
+  ],
+  [
+   "6 Filter On A",
+   "Band 6 Filter On",
+   "EQ 6 Filter On"
+  ],
+  [
+   "6 Filter Type A",
+   "Band 6 Filter Type",
+   "EQ 6 Filter Type"
+  ],
+  [
+   "7 Frequency A",
+   "Band 7 Frequency",
+   "EQ 7 Frequency"
+  ],
+  [
+   "7 Gain A",
+   "Band 7 Gain",
+   "EQ 7 Gain"
+  ],
+  [
+   "7 Resonance A",
+   "Band 7 Resonance",
+   "EQ 7 Resonance"
+  ],
+  [
+   "7 Filter On A",
+   "Band 7 Filter On",
+   "EQ 7 Filter On"
+  ],
+  [
+   "7 Filter Type A",
+   "Band 7 Filter Type",
+   "EQ 7 Filter Type"
+  ],
+  [
+   "8 Frequency A",
+   "Band 8 Frequency",
+   "EQ 8 Frequency"
+  ],
+  [
+   "8 Gain A",
+   "Band 8 Gain",
+   "EQ 8 Gain"
+  ],
+  [
+   "8 Resonance A",
+   "Band 8 Resonance",
+   "EQ 8 Resonance"
+  ],
+  [
+   "8 Filter On A",
+   "Band 8 Filter On",
+   "EQ 8 Filter On"
+  ],
+  [
+   "8 Filter Type A",
+   "Band 8 Filter Type",
+   "EQ 8 Filter Type"
+  ]
+ ],
+ "devices": [
+  [
+   "Chorus-Ensemble",
+   "Chorus Ensemble",
+   "Chorus"
+  ],
+  [
+   "Phaser-Flanger",
+   "Phaser Flanger",
+   "Phaser"
+  ],
+  [
+   "Auto Pan",
+   "Auto Pan-Tremolo",
+   "Autopan",
+   "Tremolo"
+  ],
+  [
+   "Delay",
+   "Echo",
+   "Simple Delay"
+  ],
+  [
+   "EQ Eight",
+   "EQ 8",
+   "EQ-8"
+  ],
+  [
+   "Drift",
+   "Drift Synth"
+  ],
+  [
+   "Vinyl Distortion",
+   "Vinyl"
+  ],
+  [
+   "Redux",
+   "Redux Legacy"
+  ]
+ ],
+ "values": [
+  [
+   "Lowpass",
+   "Low Pass",
+   "LP",
+   "Low-pass"
+  ],
+  [
+   "Highpass",
+   "High Pass",
+   "HP",
+   "High-pass"
+  ],
+  [
+   "Bandpass",
+   "Band Pass",
+   "BP",
+   "Band-pass"
+  ],
+  [
+   "Rectangle",
+   "Rect",
+   "Square",
+   "Pulse"
+  ],
+  [
+   "Saw",
+   "Sawtooth",
+   "Saw Up"
+  ],
+  [
+   "Sine",
+   "Sin",
+   "Sinus"
+  ],
+  [
+   "Classic",
+   "Chorus"
+  ],
+  [
+   "Wide Noise",
+   "WideNoise",
+   "Noise Wide"
+  ],
+  [
+   "Position Spread",
+   "Pos Spread",
+   "Position"
+  ]
+ ]
+}

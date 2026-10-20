@@ -239,25 +239,29 @@ class SoundEngine:
             run.result.warnings.append(f"Поиск по браузеру Live недоступен ({self.searcher.last_error}).")
         if candidates and candidates[0]["score"] >= self.preset_threshold:
             return candidates[0]
-        if candidates:
+        if candidates and recipe is None:
             top = candidates[0]
             run.result.warnings.append(
-                f"Пресеты в браузере похожи слабо (лучший: «{clean_name(top['name'])}», {top['score']}) — "
-                "использую синтез по рецепту." if recipe else
                 f"Пресеты в браузере похожи слабо (лучший: «{clean_name(top['name'])}», {top['score']}).")
         return None
 
     def _preset_terms(self, req: SoundRequest, recipe: dict | None, is_custom: bool,
                       matches: list[RecipeMatch]) -> list[str]:
+        """Browser search terms, best first: the user's own English phrase, the recipe's terms, loose words."""
+        words = self._latin_terms(req.description)
+        phrase = [words[0]] if len(words) > 1 and " " in words[0] else []
+        singles = [w for w in words if " " not in w]
         terms: list[str] = []
         if recipe is not None:
-            terms += list(recipe.get("preset_search") or [])
-            if not terms and not is_custom:
-                terms += [a for a in recipe.get("aliases", []) if a.isascii()][:4]
-            if not terms and is_custom and req.strategy == "preset":
-                terms += self._latin_terms(req.description)
+            own = list(recipe.get("preset_search") or [])
+            if not own and not is_custom:
+                own = [a for a in recipe.get("aliases", []) if a.isascii()][:4]
+            if own:
+                terms = phrase + own + singles
+            elif is_custom and req.strategy == "preset":
+                terms = phrase + singles
         else:
-            terms += self._latin_terms(req.description)
+            terms = phrase + singles
             for m in matches:
                 if m.score >= 0.25:
                     r = self.library.get(m.recipe_id) or {}
@@ -332,6 +336,10 @@ class SoundEngine:
                 return False
             raise
         name = loaded.get("name") or item.get("name") or item["uri"]
+        if (run.track_created and recipe is None and not run.request.track_name and "name" not in item):
+            nice = clean_name(name)
+            self.bridge.call("set_track_name", {"track_index": ti, "name": nice})
+            res.track_name = nice
         res.preset = {k: v for k, v in {**item, "name": name}.items() if not str(k).startswith("_")}
         res.source = "preset"
         res.devices = [self._dev_view(d) for d in loaded.get("devices", [])]

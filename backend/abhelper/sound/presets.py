@@ -8,7 +8,7 @@ from typing import Callable
 
 from abhelper.bridge.base import BridgeCommandError
 
-from .matching import make_tok, token_match, tokenize
+from .matching import make_tok, tokenize
 
 _EXT_RE = re.compile(r"\.(adv|adg|alp|amxd|aupreset|vstpreset|fxp|fxb|wav|aif|aiff|mp3|flac|ogg|mid|als|alc|agr|adm)$", re.I)
 
@@ -37,12 +37,51 @@ def category_weights(recipe_category: str | None = None, instrument: str | None 
     return _CATEGORY_WEIGHT
 
 
+# Words that mark an item as belonging to a *different* instrument family than the recipe
+# ("Piano Bass" must not be loaded for a piano). Family -> words.
+FAMILIES: dict[str, frozenset[str]] = {
+    "bass": frozenset({"bass", "sub"}),
+    "pad": frozenset({"pad", "pads"}),
+    "lead": frozenset({"lead", "leads"}),
+    "drums": frozenset({"drum", "drums", "kit", "kick", "snare", "hat", "hihat", "percussion", "perc"}),
+    "fx": frozenset({"fx", "riser", "impact", "sweep", "noise", "atmosphere"}),
+}
+_CATEGORY_FAMILY = {"bass": "bass", "pad": "pad", "lead": "lead", "drums": "drums", "percussion": "drums", "fx": "fx"}
+_NOISE_TOKENS = frozenset({"mk", "mkii", "mkiii", "v1", "v2", "v3", "vol", "pro", "new", "old", "classic"})
+CONFLICT_FACTOR = 0.6
+
+
+def families_of(words) -> set[str]:
+    out = set()
+    for w in words:
+        for fam, vocab in FAMILIES.items():
+            if w in vocab:
+                out.add(fam)
+    return out
+
+
+def allowed_families(recipe_category: str | None, terms: list[str]) -> set[str]:
+    fams = {_CATEGORY_FAMILY[recipe_category]} if recipe_category in _CATEGORY_FAMILY else set()
+    for t in terms:
+        fams |= families_of(tokenize(t))
+    return fams
+
+
+def _eq(a, b) -> bool:
+    return a.raw == b.raw or a.stem == b.stem
+
+
 def _matched(q_toks, pool) -> list[bool]:
-    return [any(token_match(q, p) >= 0.85 for p in pool) for q in q_toks]
+    return [any(_eq(q, p) for p in pool) for q in q_toks]
 
 
-def score_item(item: dict, term: str, weights: dict[str, float], term_rank: int = 0) -> float:
-    """Score one browser item for one search term, 0..1."""
+def score_item(item: dict, term: str, weights: dict[str, float], term_rank: int = 0,
+               allowed: set[str] | None = None) -> float:
+    """Score one browser item for one search term, 0..1.
+
+    Whole-word matching (no prefixes: "piano" must not match "Pianoforte"); extra unrelated
+    words in the name and a conflicting instrument family lower the score.
+    """
     if item.get("is_device") or item.get("is_folder") or not item.get("is_loadable", True):
         return 0.0
     q = [make_tok(w) for w in tokenize(term)]
@@ -57,10 +96,15 @@ def score_item(item: dict, term: str, weights: dict[str, float], term_rank: int 
     path_cov = sum(all_hits) / len(q)
     if path_cov == 0:
         return 0.0
-    unmatched_name = sum(1 for p in name_toks if not any(token_match(qq, p) >= 0.85 for qq in q))
-    exact = 1.0 if name_cov == 1.0 and unmatched_name == 0 else 0.0
-    base = 0.65 * name_cov + 0.2 * path_cov + 0.15 * exact - min(0.1, 0.02 * unmatched_name)
+    unmatched = [p for p in name_toks if not any(_eq(qq, p) for qq in q)]
+    unmatched_real = [p for p in unmatched if len(p.raw) > 2 and not p.raw.isdigit() and p.raw not in _NOISE_TOKENS]
+    exact = 1.0 if name_cov == 1.0 and not unmatched_real else 0.0
+    base = 0.65 * name_cov + 0.2 * path_cov + 0.15 * exact - min(0.15, 0.05 * len(unmatched_real))
     weight = weights.get(item.get("category", ""), 0.5)
+    if allowed is not None:
+        item_words = [t.raw for t in name_toks + folder_toks]
+        if families_of(item_words) - allowed:
+            weight *= CONFLICT_FACTOR
     rank_factor = max(0.8, 1.0 - 0.04 * term_rank)
     return max(0.0, base * weight * rank_factor)
 
@@ -110,6 +154,7 @@ class PresetSearcher:
             t = (t or "").strip()
             if t and t.lower() not in [s.lower() for s in seen_terms]:
                 seen_terms.append(t)
+        allowed = allowed_families(recipe_category, seen_terms)
         try:
             self._wait_for_index(deadline)
             merged: dict[str, dict] = {}
@@ -124,7 +169,7 @@ class PresetSearcher:
                         for w in queries:
                             items.extend(self._query(w, per_term, deadline))
                 for it in items:
-                    s = score_item(it, term, weights, rank)
+                    s = score_item(it, term, weights, rank, allowed)
                     key = it.get("uri") or it.get("path") or it.get("name")
                     if s > 0 and (key not in merged or s > merged[key]["score"]):
                         merged[key] = {**it, "score": round(s, 3), "matched_term": term}

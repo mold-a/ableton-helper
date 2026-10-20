@@ -1,0 +1,251 @@
+{
+  "id": "harmonica",
+  "version": 1,
+  "name": {
+    "ru": "Губная гармошка",
+    "en": "Harmonica (blues harp)"
+  },
+  "category": "reed",
+  "aliases": [
+    "губная гармошка",
+    "губная гармоника",
+    "губная",
+    "блюзовая гармошка",
+    "harmonica",
+    "blues harp",
+    "mouth organ",
+    "harp blues"
+  ],
+  "tags": [
+    "blues",
+    "reed",
+    "breath",
+    "folk",
+    "acoustic",
+    "губная"
+  ],
+  "description": {
+    "ru": "Блюзовая губная гармоника: язычковый тембр с шумом дыхания, лёгкий овердрайв «микрофона», вибрато.",
+    "en": "Blues harmonica: reedy tone with breath noise, mic-style overdrive and vibrato."
+  },
+  "preset_search": [
+    "harmonica",
+    "blues harp",
+    "mouth organ"
+  ],
+  "track": {
+    "name": "Губная гармошка",
+    "color_index": 3
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable",
+      "Analog"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Saw D",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.55
+      },
+      "Ae Attack": {
+        "norm": 0.367
+      },
+      "Ae Decay": {
+        "norm": 0.545
+      },
+      "Ae Sustain": {
+        "norm": 0.8
+      },
+      "Ae Release": {
+        "norm": 0.491
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Square D",
+      "B Coarse": 1,
+      "Osc-B Level": {
+        "norm": 0.4
+      },
+      "B Fine": {
+        "norm": 0.01
+      },
+      "Be Attack": {
+        "norm": 0.367
+      },
+      "Be Decay": {
+        "norm": 0.545
+      },
+      "Be Sustain": {
+        "norm": 0.8
+      },
+      "Be Release": {
+        "norm": 0.491
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Noise White",
+      "C Coarse": 1,
+      "Osc-C Level": {
+        "norm": 0.07
+      },
+      "Ce Attack": {
+        "norm": 0.343
+      },
+      "Ce Decay": {
+        "norm": 0.499
+      },
+      "Ce Sustain": {
+        "norm": 0.4
+      },
+      "Ce Release": {
+        "norm": 0.465
+      },
+      "Osc-D On": 1,
+      "Osc-D Wave": "Sine",
+      "D Coarse": 2,
+      "Osc-D Level": {
+        "norm": 0.12
+      },
+      "De Attack": {
+        "norm": 0.384
+      },
+      "De Decay": {
+        "norm": 0.545
+      },
+      "De Sustain": {
+        "norm": 0.8
+      },
+      "De Release": {
+        "norm": 0.491
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.739
+      },
+      "Filter Res": {
+        "norm": 0.18
+      },
+      "Volume": {
+        "norm": 0.78
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Saw",
+        "AEG1 Attack": {
+          "norm": 0.367
+        },
+        "AEG1 Decay": {
+          "norm": 0.545
+        },
+        "AEG1 Sustain": {
+          "norm": 0.8
+        },
+        "AEG1 Release": {
+          "norm": 0.491
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.739
+        },
+        "F1 Res": {
+          "norm": 0.18
+        },
+        "OSC2 On": 1,
+        "OSC2 Shape": "Rectangle",
+        "OSC2 Detune": {
+          "norm": 0.54
+        },
+        "OSC2 Level": {
+          "norm": 0.5
+        },
+        "Noise On": 1,
+        "Noise Level": {
+          "norm": 0.1
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Vibrato",
+        "Amount": {
+          "norm": 0.22
+        },
+        "Dry/Wet": {
+          "norm": 0.55
+        },
+        "Rate": {
+          "norm": 0.3329
+        }
+      }
+    },
+    {
+      "device": "Overdrive",
+      "parameters": {
+        "Drive": {
+          "norm": 0.32
+        },
+        "Tone": {
+          "norm": 0.55
+        },
+        "Dry/Wet": {
+          "norm": 0.55
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0077
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.3861
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.0905
+        },
+        "3 Gain A": {
+          "norm": 0.5667
+        },
+        "3 Resonance A": {
+          "norm": 0.0615
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.14
+        },
+        "Decay Time": {
+          "norm": 0.0167
+        },
+        "Room Size": {
+          "norm": 0.0796
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 64,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Два слегка расстроенных голоса (пила + квадрат) дают «двойной язычок». Осциллятор C — белый шум с короткой огибающей = выдох/«чафф» в начале ноты. Атака ~38 мс — звук набирается дыханием. Вибрато эмулируется Chorus-Ensemble в режиме Vibrato (~5 Гц). Овердрайв лишь подмешан (микрофон-«в кулак»). EQ: срез низов, пик на 2 кГц."
+}

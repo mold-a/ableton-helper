@@ -1,0 +1,220 @@
+{
+  "id": "harmonium",
+  "version": 1,
+  "name": {
+    "ru": "Фисгармония",
+    "en": "Harmonium (reed organ)"
+  },
+  "category": "reed",
+  "aliases": [
+    "фисгармония",
+    "гармониум",
+    "harmonium",
+    "reed organ",
+    "pump organ",
+    "индийский гармониум"
+  ],
+  "tags": [
+    "reed",
+    "drone",
+    "indian",
+    "folk",
+    "acoustic"
+  ],
+  "description": {
+    "ru": "Педальный язычковый орган: тёплые, чуть расстроенные язычки, медленная атака.",
+    "en": "Pump/reed organ: warm, slightly detuned reeds, gentle attack."
+  },
+  "preset_search": [
+    "harmonium",
+    "reed organ",
+    "pump organ",
+    "accordion"
+  ],
+  "track": {
+    "name": "Фисгармония",
+    "color_index": 4
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Saw D",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.5
+      },
+      "Ae Attack": {
+        "norm": 0.405
+      },
+      "Ae Decay": {
+        "norm": 0.576
+      },
+      "Ae Sustain": {
+        "norm": 1.0
+      },
+      "Ae Release": {
+        "norm": 0.491
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Square D",
+      "B Coarse": 1,
+      "Osc-B Level": {
+        "norm": 0.38
+      },
+      "B Fine": {
+        "norm": 0.008
+      },
+      "Be Attack": {
+        "norm": 0.405
+      },
+      "Be Decay": {
+        "norm": 0.576
+      },
+      "Be Sustain": {
+        "norm": 1.0
+      },
+      "Be Release": {
+        "norm": 0.491
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Saw 8",
+      "C Coarse": 2,
+      "Osc-C Level": {
+        "norm": 0.2
+      },
+      "Ce Attack": {
+        "norm": 0.413
+      },
+      "Ce Decay": {
+        "norm": 0.576
+      },
+      "Ce Sustain": {
+        "norm": 1.0
+      },
+      "Ce Release": {
+        "norm": 0.499
+      },
+      "Osc-D On": 1,
+      "Osc-D Wave": "Square 4",
+      "D Coarse": 0,
+      "Osc-D Level": {
+        "norm": 0.18
+      },
+      "De Attack": {
+        "norm": 0.422
+      },
+      "De Decay": {
+        "norm": 0.576
+      },
+      "De Sustain": {
+        "norm": 1.0
+      },
+      "De Release": {
+        "norm": 0.506
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.674
+      },
+      "Filter Res": {
+        "norm": 0.06
+      },
+      "Volume": {
+        "norm": 0.8
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Saw",
+        "AEG1 Attack": {
+          "norm": 0.405
+        },
+        "AEG1 Decay": {
+          "norm": 0.576
+        },
+        "AEG1 Sustain": {
+          "norm": 1.0
+        },
+        "AEG1 Release": {
+          "norm": 0.491
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.674
+        },
+        "F1 Res": {
+          "norm": 0.06
+        },
+        "OSC2 On": 1,
+        "OSC2 Shape": "Rectangle",
+        "OSC2 Detune": {
+          "norm": 0.55
+        },
+        "OSC2 Level": {
+          "norm": 0.55
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Classic",
+        "Amount": {
+          "norm": 0.3
+        },
+        "Dry/Wet": {
+          "norm": 0.28
+        },
+        "Warmth": {
+          "norm": 0.5
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0041
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.3179
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.16
+        },
+        "Decay Time": {
+          "norm": 0.0234
+        },
+        "Room Size": {
+          "norm": 0.1096
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "chords",
+    "root": 53,
+    "length": 16.0,
+    "scale": "mixolydian"
+  },
+  "sound_design_notes": "Тот же принцип, что у баяна, но темнее и «воздушнее»: фильтр 2.1 кГц, атака 55 мс (нужно качнуть педаль), ровный сустейн. Нижний регистр D (16') делает «гудение». Хорус Classic с тёплым тоном — лёгкая нестабильность ходов воздуха."
+}

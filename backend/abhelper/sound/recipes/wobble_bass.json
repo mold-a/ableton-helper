@@ -1,0 +1,149 @@
+{
+  "id": "wobble_bass",
+  "version": 1,
+  "name": {
+    "ru": "Вобл-бас (дабстеп)",
+    "en": "Wobble bass (dubstep)"
+  },
+  "category": "bass",
+  "aliases": [
+    "вобл",
+    "вобл бас",
+    "воблбас",
+    "вуб",
+    "дабстеп",
+    "дабстеп бас",
+    "дабстепный бас",
+    "вабл",
+    "wobble",
+    "wobble bass",
+    "dubstep",
+    "dubstep bass",
+    "wub",
+    "wub wub",
+    "lfo bass"
+  ],
+  "tags": [
+    "bass",
+    "wobble",
+    "dubstep",
+    "lfo",
+    "filter",
+    "growl",
+    "bass house"
+  ],
+  "description": {
+    "ru": "Вобл-бас: две пилы и Auto Filter с глубоким LFO, сатурация и моно-низ.",
+    "en": "Wobble bass: two saws plus an Auto Filter with deep LFO, saturation and mono lows."
+  },
+  "preset_search": [
+    "wobble bass",
+    "dubstep bass",
+    "wobble",
+    "growl bass"
+  ],
+  "track": {
+    "name": "Вобл-бас (дабстеп)",
+    "color_index": 64
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Operator"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.111
+      },
+      "AEG1 Decay": {
+        "norm": 0.576
+      },
+      "AEG1 Sustain": {
+        "norm": 1.0
+      },
+      "AEG1 Release": {
+        "norm": 0.454
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.784
+      },
+      "F1 Res": {
+        "norm": 0.1
+      },
+      "OSC2 On": 1,
+      "OSC2 Shape": "Saw",
+      "OSC2 Detune": {
+        "norm": 0.54
+      },
+      "OSC2 Level": {
+        "norm": 0.8
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Auto Filter",
+      "parameters": {
+        "Filter Type": "Lowpass",
+        "Frequency": {
+          "norm": 0.404
+        },
+        "Resonance": {
+          "norm": 0.44
+        },
+        "LFO Amount": {
+          "norm": 0.7333
+        },
+        "LFO Frequency": {
+          "norm": 0.0498
+        },
+        "LFO Sync": 1
+      }
+    },
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Sinoid Fold",
+        "Drive": {
+          "norm": 0.6667
+        },
+        "Dry/Wet": {
+          "norm": 0.8
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0009
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4088
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Bass Mono": 1
+      }
+    }
+  ],
+  "demo": {
+    "style": "bass",
+    "root": 31,
+    "length": 8.0,
+    "scale": "phrygian",
+    "variant": "trap"
+  },
+  "sound_design_notes": "Вобл = низкочастотная модуляция фильтра. Инструмент — две расстроенные пилы с широко открытым фильтром (4.5 кГц); движение делает Auto Filter (Lowpass, Q 55%, глубина LFO ~22 полутона) с включённой синхронизацией LFO. Скорость (1/4, 1/8, триоли) подберите на слух параметром LFO Rate/Beat Rate. Sinoid Fold на 12 дБ — «рычание», Bass Mono — чистый центр. Демо — длинные ноты (трэп-вариант), чтобы услышать вобл."
+}

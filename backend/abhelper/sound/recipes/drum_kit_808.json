@@ -1,0 +1,104 @@
+{
+  "id": "drum_kit_808",
+  "version": 1,
+  "name": {
+    "ru": "Ударные 808",
+    "en": "808 drum kit"
+  },
+  "category": "drums",
+  "aliases": [
+    "ударные 808",
+    "808 кит",
+    "808 kit",
+    "808 драм",
+    "808 drums",
+    "бит 808",
+    "бит",
+    "драм-машина",
+    "драм машина",
+    "драм машина 808",
+    "трап ударные",
+    "трэп ударные",
+    "битбокс",
+    "drum machine",
+    "808 beat",
+    "trap drums",
+    "beat",
+    "hip hop drums",
+    "electronic drums"
+  ],
+  "tags": [
+    "drums",
+    "808",
+    "trap",
+    "electronic",
+    "hiphop",
+    "drum machine",
+    "ударные"
+  ],
+  "description": {
+    "ru": "Электронный 808-кит: Drum Rack с пресетом, склейка Drum Buss и Glue Compressor, трэп-бит.",
+    "en": "Electronic 808 kit: Drum Rack from a preset, glued with Drum Buss and Glue Compressor; trap beat."
+  },
+  "preset_search": [
+    "808 core kit",
+    "808 kit",
+    "808 drum rack",
+    "808 drums",
+    "808",
+    "909 kit"
+  ],
+  "track": {
+    "name": "Ударные 808",
+    "color_index": 69
+  },
+  "instrument": {
+    "device": "Drum Rack",
+    "parameters": {}
+  },
+  "effects": [
+    {
+      "device": "Drum Buss",
+      "parameters": {
+        "Drive": {
+          "norm": 0.2
+        },
+        "Crunch": {
+          "norm": 0.25
+        },
+        "Boom": {
+          "norm": 0.3
+        },
+        "Transients": {
+          "norm": 0.55
+        },
+        "Dry/Wet": {
+          "norm": 1.0
+        }
+      }
+    },
+    {
+      "device": "Glue Compressor",
+      "parameters": {
+        "Threshold": {
+          "norm": 0.65
+        },
+        "Ratio": "4",
+        "Attack": "10",
+        "Release": "0.2",
+        "Makeup": {
+          "norm": 0.1
+        },
+        "Dry/Wet": {
+          "norm": 1.0
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "drums",
+    "length": 8.0,
+    "variant": "trap"
+  },
+  "sound_design_notes": "Drum Rack — контейнер без собственных параметров синтеза; сам кит нужно брать из браузера Live (пресет «808 Core Kit» и т. п.) — стратегия auto так и делает. Если пресета нет, создаётся пустой Drum Rack: перетащите сэмплы вручную. Обработка: Drum Buss (Drive, Crunch и Boom) для плотности низов, Glue Compressor (4:1, атака 10 мс) склеивает. Демо — трэп (полутакт): кик 36, снейр/клэп 38/39 на 3-й доле, хэты 42/46 с роллами."
+}

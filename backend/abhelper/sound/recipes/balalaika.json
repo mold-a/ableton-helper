@@ -1,0 +1,420 @@
+{
+  "id": "balalaika",
+  "version": 1,
+  "name": {
+    "ru": "Балалайка / домра",
+    "en": "Balalaika / domra"
+  },
+  "category": "ethnic",
+  "aliases": [
+    "балалайка",
+    "балалайки",
+    "домра",
+    "домры",
+    "мандолина",
+    "тремоло балалайка",
+    "русская народная",
+    "русский народный щипковый",
+    "balalaika",
+    "domra",
+    "mandolin",
+    "tremolo mandolin",
+    "russian folk plucked"
+  ],
+  "tags": [
+    "ethnic",
+    "russian",
+    "folk",
+    "plucked",
+    "tremolo",
+    "народный",
+    "балалайка"
+  ],
+  "description": {
+    "ru": "Балалайка: яркий щипок с тремоло, треугольный корпус и «жестяной» тон; демо — тремоло-мелодия.",
+    "en": "Balalaika: bright pluck with trademark tremolo picking and a tinny body; demo plays tremolo."
+  },
+  "preset_search": [
+    "balalaika",
+    "domra",
+    "mandolin",
+    "folk plucked"
+  ],
+  "track": {
+    "name": "Балалайка / домра",
+    "color_index": 10
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Saw 16",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.62
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.576
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.429
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Square 16",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.3
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.499
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.395
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 4,
+      "Osc-C Level": {
+        "norm": 0.12
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.405
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.343
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.793
+      },
+      "Filter Res": {
+        "norm": 0.1
+      },
+      "Fe Amount": {
+        "norm": 0.675
+      },
+      "Fe Attack": {
+        "norm": 0.0
+      },
+      "Fe Decay": {
+        "norm": 0.512
+      },
+      "Fe Sustain": {
+        "norm": 0.0
+      },
+      "Fe Release": {
+        "norm": 0.413
+      },
+      "Volume": {
+        "norm": 0.78
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Saw",
+        "AEG1 Attack": {
+          "norm": 0.0
+        },
+        "AEG1 Decay": {
+          "norm": 0.576
+        },
+        "AEG1 Sustain": {
+          "norm": 0.0
+        },
+        "AEG1 Release": {
+          "norm": 0.429
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.793
+        },
+        "F1 Res": {
+          "norm": 0.1
+        },
+        "F1 Freq < Env": {
+          "norm": 0.675
+        },
+        "FEG1 Attack": {
+          "norm": 0.0
+        },
+        "FEG1 Decay": {
+          "norm": 0.512
+        },
+        "FEG1 Sustain": {
+          "norm": 0.0
+        },
+        "FEG1 Release": {
+          "norm": 0.413
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0077
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4316
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.0859
+        },
+        "3 Gain A": {
+          "norm": 0.6
+        },
+        "3 Resonance A": {
+          "norm": 0.0559
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.18
+        },
+        "Decay Time": {
+          "norm": 0.0234
+        },
+        "Room Size": {
+          "norm": 0.1796
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 69,
+    "length": 8.0,
+    "scale": "harmonic_minor",
+    "notes": [
+      {
+        "pitch": 69,
+        "start": 0.0,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 69,
+        "start": 0.25,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 69,
+        "start": 0.5,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 69,
+        "start": 0.75,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 72,
+        "start": 1.0,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 72,
+        "start": 1.25,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 72,
+        "start": 1.5,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 72,
+        "start": 1.75,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 76,
+        "start": 2.0,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 76,
+        "start": 2.25,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 76,
+        "start": 2.5,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 76,
+        "start": 2.75,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 76,
+        "start": 3.0,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 76,
+        "start": 3.25,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 76,
+        "start": 3.5,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 76,
+        "start": 3.75,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 74,
+        "start": 4.0,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 74,
+        "start": 4.25,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 74,
+        "start": 4.5,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 74,
+        "start": 4.75,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 72,
+        "start": 5.0,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 72,
+        "start": 5.25,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 71,
+        "start": 5.5,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 71,
+        "start": 5.75,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 69,
+        "start": 6.0,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 69,
+        "start": 6.25,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 69,
+        "start": 6.5,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 69,
+        "start": 6.75,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 69,
+        "start": 7.0,
+        "duration": 0.22,
+        "velocity": 104
+      },
+      {
+        "pitch": 69,
+        "start": 7.25,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 69,
+        "start": 7.5,
+        "duration": 0.22,
+        "velocity": 84
+      },
+      {
+        "pitch": 69,
+        "start": 7.75,
+        "duration": 0.22,
+        "velocity": 84
+      }
+    ]
+  },
+  "sound_design_notes": "У балалайки звук гаснет за доли секунды, поэтому длинные ноты играют тремоло — повторяя щипок. Сам патч — короткий щипок (спад ~300 мс): пила + квадрат октавой выше + синусный «клик». Фильтр с огибающей даёт «жестяной» взмах, EQ-бугор 1.9 кГц — треугольный корпус. Демо-клип записан тремоло шестнадцатыми."
+}

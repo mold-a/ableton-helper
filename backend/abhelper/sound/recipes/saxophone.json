@@ -1,0 +1,181 @@
+{
+  "id": "saxophone",
+  "version": 1,
+  "name": {
+    "ru": "Саксофон",
+    "en": "Saxophone"
+  },
+  "category": "woodwind",
+  "aliases": [
+    "саксофон",
+    "сакс",
+    "саксофона",
+    "саксофонист",
+    "альт саксофон",
+    "тенор саксофон",
+    "saxophone",
+    "sax",
+    "alto sax",
+    "tenor sax",
+    "jazz sax",
+    "soprano sax"
+  ],
+  "tags": [
+    "woodwind",
+    "reed",
+    "jazz",
+    "soul",
+    "solo",
+    "саксофон"
+  ],
+  "description": {
+    "ru": "Тенор-саксофон: пила + импульс, резонансный фильтр, дыхание и лёгкий овердрайв.",
+    "en": "Tenor sax: saw plus pulse, resonant filter, breath and mild overdrive."
+  },
+  "preset_search": [
+    "saxophone",
+    "tenor sax",
+    "alto sax",
+    "sax"
+  ],
+  "track": {
+    "name": "Саксофон",
+    "color_index": 23
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Operator"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.395
+      },
+      "AEG1 Decay": {
+        "norm": 0.545
+      },
+      "AEG1 Sustain": {
+        "norm": 0.88
+      },
+      "AEG1 Release": {
+        "norm": 0.491
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.687
+      },
+      "F1 Res": {
+        "norm": 0.28
+      },
+      "OSC2 On": 1,
+      "OSC2 Shape": "Rectangle",
+      "OSC2 Detune": {
+        "norm": 0.5
+      },
+      "OSC2 Level": {
+        "norm": 0.5
+      },
+      "OSC2 PW": {
+        "norm": 0.35
+      },
+      "F1 Freq < Env": {
+        "norm": 0.7
+      },
+      "FEG1 Attack": {
+        "norm": 0.429
+      },
+      "FEG1 Decay": {
+        "norm": 0.561
+      },
+      "FEG1 Sustain": {
+        "norm": 0.5
+      },
+      "FEG1 Release": {
+        "norm": 0.506
+      },
+      "Noise On": 1,
+      "Noise Level": {
+        "norm": 0.08
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Analog Clip",
+        "Drive": {
+          "norm": 0.5694
+        },
+        "Dry/Wet": {
+          "norm": 0.8
+        }
+      }
+    },
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Vibrato",
+        "Amount": {
+          "norm": 0.2
+        },
+        "Dry/Wet": {
+          "norm": 0.5
+        },
+        "Rate": {
+          "norm": 0.3396
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0041
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4088
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.0405
+        },
+        "3 Gain A": {
+          "norm": 0.6
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.18
+        },
+        "Decay Time": {
+          "norm": 0.0234
+        },
+        "Room Size": {
+          "norm": 0.1596
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 60,
+    "length": 8.0,
+    "scale": "dorian"
+  },
+  "sound_design_notes": "Пила + прямоугольник (PW 0.35) — «язычок» и конус. Резонанс фильтра 0.28 на ~2.3 кГц формирует нос сакса; шум на малом уровне = воздух. Сатурация Analog Clip — «хрип» при нажиме; EQ-бугор 900 Гц — «тело» тенора. Дорийский лад в демо звучит джазово."
+}

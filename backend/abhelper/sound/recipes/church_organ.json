@@ -1,0 +1,189 @@
+{
+  "id": "church_organ",
+  "version": 1,
+  "name": {
+    "ru": "Церковный орган",
+    "en": "Church pipe organ"
+  },
+  "category": "organ",
+  "aliases": [
+    "церковный орган",
+    "органный",
+    "соборный орган",
+    "духовой орган",
+    "органная музыка",
+    "church organ",
+    "pipe organ",
+    "cathedral organ",
+    "classical organ",
+    "bach organ"
+  ],
+  "tags": [
+    "organ",
+    "pipe",
+    "classical",
+    "church",
+    "cathedral",
+    "sacred"
+  ],
+  "description": {
+    "ru": "Соборный орган: полный органный хор 16'+8'+4'+2', медленная атака и большой реверб.",
+    "en": "Cathedral pipe organ: full 16'+8'+4'+2' chorus, slow attack and a huge reverb."
+  },
+  "preset_search": [
+    "church organ",
+    "pipe organ",
+    "cathedral organ",
+    "organ"
+  ],
+  "track": {
+    "name": "Церковный орган",
+    "color_index": 20
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable",
+      "Analog"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Square 6",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.58
+      },
+      "Ae Attack": {
+        "norm": 0.429
+      },
+      "Ae Decay": {
+        "norm": 0.576
+      },
+      "Ae Sustain": {
+        "norm": 1.0
+      },
+      "Ae Release": {
+        "norm": 0.61
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.5
+      },
+      "Be Attack": {
+        "norm": 0.436
+      },
+      "Be Decay": {
+        "norm": 0.576
+      },
+      "Be Sustain": {
+        "norm": 1.0
+      },
+      "Be Release": {
+        "norm": 0.61
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 4,
+      "Osc-C Level": {
+        "norm": 0.3
+      },
+      "Ce Attack": {
+        "norm": 0.442
+      },
+      "Ce Decay": {
+        "norm": 0.576
+      },
+      "Ce Sustain": {
+        "norm": 1.0
+      },
+      "Ce Release": {
+        "norm": 0.61
+      },
+      "Osc-D On": 1,
+      "Osc-D Wave": "Square 4",
+      "D Coarse": 0,
+      "Osc-D Level": {
+        "norm": 0.46
+      },
+      "De Attack": {
+        "norm": 0.422
+      },
+      "De Decay": {
+        "norm": 0.576
+      },
+      "De Sustain": {
+        "norm": 1.0
+      },
+      "De Release": {
+        "norm": 0.61
+      },
+      "Filter On": 1,
+      "Filter Type": "Lowpass",
+      "Filter Freq": {
+        "norm": 0.805
+      },
+      "Filter Res": {
+        "norm": 0.0
+      },
+      "Volume": {
+        "norm": 0.78
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Ensemble",
+        "Amount": {
+          "norm": 0.22
+        },
+        "Dry/Wet": {
+          "norm": 0.22
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0016
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4316
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.38
+        },
+        "Decay Time": {
+          "norm": 0.1054
+        },
+        "Room Size": {
+          "norm": 0.7599
+        },
+        "Predelay": {
+          "norm": 0.0862
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "chords",
+    "root": 48,
+    "length": 16.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Лабиальные трубы богаты гармониками: A и D — квадраты (8' и 16'), B и C — синусы 4' и 2' (принципал и октава). Атака 70–80 мс и долгий релиз 420 мс — воздух наполняет трубу и звук уходит в акустику. Главное — реверб: ~6.5 с, большой размер, предзадержка 22 мс. Лёгкий Ensemble-хорус добавляет «живое» биение рядов."
+}

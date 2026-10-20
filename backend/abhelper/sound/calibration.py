@@ -13,7 +13,7 @@ import json
 from pathlib import Path
 from typing import Callable
 
-from abhelper.bridge.base import BridgeCommandError
+from abhelper.bridge.base import BridgeCommandError, BridgeError
 
 from .library import RecipeLibrary
 
@@ -85,13 +85,13 @@ def dump_device_catalog(bridge, device_names: list[str],
                 if device_index is not None:
                     try:
                         bridge.call("delete_device", {"track_index": track_index, "device_index": device_index})
-                    except BridgeCommandError:
+                    except BridgeError:
                         pass
     finally:
         if track_index is not None:
             try:
                 bridge.call("delete_track", {"track_index": track_index})
-            except BridgeCommandError:
+            except BridgeError:
                 pass
 
     meta = {
@@ -121,9 +121,11 @@ def merge_catalog(old: dict, new: dict) -> dict:
         meta["failed"] = failed
     else:
         meta.pop("failed", None)
-    # verified only if every device came from a live dump
-    if old and not old.get("_meta", {}).get("verified") and set(old.get("devices", {})) - set(new.get("devices", {})):
-        meta["verified"] = False
-        meta["note"] = "Partially verified: some devices come from the hand-written catalog."
+    # "verified" only if every remaining device also came from a live dump
+    only_old = set(old.get("devices", {})) - set(new.get("devices", {})) if old else set()
+    old_verified = bool(old.get("_meta", {}).get("verified")) if old else True
+    meta["verified"] = bool(new_meta.get("verified")) and (old_verified or not only_old)
+    if only_old and not old_verified:
+        meta["note"] = "Partially verified: devices not in the latest dump come from the hand-written catalog."
     merged["_meta"] = meta
     return merged

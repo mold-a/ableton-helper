@@ -1,0 +1,152 @@
+{
+  "id": "tubular_bells",
+  "version": 1,
+  "name": {
+    "ru": "Трубчатые колокола",
+    "en": "Tubular bells"
+  },
+  "category": "bell",
+  "aliases": [
+    "колокол",
+    "колокола",
+    "колокольный звон",
+    "трубчатые колокола",
+    "церковные колокола",
+    "набат",
+    "tubular bells",
+    "church bells",
+    "bell",
+    "bell tone",
+    "chime bells",
+    "fm bell"
+  ],
+  "tags": [
+    "bell",
+    "fm",
+    "metallic",
+    "church",
+    "cinematic",
+    "колокол"
+  ],
+  "description": {
+    "ru": "Глубокие колокола: FM-цепочка с неточным отношением, очень долгое затухание.",
+    "en": "Deep tubular bells: FM chain with inharmonic ratio and very long decay."
+  },
+  "preset_search": [
+    "tubular bells",
+    "church bell",
+    "bells",
+    "bell"
+  ],
+  "track": {
+    "name": "Трубчатые колокола",
+    "color_index": 37
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.8
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.894
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.646
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 3,
+      "Osc-B Level": {
+        "norm": 0.42
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.815
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.605
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 7,
+      "Osc-C Level": {
+        "norm": 0.14
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.661
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.535
+      },
+      "Volume": {
+        "norm": 0.8
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0036
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.5452
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.35
+        },
+        "Decay Time": {
+          "norm": 0.0719
+        },
+        "Room Size": {
+          "norm": 0.4998
+        },
+        "Predelay": {
+          "norm": 0.0701
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 55,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "FM-колокол: A — несущая 1:1, B (×3) и C (×7) — модуляторы с нецелыми для A отношениями относительно друг друга, что даёт негармоничный, «металлический» спектр. Огибающая B затухает вдвое быстрее A, поэтому звук сначала «лязгает», потом остаётся чистым гулом. Релиз 600 мс и реверб 4.5 с — гул колокола."
+}

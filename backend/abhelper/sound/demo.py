@@ -151,21 +151,22 @@ def _melody(root: int, scale_name: str, length: float, variant: str) -> list[dic
 
 
 def _bass(root: int, scale_name: str, length: float, variant: str) -> list[dict]:
+    """Bass line; intervals are scale-degree offsets from each bar's chord root (4 = fifth, 7 = octave)."""
     scale = SCALES[scale_name]
     if variant == "trap":
-        pattern = [(0, 0, 1.5), (1.75, 0, 0.25), (2.5, 0, 1.0), (3.75, 7, 0.25)]
+        pattern = [(0, 0, 1.5), (1.75, 0, 0.25), (2.5, 0, 1.0), (3.75, 4, 0.25)]
     elif variant == "four_on_floor":  # offbeat techno/house bass
         pattern = [(0.5, 0, 0.4), (1.5, 0, 0.4), (2.5, 0, 0.4), (3.5, 0, 0.4)]
     else:
-        pattern = [(0, 0, 0.75), (1, 0, 0.5), (2, 0, 0.75), (3, 7, 0.5), (3.5, 5, 0.5)]
+        pattern = [(0, 0, 0.75), (1, 0, 0.5), (2, 0, 0.75), (3, 4, 0.5), (3.5, 3, 0.5)]
     progression = PROGRESSIONS[scale_name]
     notes = []
     bars = int(math.ceil(length / 4.0))
     for b in range(bars):
         deg = progression[b % len(progression)]
-        r = _scale_pitch(root, scale, deg)
-        for beat, interval, dur in pattern:
-            notes.append(_note(r + interval, b * 4.0 + beat, dur * 0.95, 112 if beat == 0 else 96))
+        for beat, offset, dur in pattern:
+            notes.append(_note(_scale_pitch(root, scale, deg + offset), b * 4.0 + beat, dur * 0.95,
+                               112 if beat == 0 else 96))
     return _fit_range(notes, length)
 
 

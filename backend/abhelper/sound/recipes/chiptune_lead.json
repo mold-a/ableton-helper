@@ -1,0 +1,186 @@
+{
+  "id": "chiptune_lead",
+  "version": 1,
+  "name": {
+    "ru": "Чиптюн (8-бит лид)",
+    "en": "Chiptune square lead"
+  },
+  "category": "lead",
+  "aliases": [
+    "чиптюн",
+    "чиптюн лид",
+    "8 бит",
+    "8-бит",
+    "восьмибит",
+    "8-битный",
+    "приставка",
+    "денди",
+    "квадрат",
+    "квадратный лид",
+    "chiptune",
+    "chip tune",
+    "8bit",
+    "8-bit",
+    "square lead",
+    "pulse lead",
+    "nes",
+    "game boy",
+    "retro game",
+    "chip lead"
+  ],
+  "tags": [
+    "lead",
+    "chiptune",
+    "8bit",
+    "square",
+    "retro",
+    "game",
+    "arp",
+    "чиптюн"
+  ],
+  "description": {
+    "ru": "8-битный лид: узкая импульсная волна без фильтра, ступенчатая огибающая, уменьшение разрядности.",
+    "en": "8-bit lead: narrow pulse wave with no filter, stepped envelope and bit reduction."
+  },
+  "preset_search": [
+    "chiptune",
+    "8-bit",
+    "square lead",
+    "pulse lead"
+  ],
+  "track": {
+    "name": "Чиптюн (8-бит лид)",
+    "color_index": 55
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Operator",
+      "Wavetable"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Rectangle",
+      "AEG1 Attack": {
+        "norm": 0.0
+      },
+      "AEG1 Decay": {
+        "norm": 0.454
+      },
+      "AEG1 Sustain": {
+        "norm": 0.7
+      },
+      "AEG1 Release": {
+        "norm": 0.343
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.985
+      },
+      "F1 Res": {
+        "norm": 0.0
+      },
+      "OSC1 PW": {
+        "norm": 0.25
+      },
+      "OSC2 On": 1,
+      "OSC2 Shape": "Rectangle",
+      "OSC2 Detune": {
+        "norm": 0.5
+      },
+      "OSC2 Level": {
+        "norm": 0.35
+      },
+      "OSC2 PW": {
+        "norm": 0.5
+      }
+    },
+    "fallback_parameters": {
+      "Operator": {
+        "Algorithm": 10,
+        "Osc-A On": 1,
+        "Osc-A Wave": "Square 4",
+        "A Coarse": 1,
+        "Osc-A Level": {
+          "norm": 0.6
+        },
+        "Ae Attack": {
+          "norm": 0.0
+        },
+        "Ae Decay": {
+          "norm": 0.454
+        },
+        "Ae Sustain": {
+          "norm": 0.7
+        },
+        "Ae Release": {
+          "norm": 0.343
+        },
+        "Osc-B On": 1,
+        "Osc-B Wave": "Square 8",
+        "B Coarse": 2,
+        "Osc-B Level": {
+          "norm": 0.2
+        },
+        "Be Attack": {
+          "norm": 0.0
+        },
+        "Be Decay": {
+          "norm": 0.454
+        },
+        "Be Sustain": {
+          "norm": 0.6
+        },
+        "Be Release": {
+          "norm": 0.343
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Redux",
+      "parameters": {
+        "Bit Depth": {
+          "norm": 0.4667
+        },
+        "Sample Rate": {
+          "norm": 0.55
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0064
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.5452
+        }
+      }
+    },
+    {
+      "device": "Delay",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.15
+        },
+        "Feedback": {
+          "norm": 0.3158
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "arp",
+    "root": 72,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Игровые чипы (NES/Game Boy) — это импульсные волны со скважностью 12.5/25/50%. Здесь OSC1 PW=25% + OSC2 квадрат на 35% для заполнения. Фильтр открыт полностью, атака 0, быстрый спад до сустейна 0.7 — «пик-пик». Redux (8 бит, пониженная частота дискретизации) — цифровая грязь. Демо — быстрое арпеджио, как в чип-мелодиях."
+}

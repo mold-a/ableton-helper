@@ -1,0 +1,179 @@
+{
+  "id": "steel_drum",
+  "version": 1,
+  "name": {
+    "ru": "Стальной барабан (стил-пан)",
+    "en": "Steel drum"
+  },
+  "category": "mallet",
+  "aliases": [
+    "стил драм",
+    "стальной барабан",
+    "стил-пан",
+    "стилпан",
+    "панорама стальная",
+    "карибский",
+    "калипсо",
+    "steel drum",
+    "steel pan",
+    "steelpan",
+    "caribbean drum",
+    "hang drum",
+    "ханг"
+  ],
+  "tags": [
+    "mallet",
+    "percussion",
+    "caribbean",
+    "tropical",
+    "metallic",
+    "tuned"
+  ],
+  "description": {
+    "ru": "Стил-пан: сильная октава и дюодецима, небольшое колебание, лёгкий эхо-дилей.",
+    "en": "Steel pan: strong octave and twelfth, subtle wobble, light echo."
+  },
+  "preset_search": [
+    "steel drum",
+    "steel pan",
+    "steelpan",
+    "hang drum"
+  ],
+  "track": {
+    "name": "Стальной барабан (стил-пан)",
+    "color_index": 11
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.8
+      },
+      "Ae Attack": {
+        "norm": 0.07
+      },
+      "Ae Decay": {
+        "norm": 0.716
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.483
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.45
+      },
+      "Be Attack": {
+        "norm": 0.07
+      },
+      "Be Decay": {
+        "norm": 0.628
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.454
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Sine",
+      "C Coarse": 3,
+      "Osc-C Level": {
+        "norm": 0.22
+      },
+      "Ce Attack": {
+        "norm": 0.07
+      },
+      "Ce Decay": {
+        "norm": 0.545
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.429
+      },
+      "Volume": {
+        "norm": 0.82
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Classic",
+        "Amount": {
+          "norm": 0.3
+        },
+        "Dry/Wet": {
+          "norm": 0.3
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0064
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.0632
+        },
+        "3 Gain A": {
+          "norm": 0.5667
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Delay",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.15
+        },
+        "Feedback": {
+          "norm": 0.3158
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.18
+        },
+        "Decay Time": {
+          "norm": 0.0234
+        },
+        "Room Size": {
+          "norm": 0.1796
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 67,
+    "length": 8.0,
+    "scale": "mixolydian"
+  },
+  "sound_design_notes": "У стил-пана ярко выражены первые три парциала с отношением 1 : 2 : 3 (основной, октава, дюодецима): A, B (×2), C (×3) в цепочке FM дают это «бульканье». Короткая, но мягкая атака (2 мс), затухание 1.2 с. Chorus Classic — лёгкое биение между нотами, Delay и реверб — тропическая атмосфера."
+}

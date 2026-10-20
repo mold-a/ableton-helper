@@ -1,0 +1,171 @@
+{
+  "id": "kalimba",
+  "version": 1,
+  "name": {
+    "ru": "Калимба",
+    "en": "Kalimba / thumb piano"
+  },
+  "category": "mallet",
+  "aliases": [
+    "калимба",
+    "калимбы",
+    "музыкальный пальцевый",
+    "пальцевое пианино",
+    "мбира",
+    "kalimba",
+    "thumb piano",
+    "mbira",
+    "finger piano"
+  ],
+  "tags": [
+    "mallet",
+    "plucked",
+    "african",
+    "metallic",
+    "lofi",
+    "cute"
+  ],
+  "description": {
+    "ru": "Калимба: короткий металлический язычок с мягким «тинк» и небольшим эхом.",
+    "en": "Kalimba: short metallic tine with a soft 'tink' and a touch of echo."
+  },
+  "preset_search": [
+    "kalimba",
+    "mbira",
+    "thumb piano"
+  ],
+  "track": {
+    "name": "Калимба",
+    "color_index": 39
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 0,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.85
+      },
+      "Ae Attack": {
+        "norm": 0.0
+      },
+      "Ae Decay": {
+        "norm": 0.698
+      },
+      "Ae Sustain": {
+        "norm": 0.0
+      },
+      "Ae Release": {
+        "norm": 0.483
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 5,
+      "Osc-B Level": {
+        "norm": 0.2
+      },
+      "Be Attack": {
+        "norm": 0.0
+      },
+      "Be Decay": {
+        "norm": 0.491
+      },
+      "Be Sustain": {
+        "norm": 0.0
+      },
+      "Be Release": {
+        "norm": 0.395
+      },
+      "Osc-C On": 1,
+      "Osc-C Wave": "Triangle D",
+      "C Coarse": 3,
+      "Osc-C Level": {
+        "norm": 0.1
+      },
+      "Ce Attack": {
+        "norm": 0.0
+      },
+      "Ce Decay": {
+        "norm": 0.561
+      },
+      "Ce Sustain": {
+        "norm": 0.0
+      },
+      "Ce Release": {
+        "norm": 0.429
+      },
+      "Volume": {
+        "norm": 0.82
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Corpus",
+      "parameters": {
+        "Resonance Type": "Beam",
+        "Dry/Wet": {
+          "norm": 0.25
+        },
+        "Decay": {
+          "norm": 0.4
+        },
+        "Brightness": {
+          "norm": 0.6
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0086
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4543
+        }
+      }
+    },
+    {
+      "device": "Delay",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.2
+        },
+        "Feedback": {
+          "norm": 0.3684
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.18
+        },
+        "Decay Time": {
+          "norm": 0.0268
+        },
+        "Room Size": {
+          "norm": 0.1796
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 72,
+    "length": 8.0,
+    "scale": "major"
+  },
+  "sound_design_notes": "Калимба — основной тон и яркий короткий «щелчок» высоких гармоник. B (×5) живёт ~130 мс: это стук язычка. Corpus Beam имитирует деревянный резонаторный корпус. Delay с 35% обратной связи — лёгкая «пещерность». Играйте в диапазоне C4–C6."
+}

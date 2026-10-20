@@ -1,0 +1,161 @@
+{
+  "id": "trumpet",
+  "version": 1,
+  "name": {
+    "ru": "Труба",
+    "en": "Trumpet"
+  },
+  "category": "brass",
+  "aliases": [
+    "труба",
+    "трубы",
+    "трубач",
+    "горн",
+    "корнет",
+    "trumpet",
+    "cornet",
+    "solo trumpet",
+    "jazz trumpet",
+    "flugelhorn"
+  ],
+  "tags": [
+    "brass",
+    "solo",
+    "jazz",
+    "bright",
+    "труба"
+  ],
+  "description": {
+    "ru": "Соло-труба: пила + узкий импульс, яркое раскрытие фильтра, поздно приходящее вибрато.",
+    "en": "Solo trumpet: saw plus narrow pulse, bright filter bloom and late-onset vibrato."
+  },
+  "preset_search": [
+    "trumpet",
+    "solo trumpet",
+    "brass solo"
+  ],
+  "track": {
+    "name": "Труба",
+    "color_index": 9
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Operator"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.359
+      },
+      "AEG1 Decay": {
+        "norm": 0.535
+      },
+      "AEG1 Sustain": {
+        "norm": 0.9
+      },
+      "AEG1 Release": {
+        "norm": 0.475
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.659
+      },
+      "F1 Res": {
+        "norm": 0.2
+      },
+      "OSC2 On": 1,
+      "OSC2 Shape": "Rectangle",
+      "OSC2 Detune": {
+        "norm": 0.5
+      },
+      "OSC2 Level": {
+        "norm": 0.5
+      },
+      "OSC2 PW": {
+        "norm": 0.3
+      },
+      "F1 Freq < Env": {
+        "norm": 0.8
+      },
+      "FEG1 Attack": {
+        "norm": 0.413
+      },
+      "FEG1 Decay": {
+        "norm": 0.553
+      },
+      "FEG1 Sustain": {
+        "norm": 0.55
+      },
+      "FEG1 Release": {
+        "norm": 0.499
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Vibrato",
+        "Amount": {
+          "norm": 0.18
+        },
+        "Dry/Wet": {
+          "norm": 0.5
+        },
+        "Rate": {
+          "norm": 0.3462
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0073
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4543
+        },
+        "3 Filter On A": 1,
+        "3 Filter Type A": 3,
+        "3 Frequency A": {
+          "norm": 0.1041
+        },
+        "3 Gain A": {
+          "norm": 0.5833
+        },
+        "3 Resonance A": {
+          "norm": 0.0503
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.2
+        },
+        "Decay Time": {
+          "norm": 0.0251
+        },
+        "Room Size": {
+          "norm": 0.1796
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "melody",
+    "root": 66,
+    "length": 8.0,
+    "scale": "major"
+  },
+  "sound_design_notes": "Пила + узкий импульс (PW ~0.3) — резкий «трубный» спектр. Фильтр 1.9 кГц с быстрым (60 мс) раскрытием, как давление губ. Вибрато — тонкое (18%), потому что на трубе оно мягче скрипичного. Бугор EQ ~2.3 кГц — «звон»."
+}

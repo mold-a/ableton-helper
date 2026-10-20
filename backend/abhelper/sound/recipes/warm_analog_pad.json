@@ -1,0 +1,212 @@
+{
+  "id": "warm_analog_pad",
+  "version": 1,
+  "name": {
+    "ru": "Тёплый аналоговый пэд",
+    "en": "Warm analog pad"
+  },
+  "category": "pad",
+  "aliases": [
+    "пэд",
+    "пед",
+    "пад",
+    "падик",
+    "тёплый пэд",
+    "теплый пэд",
+    "аналоговый пэд",
+    "мягкий пэд",
+    "джуно пэд",
+    "boards of canada",
+    "boc",
+    "pad",
+    "warm pad",
+    "analog pad",
+    "juno pad",
+    "soft pad",
+    "lush pad",
+    "retro pad",
+    "ретро пэд"
+  ],
+  "tags": [
+    "pad",
+    "warm",
+    "analog",
+    "ambient",
+    "lush",
+    "retro",
+    "тёплый",
+    "пэд"
+  ],
+  "description": {
+    "ru": "Тёплый, чуть «плывущий» аналоговый пэд: две пилы/импульс, мягкий фильтр, хорус и ленточная сатурация.",
+    "en": "Warm, slightly drifting analog pad: saw plus pulse, soft low-pass, chorus and tape-style saturation."
+  },
+  "preset_search": [
+    "warm pad",
+    "analog pad",
+    "soft pad",
+    "pad"
+  ],
+  "track": {
+    "name": "Тёплый аналоговый пэд",
+    "color_index": 40
+  },
+  "instrument": {
+    "device": "Analog",
+    "fallback_devices": [
+      "Wavetable",
+      "Drift",
+      "Operator"
+    ],
+    "parameters": {
+      "OSC1 On": 1,
+      "OSC1 Shape": "Saw",
+      "AEG1 Attack": {
+        "norm": 0.654
+      },
+      "AEG1 Decay": {
+        "norm": 0.687
+      },
+      "AEG1 Sustain": {
+        "norm": 0.85
+      },
+      "AEG1 Release": {
+        "norm": 0.738
+      },
+      "F1 Type": "Lowpass",
+      "F1 Freq": {
+        "norm": 0.625
+      },
+      "F1 Res": {
+        "norm": 0.12
+      },
+      "OSC2 On": 1,
+      "OSC2 Shape": "Rectangle",
+      "OSC2 Detune": {
+        "norm": 0.55
+      },
+      "OSC2 Level": {
+        "norm": 0.6
+      },
+      "OSC2 PW": {
+        "norm": 0.4
+      },
+      "F1 Freq < Env": {
+        "norm": 0.625
+      },
+      "FEG1 Attack": {
+        "norm": 0.675
+      },
+      "FEG1 Decay": {
+        "norm": 0.738
+      },
+      "FEG1 Sustain": {
+        "norm": 0.5
+      },
+      "FEG1 Release": {
+        "norm": 0.716
+      }
+    },
+    "fallback_parameters": {
+      "Wavetable": {
+        "Amp Attack": {
+          "norm": 0.654
+        },
+        "Amp Decay": {
+          "norm": 0.687
+        },
+        "Amp Sustain": {
+          "norm": 0.85
+        },
+        "Amp Release": {
+          "norm": 0.738
+        },
+        "Filter 1 On": 1,
+        "Filter 1 Type": "Lowpass",
+        "Filter 1 Freq": {
+          "norm": 0.651
+        },
+        "Filter 1 Res": {
+          "norm": 0.08
+        },
+        "Unison Mode": "Classic",
+        "Unison Voices": 4,
+        "Unison Amount": {
+          "norm": 0.3
+        },
+        "Sub On": 1,
+        "Sub Gain": {
+          "norm": 0.2
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Soft Sine",
+        "Drive": {
+          "norm": 0.5556
+        },
+        "Dry/Wet": {
+          "norm": 0.4
+        }
+      }
+    },
+    {
+      "device": "Chorus-Ensemble",
+      "parameters": {
+        "Mode": "Ensemble",
+        "Amount": {
+          "norm": 0.5
+        },
+        "Dry/Wet": {
+          "norm": 0.45
+        },
+        "Warmth": {
+          "norm": 0.6
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0041
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.4088
+        }
+      }
+    },
+    {
+      "device": "Reverb",
+      "parameters": {
+        "Dry/Wet": {
+          "norm": 0.3
+        },
+        "Decay Time": {
+          "norm": 0.0803
+        },
+        "Room Size": {
+          "norm": 0.4398
+        },
+        "Predelay": {
+          "norm": 0.0982
+        }
+      }
+    }
+  ],
+  "demo": {
+    "style": "pad",
+    "root": 48,
+    "length": 16.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Рецепт «винтажного» пэда: пила + узкий импульс (PW 0.4) с расстройкой ~+12 центов; фильтр 1.5 кГц, который очень медленно открывается (800 мс) — «вдох». Усилитель: атака 650 мс, релиз 1.5 с — ноты наплывают друг на друга. Тёплая сатурация Soft Sine на 40% — ламповая/ленточная «грязь», EQ срезает верх (9 кГц) — звук «из прошлого», Chorus-Ensemble с Warmth — стерео-плавание, реверб 5 с."
+}

@@ -1,0 +1,187 @@
+{
+  "id": "sub_bass",
+  "version": 1,
+  "name": {
+    "ru": "Саб-бас",
+    "en": "Sub bass"
+  },
+  "category": "bass",
+  "aliases": [
+    "бас",
+    "басс",
+    "басуха",
+    "басовая линия",
+    "басовый",
+    "саб",
+    "саб бас",
+    "саб-бас",
+    "сабчик",
+    "суб бас",
+    "жирный бас",
+    "толстый бас",
+    "глубокий бас",
+    "bass",
+    "sub",
+    "sub bass",
+    "fat bass",
+    "deep bass",
+    "bassline",
+    "low end"
+  ],
+  "tags": [
+    "bass",
+    "sub",
+    "sine",
+    "deep",
+    "simple",
+    "бас",
+    "саб"
+  ],
+  "description": {
+    "ru": "Чистый саб-бас: синус с каплей второй гармоники, сатурация и моно-низ.",
+    "en": "Pure sub bass: sine with a hint of 2nd harmonic, saturation and mono lows."
+  },
+  "preset_search": [
+    "sub bass",
+    "deep bass",
+    "bass sub",
+    "bass"
+  ],
+  "track": {
+    "name": "Саб-бас",
+    "color_index": 60
+  },
+  "instrument": {
+    "device": "Operator",
+    "fallback_devices": [
+      "Analog",
+      "Wavetable"
+    ],
+    "parameters": {
+      "Algorithm": 10,
+      "Osc-A On": 1,
+      "Osc-A Wave": "Sine",
+      "A Coarse": 1,
+      "Osc-A Level": {
+        "norm": 0.9
+      },
+      "Ae Attack": {
+        "norm": 0.111
+      },
+      "Ae Decay": {
+        "norm": 0.576
+      },
+      "Ae Sustain": {
+        "norm": 0.92
+      },
+      "Ae Release": {
+        "norm": 0.442
+      },
+      "Osc-B On": 1,
+      "Osc-B Wave": "Sine",
+      "B Coarse": 2,
+      "Osc-B Level": {
+        "norm": 0.12
+      },
+      "Be Attack": {
+        "norm": 0.111
+      },
+      "Be Decay": {
+        "norm": 0.535
+      },
+      "Be Sustain": {
+        "norm": 0.7
+      },
+      "Be Release": {
+        "norm": 0.442
+      },
+      "Volume": {
+        "norm": 0.82
+      }
+    },
+    "fallback_parameters": {
+      "Analog": {
+        "OSC1 On": 1,
+        "OSC1 Shape": "Sine",
+        "AEG1 Attack": {
+          "norm": 0.111
+        },
+        "AEG1 Decay": {
+          "norm": 0.576
+        },
+        "AEG1 Sustain": {
+          "norm": 0.92
+        },
+        "AEG1 Release": {
+          "norm": 0.442
+        },
+        "F1 Type": "Lowpass",
+        "F1 Freq": {
+          "norm": 0.767
+        },
+        "F1 Res": {
+          "norm": 0.0
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "device": "Saturator",
+      "parameters": {
+        "Type": "Soft Sine",
+        "Drive": {
+          "norm": 0.5833
+        },
+        "Dry/Wet": {
+          "norm": 0.55
+        }
+      }
+    },
+    {
+      "device": "Compressor",
+      "parameters": {
+        "Threshold": {
+          "norm": 0.1998
+        },
+        "Attack": {
+          "norm": 0.01
+        },
+        "Release": {
+          "norm": 0.033
+        },
+        "Dry/Wet": {
+          "norm": 1.0
+        }
+      }
+    },
+    {
+      "device": "EQ Eight",
+      "parameters": {
+        "1 Filter On A": 1,
+        "1 Filter Type A": 1,
+        "1 Frequency A": {
+          "norm": 0.0008
+        },
+        "8 Filter On A": 1,
+        "8 Filter Type A": 6,
+        "8 Frequency A": {
+          "norm": 0.136
+        }
+      }
+    },
+    {
+      "device": "Utility",
+      "parameters": {
+        "Bass Mono": 1
+      }
+    }
+  ],
+  "demo": {
+    "style": "bass",
+    "root": 36,
+    "length": 8.0,
+    "scale": "minor"
+  },
+  "sound_design_notes": "Синус — единственный «чистый» звук для суб-диапазона. Тихая 2-я гармоника (12%) и Soft-Sine сатурация (55%) делают бас слышимым на маленьких колонках. Атака 3 мс, без клика. Компрессор выравнивает, EQ срезает инфразвук <28 Гц и всё выше 3 кГц; Utility Bass Mono гарантирует моно-низ. Играйте C1–C2."
+}
