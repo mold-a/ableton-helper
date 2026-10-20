@@ -16,7 +16,7 @@ CATEGORIES = (
 )
 DEMO_STYLES = ("chords", "melody", "bass", "arp", "drums", "pad", "single")
 DEMO_SCALES = ("major", "minor", "dorian", "phrygian", "mixolydian", "harmonic_minor")
-DEMO_VARIANTS = ("default", "four_on_floor", "boom_bap", "trap", "rock", "lofi", "waltz")
+DEMO_VARIANTS = ("default", "four_on_floor", "boom_bap", "trap", "rock", "lofi", "waltz", "strum")
 
 ID_RE = re.compile(r"^[a-z0-9_]+$")
 

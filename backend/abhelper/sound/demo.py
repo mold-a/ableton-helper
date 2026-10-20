@@ -124,9 +124,11 @@ def _chords(root: int, scale_name: str, length: float, variant: str) -> list[dic
         deg = progression[c % len(progression)]
         chord = _triad(root, scale, deg, prev_mean)
         prev_mean = sum(chord) / 3.0
+        spread = 0.045 if variant == "strum" else 0.0   # guitar-like strum: tones arrive one after another
+        bass = _scale_pitch(root, scale, deg) - 12
+        notes.append(_note(bass, c * chord_len, chord_len * 0.94, 84))
         for i, p in enumerate(chord):
-            notes.append(_note(p, c * chord_len, chord_len * 0.94, 96 - 6 * i))
-        notes.append(_note(_scale_pitch(root, scale, deg) - 12, c * chord_len, chord_len * 0.94, 84))
+            notes.append(_note(p, c * chord_len + spread * (i + 1), chord_len * 0.94 - spread * (i + 1), 96 - 6 * i))
     return _fit_range(notes, length)
 
 
